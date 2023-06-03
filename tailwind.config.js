@@ -5,8 +5,33 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
-  },
-  plugins: [],
+    extend: {
+      colors: {
+        'header': '#DDCCAA',
+        'red-button': '#E31221',
+      },
+      backgroundColor: {
+        'red-button': '#E31221',
+        'button-hover': '#CC0E10',
+        'button-active': '#B80D0F',
+        'button-disabled': '#EC4C57',
+      },
+      borderColor: {
+        'red-button': '#E31221'
+      },
+      fontFamily: {
+        'title': ['Montserrat', 'sans-serif'],
+        'helvetica': ['Helvetica Neue', 'sans-serif'],
+      },
+      gradientColorStops: {
+        'home': 'linear-gradient(180deg, #11101A 0%, #08080D 50.52%, #0D0B14 98.75%)'
+      },
+      backgroundImage: {
+        'home1': "url('../assets/images/home/ImageHome1.png')",
+        'home2': "url('../assets/images/home/ImageHome2.png')",
+        'home3': "url('../assets/images/home/ImageHome3.png')",
+      }
+    },
+    plugins: [],
+  }
 }
-
