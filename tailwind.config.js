@@ -9,15 +9,27 @@ module.exports = {
       colors: {
         'header': '#DDCCAA',
         'red-button': '#E31221',
+        'red-star': '#DC3545',
+        'placeholder': '#6C757D',
+        'my-blue': '#0D6EFD',
+      },
+      maxWidth: {
+        'xl': '600px',
+      },
+      spacing: {
+        '120' : '120px'
       },
       backgroundColor: {
         'red-button': '#E31221',
         'button-hover': '#CC0E10',
         'button-active': '#B80D0F',
         'button-disabled': '#EC4C57',
+        'outside-modal': 'rgba(0, 0, 0, 0.54)',
+        'input': '#CED4DA',
       },
       borderColor: {
-        'red-button': '#E31221'
+        'red-button': '#E31221',
+        'input': '#CED4DA',
       },
       fontFamily: {
         'title': ['Montserrat', 'sans-serif'],
