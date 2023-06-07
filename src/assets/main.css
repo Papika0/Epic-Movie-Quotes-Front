@@ -2,3 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+
+body {
+    background: linear-gradient(180deg, #11101A 0%, #08080D 50.52%, #0D0B14 98.75%);
+    
+    font-family: 'Helvetica Neue', sans-serif;
+ }
