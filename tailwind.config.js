@@ -17,7 +17,7 @@ module.exports = {
         'xl': '600px',
       },
       spacing: {
-        '120' : '120px'
+        '120': '120px'
       },
       backgroundColor: {
         'red-button': '#E31221',
@@ -42,7 +42,10 @@ module.exports = {
         'home1': "url('../assets/images/home/ImageHome1.png')",
         'home2': "url('../assets/images/home/ImageHome2.png')",
         'home3': "url('../assets/images/home/ImageHome3.png')",
-      }
+      },
+      boxShadow: {
+        'input': '0px 0px 0px 4px rgba(13, 110, 253, 0.25)',
+      },
     },
     plugins: [],
   }
