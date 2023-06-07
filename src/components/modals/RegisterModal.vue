@@ -6,14 +6,15 @@
         </template>
 
         <template v-slot:body>
-            <Form class="flex flex-col gap-4 w-full">
-                <InputField name="name" label="Name" placeholder="At least 3 & max.15 lower case characters" />
-                <InputField name="email" label="Email" placeholder="Enter your email" />
+            <Form class="flex flex-col gap-4 w-full" @submit="registerUser">
+                <InputField name="name" label="Name" placeholder="At least 3 & max.15 lower case characters"
+                    rules="required|min:3|max:15|lowercase" />
+                <InputField name="email" label="Email" placeholder="Enter your email" rules="required|email" />
                 <InputField name="password" label="Password" placeholder="At least 8 & max.15 lower case characters"
-                    textType="password" />
-                <InputField name="passwordConfirm" label="Confirm Password" placeholder="Confirm your password"
-                    textType="password" />
-                <ButtoneRed text="Get started" />
+                    textType="password" rules="required|min:8|max:15|lowercase" />
+                <InputField name="password_confirm" label="Confirm Password" placeholder="Confirm your password"
+                    textType="password" rules="required|confirmed:@password" />
+                <ButtoneRed text="Get started" type="submit" />
                 <ButtonDark text="Sign up with Google" :gmail="true" />
             </Form>
         </template>
@@ -38,4 +39,8 @@ import ButtonDark from '@/components/ui/ButtonDark.vue';
 
 const modalStore = useModalStore();
 
+
+const registerUser = () => {
+    console.log('register user');
+}
 </script>
