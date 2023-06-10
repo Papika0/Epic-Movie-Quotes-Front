@@ -6,14 +6,14 @@
             <Field :name="name" :rules="rules" v-slot="{ field, meta }">
                 <input :type="inputType" :placeholder="placeholder" v-bind="field"
                     class="h-10 bg-input border border-input pl-3 placeholder:text-placeholder rounded-md w-full outline-none focus:shadow-input"
-                    :class="meta.touched && !meta.valid ? 'border-red-500' : (meta.touched && meta.valid ? 'border-green-500' : '')">
+                    :class="(meta.touched && !meta.valid) || apiError ? 'border-red-500' : (meta.touched && meta.valid ? 'border-green-500' : '')">
                 <IconPasswordEye v-if="textType === 'password'"
                     class="absolute right-3 top-2/4 transform -translate-y-2/4 cursor-pointer"
                     :class="meta.touched && (meta.valid || !meta.valid) && 'right-9'" @click="togglePasswordVisibility" />
                 <IconInputInvalid class="absolute right-3 top-2/4 transform -translate-y-2/4"
-                    v-if="!meta.valid && meta.touched" />
+                    v-if="(!meta.valid && meta.touched) || apiError" />
                 <IconInputValid class="absolute right-3 top-2/4 transform -translate-y-2/4"
-                    v-if="meta.valid && meta.touched" />
+                    v-if="(meta.valid && meta.touched) && !apiError" />
             </Field>
         </div>
         <ErrorMessage :name="name" class="text-red-star mt-1 text-sm" v-bind="" />
@@ -55,6 +55,10 @@ export default {
         rules: {
             type: String,
             default: ""
+        },
+        apiError: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
