@@ -12,6 +12,8 @@
   </header>
   <RegisterModal v-if="modalStore.showRegisterModal" />
   <LoginModal v-if="modalStore.showLoginModal" />
+  <EmailSendModal v-if="modalStore.showEmailSentModal" />
+  <EmailVerifiedModal v-if="modalStore.showEmailVerifiedModal" />
   <div :class="modalStore.getModalActiveState ? 'h-screen' : ''">
     <section class="flex flex-col items-center mt-80  ">
       <p class="text-6xl text-center text-header font-bold font-title">Find any quote in <br>
@@ -50,7 +52,10 @@ import ButtonRed from '@/components/ui/ButtonRed.vue';
 import ButtonDark from '@/components/ui/ButtonDark.vue';
 import RegisterModal from '@/components/modals/RegisterModal.vue';
 import LoginModal from '@/components/modals/LoginModal.vue';
+import EmailSendModal from '@/components/modals/EmailSendModal.vue';
+import EmailVerifiedModal from '@/components/modals/EmailVerifiedModal.vue';
 import { useModalStore } from '@/stores/useModalStore.js';
+
 
 const modalStore = useModalStore();
 

@@ -15,9 +15,11 @@ module.exports = {
       },
       maxWidth: {
         'xl': '600px',
+        '540' : '540px',
       },
       spacing: {
-        '120': '120px'
+        '120': '120px',
+        '72': '72px',
       },
       backgroundColor: {
         'red-button': '#E31221',
