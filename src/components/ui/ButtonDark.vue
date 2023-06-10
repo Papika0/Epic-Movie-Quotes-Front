@@ -1,9 +1,9 @@
 <template>
-    <button class="py-2 px-6 text-white rounded border border-white flex gap-2 items-center justify-center">
+    <a class="py-2 px-6 text-white rounded border border-white flex gap-2 items-center justify-center cursor-pointer">
         <span class=" justify-center text-center items-center" v-if="gmail">
             <IconGmailLogo />
         </span> {{ text }}
-    </button>
+    </a>
 </template>
 
 <script setup>
