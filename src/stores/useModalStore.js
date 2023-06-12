@@ -4,6 +4,8 @@ export const useModalStore = defineStore('useModalStore', {
     state: () => ({
         showRegisterModal: false,
         showLoginModal: false,
+        showEmailSentModal: false,
+        showEmailVerifiedModal: false,
     }),
     actions: {
         toggleRegisterModal() {
@@ -12,6 +14,12 @@ export const useModalStore = defineStore('useModalStore', {
         toggleLoginModal() {
             this.showLoginModal = !this.showLoginModal
         },
+        toggleEmailSentModal() {
+            this.showEmailSentModal = !this.showEmailSentModal
+        },
+        toggleEmailVerifiedModal() {
+            this.showEmailVerifiedModal = !this.showEmailVerifiedModal
+        },
         switchLoginRegisterModal() {
             this.showLoginModal = !this.showLoginModal
             this.showRegisterModal = !this.showRegisterModal
@@ -19,7 +27,7 @@ export const useModalStore = defineStore('useModalStore', {
     },
     getters: {
         getModalActiveState() {
-            return this.showRegisterModal || this.showLoginModal
+            return this.showRegisterModal || this.showLoginModal || this.showEmailSentModal || this.showEmailVerifiedModal
           }
     }
 });

@@ -6,14 +6,18 @@
         </template>
 
         <template v-slot:body>
-            <Form class="flex flex-col gap-4 w-full">
-                <InputField name="name" label="Name" placeholder="At least 3 & max.15 lower case characters" />
-                <InputField name="email" label="Email" placeholder="Enter your email" />
+            <Form class="flex flex-col gap-4 w-full" @submit="registerUser">
+                <InputField name="username" label="Name" placeholder="At least 3 & max.15 lower case characters"
+                    rules="required|min:3|max:15|lowercase" :apiError="Boolean(usernameError)" />
+                <p v-if="usernameError" class="text-red-star text-sm"> {{ usernameError }} </p>
+                <InputField name="email" label="Email" placeholder="Enter your email" rules="required|email"
+                    :apiError="Boolean(emailError)" />
+                <p v-if="emailError" class="text-red-star text-sm"> {{ emailError }} </p>
                 <InputField name="password" label="Password" placeholder="At least 8 & max.15 lower case characters"
-                    textType="password" />
-                <InputField name="passwordConfirm" label="Confirm Password" placeholder="Confirm your password"
-                    textType="password" />
-                <ButtoneRed text="Get started" />
+                    textType="password" rules="required|min:8|max:15|lowercase" />
+                <InputField name="password_confirm" label="Confirm Password" placeholder="Confirm your password"
+                    textType="password" rules="required|confirmed:@password" />
+                <ButtoneRed text="Get started" type="submit" class="mt-2" />
                 <ButtonDark text="Sign up with Google" :gmail="true" />
             </Form>
         </template>
@@ -31,11 +35,43 @@
 <script setup>
 import LayoutModal from '@/components/layouts/LayoutModal.vue';
 import { Form } from 'vee-validate';
+import { ref, computed } from 'vue';
 import { useModalStore } from '@/stores/useModalStore.js';
+import { useUserStore } from '@/stores/useUserStore.js';
 import InputField from '@/components/ui/InputField.vue';
 import ButtoneRed from '@/components/ui/ButtonRed.vue';
 import ButtonDark from '@/components/ui/ButtonDark.vue';
+import { register } from '@/services/auth/auth.js';
 
 const modalStore = useModalStore();
+const userStore = useUserStore();
+
+const apiErrors = ref(null);
+
+const emailError = computed(() => {
+    if (apiErrors.value?.email) {
+        return apiErrors.value.email[0];
+    }
+});
+
+const usernameError = computed(() => {
+    if (apiErrors.value?.username) {
+        return apiErrors.value.username[0];
+    }
+});
+
+
+async function registerUser(values) {
+    apiErrors.value = null;
+    await register(values.username, values.email, values.password)
+        .then((data) => {
+            userStore.setEmail(data.data.user.email);
+            modalStore.toggleRegisterModal();
+            modalStore.toggleEmailSentModal();
+        })
+        .catch((error) => {
+            apiErrors.value = error.response.data.errors;
+        });
+}
 
 </script>
