@@ -6,6 +6,12 @@ export const useModalStore = defineStore('useModalStore', {
         showLoginModal: false,
         showEmailSentModal: false,
         showEmailVerifiedModal: false,
+        showEmailVerificationResendModal: false,
+        showEmailForgotPasswordModal: false,
+        showEmailForgotPasswordSendModal: false,
+        showResetPasswordModal: false,
+        showResetPasswordSuccessModal: false,
+        showResetPasswordResendModal: false,
     }),
     actions: {
         toggleRegisterModal() {
@@ -20,6 +26,24 @@ export const useModalStore = defineStore('useModalStore', {
         toggleEmailVerifiedModal() {
             this.showEmailVerifiedModal = !this.showEmailVerifiedModal
         },
+        toggleEmailForgotPasswordModal() {
+            this.showEmailForgotPasswordModal = !this.showEmailForgotPasswordModal
+        },
+        toggleEmailForgotPasswordSendModal() {
+            this.showEmailForgotPasswordSendModal = !this.showEmailForgotPasswordSendModal
+        },
+        toggleResetPasswordModal() {
+            this.showResetPasswordModal = !this.showResetPasswordModal
+        },
+        toggleResetPasswordSuccessModal() {
+            this.showResetPasswordSuccessModal = !this.showResetPasswordSuccessModal
+        },
+        toggleResetPasswordResendModal() {
+            this.showResetPasswordResendModal = !this.showResetPasswordResendModal
+        },
+        toggleEmailVerificationResendModal() {
+            this.showEmailVerificationResendModal = !this.showEmailVerificationResendModal
+        },
         switchLoginRegisterModal() {
             this.showLoginModal = !this.showLoginModal
             this.showRegisterModal = !this.showRegisterModal
@@ -27,7 +51,7 @@ export const useModalStore = defineStore('useModalStore', {
     },
     getters: {
         getModalActiveState() {
-            return this.showRegisterModal || this.showLoginModal || this.showEmailSentModal || this.showEmailVerifiedModal
+            return Object.values(this.$state).some(value => value === true);
           }
     }
 });

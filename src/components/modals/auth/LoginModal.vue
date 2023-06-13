@@ -14,7 +14,8 @@
                         <Field name="remember_me" type="checkbox" class="mr-2 h-4 w-4 rounded-md" value="true" />
                         <label for="remember_me" class="text-white">Remember me</label>
                     </div>
-                    <span class="text-my-blue cursor-pointer underline">Forgot password?</span>
+                    <span class="text-my-blue cursor-pointer underline" @click="switchLoginForgotPasswordModal()">Forgot
+                        password?</span>
                 </div>
                 <ButtoneRed text="Sign in" />
                 <ButtonDark text="Sign in with Google" :gmail="true" />
@@ -40,5 +41,11 @@ import ButtoneRed from '@/components/ui/ButtonRed.vue';
 import ButtonDark from '@/components/ui/ButtonDark.vue';
 
 const modalStore = useModalStore();
+
+
+function switchLoginForgotPasswordModal() {
+    modalStore.toggleLoginModal();
+    modalStore.toggleEmailForgotPasswordModal();
+}
 
 </script>

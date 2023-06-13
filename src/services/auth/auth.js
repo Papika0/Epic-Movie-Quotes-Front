@@ -2,12 +2,32 @@ import api from "@/plugins/axios/index.js";
 
 export async function register(username, email, password) {
     return await api.post("/register", {
-        username,
-        email,
-        password,
+      username:  username,
+        email:  email,
+        password:  password,
     });
 }
 
 export async function verifyEmail(verifyLink) {
     return await api.get(verifyLink);
+}
+
+export async function sendResetPasswordLink(email) {
+    return await api.post("/reset-password", {
+        email : email,
+    });
+}
+
+export async function resetPassword(token, email, password) {
+    return await api.post("/reset-password/" + token, {
+        email: email,
+        token: token,
+        password: password,
+    });
+}
+
+export async function resendEmailVerification(email) {
+    return await api.post("/email/verify/resend", {
+        email: email,
+    });
 }

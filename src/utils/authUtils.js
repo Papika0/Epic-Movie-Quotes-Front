@@ -1,14 +1,32 @@
 import { verifyEmail } from '@/services/auth/auth.js';
 import { useModalStore } from '@/stores/useModalStore.js';
+import { useUserStore } from '@/stores/useUserStore.js';
 
 export async function handleEmailVerification(to, from, next) {
-  const url = to.fullPath.substring(to.fullPath.indexOf('/', 0));
+  const veryfyLink = to.fullPath.split('?email=')[0];
+  const email = to.fullPath.split('?email=')[1];
   try {
-    await verifyEmail(url);
+    await verifyEmail(veryfyLink);
     useModalStore().toggleEmailVerifiedModal();
   } catch (error) { 
-    // TODO: Add error handling
-    console.error(error);
+    useUserStore().setEmail(email);
+    useModalStore().toggleEmailVerificationResendModal();
   }
+  next({ name: 'home' });
+}
+
+
+export async function handlePasswordResset(to, from, next) {
+  const regex = /reset-password\/(?<token>[^?]+)\?email=(?<email>[^&]+)/;
+  const match = to.fullPath.match(regex);
+
+  const token = match?.groups?.token || null;
+  const email = match?.groups?.email || null;
+
+  useUserStore().setEmail(email);
+  useUserStore().setToken(token);
+
+  useModalStore().toggleResetPasswordModal();
+  
   next({ name: 'home' });
 }

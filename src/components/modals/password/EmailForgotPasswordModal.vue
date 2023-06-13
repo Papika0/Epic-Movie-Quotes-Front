@@ -1,0 +1,69 @@
+<template>
+    <LayoutModal @close="modalStore.toggleEmailForgotPasswordModal">
+        <template v-slot:header>
+            <h2 class="text-white text-3xl font-bold">Forgot password?</h2>
+            <h3 class="text-placeholder text-center">Enter the email and we’ll send an email with
+                instructions to reset your password</h3>
+        </template>
+
+        <template v-slot:body>
+            <Form class="flex flex-col gap-4 w-full" @submit="sendPasswordLink">
+                <InputField name="email" label="Email" placeholder="Enter your email" rules="required|email"
+                    :apiError="Boolean(emailError)" />
+                <p v-if="emailError" class="text-red-star text-sm"> {{ emailError }} </p>
+                <ButtoneRed text="Send instructions" type="submit" class="mt-2" />
+            </Form>
+        </template>
+        <template v-slot:footer>
+            <div class="flex flex-row gap-1 mx-auto items-center cursor-pointer" @click="switchToLogin()">
+                <IconArrowBack class="w-3 h-3" />
+                <span class="text-placeholder ">Back to log
+                    in</span>
+            </div>
+        </template>
+    </LayoutModal>
+</template>
+  
+
+<script setup>
+import LayoutModal from '@/components/layouts/LayoutModal.vue';
+import { Form } from 'vee-validate';
+import { ref, computed } from 'vue';
+import { useModalStore } from '@/stores/useModalStore.js';
+import { useUserStore } from '@/stores/useUserStore.js';
+import IconArrowBack from '@/components/icons/IconArrowBack.vue';
+import InputField from '@/components/ui/InputField.vue';
+import ButtoneRed from '@/components/ui/ButtonRed.vue';
+import { sendResetPasswordLink } from '@/services/auth/auth.js';
+
+const modalStore = useModalStore();
+const userStore = useUserStore();
+
+const apiErrors = ref(null);
+
+const emailError = computed(() => {
+    if (apiErrors.value?.email) {
+        return apiErrors.value.email[0];
+    }
+});
+
+function switchToLogin() {
+    modalStore.toggleEmailForgotPasswordModal();
+    modalStore.toggleLoginModal();
+}
+
+
+async function sendPasswordLink(values) {
+    apiErrors.value = null;
+    await sendResetPasswordLink(values.email)
+        .then((data) => {
+            userStore.setEmail(data.data.email);
+            modalStore.toggleEmailForgotPasswordModal();
+            modalStore.toggleEmailForgotPasswordSendModal();
+        })
+        .catch((error) => {
+            apiErrors.value = error.response.data.errors;
+        });
+}
+
+</script>

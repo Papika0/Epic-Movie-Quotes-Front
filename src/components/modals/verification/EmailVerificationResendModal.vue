@@ -1,0 +1,34 @@
+<template>
+    <LayoutModal @close="modalStore.toggleEmailVerificationResendModal" :small="true">
+        <template v-slot:header>
+            <IconExpired />
+            <h2 class="text-white text-3xl font-bold">Link expired!</h2>
+        </template>
+        <template v-slot:body>
+            <p class="text-white text-center">Email verification link has expired, because you haven’t used it</p>
+        </template>
+        <template v-slot:footer>
+            <ButtoneRed text="Request another link" class="mt-2 w-full" @click="resend()" />
+        </template>
+    </LayoutModal>
+</template>
+
+
+<script setup>
+import LayoutModal from '@/components/layouts/LayoutModal.vue';
+import IconExpired from '@/components/icons/IconExpired.vue';
+import { useModalStore } from '@/stores/useModalStore.js';
+import { useUserStore } from '@/stores/useUserStore.js';
+import ButtoneRed from '@/components/ui/ButtonRed.vue';
+import { resendEmailVerification } from '@/services/auth/auth.js';
+
+const modalStore = useModalStore();
+
+
+function resend() {
+    resendEmailVerification(useUserStore().email);
+    modalStore.toggleEmailVerificationResendModal();
+    modalStore.toggleEmailSentModal();
+}
+
+</script>
