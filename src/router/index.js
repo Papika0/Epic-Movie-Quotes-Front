@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { handleEmailVerification } from '@/utils/authUtils';
+import { handleEmailVerification , handlePasswordResset } from '@/utils/authUtils';
 import HomeView from '../views/HomeView.vue'
 
 
@@ -15,6 +15,11 @@ const router = createRouter({
       path: '/email/verify/:id(.*)',
       name: 'verify-email',
       beforeEnter: handleEmailVerification
+    },
+    {
+      path: '/reset-password/:id(.*)',
+      name: 'reset-password',
+      beforeEnter: handlePasswordResset
     },
   ]
 })
