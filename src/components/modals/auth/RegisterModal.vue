@@ -18,7 +18,7 @@
                 <InputField name="password_confirm" label="Confirm Password" placeholder="Confirm your password"
                     textType="password" rules="required|confirmed:@password" />
                 <ButtoneRed text="Get started" type="submit" class="mt-2" />
-                <ButtonDark text="Sign up with Google" :gmail="true" />
+                <ButtonDark text="Sign up with Google" :gmail="true" @click="googleSignUp()" />
             </Form>
         </template>
         <template v-slot:footer>
@@ -60,18 +60,29 @@ const usernameError = computed(() => {
     }
 });
 
+async function googleSignUp() {
+    await sanctum.get('/sanctum/csrf-cookie').then(() => {
+        api.get('/auth/google').then(response => {
+            window.location.href = response.data.url;
+        }).catch(error => {
+            console.log(error);
+        });
+    });
+}
+
 
 async function registerUser(values) {
     apiErrors.value = null;
     await register(values.username, values.email, values.password)
         .then((data) => {
-            userStore.setEmail(data.data.user.email);
+            userStore.setEmail(data.data.email);
             modalStore.toggleRegisterModal();
             modalStore.toggleEmailSentModal();
         })
         .catch((error) => {
-            apiErrors.value = error.response.data.errors;
+            apiErrors.value = error?.response.data.errors;
         });
 }
+
 
 </script>
