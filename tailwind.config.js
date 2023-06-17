@@ -12,6 +12,7 @@ module.exports = {
         'red-star': '#DC3545',
         'placeholder': '#6C757D',
         'my-blue': '#0D6EFD',
+        'light-cyan': '#CED4DA',
       },
       maxWidth: {
         'xl': '600px',
@@ -20,6 +21,8 @@ module.exports = {
       spacing: {
         '120': '120px',
         '72': '72px',
+        '86': '86px',
+        '60': '60px',
       },
       backgroundColor: {
         'red-button': '#E31221',
@@ -28,6 +31,8 @@ module.exports = {
         'button-disabled': '#EC4C57',
         'outside-modal': 'rgba(0, 0, 0, 0.54)',
         'input': '#CED4DA',
+        'header': '#181624',
+        'dark-blue' : '#11101A',
       },
       borderColor: {
         'red-button': '#E31221',
@@ -36,9 +41,6 @@ module.exports = {
       fontFamily: {
         'title': ['Montserrat', 'sans-serif'],
         'helvetica': ['Helvetica Neue', 'sans-serif'],
-      },
-      gradientColorStops: {
-        'home': 'linear-gradient(180deg, #11101A 0%, #08080D 50.52%, #0D0B14 98.75%)'
       },
       backgroundImage: {
         'home1': "url('../assets/images/home/ImageHome1.png')",
