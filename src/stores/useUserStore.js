@@ -4,6 +4,7 @@ export const useUserStore = defineStore('useUserStore', {
     state: () => ({
         email: '',
         token: '',
+        user: {},
     }),
     actions: {
         setEmail(email) {
@@ -11,6 +12,9 @@ export const useUserStore = defineStore('useUserStore', {
         },
         setToken(token) {
             this.token = token;
+        },
+        setUser(user) {
+            this.user = user;
         }
     },
     getters: {

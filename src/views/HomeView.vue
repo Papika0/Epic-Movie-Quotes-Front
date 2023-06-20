@@ -6,8 +6,8 @@
         <option value="en" class="bg-white text-black ">Eng</option>
         <option value="ka" class="bg-white text-black ">Ka</option>
       </select>
-      <ButtonRed text="Sign Up" @click="modalStore.toggleRegisterModal" />
-      <ButtonDark text="Log In" @click="modalStore.toggleLoginModal" />
+      <ButtonRed text="Sign Up" @click="signUpModal()" />
+      <ButtonDark text="Log In" @click="logInModal()" />
     </div>
   </header>
   <AuthModals />
@@ -15,7 +15,7 @@
     <section class="flex flex-col items-center mt-80  ">
       <p class="text-6xl text-center text-header font-bold font-title">Find any quote in <br>
         millions of movie lines</p>
-      <ButtonRed text="Get Started" class="mt-6 px-4" @click="modalStore.toggleRegisterModal" />
+      <ButtonRed text="Get Started" class="mt-6 px-4" @click="getStarted()" />
     </section>
   </div>
   <section class="mt-52">
@@ -48,10 +48,32 @@ import MovieQuoteParagraph from '@/components/home/MovieQuoteParagraph.vue';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
 import ButtonDark from '@/components/ui/ButtonDark.vue';
 import AuthModals from '@/components/home/AuthModals.vue';
+import router from '@/router/index.js';
 
 import { useModalStore } from '@/stores/useModalStore.js';
+import { useAuthStore } from '@/stores/useAuthStore.js';
 
 
 const modalStore = useModalStore();
+
+async function getStarted() {
+  if (!useAuthStore().isAuthenticated) {
+    modalStore.toggleRegisterModal();
+  } else {
+    router.push({ name: 'profile' });
+  }
+}
+
+async function signUpModal() {
+  if (!useAuthStore().isAuthenticated) {
+    modalStore.toggleRegisterModal();
+  }
+}
+
+async function logInModal() {
+  if (!useAuthStore().isAuthenticated) {
+    modalStore.toggleLoginModal();
+  }
+}
 
 </script>

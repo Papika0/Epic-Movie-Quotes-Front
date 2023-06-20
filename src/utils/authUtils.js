@@ -1,6 +1,7 @@
-import { verifyEmail } from '@/services/auth/auth.js';
+import { verifyEmail , authGoogle } from '@/services/auth/auth.js';
 import { useModalStore } from '@/stores/useModalStore.js';
 import { useUserStore } from '@/stores/useUserStore.js';
+import { useAuthStore } from '@/stores/useAuthStore.js';
 
 export async function handleEmailVerification(to, from, next) {
   const veryfyLink = to.fullPath.split('?email=')[0];
@@ -29,4 +30,25 @@ export async function handlePasswordResset(to, from, next) {
   useModalStore().toggleResetPasswordModal();
   
   next({ name: 'home' });
+}
+
+export async function handleGoogleAuth(to,_,next) {
+  try {
+    await authGoogle(to.fullPath);
+    useAuthStore().setIsAuthenticated(true);
+    next({ name: 'profile' });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// TO Do: forbidden page
+export async function checkAuth(_, __, next) {
+ await useAuthStore().checkAuth().then(() => {
+    if (useAuthStore().isAuthenticated) {
+      next();
+    } else {
+      next({ name: 'home' });
+    }
+  });
 }

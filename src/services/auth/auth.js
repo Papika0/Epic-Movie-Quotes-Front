@@ -31,3 +31,19 @@ export async function resendEmailVerification(email) {
         email: email,
     });
 }
+
+export async function login(email, password) {
+    return await api.post("/login", {
+        email: email,
+        password: password,
+    });
+}
+
+
+export async function authGoogle(url) {
+    return await api.get(url);
+}
+
+export async function logout() {
+    return await api.post("/logout");
+}
