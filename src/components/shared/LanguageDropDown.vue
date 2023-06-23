@@ -1,5 +1,5 @@
 <template>
-    <div class="relative inline-block my-auto px-2" ref="dropdown">
+    <div class="relative inline-block my-auto px-2">
         <div class="flex items-center cursor-pointer" @click="toggleDropdown">
             <span class="text-white">{{ selectedOption }}</span>
             <IconDropdownArrow class="ml-2" :class="{ 'rotate-180': isDropdownOpen }" />
@@ -14,25 +14,38 @@
 </template>
   
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import IconDropdownArrow from '@/components/icons/header/IconDropdownArrow.vue';
 
-const { locale } = useI18n();
+const { locale, t } = useI18n();
 const isDropdownOpen = ref(false);
-const selectedOption = ref('Eng');
-const options = [
-    { value: 'en', label: 'Eng' },
-    { value: 'ge', label: 'Ka' }
+const selectedOption = ref(t('texts.eng'));
+let options = [
+    { value: 'en', label: t('texts.eng') },
+    { value: 'ge', label: t('texts.ka') }
 ];
+
+watch(
+    () => locale.value,
+    (newLocale) => {
+        const engLabel = t('texts.eng');
+        const kaLabel = t('texts.ka');
+        selectedOption.value = newLocale === 'en' ? engLabel : kaLabel;
+        options = [
+            { value: 'en', label: engLabel },
+            { value: 'ge', label: kaLabel }
+        ];
+    }
+);
 
 const toggleDropdown = () => {
     isDropdownOpen.value = !isDropdownOpen.value;
 };
 
 const selectOption = (option) => {
-    selectedOption.value = option.label;
     locale.value = option.value;
+    selectedOption.value = option.label;
     localStorage.setItem('selectedLocale', option.value);
     isDropdownOpen.value = false;
 };
