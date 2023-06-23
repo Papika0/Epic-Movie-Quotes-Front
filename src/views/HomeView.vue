@@ -2,10 +2,7 @@
   <header class="flex flex-row justify-between mx-16 pt-8">
     <p class="text-header">MOVIE QUOTES</p>
     <div class="flex flex-row gap-4">
-      <select class=" bg-transparent text-white px-2 outline-none">
-        <option value="en" class="bg-white text-black ">Eng</option>
-        <option value="ka" class="bg-white text-black ">Ka</option>
-      </select>
+      <LanguageDropDown />
       <ButtonRed text="Sign Up" @click="signUpModal()" />
       <ButtonDark text="Log In" @click="logInModal()" />
     </div>
@@ -48,6 +45,7 @@ import MovieQuoteParagraph from '@/components/home/MovieQuoteParagraph.vue';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
 import ButtonDark from '@/components/ui/ButtonDark.vue';
 import AuthModals from '@/components/home/AuthModals.vue';
+import LanguageDropDown from '@/components/shared/LanguageDropDown.vue';
 import router from '@/router/index.js';
 
 import { useModalStore } from '@/stores/useModalStore.js';

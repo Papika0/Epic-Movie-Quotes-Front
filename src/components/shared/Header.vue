@@ -6,10 +6,7 @@
                 <IconNotificationBell class="my-auto" />
                 <IconNotificationEclipse class="absolute ml-3 mb-4" />
                 <p class="absolute ml-5 pt-[1px] text-white">3</p>
-                <select class=" bg-transparent text-white px-2 outline-none">
-                    <option value="en" class="bg-white text-black ">Eng</option>
-                    <option value="ka" class="bg-white text-black ">Ka</option>
-                </select>
+                <LanguageDropDown />
                 <ButtonDark text="Log Out" @click="logOut()" />
             </div>
         </header>
@@ -19,6 +16,7 @@
 <script setup>
 import ButtonDark from '@/components/ui/ButtonDark.vue';
 import IconNotificationBell from '@/components/icons/header/IconNotificationBell.vue';
+import LanguageDropDown from '@/components/shared/LanguageDropDown.vue';
 import IconNotificationEclipse from '@/components/icons/header/IconNotificationEclipse.vue';
 import { logout } from '@/services/auth/auth';
 import sanctum from '@/plugins/axios/sanctum.js';
