@@ -1,31 +1,33 @@
 <template>
     <LayoutModal @close="modalStore.toggleRegisterModal">
         <template v-slot:header>
-            <h2 class="text-white text-3xl font-bold">Create an account</h2>
-            <h3 class="text-placeholder">Start your journey!</h3>
+            <h2 class="text-white text-3xl font-bold">{{ $t('auth.create_an_account') }}</h2>
+            <h3 class="text-placeholder">{{ $t('auth.start_your_journey') }}</h3>
         </template>
 
         <template v-slot:body>
             <Form class="flex flex-col gap-4 w-full" @submit="registerUser">
-                <InputField name="username" label="Name" placeholder="At least 3 & max.15 lower case characters"
-                    rules="required|min:3|max:15|lowercase" :apiError="Boolean(usernameError)" />
+                <InputField name="username" :label="$t('auth.name')"
+                    :placeholder="$t('auth.at_least_3_and_max_15_lower_characters')" rules="required|min:3|max:15|lowercase"
+                    :apiError="Boolean(usernameError)" />
                 <p v-if="usernameError" class="text-red-star text-sm"> {{ usernameError }} </p>
-                <InputField name="email" label="Email" placeholder="Enter your email" rules="required|email"
-                    :apiError="Boolean(emailError)" />
+                <InputField name="email" :label="$t('auth.email')" :placeholder="$t('auth.enter_your_email')"
+                    rules="required|email" :apiError="Boolean(emailError)" />
                 <p v-if="emailError" class="text-red-star text-sm"> {{ emailError }} </p>
-                <InputField name="password" label="Password" placeholder="At least 8 & max.15 lower case characters"
-                    textType="password" rules="required|min:8|max:15|lowercase" />
-                <InputField name="password_confirm" label="Confirm Password" placeholder="Confirm your password"
-                    textType="password" rules="required|confirmed:@password" />
-                <ButtoneRed text="Get started" type="submit" class="mt-2" />
-                <ButtonDark text="Sign up with Google" :gmail="true" @click="googleSignUp()" />
+                <InputField name="password" :label="$t('auth.password')"
+                    :placeholder="$t('auth.at_least_8_and_max_15_lower_characters')" textType="password"
+                    rules="required|min:8|max:15|lowercase" />
+                <InputField name="password_confirm" :label="$t('auth.confirm_password')"
+                    :placeholder="$t('auth.confirm_password')" textType="password" rules="required|confirmed:@password" />
+                <ButtoneRed :text="$t('auth.get_started')" type="submit" class="mt-2" />
+                <ButtonDark :text="$t('auth.sign_up_with_google')" :gmail="true" @click="googleSignUp()" />
             </Form>
         </template>
         <template v-slot:footer>
             <div class="flex gap-1 mx-auto">
-                <p class="text-placeholder">Already have an account?</p>
-                <span class="underline text-my-blue cursor-pointer" @click="modalStore.switchLoginRegisterModal">Log
-                    in</span>
+                <p class="text-placeholder">{{ $t('auth.already_have_an_account') }}</p>
+                <span class="underline text-my-blue cursor-pointer" @click="modalStore.switchLoginRegisterModal">{{
+                    $t('auth.log_in') }}</span>
             </div>
         </template>
     </LayoutModal>

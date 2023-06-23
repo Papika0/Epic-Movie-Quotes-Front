@@ -1,24 +1,23 @@
 <template>
     <LayoutModal @close="modalStore.toggleEmailForgotPasswordModal">
         <template v-slot:header>
-            <h2 class="text-white text-3xl font-bold">Forgot password?</h2>
-            <h3 class="text-placeholder text-center">Enter the email and we’ll send an email with
-                instructions to reset your password</h3>
+            <h2 class="text-white text-3xl font-bold">{{ $t('auth.forgot_password') }}?</h2>
+            <h3 class="text-placeholder text-center">{{ $t('auth.big_text.enter_your_email_and_will_send_password_reset') }}
+            </h3>
         </template>
 
         <template v-slot:body>
             <Form class="flex flex-col gap-4 w-full" @submit="sendPasswordLink">
-                <InputField name="email" label="Email" placeholder="Enter your email" rules="required|email"
-                    :apiError="Boolean(emailError)" />
+                <InputField name="email" :label="$t('auth.email')" :placeholder="$t('auth.enter_your_email')"
+                    rules="required|email" :apiError="Boolean(emailError)" />
                 <p v-if="emailError" class="text-red-star text-sm"> {{ emailError }} </p>
-                <ButtoneRed text="Send instructions" type="submit" class="mt-2" />
+                <ButtoneRed :text="$t('auth.send_instructions')" type="submit" class="mt-2" />
             </Form>
         </template>
         <template v-slot:footer>
             <div class="flex flex-row gap-1 mx-auto items-center cursor-pointer" @click="switchToLogin()">
                 <IconArrowBack class="w-3 h-3" />
-                <span class="text-placeholder ">Back to log
-                    in</span>
+                <span class="text-placeholder ">{{ $t('auth.back_to_login') }}</span>
             </div>
         </template>
     </LayoutModal>

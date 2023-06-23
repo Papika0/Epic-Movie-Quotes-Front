@@ -7,7 +7,7 @@
                 <IconNotificationEclipse class="absolute ml-3 mb-4" />
                 <p class="absolute ml-5 pt-[1px] text-white">3</p>
                 <LanguageDropDown />
-                <ButtonDark text="Log Out" @click="logOut()" />
+                <ButtonDark :text="$t('auth.log_out')" @click="logOut()" />
             </div>
         </header>
     </nav>

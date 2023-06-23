@@ -3,8 +3,8 @@
     <p class="text-header">MOVIE QUOTES</p>
     <div class="flex flex-row gap-4">
       <LanguageDropDown />
-      <ButtonRed text="Sign Up" @click="signUpModal()" />
-      <ButtonDark text="Log In" @click="logInModal()" />
+      <ButtonRed :text="$t('auth.sign_up')" @click="signUpModal()" />
+      <ButtonDark :text="$t('auth.log_in')" @click="logInModal()" />
     </div>
   </header>
   <AuthModals />
@@ -12,7 +12,7 @@
     <section class="flex flex-col items-center mt-80  ">
       <p class="text-6xl text-center text-header font-bold font-title">Find any quote in <br>
         millions of movie lines</p>
-      <ButtonRed text="Get Started" class="mt-6 px-4" @click="getStarted()" />
+      <ButtonRed :text="$t('auth.get_started')" class="mt-6 px-4" @click="getStarted()" />
     </section>
   </div>
   <section class="mt-52">

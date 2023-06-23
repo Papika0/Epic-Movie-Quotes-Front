@@ -2,14 +2,13 @@
     <LayoutModal @close="modalStore.toggleEmailSentModal" :small="true">
         <template v-slot:header>
             <IconEmailSent class="w-14 h-14" />
-            <h2 class="text-white text-3xl font-bold">Thank you!</h2>
+            <h2 class="text-white text-3xl font-bold">{{ $t('auth.thank_you') }}</h2>
         </template>
         <template v-slot:body>
-            <p class="text-white text-center">Please check your email and follow the instructions to
-                activate your account.</p>
+            <p class="text-white text-center">{{ $t('auth.check_your_email') }}</p>
         </template>
         <template v-slot:footer>
-            <ButtoneRed text="Go to my email" class="mt-2 w-full" @click="RedirectToMail" />
+            <ButtoneRed :text="$t('auth.go_to_my_email')" class="mt-2 w-full" @click="RedirectToMail" />
         </template>
     </LayoutModal>
 </template>
