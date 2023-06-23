@@ -8,5 +8,5 @@ defineRule("max", max);
 defineRule("alpha_num", alpha_num);
 defineRule("confirmed", confirmed);
 
-defineRule('lowercase', value => value === value.toLowerCase());
+defineRule('lowercase', value => value === value?.toLowerCase());
 

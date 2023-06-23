@@ -47,3 +47,15 @@ export async function authGoogle(url) {
 export async function logout() {
     return await api.post("/logout");
 }
+
+export async function getUser() {
+    return await api.get("/user");
+}
+
+export async function updateProfile(username , email , password) {
+    return await api.post("/profile/update-profile", {
+        username: username,
+        email: email,
+        password: password,
+    });
+}
