@@ -1,58 +1,63 @@
 <template>
     <LayoutFeed>
-        <p class="text-white text-2xl ml-550 mb-32">My profile</p>
+        <p class="text-white text-2xl ml-550 mb-32">{{ $t('profile.my_profile') }}</p>
         <div class="mx-auto max-w-5xl">
             <div class="absolute w-44 h-50 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col gap-2">
                 <img :src="profileImageUrl" class="rounded-full w-44 h-44" />
-                <button class="text-white text-xl" @click="$refs.fileInputRef.click()">Upload new photo</button>
+                <button class="text-white text-xl" @click="$refs.fileInputRef.click()">{{ $t('profile.upload_new_photo')
+                }}</button>
                 <input type="file" @change="handleFileUpload" ref="fileInputRef" class="hidden" />
             </div>
             <Form @submit="handleSaveChanges">
                 <div class="mx-auto justify-center bg-dark-blue max-w-5xl">
                     <div class="pt-48 pb-36 flex flex-col  gap-10 max-w-xl mx-auto">
-                        <InputProfile label="Username" :value="user?.username ?? ''" name="current_username"
+                        <InputProfile :label="$t('profile.username')" :value="user?.username ?? ''" name="current_username"
                             @edit="editUsername = !editUsername" :editable="true" />
 
                         <div v-if="editUsername">
-                            <InputField label="New Username" name="username" placeholder="Enter new Username"
-                                :apiError="Boolean(usernameError)" rules="required|min:3|max:15|lowercase" class=" w-5/6" />
+                            <InputField :label="$t('profile.new_username')" name="username"
+                                :placeholder="$t('profile.enter_new_username')" :apiError="Boolean(usernameError)"
+                                rules="required|min:3|max:15|lowercase" class=" w-5/6" />
                             <p v-if="usernameError" class="text-red-star text-sm pt-5"> {{ usernameError }} </p>
                         </div>
 
-                        <InputProfile label="Email" :value="user?.email ?? ''" name="current_email"
+                        <InputProfile :label="$t('auth.email')" :value="user?.email ?? ''" name="current_email"
                             @edit="editEmail = !editEmail" :editable="user?.google_id == null" />
 
                         <div v-if="editEmail">
-                            <InputField label="New email" name="email" placeholder="Enter new email" type="email"
-                                :apiError="Boolean(emailError)" rules="required|email" class="w-5/6" />
+                            <InputField :label="$t('profile.new_email')" name="email"
+                                :placeholder="$t('profile.enter_new_email')" type="email" :apiError="Boolean(emailError)"
+                                rules="required|email" class="w-5/6" />
                             <p v-if="emailError" class="text-red-star text-sm pt-5"> {{ emailError }} </p>
                         </div>
 
                         <div v-if="user?.google_id == null">
-                            <InputProfile label="password" value="password" name="current_password" textType="password"
-                                @edit="editPassword = !editPassword" :editable="true" />
+                            <InputProfile :label="$t('auth.password')" value="********" name="current_password"
+                                textType="password" @edit="editPassword = !editPassword" :editable="true" />
 
                             <div v-if="editPassword">
                                 <div class="w-5/6 border border-password-div flex flex-col gap-4 pl-6 mb-10 mt-10">
-                                    <p class="text-white mt-6">Passwords should contain:</p>
+                                    <p class="text-white mt-6">{{ $t('profile.password_should_contain') }}:</p>
                                     <div class="flex flex-col gap-1 mb-6">
-                                        <p class="text-sm text-light-gray">• 8 or more characters </p>
-                                        <p class="text-white text-sm">• 15 lowercase character</p>
+                                        <p class="text-sm text-light-gray">• {{ $t('profile.8_or_more_characters') }} </p>
+                                        <p class="text-white text-sm">• {{ $t('profile.15_lowercase_letters') }}</p>
                                     </div>
                                 </div>
 
-                                <InputField label="New password" name="password" placeholder="Enter new password"
-                                    textType="password" class=" w-5/6 mb-10" rules="required|min:8|max:15|lowercase" />
-                                <InputField label="Confirm password" name="confirm_password"
-                                    placeholder="Confirm new password" textType="password" class=" w-5/6"
+                                <InputField :label="$t('profile.new_password')" name="password"
+                                    :placeholder="$t('profile.enter_new_password')" textType="password" class=" w-5/6 mb-10"
+                                    rules="required|min:8|max:15|lowercase" />
+                                <InputField :label="$t('auth.confirm_password')" name="confirm_password"
+                                    :placeholder="$t('profile.confirm_new_password')" textType="password" class=" w-5/6"
                                     rules="required|confirmed:@password" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="float-right flex flex-row gap-7 my-16" v-if="editEmail || editPassword || editUsername">
-                    <p class="text-light-cyan text-xl my-auto cursor-pointer" @click="closeEdit()">Cancel</p>
-                    <ButtonRed text="Save changes" type="submit" />
+                    <p class="text-light-cyan text-xl my-auto cursor-pointer" @click="closeEdit()">{{ $t('profile.cancel')
+                    }}</p>
+                    <ButtonRed :text="$t('profile.save_changes')" type="submit" />
                 </div>
             </Form>
 
@@ -64,7 +69,7 @@
         }">
             <div class="flex flex-row gap-2 ">
                 <IconChangeSuccess />
-                <p class="text-dark-green">Changes updated succsessfully</p>
+                <p class="text-dark-green">{{ $t('profile.changes_updated_successfully') }}</p>
             </div>
             <IconClosePopUp class="my-auto cursor-pointer" @click="closePopup" />
         </div>
