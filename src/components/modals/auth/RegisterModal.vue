@@ -43,6 +43,8 @@ import { useUserStore } from '@/stores/useUserStore.js';
 import InputField from '@/components/ui/InputField.vue';
 import ButtoneRed from '@/components/ui/ButtonRed.vue';
 import ButtonDark from '@/components/ui/ButtonDark.vue';
+import api from '@/plugins/axios/index.js';
+import sanctum from '@/plugins/axios/sanctum';
 import { register } from '@/services/auth/auth.js';
 
 const modalStore = useModalStore();
@@ -54,12 +56,14 @@ const emailError = computed(() => {
     if (apiErrors.value?.email) {
         return apiErrors.value.email[0];
     }
+    return null;
 });
 
 const usernameError = computed(() => {
     if (apiErrors.value?.username) {
         return apiErrors.value.username[0];
     }
+    return null;
 });
 
 async function googleSignUp() {

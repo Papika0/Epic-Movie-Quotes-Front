@@ -109,13 +109,13 @@ const closePopup = () => {
 const emailError = computed(() => {
     if (apiErrors.value?.email) {
         return apiErrors.value.email[0];
-    }
+    } return null;
 });
 
 const usernameError = computed(() => {
     if (apiErrors.value?.username) {
         return apiErrors.value.username[0];
-    }
+    } return null;
 });
 
 const profileImageUrl = computed(() => {

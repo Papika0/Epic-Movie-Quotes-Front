@@ -44,6 +44,7 @@ const emailError = computed(() => {
     if (apiErrors.value?.email) {
         return apiErrors.value.email[0];
     }
+    return null;
 });
 
 function switchToLogin() {
