@@ -1,25 +1,25 @@
 <template>
     <LayoutModal @close="modalStore.toggleResetPasswordModal">
         <template v-slot:header>
-            <h2 class="text-white text-3xl font-bold">Create new password</h2>
-            <h3 class="text-placeholder text-center">Your new password must be different from
-                previous used passwords</h3>
+            <h2 class="text-white text-3xl font-bold">{{ $t('auth.create_new_password') }}</h2>
+            <h3 class="text-placeholder text-center">{{
+                $t('auth.big_text.your_new_password_must_be_different_from_previous_used_passwords') }}</h3>
         </template>
 
         <template v-slot:body>
             <Form class="flex flex-col gap-4 w-full" @submit="passwordReset">
-                <InputField name="password" label="Password" placeholder="At least 8 & max.15 lower case characters"
-                    textType="password" rules="required|min:8|max:15|lowercase" />
-                <InputField name="password_confirm" label="Confirm Password" placeholder="Confirm your password"
-                    textType="password" rules="required|confirmed:@password" />
-                <ButtoneRed text="Reset password" type="submit" class="mt-2" />
+                <InputField name="password" :label="$t('auth.password')"
+                    :placeholder="$t('auth.at_least_8_and_max_15_lower_characters')" textType="password"
+                    rules="required|min:8|max:15|lowercase" />
+                <InputField name="password_confirm" :label="$t('auth.confirm_password')"
+                    :placeholder="$t('auth.confirm_password')" textType="password" rules="required|confirmed:@password" />
+                <ButtoneRed :text="$t('auth.reset_password')" type="submit" class="mt-2" />
             </Form>
         </template>
         <template v-slot:footer>
             <div class="flex flex-row gap-1 mx-auto items-center cursor-pointer" @click="switchToLogin()">
                 <IconArrowBack class="w-3 h-3" />
-                <span class="text-placeholder ">Back to log
-                    in</span>
+                <span class="text-placeholder ">{{ $t('auth.back_to_login') }}</span>
             </div>
         </template>
     </LayoutModal>

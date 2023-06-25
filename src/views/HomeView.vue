@@ -2,12 +2,9 @@
   <header class="flex flex-row justify-between mx-16 pt-8">
     <p class="text-header">MOVIE QUOTES</p>
     <div class="flex flex-row gap-4">
-      <select class=" bg-transparent text-white px-2 outline-none">
-        <option value="en" class="bg-white text-black ">Eng</option>
-        <option value="ka" class="bg-white text-black ">Ka</option>
-      </select>
-      <ButtonRed text="Sign Up" @click="signUpModal()" />
-      <ButtonDark text="Log In" @click="logInModal()" />
+      <LanguageDropDown />
+      <ButtonRed :text="$t('auth.sign_up')" @click="signUpModal()" />
+      <ButtonDark :text="$t('auth.log_in')" @click="logInModal()" />
     </div>
   </header>
   <AuthModals />
@@ -15,7 +12,7 @@
     <section class="flex flex-col items-center mt-80  ">
       <p class="text-6xl text-center text-header font-bold font-title">Find any quote in <br>
         millions of movie lines</p>
-      <ButtonRed text="Get Started" class="mt-6 px-4" @click="getStarted()" />
+      <ButtonRed :text="$t('auth.get_started')" class="mt-6 px-4" @click="getStarted()" />
     </section>
   </div>
   <section class="mt-52">
@@ -48,6 +45,7 @@ import MovieQuoteParagraph from '@/components/home/MovieQuoteParagraph.vue';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
 import ButtonDark from '@/components/ui/ButtonDark.vue';
 import AuthModals from '@/components/home/AuthModals.vue';
+import LanguageDropDown from '@/components/shared/LanguageDropDown.vue';
 import router from '@/router/index.js';
 
 import { useModalStore } from '@/stores/useModalStore.js';

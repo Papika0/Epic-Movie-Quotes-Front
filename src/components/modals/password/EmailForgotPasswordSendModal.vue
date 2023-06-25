@@ -2,15 +2,16 @@
     <LayoutModal @close="modalStore.toggleEmailForgotPasswordSendModal" :small="true">
         <template v-slot:header>
             <IconEmailSent class="w-14 h-14" />
-            <h2 class="text-white text-3xl font-bold">Check your email</h2>
+            <h2 class="text-white text-3xl font-bold">{{ $t('auth.check_your_email') }}</h2>
         </template>
         <template v-slot:body>
-            <p class="text-white text-center">We have sent a password recover instructions
-                to your email</p>
-            <ButtoneRed text="Go to my email" class="w-full mt-5" @click="RedirectToMail" />
+            <p class="text-white text-center">{{ $t('auth.we_have_sent_a_password_recover_instructions_to_your_email') }}
+            </p>
+            <ButtoneRed :text="$t('go_to_my_email')" class="w-full mt-5" @click="RedirectToMail" />
         </template>
         <template v-slot:footer>
-            <p class="text-placeholder cursor-pointer mx-auto" @click="switchToLogin()">Skip, I’ll confirm later</p>
+            <p class="text-placeholder cursor-pointer mx-auto" @click="switchToLogin()">{{
+                $t('auth.skip_i_will_confirm_later') }}</p>
         </template>
     </LayoutModal>
 </template>

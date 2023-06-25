@@ -2,13 +2,13 @@
     <LayoutModal @close="modalStore.toggleResetPasswordResendModal" :small="true">
         <template v-slot:header>
             <IconExpired />
-            <h2 class="text-white text-3xl font-bold">Link expired!</h2>
+            <h2 class="text-white text-3xl font-bold">{{ $t('auth.link_expired') }}</h2>
         </template>
         <template v-slot:body>
-            <p class="text-white text-center">Login link has expired, because you haven’t used it</p>
+            <p class="text-white text-center">{{ $t('auth.login_link_has_expired_because_you_havent_used_it') }}</p>
         </template>
         <template v-slot:footer>
-            <ButtoneRed text="Request another link" class="mt-2 w-full" @click="resend()" />
+            <ButtoneRed :text="$t('auth.request_another_link')" class="mt-2 w-full" @click="resend()" />
         </template>
     </LayoutModal>
 </template>

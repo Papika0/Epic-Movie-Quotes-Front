@@ -16,13 +16,13 @@
                     v-if="(meta.valid && meta.touched) && !apiError" />
             </Field>
         </div>
-        <ErrorMessage :name="name" class="text-red-star mt-1 text-sm" v-bind="" />
+        <ErrorMessage :name="name" class="text-red-star mt-1 text-sm" />
     </div>
 </template>
 
 
 <script>
-import { Field, ErrorMessage, useField } from 'vee-validate';
+import { Field, ErrorMessage } from 'vee-validate';
 import IconPasswordEye from '@/components/icons/IconPasswordEye.vue';
 import IconInputInvalid from '@/components/icons/IconInputInvalid.vue';
 import IconInputValid from '@/components/icons/IconInputValid.vue';
