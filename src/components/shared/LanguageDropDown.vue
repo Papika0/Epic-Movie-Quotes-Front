@@ -17,6 +17,8 @@
 import { ref, onMounted, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import IconDropdownArrow from '@/components/icons/header/IconDropdownArrow.vue';
+import api from "@/plugins/axios/index.js";
+
 
 const { locale, t } = useI18n();
 const isDropdownOpen = ref(false);
@@ -48,12 +50,24 @@ const selectOption = (option) => {
     selectedOption.value = option.label;
     localStorage.setItem('selectedLocale', option.value);
     isDropdownOpen.value = false;
+    const localeEndpoint = option.value === 'ge' ? '/set-locale/ka' : `/set-locale/${option.value}`;
+    api.get(localeEndpoint).then(() => {
+        window.location.reload();
+    });
 };
 
 onMounted(() => {
     const storedLocale = localStorage.getItem('selectedLocale');
     if (storedLocale && options.some((option) => option.value === storedLocale)) {
-        selectOption(options.find((option) => option.value === storedLocale));
+        const selectedLocale = options.find((option) => option.value === storedLocale);
+        locale.value = selectedLocale.value;
+        selectedOption.value = selectedLocale.label;
+        if (selectedLocale.value === 'ge') {
+            api.get('/set-locale/ka');
+        } else {
+            api.get('/set-locale/' + selectedLocale.value);
+        }
+        isDropdownOpen.value = false;
     }
 });
 </script>
