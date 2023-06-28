@@ -1,0 +1,43 @@
+<template>
+    <div class="flex flex-col gap-2">
+        <div class=" px-4 py-2 bg-neutral-900 rounded border border-gray-500 relative">
+            <Field :name="name" :id="name" :rules="rules" v-model="value">
+                <textarea :name="name" :id="name" v-model="value"
+                    class="text-white text-xl w-full font-normal leading-loose bg-transparent outline-none"
+                    :placeholder="placeholder"></textarea>
+            </Field>
+            <label :for="name"
+                class="text-gray-500 text-xl font-normal leading-loose absolute pr-4 top-0 right-0 pointer-events-none">{{
+                    lang
+                }}</label>
+        </div>
+        <ErrorMessage :name="name" class="pl-2 text-red-star mt-1 text-sm" />
+    </div>
+</template>
+
+<script setup>
+import { defineProps, ref } from 'vue';
+import { Field, ErrorMessage } from 'vee-validate';
+
+defineProps({
+    placeholder: {
+        type: String,
+        required: true,
+    },
+    name: {
+        type: String,
+        required: true,
+    },
+    lang: {
+        type: String,
+        default: "Eng",
+    },
+    rules: {
+        type: String,
+        default: "",
+        required: true,
+    }
+})
+
+const value = ref('');
+</script>
