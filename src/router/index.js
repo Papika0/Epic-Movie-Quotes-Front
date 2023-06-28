@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { handleEmailVerification , handlePasswordResset , handleGoogleAuth , checkAuth } from '@/utils/authUtils';
 import HomeView from '@/views/HomeView.vue'
 import ProfileView from '@/views/ProfileView.vue'
+import MoviesView from '@/views/MoviesView.vue'
+import MovieDetailsView from '@/views/MovieDetailsView.vue'
 import { useAuthStore } from '@/stores/useAuthStore';
 
 
@@ -33,6 +35,19 @@ const router = createRouter({
       name: "profile",
       beforeEnter: checkAuth,
       component: ProfileView,
+    },
+    {
+      path: '/movies',
+      name: 'movies',
+      beforeEnter: checkAuth,
+      component: MoviesView
+    },
+    {
+      path: "/movies/:id",
+      name: "movie-details",
+      beforeEnter: checkAuth,
+      component: MovieDetailsView,
+      props: true
     }
   ]
 });

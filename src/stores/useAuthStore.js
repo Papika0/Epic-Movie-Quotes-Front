@@ -14,6 +14,7 @@ export const useAuthStore = defineStore('useAuthStore', {
             try {
                 const user = await api.get('/user');
                 useUserStore().setUser(user.data.user);
+                useUserStore().setMoviesCount(user.data.movies_count);
                 this.isAuthenticated = true;
             } catch (error) {
                 this.isAuthenticated = false;
