@@ -1,7 +1,6 @@
 <template>
     <div class="flex flex-col">
-        <label :for="name" class="text-white mb-2">{{ label }} <span class=" text-red-star">
-                *</span></label>
+        <label :for="name" class="text-white mb-2">{{ label }} <span class="text-red-star">*</span></label>
         <div class="relative">
             <Field :name="name" :rules="rules" v-slot="{ field, meta }">
                 <input :type="inputType" :placeholder="placeholder" v-bind="field"
@@ -19,57 +18,45 @@
         <ErrorMessage :name="name" class="text-red-star mt-1 text-sm" />
     </div>
 </template>
-
-
-<script>
+  
+<script setup>
 import { Field, ErrorMessage } from 'vee-validate';
 import IconPasswordEye from '@/components/icons/IconPasswordEye.vue';
 import IconInputInvalid from '@/components/icons/IconInputInvalid.vue';
 import IconInputValid from '@/components/icons/IconInputValid.vue';
+import { ref } from 'vue';
 
-export default {
-    components: {
-        Field,
-        ErrorMessage,
-        IconPasswordEye,
-        IconInputInvalid,
-        IconInputValid
+const props = defineProps({
+    label: {
+        type: String,
+        required: false
     },
-    props: {
-        label: {
-            String,
-            required: false
-        },
-        placeholder: {
-            type: String,
-            required: true
-        },
-        name: {
-            String,
-            required: true
-        },
-        textType: {
-            type: String,
-            default: "text"
-        },
-        rules: {
-            type: String,
-            default: ""
-        },
-        apiError: {
-            type: Boolean,
-            default: false
-        }
+    placeholder: {
+        type: String,
+        required: true
     },
-    data() {
-        return {
-            inputType: this.textType,
-        };
+    name: {
+        type: String,
+        required: true
     },
-    methods: {
-        togglePasswordVisibility() {
-            this.inputType = this.inputType === "password" ? "text" : "password";
-        },
+    textType: {
+        type: String,
+        default: "text"
+    },
+    rules: {
+        type: String,
+        default: ""
+    },
+    apiError: {
+        type: Boolean,
+        default: false
     }
+});
+
+const inputType = ref(props.textType);
+
+const togglePasswordVisibility = () => {
+    inputType.value = inputType.value === "password" ? "text" : "password";
 };
 </script>
+  
