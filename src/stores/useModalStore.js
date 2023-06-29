@@ -12,6 +12,7 @@ export const useModalStore = defineStore('useModalStore', {
         showResetPasswordModal: false,
         showResetPasswordSuccessModal: false,
         showResetPasswordResendModal: false,
+        showMovieAddModal: false,
     }),
     actions: {
         toggleRegisterModal() {
@@ -47,7 +48,10 @@ export const useModalStore = defineStore('useModalStore', {
         switchLoginRegisterModal() {
             this.showLoginModal = !this.showLoginModal
             this.showRegisterModal = !this.showRegisterModal
-        }   
+        },
+        toggleMovieAddModal() {
+            this.showMovieAddModal = !this.showMovieAddModal
+        }
     },
     getters: {
         getModalActiveState() {

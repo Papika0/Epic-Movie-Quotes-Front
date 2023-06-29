@@ -11,35 +11,36 @@
 </template>
 
 
-<script>
+<script setup>
+import { defineProps, defineEmits } from 'vue';
 
-export default {
-    props: {
-        label: {
-            String,
-            required: false
-        },
-        value: {
-            type: String,
-            required: true
-        },
-        name: {
-            String,
-            required: true
-        },
-        textType: {
-            type: String,
-            default: "text"
-        },
-        editable: {
-            type: Boolean,
-            default: false
-        }
+defineProps({
+    label: {
+        type: String,
+        required: false,
     },
-    methods: {
-        handleEditClick() {
-            this.$emit('edit');
-        },
+    value: {
+        type: String,
+        required: true,
     },
+    name: {
+        type: String,
+        required: true,
+    },
+    textType: {
+        type: String,
+        default: 'text',
+    },
+    editable: {
+        type: Boolean,
+        default: false,
+    },
+});
+
+const emit = defineEmits(['edit']);
+
+const handleEditClick = () => {
+    emit('edit');
 };
+
 </script>
