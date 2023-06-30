@@ -13,6 +13,7 @@ export const useModalStore = defineStore('useModalStore', {
         showResetPasswordSuccessModal: false,
         showResetPasswordResendModal: false,
         showMovieAddModal: false,
+        showMovieEditModal: false,
     }),
     actions: {
         toggleRegisterModal() {
@@ -51,6 +52,9 @@ export const useModalStore = defineStore('useModalStore', {
         },
         toggleMovieAddModal() {
             this.showMovieAddModal = !this.showMovieAddModal
+        },
+        toggleMovieEditModal() {
+            this.showMovieEditModal = !this.showMovieEditModal
         }
     },
     getters: {
