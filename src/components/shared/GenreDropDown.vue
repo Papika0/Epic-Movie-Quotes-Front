@@ -42,7 +42,7 @@ const props = defineProps({
     },
     oldValue: {
         type: Array,
-        default: [],
+        default: () => [],
     }
 })
 

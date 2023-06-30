@@ -43,14 +43,13 @@
 </template>
   
 <script setup>
-import { defineProps, ref, watch } from 'vue';
+import { defineProps, ref } from 'vue';
 import IconComment from '@/components/icons/IconComment.vue';
 import IconLike from '@/components/icons/IconLike.vue';
 import IconThreeDots from '@/components/icons/IconThreeDots.vue';
 import IconEditPencil from '@/components/icons/IconEditPencil.vue';
 import IconDelete from '@/components/icons/IconDelete.vue';
 import IconEye from '@/components/icons/IconEye.vue';
-import { useModalStore } from '@/stores/useModalStore.js';
 
 defineProps({
     quotes: {

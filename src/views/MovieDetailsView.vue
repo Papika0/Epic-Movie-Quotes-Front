@@ -60,7 +60,7 @@
 
   
 <script setup>
-import { ref, onBeforeMount, computed } from 'vue';
+import { ref, onBeforeMount, computed, defineProps } from 'vue';
 import IconEditPencil from '@/components/icons/IconEditPencil.vue';
 import IconDelete from '@/components/icons/IconDelete.vue';
 import LayoutFeed from '@/components/layouts/LayoutFeed.vue';
@@ -80,15 +80,12 @@ const props = defineProps({
     },
 });
 
-const id = props.id;
-
 const movie = ref([]);
 const movieDataForEdit = ref([]);
 
-
 const movieDelete = async () => {
     try {
-        await deleteMovie(id);
+        await deleteMovie(props.id);
         router.push({ name: 'movies' });
     } catch (error) {
         console.error('Failed to fetch movies:', error);
@@ -97,18 +94,14 @@ const movieDelete = async () => {
 
 onBeforeMount(async () => {
     try {
-        const data = await getMovieById(id);
+        const data = await getMovieById(props.id);
         movie.value = data;
         const editData = await getMovieValuesForEdit(props.id);
         movieDataForEdit.value = editData;
-        console.log(editData);
     } catch (error) {
         console.error('Failed to fetch movies:', error);
     }
 });
 
 const movieThumbnail = computed(() => import.meta.env.VITE_API_AUTH_URL + movie.value.thumbnail);
-
-
 </script>
-  
