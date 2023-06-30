@@ -10,8 +10,13 @@ defineRule("alpha_num", alpha_num);
 defineRule("confirmed", confirmed);
 defineRule("numeric", numeric);
 defineRule('lowercase', value => value === value?.toLowerCase());
+
+defineRule('english', value => {
+  const englishRegex = /^[a-zA-Z0-9\s?>;<{},\[\]\-_+=!@#$%^&*|']*$/u;
+  return englishRegex.test(value);
+  });
 defineRule('georgian', value => {
-  const georgianRegex = /^[\u10A0-\u10FF\s]+$/;
+  const georgianRegex = /^[\u10A0-\u10FF\s,><;{}[\]\-_=!@#$%^&*|']+$/u;
   return georgianRegex.test(value);
 });
 
