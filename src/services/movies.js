@@ -60,3 +60,55 @@ export async function getMovieById(id) {
         return error.response.data;
     }
 }
+
+export async function deleteMovie(id) {
+    try {
+        const movie = await api.delete(`/movies/${id}/delete`);
+        return movie;
+    } catch (error) {
+        return error.response.data;
+    }
+}
+
+export async function getMovieValuesForEdit(id) {
+    try {
+        const movie = await api.get(`/movies/${id}/edit`);
+        return movie.data;
+    } catch (error) {
+        return error.response.data;
+    }
+}
+
+export async function updateMovie(
+    id,
+    name_en,
+    name_ka,
+    genre_ids,
+    year,
+    director_en,
+    director_ka,
+    description_en,
+    description_ka,
+    thumbnail ) {
+    try {
+        const formData = new FormData();
+        formData.append('name_en', name_en);
+        formData.append('name_ka', name_ka);
+        formData.append('genre_ids', genre_ids);
+        formData.append('release_year', year);
+        formData.append('director_en', director_en);
+        formData.append('director_ka', director_ka);
+        formData.append('description_en', description_en);
+        formData.append('description_ka', description_ka);
+        if (thumbnail)
+        { formData.append('thumbnail', thumbnail) }
+        const movie = await api.post(`/movies/${id}/update`, formData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          });
+        return movie.data;
+    } catch (error) {
+        return error.response.data;
+    }
+}

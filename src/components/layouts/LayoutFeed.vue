@@ -1,5 +1,5 @@
 <template>
-    <main class="h-screen">
+    <main class="min-h-screen">
         <HeaderAuthorized />
         <section class="mt-8">
             <div class="absolute ml-16 flex flex-col gap-10">
