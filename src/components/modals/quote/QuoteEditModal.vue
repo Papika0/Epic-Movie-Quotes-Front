@@ -1,0 +1,95 @@
+<template>
+    <LayoutEditModal @close="closeModal" title="Edit Quote">
+        <template v-slot:header>
+            <div class="flex flex-row gap-2 absolute mt-9 cursor-pointer" @click="deleteQuote">
+                <IconDelete class=" ml-10" />
+                <p class="text-gray-300 leading-normal pt-[1px]">Delete</p>
+            </div>
+        </template>
+        <template v-slot:body>
+            <Form class="flex flex-col gap-4" @submit="editQuote">
+
+                <TextareaMovie name="content_en" :oldValue="quote.content_en" placeholder="Quote"
+                    rules="required|english" />
+                <TextareaMovie name="content_ka" :oldValue="quote.content_ka" placeholder="ციტატა" rules="required|georgian"
+                    lang="ქარ" />
+
+                <div class="relative">
+                    <img :src="quoteThumbnail" alt="thumbnail" class="w-[897px] h-[513px] rounded-lg mt-2" />
+                    <label for="thumbnail"
+                        class="w-[135px] h-[84px] absolute opacity-80 bg-gradient-to-b from-gray-900 via-gray-900 to-zinc-950 rounded-lg backdrop-blur-[50px] flex flex-col gap-2 items-center justify-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                        <IconMovieUpload class="w-5 h-5 relative" />
+                        <div class="text-white leading-normal">Change photo</div>
+                        <Field name="thumbnail" id="thumbnail" v-model="file">
+                            <input name="thumbnail" id="thumbnail" type="file" class="hidden" @change="handleFileChange" />
+                        </Field>
+                    </label>
+                </div>
+
+                <ButtonRed class="w-full rounded-lg mt-6 mb-5" text="Save Changes" type="submit" />
+            </Form>
+        </template>
+    </LayoutEditModal>
+</template>
+
+
+<script setup>
+import LayoutEditModal from '@/components/layouts/LayoutEditModal.vue';
+import IconDelete from '@/components/icons/IconDelete.vue';
+import IconMovieUpload from '@/components/icons/movie/IconMovieUpload.vue';
+import ButtonRed from '@/components/ui/ButtonRed.vue';
+import { Form, Field } from 'vee-validate';
+import { defineProps, ref, watchEffect, onBeforeMount } from 'vue';
+import { updateQuote } from '@/services/quotes.js';
+import { getQuoteById, deleteQuoteById } from '@/services/quotes.js';
+
+
+import router from '@/router/index.js';
+import TextareaMovie from '@/components/ui/TextareaMovie.vue';
+
+const props = defineProps({
+    id: {
+        type: String,
+        required: true,
+    },
+});
+
+const file = ref(null);
+const quoteThumbnail = ref('');
+
+const handleFileChange = (event) => {
+    file.value = event.target.files[0];
+};
+
+const quote = ref([]);
+
+const deleteQuote = async () => {
+    await deleteQuoteById(props.id).then(() => {
+        router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
+    })
+};
+
+onBeforeMount(async () => {
+    try {
+        const data = await getQuoteById(props.id);
+        quote.value = data;
+    } catch (error) {
+        console.error('Failed to fetch movies:', error);
+    }
+});
+
+const closeModal = () => {
+    router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
+};
+
+const editQuote = async (values) => {
+    await updateQuote(props.id, values.content_en, values.content_ka, values.thumbnail).then(() => {
+        router.push({ name: 'quote-details', params: { id: props.id, type: 'view' } })
+    });
+};
+
+watchEffect(() => {
+    quoteThumbnail.value = file.value ? URL.createObjectURL(file.value) : import.meta.env.VITE_API_AUTH_URL + quote.value.thumbnail;
+});
+
+</script>

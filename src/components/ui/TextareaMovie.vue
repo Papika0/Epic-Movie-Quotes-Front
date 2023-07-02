@@ -20,7 +20,7 @@
 </template>
 
 <script setup>
-import { defineProps, ref, onBeforeMount } from 'vue';
+import { defineProps, ref, onMounted, watch } from 'vue';
 import { Field, ErrorMessage } from 'vee-validate';
 
 const props = defineProps({
@@ -53,7 +53,11 @@ const props = defineProps({
 
 const value = ref('');
 
-onBeforeMount(() => {
+watch(() => props.oldValue, (newValue) => {
+    value.value = newValue;
+});
+
+onMounted(() => {
     value.value = props.oldValue;
 });
 
