@@ -4,6 +4,7 @@
         <div class="relative  max-h-[800px] overflow-y-scroll bg-neutral-900 rounded-xl w-full z-50 max-w-[961px]"
             ref="modalContentRef">
             <div class="mb-6 h-[92px] border-b border-zinc-100 border-opacity-20 flex flex-row">
+                <slot name="header"></slot>
                 <p class="text-white text-2xl font-medium leading-9 text-center mx-auto my-auto">{{ title }}
                 </p>
                 <button class="mr-8" @click="emit('close')">

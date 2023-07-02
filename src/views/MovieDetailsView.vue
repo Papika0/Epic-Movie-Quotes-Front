@@ -44,16 +44,13 @@
                     <p class="text-white text-2xl font-medium leading-9 my-auto">Quotes (Total {{ movie.quotes_count }})
                     </p>
                     <hr class=" rotate-90 border -z-50 border-gray-500 w-6 my-auto">
-                    <ButtonRed text="Add quote" :add="true" customClass="py-2 px-4" />
+                    <ButtonRed text="Add quote" :add="true" customClass="py-2 px-4" @click="addQuote" />
                 </div>
 
                 <QuoteCard :quotes="movie.quotes" v-if="movie.quotes" />
 
             </div>
-
         </div>
-
-
     </LayoutFeed>
 </template>
   
@@ -82,6 +79,10 @@ const props = defineProps({
 
 const movie = ref([]);
 const movieDataForEdit = ref([]);
+
+const addQuote = () => {
+    router.push({ name: 'quote-details', params: { id: props.id, type: 'add' } });
+};
 
 const movieDelete = async () => {
     try {
