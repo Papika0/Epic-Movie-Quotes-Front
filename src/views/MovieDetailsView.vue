@@ -8,7 +8,7 @@
 
                 <div class="flex flex-row gap-5">
                     <img :src="movieThumbnail"
-                        class=" w-3/5 h-[440px] rounded-xl border backdrop-blur-[50px] object-cover -z-50" />
+                        class=" h-[440px] w-[809px] rounded-xl border backdrop-blur-[50px] object-cover -z-50" />
 
                     <div class="flex flex-col gap-5 w-2/5">
                         <div class="flex flex-row justify-between ">
@@ -23,7 +23,7 @@
                             </div>
                         </div>
 
-                        <div class="flex flex-row gap-2 mt-1">
+                        <div class="flex flex-wrap gap-2 mt-1 max-w-md">
                             <div v-for="option in movie.genres" :key="option.id"
                                 class="rounded-md items-center py-[6px] px-3 bg-gray-500">
                                 <p class="text-white text-sm font-normal leading-snug">{{ option.name }}

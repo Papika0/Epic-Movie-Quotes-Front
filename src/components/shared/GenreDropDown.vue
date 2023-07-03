@@ -1,10 +1,10 @@
 <template>
     <div class="relative ">
         <div class="flex flex-col gap-1">
-            <div class="min-h-[48px] px-4 overflow-x-auto py-2 bg-neutral-900 rounded border border-gray-500  items-center flex flex-row gap-1"
+            <div class="min-h-[48px] px-4 overflow-x-auto py-2 bg-neutral-900 rounded border border-gray-500  items-center flex flex-wrap max-w-full gap-1"
                 @click="toggleDropdown">
                 <p class="text-gray-500 font-normal leading-loose" v-if="showPlaceholder">Genres</p>
-                <div v-for="option in selected" :key="option.id" class="p-0.5 rounded-sm justify-start items-start flex">
+                <div v-for="option in selected" :key="option.id" class="p-0.5 rounded-sm justify-start items-start flex ">
                     <div class="rounded-sm items-center flex flex-row justify-between px-1 py-1 bg-gray-500">
                         <p class="text-white text-sm font-normal leading-snug">{{ options.find((opt) => opt.id ===
                             option)?.label
