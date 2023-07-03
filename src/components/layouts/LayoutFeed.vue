@@ -41,7 +41,7 @@ const route = useRoute();
 const profileImageUrl = computed(() => {
     const thumbnail = useUserStore().user?.thumbnail;
     if (thumbnail) {
-        return `${import.meta.env.VITE_API_AUTH_URL}/storage/${thumbnail}`;
+        return import.meta.env.VITE_API_AUTH_URL + thumbnail;
     }
     return null;
 });

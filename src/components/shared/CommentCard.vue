@@ -27,5 +27,5 @@ defineProps({
     },
 });
 
-const userThumbnail = ((comment) => import.meta.env.VITE_API_AUTH_URL + '/storage/' + comment.user.thumbnail);
+const userThumbnail = ((comment) => import.meta.env.VITE_API_AUTH_URL + comment.user.thumbnail);
 </script>
