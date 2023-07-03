@@ -33,9 +33,10 @@ export const theme = {
       'button-disabled': '#EC4C57',
       'outside-modal': 'rgba(0, 0, 0, 0.54)',
       'input': '#CED4DA',
-      'header': '#181624',
+      'header': '#212529',
       'dark-blue': '#11101A',
-      'pop-up': "#BADBCC"
+      'pop-up': "#BADBCC",
+      'quote-background': '#11101A',
     },
     borderColor: {
       'red-button': '#E31221',

@@ -2,11 +2,11 @@
     <LayoutFeed>
         <MovieAddModal v-if="useModalStore().showMovieAddModal" />
         <div class="flex flex-col ml-[420px]">
-            <h1 class="text-white text-[24px] font-medium leading-9 flex flex-row justify-between">
-                My list of movies (Total {{ useUserStore().moviesCount }})
+            <div class="text-white text-[24px] font-medium leading-9 flex flex-row justify-between">
+                <p>My list of movies (Total {{ useUserStore().moviesCount }})</p>
                 <div class="flex flex-row gap-8 mr-16">
 
-                    <div v-show="showSearch" class="flex items-center gap-4 mb-4 ">
+                    <div v-if="showSearch" class="flex items-center gap-4">
                         <input v-model="searchQuery" type="text" placeholder="Search movie..."
                             class="px-2 my-auto rounded-md bg-transparent outline-none focus:outline-none focus:ring-2 focus:ring-blue-500" />
                         <button @click="clearSearch" class="text-gray-400 hover:text-gray-600 my-auto focus:outline-none">
@@ -22,7 +22,7 @@
                     </div>
                     <ButtonRed text="Add movie" :add="true" @click="useModalStore().toggleMovieAddModal" />
                 </div>
-            </h1>
+            </div>
             <div class="grid grid-cols-3 gap-8 mt-[56px] mb-96 mr-10 ">
                 <MovieCard v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
             </div>

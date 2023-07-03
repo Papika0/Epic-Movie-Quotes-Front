@@ -4,6 +4,7 @@ import HomeView from '@/views/HomeView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import MoviesView from '@/views/MoviesView.vue'
 import MovieDetailsView from '@/views/MovieDetailsView.vue'
+import QuoteDetailsView from '@/views/QuoteDetailsView.vue'
 import { useAuthStore } from '@/stores/useAuthStore';
 
 
@@ -47,6 +48,13 @@ const router = createRouter({
       name: "movie-details",
       beforeEnter: checkAuth,
       component: MovieDetailsView,
+      props: true
+    },
+    {
+      path: '/quotes/:id/:type',
+      name: 'quote-details',
+      beforeEnter: checkAuth,
+      component: QuoteDetailsView,
       props: true
     }
   ]

@@ -2,16 +2,16 @@
     <LayoutEditModal @close="useModalStore().toggleMovieAddModal" title="Add Movie">
         <template v-slot:body>
             <Form class="flex flex-col gap-6" @submit="createMovieOnSubmit">
-                <InputMovie name="name_en" placeholder="Movie name" rules="required|alpha" />
+                <InputMovie name="name_en" placeholder="Movie name" rules="required|english" />
                 <InputMovie name="name_ka" placeholder="ფილმის სახელი" lang="ქარ" rules="required|georgian" />
 
                 <GenreDropDown rules="required" />
 
                 <InputMovie name="year" placeholder="Year" :label="false" rules="required|numeric" />
-                <InputMovie name="director_en" placeholder="Director" rules="required|alpha" />
+                <InputMovie name="director_en" placeholder="Director" rules="required|english" />
                 <InputMovie name="director_ka" placeholder="რეჟისორი" lang="ქარ" rules="required|georgian" />
 
-                <TextareaMovie name="description_en" placeholder="Movie discription" lang="Eng" rules="required|alpha" />
+                <TextareaMovie name="description_en" placeholder="Movie discription" lang="Eng" rules="required|english" />
                 <TextareaMovie name="description_ka" placeholder="ფილმის აღწერა" lang="ქარ" rules="required|georgian" />
 
                 <InputPhotoUpload name="thumbnail" rules="required" />
