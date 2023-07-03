@@ -64,3 +64,21 @@ export async function addComment(id, content) {
     return error.response.data;
   }
 }
+
+export async function likeQuote(id) {
+  try {
+    const quote = await api.post(`/quotes/${id}/like`);
+    return quote.data;
+  } catch (error) {
+    return error.response.data;
+  }
+}
+
+export async function dislikeQuote(id) {
+  try {
+    const quote = await api.post(`/quotes/${id}/unlike`);
+    return quote.data;
+  } catch (error) {
+    return error.response.data;
+  }
+}

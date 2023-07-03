@@ -32,10 +32,7 @@
                 <p class="text-white text-[20px] font-normal leading-loose">{{ quote.comments_count }}</p>
                 <IconComment class="my-auto" />
             </div>
-            <div class="inline-flex gap-4">
-                <p class="text-white text-[20px] font-normal leading-loose">{{ quote.likes_count }}</p>
-                <IconLike class="my-auto" />
-            </div>
+            <IconLike class="my-auto" :likesCount="quote.likes_count" :liked="quote.liked_by_user" :quoteId="quote.id" />
         </div>
 
     </div>
