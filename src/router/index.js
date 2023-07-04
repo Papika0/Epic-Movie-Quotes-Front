@@ -6,6 +6,8 @@ import MoviesView from '@/views/MoviesView.vue'
 import MovieDetailsView from '@/views/MovieDetailsView.vue'
 import QuoteDetailsView from '@/views/QuoteDetailsView.vue'
 import NewsFeedView from '@/views/NewsFeedView.vue'
+import ForbiddenView from '@/views/ForbiddenView.vue'
+import ErrorPageView from '@/views/ErrorPageView.vue'
 import { useAuthStore } from '@/stores/useAuthStore';
 
 
@@ -63,10 +65,19 @@ const router = createRouter({
       name: 'news-feed',
       beforeEnter: checkAuth,
       component : NewsFeedView
+    },
+    {
+      path: '/forbidden',
+      name: 'forbidden',
+      component: ForbiddenView
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: ErrorPageView
     }
   ]
 });
-
 
 router.beforeEach((_,__,next) => {
   useAuthStore().checkAuth().then(() => {
@@ -78,6 +89,5 @@ router.beforeEach((_,__,next) => {
       next();
   }});
 });
-
 
 export default router

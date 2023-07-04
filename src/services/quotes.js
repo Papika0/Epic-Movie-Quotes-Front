@@ -5,7 +5,7 @@ export async function getQuoteById(id) {
     const quote = await api.get(`/quotes/${id}`);
     return quote.data;
   } catch (error) {
-    return error.response.data;
+    return router.push({ name: "not-found" });
   }
 }
 
@@ -23,7 +23,7 @@ export async function updateQuote(id, content_en, content_ka, thumbnail) {
     });
     return quote.data;
   } catch (error) {
-    return error.response.data;
+    return router.push({ name: "not-found" });
   }
 }
 
@@ -32,7 +32,7 @@ export async function deleteQuoteById(id) {
     const quote = await api.delete(`/quotes/${id}/delete`);
     return quote.data;
   } catch (error) {
-    return error.response.data;
+    return router.push({ name: "not-found" });
   }
 }
 
@@ -50,7 +50,7 @@ export async function createQuote(content_en, content_ka, thumbnail , movie_id) 
     });
     return quote.data;
   } catch (error) {
-    return error.response.data;
+    return router.push({ name: "not-found" });
   }
 }
 
@@ -61,7 +61,7 @@ export async function addComment(id, content) {
     });
     return comment.data;
   } catch (error) {
-    return error.response.data;
+    return router.push({ name: "not-found" });
   }
 }
 
@@ -70,7 +70,7 @@ export async function likeQuote(id) {
     const quote = await api.post(`/quotes/${id}/like`);
     return quote.data;
   } catch (error) {
-    return error.response.data;
+    return router.push({ name: "not-found" });
   }
 }
 
@@ -79,6 +79,15 @@ export async function dislikeQuote(id) {
     const quote = await api.post(`/quotes/${id}/unlike`);
     return quote.data;
   } catch (error) {
-    return error.response.data;
+    return router.push({ name: "not-found" });
+  }
+}
+
+export async function getQuotes(id) {
+  try {
+    const quotes = await api.get(`/quotes/${id}/get-quotes`);
+    return quotes.data;
+  } catch (error) {
+    return router.push({ name: "not-found" });
   }
 }

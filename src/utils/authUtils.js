@@ -50,7 +50,7 @@ export async function checkAuth(_, __, next) {
     if (useAuthStore().isAuthenticated) {
       next();
     } else {
-      next({ name: 'home' });
+      next({ name: 'forbidden' });
     }
   });
 }

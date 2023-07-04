@@ -1,11 +1,12 @@
 import api from "@/plugins/axios/index.js";
+import router from "@/router/index.js";
 
 export async function getAllMovies() {
     try {
         const movies = await api.get("/movies");
         return movies.data;
     } catch (error) {
-        return error.response.data;
+     return  router.push({ name: "not-found" });
     }
 }
 
@@ -14,7 +15,7 @@ export async function getGenres() {
         const genres = await api.get("/genres");
         return genres;
     } catch (error) {
-        return error.response.data;
+        return  router.push({ name: "not-found" });
     }
 }
 
@@ -48,7 +49,7 @@ export async function createMovie(
       });
       return response.data;
     } catch (error) {
-      return error.response.data;
+        return router.push({ name: "not-found" });
     }
 }
   
@@ -57,7 +58,7 @@ export async function getMovieById(id) {
         const movie = await api.get(`/movies/${id}`);
         return movie.data;
     } catch (error) {
-        return error.response.data;
+        return router.push({ name: "not-found" });
     }
 }
 
@@ -66,7 +67,7 @@ export async function deleteMovie(id) {
         const movie = await api.delete(`/movies/${id}/delete`);
         return movie;
     } catch (error) {
-        return error.response.data;
+        return router.push({ name: "not-found" });
     }
 }
 
@@ -75,7 +76,7 @@ export async function getMovieValuesForEdit(id) {
         const movie = await api.get(`/movies/${id}/edit`);
         return movie.data;
     } catch (error) {
-        return error.response.data;
+        return router.push({ name: "not-found" });
     }
 }
 
@@ -109,6 +110,6 @@ export async function updateMovie(
           });
         return movie.data;
     } catch (error) {
-        return error.response.data;
+        return router.push({ name: "not-found" });
     }
 }
