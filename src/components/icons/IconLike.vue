@@ -1,6 +1,6 @@
 <template>
     <div class="inline-flex gap-4">
-        <p class="text-white text-[20px] font-normal leading-loose">{{ likesCount }}</p>
+        <p class="text-white text-[20px] font-normal leading-loose">{{ likesCountRef }}</p>
         <svg v-if="isActive" @click.stop="handleClick" width="32" height="32" viewBox="0 0 32 32" fill="none"
             class="cursor-pointer my-auto" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_45_281)">
@@ -56,7 +56,7 @@ const props = defineProps({
     },
 });
 
-const likesCount = ref(null);
+const likesCountRef = ref(null);
 
 const isActive = ref(false);
 const isHovered = ref(false);
@@ -73,18 +73,18 @@ const handleClick = async () => {
     isActive.value = !isActive.value;
     if (isActive.value) {
         await likeQuote(props.quoteId).then((res) => {
-            likesCount.value = res.likes_count;
+            likesCountRef.value = res.likes_count;
         });
     } else {
         await dislikeQuote(props.quoteId).then((res) => {
-            likesCount.value = res.likes_count;
+            likesCountRef.value = res.likes_count;
         });
     }
 };
 
 onMounted(() => {
     isActive.value = props.liked;
-    likesCount.value = props.likesCount;
+    likesCountRef.value = props.likesCount;
 });
 
 </script>
