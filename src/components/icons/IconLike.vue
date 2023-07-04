@@ -1,7 +1,7 @@
 <template>
     <div class="inline-flex gap-4">
         <p class="text-white text-[20px] font-normal leading-loose">{{ likesCount }}</p>
-        <svg v-if="isActive" @click="handleClick" width="32" height="32" viewBox="0 0 32 32" fill="none"
+        <svg v-if="isActive" @click.stop="handleClick" width="32" height="32" viewBox="0 0 32 32" fill="none"
             class="cursor-pointer my-auto" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_45_281)">
                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -14,14 +14,14 @@
                 </clipPath>
             </defs>
         </svg>
-        <svg v-else-if="isHovered" @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave"
+        <svg v-else-if="isHovered" @click.stop="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave"
             class="cursor-pointer my-auto" width="32" height="30" viewBox="0 0 32 30" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <path
                 d="M15.9998 5.4961L14.5658 4.0221C11.1998 0.562097 5.02779 1.7561 2.79979 6.1061C1.75379 8.1521 1.51779 11.1061 3.42779 14.8761C5.26779 18.5061 9.09579 22.8541 15.9998 27.5901C22.9038 22.8541 26.7298 18.5061 28.5718 14.8761C30.4818 11.1041 30.2478 8.1521 29.1998 6.1061C26.9718 1.7561 20.7998 0.560097 17.4338 4.0201L15.9998 5.4961ZM15.9998 30.0001C-14.6662 9.7361 6.55779 -6.0799 15.6478 2.2861C15.7678 2.3961 15.8858 2.5101 15.9998 2.6281C16.1126 2.5102 16.2301 2.39678 16.3518 2.2881C25.4398 -6.0839 46.6658 9.7341 15.9998 30.0001Z"
                 fill="#F3426C" />
         </svg>
-        <svg v-else @click="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" width="32"
+        <svg v-else @click.stop="handleClick" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" width="32"
             height="32" viewBox="0 0 32 32" fill="none" class="cursor-pointer my-auto" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_337_25880)">
                 <path
@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, onBeforeMount } from 'vue';
+import { ref, defineProps, onMounted } from 'vue';
 import { likeQuote, dislikeQuote } from '@/services/quotes.js';
 
 const props = defineProps({
@@ -49,7 +49,6 @@ const props = defineProps({
     liked: {
         type: Boolean,
         required: false,
-        default: false,
     },
     quoteId: {
         type: Number,
@@ -83,7 +82,7 @@ const handleClick = async () => {
     }
 };
 
-onBeforeMount(() => {
+onMounted(() => {
     isActive.value = props.liked;
     likesCount.value = props.likesCount;
 });
