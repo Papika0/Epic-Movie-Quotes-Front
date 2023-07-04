@@ -9,7 +9,7 @@ export async function handleEmailVerification(to, from, next) {
   try {
     await verifyEmail(veryfyLink);
     if (useAuthStore().isAuthenticated) {
-      next({ name: 'profile' });
+      next({ name: 'news-feed' });
     } else useModalStore().toggleEmailVerifiedModal();
   } catch (error) { 
     useUserStore().setEmail(email);
@@ -38,7 +38,7 @@ export async function handleGoogleAuth(to,_,next) {
   try {
     await authGoogle(to.fullPath);
     useAuthStore().setIsAuthenticated(true);
-    next({ name: 'profile' });
+    next({ name: 'news-feed' });
   } catch (error) {
     console.log(error);
   }

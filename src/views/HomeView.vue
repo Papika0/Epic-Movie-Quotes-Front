@@ -58,7 +58,7 @@ async function getStarted() {
   if (!useAuthStore().isAuthenticated) {
     modalStore.toggleRegisterModal();
   } else {
-    router.push({ name: 'profile' });
+    router.push({ name: 'news-feed' });
   }
 }
 

@@ -11,8 +11,8 @@
                             $t('texts.edit_profile') }}</p>
                     </div>
                 </div>
-                <div class="flex flex-row gap-10 my-auto">
-                    <IconHouse class="ml-3" />
+                <div class="flex flex-row gap-10 my-auto" @click="showNewsFeed">
+                    <IconHouse class="ml-3" :isNewsFeedRoute="isNewsFeedRoute" />
                     <p class="text-white text-2xl cursor-pointer">{{ $t('texts.news_feed') }}</p>
                 </div>
                 <div class="flex flex-row gap-10 my-auto cursor-pointer" @click="showMovies">
@@ -54,7 +54,16 @@ const editProfile = () => {
     router.push({ name: 'profile' });
 };
 
+const showNewsFeed = () => {
+    router.push({ name: 'news-feed' });
+};
+
 const isMovieRoute = computed(() => {
     return route.path.includes('/movies') || route.path.startsWith('/movie/');
 });
+
+const isNewsFeedRoute = computed(() => {
+    return route.path.includes('/news-feed')
+});
+
 </script>

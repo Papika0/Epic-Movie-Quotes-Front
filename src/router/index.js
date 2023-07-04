@@ -5,6 +5,7 @@ import ProfileView from '@/views/ProfileView.vue'
 import MoviesView from '@/views/MoviesView.vue'
 import MovieDetailsView from '@/views/MovieDetailsView.vue'
 import QuoteDetailsView from '@/views/QuoteDetailsView.vue'
+import NewsFeedView from '@/views/NewsFeedView.vue'
 import { useAuthStore } from '@/stores/useAuthStore';
 
 
@@ -56,6 +57,12 @@ const router = createRouter({
       beforeEnter: checkAuth,
       component: QuoteDetailsView,
       props: true
+    },
+    {
+      path: '/news-feed',
+      name: 'news-feed',
+      beforeEnter: checkAuth,
+      component : NewsFeedView
     }
   ]
 });
