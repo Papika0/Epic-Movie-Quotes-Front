@@ -19,9 +19,9 @@
                         <p class="text-white text-[20px] font-normal leading-loose">{{ quote.comments_count }}</p>
                         <IconComment class="my-auto" />
                     </div>
-                    <div class="inline-flex gap-4">
-                        <p class="text-white text-[20px] font-normal leading-loose">{{ quote.likes_count }}</p>
-                        <IconLike class="my-auto" />
+
+                    <div v-if="isLoaded">
+                        <IconLike :likesCount="quote.likes_count" :liked="quote.liked_by_user" :quoteId="quote.id" />
                     </div>
                 </div>
 
@@ -56,6 +56,7 @@ import InputMovie from '@/components/ui/InputMovie.vue';
 
 const quote = ref([]);
 const commentText = ref('');
+const isLoaded = ref(false);
 
 const props = defineProps({
     id: {
@@ -83,6 +84,7 @@ const createComment = async () => {
     await addComment(props.id, comment).then((res) => {
         quote.value.comments.push(res);
         commentText.value = '';
+        quote.value.comments_count = res.comments_count;
     })
 };
 
@@ -91,14 +93,16 @@ onBeforeMount(async () => {
         const data = await getQuoteById(props.id);
         quote.value = data;
     } catch (error) {
-        console.error('Failed to fetch movies:', error);
+        console.error('Failed to fetch quote:', error);
+    } finally {
+        isLoaded.value = true;
     }
 });
 
 const profileImageUrl = computed(() => {
     const thumbnail = useUserStore().user?.thumbnail;
     if (thumbnail) {
-        return `${import.meta.env.VITE_API_AUTH_URL}/storage/${thumbnail}`;
+        return import.meta.env.VITE_API_AUTH_URL + thumbnail;
     }
     return null;
 });

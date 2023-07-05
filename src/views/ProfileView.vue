@@ -121,7 +121,7 @@ const usernameError = computed(() => {
 const profileImageUrl = computed(() => {
     const thumbnail = useUserStore().user?.thumbnail;
     if (thumbnail) {
-        return `${import.meta.env.VITE_API_AUTH_URL}/storage/${thumbnail}`;
+        return import.meta.env.VITE_API_AUTH_URL + thumbnail;
     }
     return null;
 });
@@ -160,8 +160,8 @@ function handleFileUpload() {
                 'Content-Type': 'multipart/form-data',
             },
         })
-        .then(() => {
-            window.location.reload();
+        .then((res) => {
+            useUserStore().setUser(res.data.user);
         })
 }
 

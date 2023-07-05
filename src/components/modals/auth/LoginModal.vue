@@ -78,7 +78,7 @@ async function logIn(values) {
         login(values.email, values.password).then(() => {
             modalStore.toggleLoginModal();
             useAuthStore().checkAuth().then(() => {
-                router.push({ name: 'profile' });
+                router.push({ name: 'news-feed' });
             });
         }).catch(error => {
             if (error.response.status == 403) {

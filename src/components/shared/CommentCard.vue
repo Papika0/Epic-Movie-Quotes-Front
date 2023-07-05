@@ -8,8 +8,7 @@
                 </p>
             </div>
             <p class="text-white text-[20px] font-normal leading-loose w-full pl-[75px] mx-auto pb-6 ">
-                {{
-                    comment.content }}
+                {{ comment.content }}
             </p>
             <hr class="border-b border-zinc-100 border-opacity-30 ml-[75px] mb-8">
         </div>
@@ -27,5 +26,5 @@ defineProps({
     },
 });
 
-const userThumbnail = ((comment) => import.meta.env.VITE_API_AUTH_URL + '/storage/' + comment.user.thumbnail);
+const userThumbnail = ((comment) => import.meta.env.VITE_API_AUTH_URL + comment.user.thumbnail);
 </script>
