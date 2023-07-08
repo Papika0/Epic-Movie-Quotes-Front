@@ -16,7 +16,7 @@
 
                 <div class="inline-flex gap-8 mt-4 mb-2">
                     <div class="inline-flex gap-4">
-                        <p class="text-white text-[20px] font-normal leading-loose">{{ quote.comments_count }}</p>
+                        <p class="text-white text-[20px] font-normal leading-loose">{{ quote.comments?.length }}</p>
                         <IconComment class="my-auto" />
                     </div>
 
@@ -47,12 +47,13 @@ import IconComment from '@/components/icons/IconComment.vue';
 import IconLike from '@/components/icons/IconLike.vue';
 import CommentCard from '@/components/shared/CommentCard.vue';
 
-import { computed, defineProps, ref, onBeforeMount } from 'vue';
+import { computed, defineProps, ref, onBeforeMount, onMounted } from 'vue';
 import { useUserStore } from '@/stores/useUserStore';
 import { getQuoteById, deleteQuoteById, addComment } from '@/services/quotes.js';
 
 import router from '@/router/index.js';
 import InputMovie from '@/components/ui/InputMovie.vue';
+
 
 const quote = ref([]);
 const commentText = ref('');
@@ -82,7 +83,6 @@ const editQuote = () => {
 const createComment = async () => {
     const comment = commentText.value;
     await addComment(props.id, comment).then((res) => {
-        quote.value.comments.push(res);
         commentText.value = '';
         quote.value.comments_count = res.comments_count;
     })
@@ -109,4 +109,18 @@ const profileImageUrl = computed(() => {
 
 const quoteThumbnail = computed(() => import.meta.env.VITE_API_AUTH_URL + quote.value.thumbnail);
 
+
+onMounted(() => {
+    window.Echo.channel("likes").listen("QuoteLiked", (data) => {
+        if (quote.value.id === data.message.quote_id) {
+            quote.value.likes_count = data.message.likes_count;
+        }
+    });
+    window.Echo.channel("comments").listen("CommentAdded", (data) => {
+        console.log(data.message);
+        if (quote.value.id === data.message.quote_id) {
+            quote.value.comments.push(data.message);
+        }
+    });
+});
 </script>

@@ -86,5 +86,14 @@ const toggleDropdown = (quoteId) => {
     activeDropdown.value = activeDropdown.value === quoteId ? null : quoteId;
 };
 
+onMounted(() => {
+    window.Echo.channel("likes").listen("QuoteLiked", (data) => {
+        const quote = quotesRef.value.find(quote => quote.id === data.message.quote_id);
+        if (quote) {
+            quote.likes_count = data.message.likes_count;
+        }
+    });
+});
+
 </script>
   
