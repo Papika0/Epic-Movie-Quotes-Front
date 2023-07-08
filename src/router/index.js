@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { handleEmailVerification , handlePasswordResset , handleGoogleAuth , checkAuth } from '@/utils/authUtils';
+import { handleEmailVerification, handlePasswordResset, handleGoogleAuth, checkAuth } from '@/utils/authUtils';
+import { movieGuard , quoteGuard } from '@/router/guards.js';
 import HomeView from '@/views/HomeView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import MoviesView from '@/views/MoviesView.vue'
@@ -49,14 +50,22 @@ const router = createRouter({
     {
       path: "/movies/:id",
       name: "movie-details",
-      beforeEnter: checkAuth,
+      beforeEnter: (to, from, next) => {
+        checkAuth(to, from, () => {
+          movieGuard(to, from, next);
+        });
+      },
       component: MovieDetailsView,
       props: true
     },
     {
       path: '/quotes/:id/:type',
       name: 'quote-details',
-      beforeEnter: checkAuth,
+      beforeEnter: (to, from, next) => {
+        checkAuth(to, from, () => {
+          quoteGuard(to, from, next);
+        });
+      },
       component: QuoteDetailsView,
       props: true
     },

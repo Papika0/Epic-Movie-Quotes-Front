@@ -44,13 +44,16 @@ export async function handleGoogleAuth(to,_,next) {
   }
 }
 
-// TO Do: forbidden page
 export async function checkAuth(_, __, next) {
- await useAuthStore().checkAuth().then(() => {
-    if (useAuthStore().isAuthenticated) {
-      next();
-    } else {
-      next({ name: 'forbidden' });
-    }
-  });
+  if (!useAuthStore().isAuthenticated) {
+    await useAuthStore().checkAuth().then(() => {
+      if (useAuthStore().isAuthenticated) {
+        next();
+      } else {
+        next({ name: 'forbidden' });
+      }
+    });
+  } else {
+    next();
+  }
 }
