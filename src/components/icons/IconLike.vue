@@ -38,7 +38,7 @@
 </template>
 
 <script setup>
-import { ref, defineProps, onMounted } from 'vue';
+import { ref, defineProps, onMounted, watch } from 'vue';
 import { likeQuote, dislikeQuote } from '@/services/quotes.js';
 
 const props = defineProps({
@@ -72,15 +72,15 @@ const handleMouseLeave = () => {
 const handleClick = async () => {
     isActive.value = !isActive.value;
     if (isActive.value) {
-        await likeQuote(props.quoteId).then((res) => {
-            likesCountRef.value = res.likes_count;
-        });
+        await likeQuote(props.quoteId)
     } else {
-        await dislikeQuote(props.quoteId).then((res) => {
-            likesCountRef.value = res.likes_count;
-        });
+        await dislikeQuote(props.quoteId)
     }
 };
+
+watch(() => props.likesCount, (newValue) => {
+    likesCountRef.value = newValue;
+});
 
 onMounted(() => {
     isActive.value = props.liked;

@@ -13,7 +13,7 @@
                                     movie.release_year }})</p>
                         </div>
 
-                        <div class="flex flex-row gap-2 mt-1">
+                        <div class="flex flex-wrap gap-2 mt-1 max-w-xl">
                             <div v-for="option in movie.genres" :key="option.id"
                                 class="rounded-md items-center py-[6px] px-3 bg-gray-500">
                                 <p class="text-white text-sm font-normal leading-snug">{{ option.name }}

@@ -84,9 +84,9 @@ export async function dislikeQuote(id) {
   }
 }
 
-export async function getQuotes(id) {
+export async function getQuotes(page) {
   try {
-    const quotes = await api.get(`/quotes/${id}/get-quotes`);
+    const quotes = await api.get(`/quotes/${page}/get-quotes`);
     return quotes.data;
   } catch (error) {
     return router.push({ name: "not-found" });
