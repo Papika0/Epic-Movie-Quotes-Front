@@ -32,10 +32,11 @@ export async function resendEmailVerification(email) {
     });
 }
 
-export async function login(email, password) {
+export async function login(email, password, rememberMe) {
     return await api.post("/login", {
         email: email,
         password: password,
+        remember_me: rememberMe,
     });
 }
 

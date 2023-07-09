@@ -75,7 +75,7 @@ function switchLoginForgotPasswordModal() {
 async function logIn(values) {
     apiErrors.value = null;
     await sanctum.get('/sanctum/csrf-cookie').then(() => {
-        login(values.email, values.password).then(() => {
+        login(values.email, values.password, values.remember_me).then(() => {
             modalStore.toggleLoginModal();
             useAuthStore().checkAuth().then(() => {
                 router.push({ name: 'news-feed' });
