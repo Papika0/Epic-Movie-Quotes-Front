@@ -4,6 +4,8 @@ import profile from './profile.json'
 import movies from './movies.json'
 import quotes from './quotes.json'
 import feed from './feed.json'
+import error from './error.json'
+
 
 const ge = {
     auth,
@@ -11,7 +13,8 @@ const ge = {
     profile,
     movies, 
     quotes,
-    feed
+    feed,
+    error
 }
 
 export default ge;

@@ -4,6 +4,7 @@ import profile from './profile.json'
 import movies from './movies.json'
 import quotes from './quotes.json'
 import feed from './feed.json'
+import error from './error.json'
 
 const en = {
     auth,
@@ -11,7 +12,8 @@ const en = {
     profile,
     movies, 
     quotes,
-    feed
+    feed,
+    error
 }
 
 export default en;
