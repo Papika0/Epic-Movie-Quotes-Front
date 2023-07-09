@@ -3,10 +3,11 @@
         <QuoteAddNewsFeedModal v-if="useModalStore().showQuoteAddModal" />
         <div class="flex flex-col gap-12 w-[938px] mx-auto mb-48">
             <div class="inline-flex gap-6 -mb-6 w-full">
-                <div class="h-[52px] px-4 inline-flex gap-4 bg-zinc-800 rounded-lg w-5/6 cursor-pointer"
-                    :class="{ 'w-1/4': showSearch }" @click="useModalStore().toggleQuoteAddModal">
+                <div class="h-[52px] px-4 inline-flex gap-4 bg-zinc-800 rounded-lg cursor-pointer whitespace-nowrap"
+                    :class="{ 'w-max': showSearch, 'w-5/6': !showSearch }" @click="useModalStore().toggleQuoteAddModal">
                     <IconPencilSquare class="my-auto" />
-                    <p class="text-white text-[20px] font-normal my-auto leading-loose">Write new quote</p>
+                    <p class="text-white text-[20px] font-normal my-auto leading-loose">{{ $t('quotes.write_new_quote') }}
+                    </p>
                 </div>
                 <div class="my-auto" :class="{ 'w-3/4': showSearch }">
                     <div v-if="showSearch" class="border-b w-full border-zinc-100 border-opacity-30 inline-flex gap-1">
@@ -19,7 +20,7 @@
                     <div v-if="!showSearch" class="flex flex-row gap-4" @click="showSearch = true">
                         <IconSearch class="my-auto " />
                         <p class="text-gray-300 text-[20px] font-normal leading-loose my-auto">
-                            Search By
+                            {{ $t('feed.search_by') }}
                         </p>
                     </div>
                 </div>
@@ -56,7 +57,7 @@
 
                 <div class="inline-flex gap-6 mb-8">
                     <img :src="authUserThumbnail" class="rounded-full w-[52px] h-[52px]" />
-                    <input type="text" placeholder="Write a comment" v-model="commentText"
+                    <input type="text" :placeholder="$t('quotes.write_a_comment')" v-model="commentText"
                         class="pl-7 py-3 h-[52px] w-full bg-zinc-800 text-white outline-none rounded-lg placeholder:text-gray-300 text-[20px] font-normal leading-loose"
                         @keyup.enter="createComment(quote)">
                 </div>
