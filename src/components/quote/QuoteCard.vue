@@ -8,17 +8,17 @@
 
             <div class="items-center gap-4 inline-flex cursor-pointer">
                 <IconEye class="w-5 h-5 relative" />
-                <div class="text-white leading-normal" @click="viewQuote(quote.id)">View Quote</div>
+                <div class="text-white leading-normal" @click="viewQuote(quote.id)">{{ $t('quotes.view_quote') }}</div>
             </div>
 
             <div class="items-center gap-4 inline-flex cursor-pointer">
                 <IconEditPencil class="w-5 h-5 relative" />
-                <div class="text-white leading-normal" @click="editQuote(quote.id)">Edit</div>
+                <div class="text-white leading-normal" @click="editQuote(quote.id)">{{ $t('quotes.edit') }}</div>
             </div>
 
             <div class="items-start gap-4 inline-flex cursor-pointer">
                 <IconDelete class="w-5 h-5 relative" />
-                <div class="text-white leading-normal" @click="deleteQuote(quote.id)">Delete</div>
+                <div class="text-white leading-normal" @click="deleteQuote(quote.id)">{{ $t('quotes.delete') }}</div>
             </div>
         </div>
 

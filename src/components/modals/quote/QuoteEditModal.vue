@@ -1,9 +1,9 @@
 <template>
-    <LayoutEditModal @close="closeModal" title="Edit Quote">
+    <LayoutEditModal @close="closeModal" :title="$t('quotes.edit_quote')">
         <template v-slot:header>
             <div class="flex flex-row gap-2 absolute mt-9 cursor-pointer" @click="deleteQuote">
                 <IconDelete class=" ml-10" />
-                <p class="text-gray-300 leading-normal pt-[1px]">Delete</p>
+                <p class="text-gray-300 leading-normal pt-[1px]">{{ $t('quotes.delete') }}</p>
             </div>
         </template>
         <template v-slot:body>
@@ -19,14 +19,14 @@
                     <label for="thumbnail"
                         class="w-[135px] h-[84px] absolute opacity-80 bg-gradient-to-b from-gray-900 via-gray-900 to-zinc-950 rounded-lg backdrop-blur-[50px] flex flex-col gap-2 items-center justify-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <IconMovieUpload class="w-5 h-5 relative" />
-                        <div class="text-white leading-normal">Change photo</div>
+                        <div class="text-white leading-normal">{{ $t('quotes.change_photo') }}</div>
                         <Field name="thumbnail" id="thumbnail" v-model="file">
                             <input name="thumbnail" id="thumbnail" type="file" class="hidden" @change="handleFileChange" />
                         </Field>
                     </label>
                 </div>
 
-                <ButtonRed class="w-full rounded-lg mt-6 mb-5" text="Save Changes" type="submit" />
+                <ButtonRed class="w-full rounded-lg mt-6 mb-5" :text="$t('quotes.edit_quote')" type="submit" />
             </Form>
         </template>
     </LayoutEditModal>
