@@ -6,7 +6,8 @@
             <img :src="imageURL" class="w-[433px] h-[147px] object-cover" v-if="showPhoto" />
             <div class="ml-4 justify-start items-center gap-4"
                 :class="{ 'flex flex-col': showPhoto, 'ml-4 justify-start inline-flex': !showPhoto }">
-                <p v-if="showPhoto" class="text-orange-200 font-bold uppercase leading-normal">Replace photo</p>
+                <p v-if="showPhoto" class="text-orange-200 font-bold uppercase leading-normal">{{ $t('movies.replace_photo')
+                }}</p>
                 <div class="justify-start items-center gap-2 flex">
                     <IconMovieUpload class="w-6 h-6 relative" />
                     <p class="text-white text-xl font-normal leading-loose">
@@ -15,7 +16,7 @@
                 </div>
                 <label :for="name"
                     class="p-2.5 bg-purple-500 bg-opacity-40 rounded-sm justify-start items-center gap-1 flex cursor-pointer">
-                    <div class="text-white text-lg leading-snug">Choose file</div>
+                    <p class="text-white text-lg leading-snug">{{ $t('movies.choose_file') }}</p>
                     <Field :name="name" :id="name" :rules="rules" v-model="file">
                         <input :name="name" :id="name" type="file" class="hidden" @change="handleFileChange" />
                     </Field>

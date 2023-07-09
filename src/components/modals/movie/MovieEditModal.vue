@@ -1,5 +1,5 @@
 <template>
-    <LayoutEditModal @close="useModalStore().toggleMovieEditModal" title="Edit Movie">
+    <LayoutEditModal @close="useModalStore().toggleMovieEditModal" :title="$t('movies.edit_movie')">
         <template v-slot:body>
             <Form class="flex flex-col gap-6" @submit="editMovieOnSubmit">
                 <InputMovie name="name_en" placeholder="Movie name" rules="required|english" :edit="true"
@@ -23,7 +23,7 @@
 
                 <InputPhotoUpload name="thumbnail" :image="movie.thumbnail" />
 
-                <ButtonRed type="submit" text="Edit Movie" class="mb-12 mt-4" />
+                <ButtonRed type="submit" :text="$t('movies.edit_movie')" class="mb-12 mt-4" />
             </Form>
         </template>
     </LayoutEditModal>
