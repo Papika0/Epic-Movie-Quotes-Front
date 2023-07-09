@@ -1,11 +1,13 @@
 import auth from './auth.json'
 import texts from './texts.json'
 import profile from './profile.json'
+import movies from './movies.json'
 
 const en = {
     auth,
     texts,
-    profile
+    profile,
+    movies
 }
 
 export default en;
