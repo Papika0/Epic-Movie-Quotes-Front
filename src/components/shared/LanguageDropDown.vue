@@ -16,6 +16,7 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { setLocale } from "@vee-validate/i18n";
 import IconDropdownArrow from '@/components/icons/header/IconDropdownArrow.vue';
 import api from "@/plugins/axios/index.js";
 
@@ -64,8 +65,10 @@ onMounted(() => {
         selectedOption.value = selectedLocale.label;
         if (selectedLocale.value === 'ge') {
             api.get('/set-locale/ka');
+            setLocale('ka');
         } else {
             api.get('/set-locale/' + selectedLocale.value);
+            setLocale('en');
         }
         isDropdownOpen.value = false;
     }
