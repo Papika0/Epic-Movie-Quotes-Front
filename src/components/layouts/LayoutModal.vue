@@ -1,7 +1,8 @@
 <template>
     <div class="fixed top-0 left-0 right-0 bottom-0 flex items-center justify-center" @click="handleOutsideClick">
         <div class="fixed inset-0 backdrop-filter backdrop-blur-sm z-50 bg-opacity-75 bg-outside-modal"></div>
-        <div class="relative bg-gray-800 rounded-xl w-full px-120 z-50" :class="[small ? 'px-20 max-w-540' : 'max-w-xl']"
+        <div class="relative lg:bg-gray-800 bg-gradient-to-b from-gray-900 via-gray-900 to-zinc-950 lg:rounded-xl h-screen lg:h-fit lg:px-120 px-8 z-50 overflow-y-auto"
+            :class="[small ? 'lg:px-20 sm:h-fit rounded-xl w-5/6 h-fit lg:max-w-540' : 'w-full max-w-xl']"
             ref="modalContentRef">
             <div class="flex flex-col gap-3 items-center justify-between mb-6 mt-14" :class="small && 'mb-8 mt-72'">
                 <slot name="header"></slot>

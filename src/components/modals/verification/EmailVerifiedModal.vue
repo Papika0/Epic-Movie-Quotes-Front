@@ -2,7 +2,7 @@
     <LayoutModal @close="modalStore.toggleEmailVerifiedModal" :small="true">
         <template v-slot:header>
             <IconEmailVerified class="w-14 h-14" />
-            <h2 class="text-white text-3xl font-bold">{{ $t('auth.thank_you') }}</h2>
+            <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.thank_you') }}</h2>
         </template>
         <template v-slot:body>
             <p class="text-white text-center">{{ $t('auth.your_account_has_been_activated') }}</p>

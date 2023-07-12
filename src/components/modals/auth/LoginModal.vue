@@ -1,7 +1,7 @@
 <template>
     <LayoutModal @close="modalStore.toggleLoginModal">
         <template v-slot:header>
-            <h2 class="text-white text-3xl font-bold">{{ $t('auth.log_in_to_your_account') }}</h2>
+            <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.log_in_to_your_account') }}</h2>
             <h3 class="text-placeholder text-center">{{ $t('auth.welcome_back_please_enter_your_details') }}</h3>
         </template>
 

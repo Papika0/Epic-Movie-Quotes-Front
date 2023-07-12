@@ -1,7 +1,7 @@
 <template>
     <LayoutModal @close="modalStore.toggleEmailForgotPasswordModal">
         <template v-slot:header>
-            <h2 class="text-white text-3xl font-bold">{{ $t('auth.forgot_password') }}?</h2>
+            <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.forgot_password') }}?</h2>
             <h3 class="text-placeholder text-center">{{ $t('auth.big_text.enter_your_email_and_will_send_password_reset') }}
             </h3>
         </template>
