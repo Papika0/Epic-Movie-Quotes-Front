@@ -1,21 +1,21 @@
 <template>
     <LayoutFeed>
         <MovieEditModal v-if="useModalStore().showMovieEditModal" :movie="movieDataForEdit" />
-        <div class="flex flex-col ml-[420px]">
-            <p class="text-white text-2xl font-medium leading-9">{{ $t('movies.movie_description') }}</p>
+        <div class="flex flex-col lg:ml-[420px]">
+            <p class="text-white text-2xl font-medium leading-9 hidden lg:block">{{ $t('movies.movie_description') }}</p>
 
-            <div class="mt-[33px] mb-20 mr-16 flex flex-col gap-10">
+            <div class="mt-[33px] mb-20 lg:mr-16 flex flex-col gap-10">
 
-                <div class="flex flex-row gap-5">
+                <div class="flex lg:flex-row flex-col gap-5 mx-8 lg:mx-0">
                     <img :src="movieThumbnail"
-                        class=" h-[440px] w-[809px] rounded-xl border backdrop-blur-[50px] object-cover -z-50" />
+                        class="lg:h-[440px] lg:w-[809px] w-[358px] h-[302px] rounded-xl border object-cover -z-50" />
 
-                    <div class="flex flex-col gap-5 w-2/5">
+                    <div class="flex flex-col gap-5 lg:w-2/5">
                         <div class="flex flex-row justify-between ">
                             <p class="text-orange-200 text-2xl my-auto font-medium lowercase leading-9">{{ movie.name }}
                                 ({{
                                     movie.release_year }})</p>
-                            <div class="flex flex-row gap-4 py-3 px-6 bg-zinc-800 rounded-lg ">
+                            <div class="lg:flex flex-row gap-4 py-3 px-6 bg-zinc-800 rounded-lg hidden">
                                 <IconEditPencil class="my-auto cursor-pointer"
                                     @click="useModalStore().toggleMovieEditModal" />
                                 <hr class=" rotate-90 border border-gray-500 w-5  my-auto">
@@ -31,7 +31,7 @@
                             </div>
                         </div>
 
-                        <div class="inline-flex gap-2">
+                        <div class="inline-flex lg:gap-2 ">
                             <p class="text-gray-300 text-[18px] font-bold  leading-relaxed">{{ $t('movies.director') }}:
                             </p>
                             <p class="text-white text-[18px] font-medium  leading-relaxed"> {{ movie.director }}</p>
@@ -41,12 +41,20 @@
                     </div>
                 </div>
 
-                <div class="flex flex-row gap-4 mb-10">
-                    <p class="text-white text-2xl font-medium leading-9 my-auto">{{ $t('movies.quotes') }} ({{
-                        $t('movies.total') }} {{ movie.quotes_count }})
+                <div class="flex lg:flex-row flex-col-reverse lg:gap-4 gap-8 lg:mb-10 mx-8 lg:mx-0">
+                    <p class="text-white text-2xl font-medium leading-9 my-auto lg:block hidden">{{ $t('movies.quotes') }}
+                        ({{
+                            $t('movies.total') }} {{ movie.quotes_count }})
                     </p>
-                    <hr class=" rotate-90 border -z-50 border-gray-500 w-6 my-auto">
-                    <ButtonRed :text="$t('movies.add_quote')" :add="true" customClass="py-2 px-4" @click="addQuote" />
+                    <div class="lg:hidden flex flex-col">
+                        <p class="text-white text-2xl font-medium leading-9 my-auto">{{ $t('movies.quotes') }} </p>
+                        <p class="text-white my-auto"> ({{
+                            $t('movies.total') }} {{ movie.quotes_count }})</p>
+                    </div>
+                    <hr class="lg:rotate-90 border -z-50 lg:border-gray-500 border-zinc-600 lg:w-6 my-auto">
+                    <div>
+                        <ButtonRed :text="$t('movies.add_quote')" :add="true" customClass="py-2 px-4" @click="addQuote" />
+                    </div>
                 </div>
 
                 <QuoteCard :quotes="movie.quotes" v-if="movie.quotes" />
