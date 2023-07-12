@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-start gap-4 cursor-pointer" @click="redirectToMovie">
         <img :src="movieThumbnail" :alt="movie.name"
-            class="w-[440px] h-[371px] rounded-xl border backdrop-blur-[50px] -z-10 object-cover" />
+            class="w-[440px] lg:h-[371px] h-[358px] rounded-xl border backdrop-blur-[50px] -z-10 object-cover" />
         <div class="text-white text-2xl font-medium uppercase leading-9">
             {{ movie.name }} ({{ movie.release_year }})
         </div>
