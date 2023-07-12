@@ -1,5 +1,5 @@
 <template>
-    <LayoutEditModal @close="closeModal" title="Add Quote">
+    <LayoutEditModal @close="closeModal" :title="$t('quotes.add_quote')">
         <template v-slot:body>
             <Form class="flex flex-col gap-6" @submit="quoteAdd">
                 <div class="flex flex-row gap-5">
@@ -22,7 +22,8 @@
                         </div>
 
                         <div class="inline-flex gap-2">
-                            <p class="text-gray-300 text-[18px] font-bold  leading-relaxed">Director: </p>
+                            <p class="text-gray-300 text-[18px] font-bold  leading-relaxed">{{ $t('movies.director') }}:
+                            </p>
                             <p class="text-white text-[18px] font-medium  leading-relaxed"> {{ movie.director }}</p>
                         </div>
                     </div>
@@ -32,7 +33,7 @@
 
                 <InputPhotoUpload name="thumbnail" rules="required" />
 
-                <ButtonRed class="w-full rounded-lg mt-6 mb-8" text="Add quote" type="submit" />
+                <ButtonRed class="w-full rounded-lg mt-6 mb-8" :text="$t('quotes.add_quote')" type="submit" />
             </Form>
         </template>
     </LayoutEditModal>

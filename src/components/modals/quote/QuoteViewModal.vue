@@ -1,9 +1,9 @@
 <template>
-    <LayoutEditModal @close="closeModal" title="View Quote">
+    <LayoutEditModal @close="closeModal" :title="$t('quotes.view_quote')">
         <template v-slot:header>
             <div class="flex flex-row gap-4 absolute mt-9">
                 <IconEditPencil class="my-auto cursor-pointer ml-10" @click="editQuote" />
-                <hr class=" rotate-90 border border-gray-500 w-5  my-auto">
+                <hr class=" rotate-90 border border-gray-500 w-5 my-auto">
                 <IconDelete class="my-auto cursor-pointer" @click="deleteQuote" />
             </div>
         </template>
@@ -29,7 +29,7 @@
 
                 <div class="inline-flex gap-6 mb-8">
                     <img :src="profileImageUrl" class="rounded-full w-[52px] h-[52px]" />
-                    <input type="text" placeholder="Write a comment" v-model="commentText"
+                    <input type="text" :placeholder="$t('quotes.write_a_comment')" v-model="commentText"
                         class="pl-7 py-3 h-[52px] w-full bg-zinc-800 text-white outline-none rounded-lg placeholder:text-gray-300 text-[20px] font-normal leading-loose"
                         @keyup.enter="createComment($event.target.value)">
                 </div>

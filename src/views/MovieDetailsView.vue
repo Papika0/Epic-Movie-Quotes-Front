@@ -2,7 +2,7 @@
     <LayoutFeed>
         <MovieEditModal v-if="useModalStore().showMovieEditModal" :movie="movieDataForEdit" />
         <div class="flex flex-col ml-[420px]">
-            <p class="text-white text-2xl font-medium leading-9">Movie discription</p>
+            <p class="text-white text-2xl font-medium leading-9">{{ $t('movies.movie_description') }}</p>
 
             <div class="mt-[33px] mb-20 mr-16 flex flex-col gap-10">
 
@@ -32,7 +32,8 @@
                         </div>
 
                         <div class="inline-flex gap-2">
-                            <p class="text-gray-300 text-[18px] font-bold  leading-relaxed">Director: </p>
+                            <p class="text-gray-300 text-[18px] font-bold  leading-relaxed">{{ $t('movies.director') }}:
+                            </p>
                             <p class="text-white text-[18px] font-medium  leading-relaxed"> {{ movie.director }}</p>
                         </div>
                         <p class="text-gray-300 text-[18px] leading-relaxed"> {{ movie.description }}</p>
@@ -41,10 +42,11 @@
                 </div>
 
                 <div class="flex flex-row gap-4 mb-10">
-                    <p class="text-white text-2xl font-medium leading-9 my-auto">Quotes (Total {{ movie.quotes_count }})
+                    <p class="text-white text-2xl font-medium leading-9 my-auto">{{ $t('movies.quotes') }} ({{
+                        $t('movies.total') }} {{ movie.quotes_count }})
                     </p>
                     <hr class=" rotate-90 border -z-50 border-gray-500 w-6 my-auto">
-                    <ButtonRed text="Add quote" :add="true" customClass="py-2 px-4" @click="addQuote" />
+                    <ButtonRed :text="$t('movies.add_quote')" :add="true" customClass="py-2 px-4" @click="addQuote" />
                 </div>
 
                 <QuoteCard :quotes="movie.quotes" v-if="movie.quotes" />

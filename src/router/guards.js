@@ -18,7 +18,7 @@ export async function movieGuard(to, _, next) {
 export async function quoteGuard(to, _, next) {
     try {
       const data = await getQuoteById(to.params.id);
-      if (to.params.type === 'add') next();
+      if (to.params.type === 'add') return next();
       if (data.user_id !== useUserStore().user.id) {
         next({ name: 'forbidden' });
       } else {

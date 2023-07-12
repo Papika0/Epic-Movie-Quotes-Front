@@ -1,5 +1,5 @@
 <template>
-    <LayoutEditModal @close="useModalStore().toggleQuoteAddModal" title="Add Quote">
+    <LayoutEditModal @close="useModalStore().toggleQuoteAddModal" :title="$t('quotes.write_new_quote')">
         <template v-slot:body>
             <Form class="flex flex-col gap-6" @submit="quoteAdd">
                 <TextareaMovie name="content_en" placeholder="Start create new quote" rules="required|english" />
@@ -9,7 +9,7 @@
 
                 <MovieDropdown rules="required" />
 
-                <ButtonRed class="w-full rounded-lg mt-6 mb-8" text="Add quote" type="submit" />
+                <ButtonRed class="w-full rounded-lg mt-6 mb-8" :text="$t('quotes.post')" type="submit" />
             </Form>
         </template>
     </LayoutEditModal>

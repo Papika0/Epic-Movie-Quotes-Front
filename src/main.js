@@ -3,11 +3,13 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
+import I18n from '@/i18n/index.js'
 import '@/plugins/vee-validate/rules.js'
+import '@/plugins/vee-validate/messages.js'
 import App from './App.vue'
 import router from './router'
 
-import I18n from '@/i18n/index.js'
+
 
 const app = createApp(App)
 

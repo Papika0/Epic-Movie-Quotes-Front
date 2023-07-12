@@ -20,10 +20,11 @@
 
                     <div class="pt-10 pb-14 px-8 flex flex-col max-h-[812px] gap-4 overflow-y-scroll" @scroll="scrolling">
                         <div class="inline-flex justify-between my-auto mb-2">
-                            <p class="text-white text-[32px] font-medium capitalize leading-10">Notifications</p>
+                            <p class="text-white text-[32px] font-medium capitalize leading-10">{{
+                                $t('feed.notifications') }}</p>
                             <p class="text-white text-[20px] font-normal underline leading-loose cursor-pointer"
                                 @click="notificationStore.markAllAsRead()">
-                                Mark as all read
+                                {{ $t('feed.mark_all_as_read') }}
                             </p>
                         </div>
 
@@ -43,11 +44,10 @@
                                         <IconQuoteSymbol class="my-auto w-6 h-6" v-if="notification.type == 'comment'" />
                                         <IconHeartFilled class="my-auto w-6 h-6" v-else />
                                         <p class="text-gray-300 text-[20px] font-normal leading-loose"
-                                            v-if="notification.type == 'comment'">Commented to your
-                                            movie quote</p>
-                                        <p class="text-gray-300 text-[20px] font-normal leading-loose" v-else>Reacted to
-                                            your
-                                            quote</p>
+                                            v-if="notification.type == 'comment'">{{
+                                                $t('feed.commented_to_your_movie_quote') }}</p>
+                                        <p class="text-gray-300 text-[20px] font-normal leading-loose" v-else>{{
+                                            $t('feed.reacted_to_your_quote') }}</p>
                                     </div>
                                 </div>
 
@@ -55,7 +55,8 @@
                                     <p class="text-gray-300 text-[20px] font-normal leading-loose">{{
                                         notification.created }}</p>
                                     <p v-show="notification.read == false"
-                                        class="text-green-700 text-[20px] font-normal leading-loose text-right">New</p>
+                                        class="text-green-700 text-[20px] font-normal leading-loose text-right">{{
+                                            $t('feed.new') }}</p>
                                 </div>
                             </div>
                         </div>

@@ -1,0 +1,15 @@
+{
+    "my_list_of_movies" : "ჩემი ფილმების სია",
+    "total" : "სულ",
+    "search" : "ძებნა",
+    "add_movie" : "ფილმის დამატება",
+    "search_movie" : "ფილმის ძებნა...",
+    "clear" : "გასუფთავება",
+    "choose_file" : "აირჩიეთ ფაილი",
+    "replace_photo" : "ფოტოს შეცვლა",
+    "movie_description" : "ფილმის აღწერა",
+    "director" : "რეჟისორი",
+    "quotes" : "ციტატები",
+    "add_quote" : "ციტატის დამატება",
+    "edit_movie" : "ფილმის რედაქტირება"
+}

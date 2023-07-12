@@ -1,0 +1,15 @@
+{
+    "my_list_of_movies" : "My List of Movies",
+    "total" : "Total",
+    "search" : "Search",
+    "add_movie" : "Add Movie",
+    "search_movie": "Search Movie...",
+    "clear" : "Clear",
+    "choose_file" : "Choose File",
+    "replace_photo" : "Replace Photo",
+    "movie_description" : "Movie Description",
+    "director" : "Director",
+    "quotes" : "Quotes",
+    "add_quote" : "Add Quote",
+    "edit_movie" : "Edit Movie"
+}

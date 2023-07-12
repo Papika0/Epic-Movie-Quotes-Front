@@ -1,5 +1,5 @@
 <template>
-    <LayoutEditModal @close="useModalStore().toggleMovieAddModal" title="Add Movie">
+    <LayoutEditModal @close="useModalStore().toggleMovieAddModal" :title="$t('movies.add_movie')">
         <template v-slot:body>
             <Form class="flex flex-col gap-6" @submit="createMovieOnSubmit">
                 <InputMovie name="name_en" placeholder="Movie name" rules="required|english" />
@@ -16,7 +16,7 @@
 
                 <InputPhotoUpload name="thumbnail" rules="required" />
 
-                <ButtonRed type="submit" text="Add Movie" class="mb-12 mt-4" />
+                <ButtonRed type="submit" :text="$t('movies.add_movie')" class="mb-12 mt-4" />
             </Form>
         </template>
     </LayoutEditModal>
