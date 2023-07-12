@@ -2,11 +2,10 @@
     <LayoutEditModal @close="closeModal" :title="$t('quotes.add_quote')">
         <template v-slot:body>
             <Form class="flex flex-col gap-6" @submit="quoteAdd">
-                <div class="flex flex-row gap-5">
-                    <img :src="movieThumbnail"
-                        class=" w-[290px] h-[158px] rounded-xl border backdrop-blur-[50px] object-cover -z-50" />
+                <div class="flex lg:flex-row flex-col gap-5">
+                    <img :src="movieThumbnail" class="w-[290px] h-[158px] rounded-xl border object-cover -z-50" />
 
-                    <div class="flex flex-col gap-5 mb-">
+                    <div class="flex flex-col gap-5">
                         <div class="flex flex-row justify-between ">
                             <p class="text-orange-200 text-2xl my-auto font-medium lowercase leading-9">{{ movie.name }}
                                 ({{

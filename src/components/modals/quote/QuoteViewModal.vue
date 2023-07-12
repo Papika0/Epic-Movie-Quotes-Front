@@ -1,9 +1,9 @@
 <template>
     <LayoutEditModal @close="closeModal" :title="$t('quotes.view_quote')">
         <template v-slot:header>
-            <div class="flex flex-row gap-4 absolute mt-9">
-                <IconEditPencil class="my-auto cursor-pointer ml-10" @click="editQuote" />
-                <hr class=" rotate-90 border border-gray-500 w-5 my-auto">
+            <div class="flex flex-row lg:gap-4 gap-1 absolute mt-9">
+                <IconEditPencil class="my-auto cursor-pointer lg:ml-10 ml-2" @click="editQuote" />
+                <hr class="rotate-90 border border-gray-500 w-5 my-auto">
                 <IconDelete class="my-auto cursor-pointer" @click="deleteQuote" />
             </div>
         </template>
@@ -12,7 +12,7 @@
                 <InputMovie name="content_en" :placeholder="quote.content_en" :disabled="true" />
                 <InputMovie name="content_ka" :placeholder="quote.content_ka" :disabled="true" lang="ქარ" />
 
-                <img :src="quoteThumbnail" alt="thumbnail" class="w-[897px] h-[513px] rounded-lg mt-2" />
+                <img :src="quoteThumbnail" alt="thumbnail" class="w-[897px] lg:h-[513px] h-[302px] rounded-lg mt-2" />
 
                 <div class="inline-flex gap-8 mt-4 mb-2">
                     <div class="inline-flex gap-4">
