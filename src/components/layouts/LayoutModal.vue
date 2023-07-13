@@ -4,6 +4,9 @@
         <div class="relative lg:bg-gray-800 bg-gradient-to-b from-gray-900 via-gray-900 to-zinc-950 lg:rounded-xl h-screen lg:h-fit lg:px-120 px-8 z-50 overflow-y-auto"
             :class="[small ? 'lg:px-20 sm:h-fit rounded-xl w-5/6 h-fit lg:max-w-540' : 'w-full max-w-xl']"
             ref="modalContentRef">
+            <button v-if="!small" class="absolute right-0 mt-5 mr-4 lg:hidden" @click="emit('close')">
+                <IconCloseX class="w-8 h-8" />
+            </button>
             <div class="flex flex-col gap-3 items-center justify-between mb-6 mt-14" :class="small && 'mb-8 mt-72'">
                 <slot name="header"></slot>
             </div>
@@ -19,6 +22,7 @@
   
 <script setup>
 import { defineEmits, defineProps, ref } from 'vue';
+import IconCloseX from '@/components/icons/movie/IconCloseX.vue';
 
 const emit = defineEmits(['close']);
 const modalContentRef = ref(null);
