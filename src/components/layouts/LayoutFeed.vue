@@ -2,7 +2,7 @@
     <main class="min-h-screen">
         <HeaderAuthorized />
         <section class="lg:mt-8">
-            <div class="absolute lg:ml-16 flex flex-col gap-10 lg:bg-transparent bg-neutral-900 w-4/5 pl-11 lg:pl-0 h-4/5 lg:w-fit lg:h-fit z-50"
+            <div class="absolute lg:ml-16 flex flex-col gap-10 lg:bg-transparent bg-neutral-900 w-4/5 pl-11 lg:pl-0 h-4/5 lg:w-fit lg:h-fit z-50 lg:flex"
                 :class="{ 'hidden': !useModalStore().showBurgerMenu }">
                 <div class="flex flex-row lg:gap-6 gap-5 lg:my-auto mt-10 lg:mt-0">
                     <img :src="profileImageUrl"
@@ -18,8 +18,11 @@
                     <p class="text-white text-2xl cursor-pointer">{{ $t('texts.news_feed') }}</p>
                 </div>
                 <div class="flex flex-row lg:gap-10 gap-6 lg:my-auto cursor-pointer " @click="showMovies">
-                    <IconMovie class="w-6 h-6 lg:w-8 lg:h-8 my-auto  ml-3" :isMovieRoute="isMovieRoute" />
+                    <IconMovie class="w-6 h-6 lg:w-8 lg:h-8 my-auto ml-3" :isMovieRoute="isMovieRoute" />
                     <p class="text-white text-2xl ">{{ $t('texts.list_of_movies') }}</p>
+                </div>
+                <div class="lg:hidden px-2">
+                    <ButtonDark :text="$t('auth.log_out')" @click="logOut()" />
                 </div>
             </div>
         </section>
@@ -29,7 +32,7 @@
   
   
 <script setup>
-
+import ButtonDark from '@/components/ui/ButtonDark.vue';
 import { computed, onBeforeUnmount } from 'vue';
 import HeaderAuthorized from '@/components/shared/HeaderAuthorized.vue';
 import IconHouse from '@/components/icons/profile/IconHouse.vue';
@@ -38,6 +41,8 @@ import { useUserStore } from '@/stores/useUserStore';
 import { useModalStore } from '@/stores/useModalStore';
 import router from '@/router/index.js';
 import { useRoute } from 'vue-router';
+import { logout } from '@/services/auth/auth';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 const route = useRoute();
 
@@ -48,6 +53,13 @@ const profileImageUrl = computed(() => {
     }
     return null;
 });
+
+async function logOut() {
+    await logout().then(() => {
+        useAuthStore().setIsAuthenticated(false);
+        router.push({ name: 'home' });
+    });
+}
 
 const showMovies = () => {
     router.push({ name: 'movies' });
