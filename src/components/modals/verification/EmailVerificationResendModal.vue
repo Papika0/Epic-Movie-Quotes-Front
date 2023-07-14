@@ -2,7 +2,7 @@
     <LayoutModal @close="modalStore.toggleEmailVerificationResendModal" :small="true">
         <template v-slot:header>
             <IconExpired />
-            <h2 class="text-white text-3xl font-bold">{{ $t('auth.link_expired') }}</h2>
+            <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.link_expired') }}</h2>
         </template>
         <template v-slot:body>
             <p class="text-white text-center">{{ $t('auth.email_verification_link_has_expired_because_you_havent_used_it')

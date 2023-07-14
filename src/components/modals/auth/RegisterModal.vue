@@ -1,7 +1,7 @@
 <template>
     <LayoutModal @close="modalStore.toggleRegisterModal">
         <template v-slot:header>
-            <h2 class="text-white text-3xl font-bold">{{ $t('auth.create_an_account') }}</h2>
+            <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.create_an_account') }}</h2>
             <h3 class="text-placeholder">{{ $t('auth.start_your_journey') }}</h3>
         </template>
 

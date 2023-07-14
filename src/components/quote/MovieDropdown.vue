@@ -13,10 +13,11 @@
             <IconDropdownArrow class="absolute right-0 w-5 h-6 mr-5" :class="{ 'rotate-180': isDropdownOpen }" />
         </div>
         <ul v-if="isDropdownOpen"
-            class=" absolute mt-3 left-0 w-full  bg-neutral-900 py-2 rounded border border-gray-500 shadow-md overflow-y-scroll">
+            class=" absolute mt-3 left-0 w-full bg-black py-2 rounded border border-gray-500 shadow-md overflow-y-scroll">
             <li v-for="option in options" :key="option.id" @click.stop="selectOption(option)"
                 class="cursor-pointer w-full inline-flex gap-8 hover:bg-gray-500 py-2 px-4 text-white">
-                <img :src="movieThumbnail(option.thumbnail)" class="w-[150px] h-[70px] rounded-xl object-cover" />
+                <img :src="movieThumbnail(option.thumbnail)"
+                    class="lg:w-[150px] h-[70px] w-[90px] rounded-xl object-cover" />
                 <p class="my-auto text-[24px]">{{ option.label }}</p>
             </li>
         </ul>

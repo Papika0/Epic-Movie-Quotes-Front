@@ -2,7 +2,7 @@
     <LayoutModal @close="modalStore.toggleEmailSentModal" :small="true">
         <template v-slot:header>
             <IconEmailSent class="w-14 h-14" />
-            <h2 class="text-white text-3xl font-bold">{{ $t('auth.thank_you') }}</h2>
+            <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.thank_you') }}</h2>
         </template>
         <template v-slot:body>
             <p class="text-white text-center">{{ $t('auth.check_your_email') }}</p>

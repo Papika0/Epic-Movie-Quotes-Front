@@ -5,24 +5,28 @@
             <div class=" bg-neutral-900 rounded border border-gray-500 " @dragover.prevent="handleDragOver"
                 @dragleave="handleDragLeave" @drop.prevent="handleDrop" :class="[
                     isDragOver ? 'border-2 border-dashed border-blue-300' : '',
-                    showPhoto ? 'px-6 py-5 flex flex-row gap-16 items-center' : 'px-4 py-4 relative',
+                    showPhoto ? 'px-6 py-5 flex flex-row lg:gap-16 items-center' : 'py-4 relative',
                     meta.touched && !meta.valid ? 'border-red-500' : (meta.touched && meta.valid ? 'border-green-500' : '')
                 ]">
-                <img :src="imageURL" class="w-[433px] h-[147px] object-cover" v-if="showPhoto" />
-                <div class="ml-4 justify-start items-center gap-4"
-                    :class="{ 'flex flex-col': showPhoto, 'ml-4 justify-start inline-flex': !showPhoto }">
-                    <p v-if="showPhoto" class="text-orange-200 font-bold uppercase leading-normal">{{
+                <img :src="imageURL" class="lg:w-[433px] lg:h-[147px] w-1/2 h-[110px] object-cover" v-if="showPhoto" />
+                <div class="ml-4 justify-start items-center gap-2 lg:gap-4"
+                    :class="{ 'flex flex-col': showPhoto, 'ml-4 lg:justify-start flex flex-row justify-between mr-4 lg:mr-0': !showPhoto }">
+                    <p v-if="showPhoto" class="text-orange-200 font-bold text-xs lg:text-base uppercase leading-normal">{{
                         $t('movies.replace_photo')
                     }}</p>
                     <div class="justify-start items-center gap-2 flex">
-                        <IconMovieUpload class="w-6 h-6 relative" />
-                        <p class="text-white text-xl font-normal leading-loose">
+                        <IconMovieUpload class="w-6 h-6 relative hidden lg:block" />
+                        <IconMovieUpload v-if="!showPhoto" class="w-6 h-6 relative lg:hidden" />
+                        <p class="text-white text-xl font-normal leading-loose hidden lg:block">
                             Drag & drop your image here or
+                        </p>
+                        <p v-if="!showPhoto" class="text-white font-normal leading-loose lg:hidden">
+                            Upload image
                         </p>
                     </div>
                     <label :for="name"
                         class="p-2.5 bg-purple-500 bg-opacity-40 rounded-sm justify-start items-center gap-1 flex cursor-pointer">
-                        <p class="text-white text-lg leading-snug">{{ $t('movies.choose_file') }}</p>
+                        <p class="text-white lg:text-lg leading-snug">{{ $t('movies.choose_file') }}</p>
                     </label>
                 </div>
             </div>

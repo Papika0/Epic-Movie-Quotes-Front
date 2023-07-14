@@ -3,7 +3,7 @@
         <template v-slot:header>
             <div class="flex flex-row gap-2 absolute mt-9 cursor-pointer" @click="deleteQuote">
                 <IconDelete class=" ml-10" />
-                <p class="text-gray-300 leading-normal pt-[1px]">{{ $t('quotes.delete') }}</p>
+                <p class="text-gray-300 leading-normal pt-[1px] hidden lg:block">{{ $t('quotes.delete') }}</p>
             </div>
         </template>
         <template v-slot:body>
@@ -15,7 +15,7 @@
                     lang="ქარ" />
 
                 <div class="relative">
-                    <img :src="quoteThumbnail" alt="thumbnail" class="w-[897px] h-[513px] rounded-lg mt-2" />
+                    <img :src="quoteThumbnail" alt="thumbnail" class="w-[897px] lg:h-[513px] h-[302px] rounded-lg mt-2" />
                     <label for="thumbnail"
                         class="w-[135px] h-[84px] absolute opacity-80 bg-gradient-to-b from-gray-900 via-gray-900 to-zinc-950 rounded-lg backdrop-blur-[50px] flex flex-col gap-2 items-center justify-center top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
                         <IconMovieUpload class="w-5 h-5 relative" />

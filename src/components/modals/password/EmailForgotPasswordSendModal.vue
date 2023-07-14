@@ -2,7 +2,7 @@
     <LayoutModal @close="modalStore.toggleEmailForgotPasswordSendModal" :small="true">
         <template v-slot:header>
             <IconEmailSent class="w-14 h-14" />
-            <h2 class="text-white text-3xl font-bold">{{ $t('auth.check_your_email') }}</h2>
+            <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.check_your_email') }}</h2>
         </template>
         <template v-slot:body>
             <p class="text-white text-center">{{ $t('auth.we_have_sent_a_password_recover_instructions_to_your_email') }}
