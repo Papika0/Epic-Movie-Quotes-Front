@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { defineEmits, defineProps, ref } from 'vue';
+import { defineEmits, ref } from 'vue';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
 import { useModalStore } from '@/stores/useModalStore.js';
 

@@ -103,7 +103,7 @@
 </template>
   
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, computed } from 'vue';
 import ConfirmProfileEditModal from '@/components/modals/ConfirmProfileEditModal.vue';
 import InputProfileMobile from '@/components/ui/InputProfileMobile.vue';
 import { Form } from 'vee-validate';

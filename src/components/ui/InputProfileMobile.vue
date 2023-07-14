@@ -23,12 +23,11 @@
 </template>
   
 <script setup>
-import { defineProps, watch } from 'vue';
+import { defineProps } from 'vue';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
 import InputField from '@/components/ui/InputField.vue';
-import { useModalStore } from '@/stores/useModalStore.js';
 
-const props = defineProps({
+defineProps({
     label: {
         type: String,
         required: true
