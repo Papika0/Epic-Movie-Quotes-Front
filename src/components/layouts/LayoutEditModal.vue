@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed top-0 left-0 right-0 lg:mt-[120px] flex items-center z-50 justify-center" @click="handleOutsideClick">
+    <div class="fixed top-0 left-0 right-0 lg:mt-[120px] flex items-center z-50 justify-center">
         <div class="fixed inset-0 backdrop-filter backdrop-blur-sm z-50 bg-opacity-75 bg-outside-modal"></div>
         <div class="relative lg:max-h-[800px] max-h-screen overflow-y-scroll bg-neutral-900 lg:rounded-xl w-full z-50 max-w-[961px]"
             ref="modalContentRef">
@@ -27,6 +27,7 @@
 import { defineEmits, ref, computed } from 'vue';
 import IconCloseX from '@/components/icons/movie/IconCloseX.vue';
 import { useUserStore } from '@/stores/useUserStore';
+import { onClickOutside } from '@vueuse/core';
 
 const profileImageUrl = computed(() => {
     const thumbnail = useUserStore().user?.thumbnail;
@@ -43,16 +44,11 @@ defineProps({
     },
 })
 
-
 const emit = defineEmits(['close']);
+
 const modalContentRef = ref(null);
 
-
-function handleOutsideClick(event) {
-    if (modalContentRef.value && !modalContentRef.value.contains(event.target)) {
-        emit('close');
-    }
-}
+onClickOutside(modalContentRef, () => emit('close'));
 
 </script>
   

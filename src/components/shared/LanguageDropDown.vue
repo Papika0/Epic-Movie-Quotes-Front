@@ -18,8 +18,8 @@ import { ref, onMounted, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { setLocale } from "@vee-validate/i18n";
 import IconDropdownArrow from '@/components/icons/header/IconDropdownArrow.vue';
+import { onClickOutside } from '@vueuse/core'
 import api from "@/plugins/axios/index.js";
-
 
 const { locale, t } = useI18n();
 const isDropdownOpen = ref(false);
@@ -28,6 +28,8 @@ let options = [
     { value: 'en', label: t('texts.eng') },
     { value: 'ge', label: t('texts.ka') }
 ];
+
+onClickOutside(isDropdownOpen, () => isDropdownOpen.value = false)
 
 watch(
     () => locale.value,

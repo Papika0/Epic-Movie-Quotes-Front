@@ -1,5 +1,5 @@
 <template>
-    <div class="relative my-auto cursor-pointer" @click="openModal" ref="bellRef">
+    <div class="relative my-auto cursor-pointer" @click="openModal">
         <IconNotificationBell class="my-auto w-6 h-6 lg:w-min lg:h-min" />
         <div class="absolute top-0 right-0 mt-1 mr-1">
             <div class="relative flex items-center justify-center">
@@ -78,12 +78,12 @@ import router from '@/router/index.js';
 import instantiatePusher from "@/helpers/instantiatePusher.js";
 import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue';
 import { markAsRead } from '@/services/notifications.js';
+import { onClickOutside } from '@vueuse/core'
 import { useNotificationStore } from '@/stores/useNotificationStore';
 
 const notificationStore = useNotificationStore();
 const pusherActive = ref(false);
 const notificationContainerRef = ref(null);
-const bellRef = ref(null);
 
 const page = ref(2);
 
@@ -93,9 +93,10 @@ const notificationsCount = computed(() => {
     return notificationStore.unreadNotifications;
 });
 
+onClickOutside(notificationContainerRef, () => notificationStore.showNotifications = false);
+
 const openModal = () => {
     notificationStore.toggleNotifications();
-    document.addEventListener('click', handleOutsideClick);
 }
 
 function goToQuote(id, quoteId) {
@@ -133,13 +134,6 @@ function initializePusher() {
     }
 }
 
-function handleOutsideClick(event) {
-    if (!notificationContainerRef.value?.contains(event.target) && !bellRef.value.contains(event.target)) {
-        notificationStore.toggleNotifications();
-        document.removeEventListener('click', handleOutsideClick);
-    }
-}
-
 onMounted(() => {
     initializePusher();
     if (useNotificationStore().notifications.length === 0) {
@@ -156,7 +150,6 @@ onBeforeUnmount(() => {
     if (pusherActive.value) {
         window.Echo.leave(`notifications.${useUserStore().user?.id}`);
     }
-    document.removeEventListener('click', handleOutsideClick);
     notificationStore.showNotifications = false;
 });
 

@@ -31,6 +31,7 @@ import { getAllMovies } from '@/services/movies.js';
 import IconDropdownArrow from '@/components/icons/header/IconDropdownArrow.vue';
 import IconMovie from '@/components/icons/profile/IconMovie.vue';
 import { ref, computed, defineProps, onBeforeMount } from 'vue';
+import { onClickOutside } from '@vueuse/core';
 
 defineProps({
     rules: {
@@ -41,6 +42,8 @@ defineProps({
 })
 
 const isDropdownOpen = ref(false);
+
+onClickOutside(isDropdownOpen, () => isDropdownOpen.value = false);
 
 const options = ref([]);
 

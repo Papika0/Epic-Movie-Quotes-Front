@@ -50,6 +50,8 @@ import IconDelete from '@/components/icons/IconDelete.vue';
 import IconEye from '@/components/icons/IconEye.vue';
 import router from '@/router/index.js';
 import { deleteQuoteById } from '@/services/quotes.js';
+import { onClickOutside } from '@vueuse/core';
+
 
 const props = defineProps({
     quotes: {
@@ -65,6 +67,8 @@ onMounted(() => {
 });
 
 const activeDropdown = ref(null);
+
+onClickOutside(activeDropdown, () => activeDropdown.value = false);
 
 const viewQuote = (id) => {
     router.push({ name: 'quote-details', params: { id: id, type: 'view' } });
