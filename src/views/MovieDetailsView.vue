@@ -1,14 +1,14 @@
 <template>
     <LayoutFeed>
         <MovieEditModal v-if="useModalStore().showMovieEditModal" :movie="movieDataForEdit" />
-        <div class="flex flex-col lg:ml-[420px]">
+        <div class="flex flex-col lg:ml-420px">
             <p class="text-white text-2xl font-medium leading-9 hidden lg:block">{{ $t('movies.movie_description') }}</p>
 
-            <div class="mt-[33px] mb-20 lg:mr-16 flex flex-col gap-10">
+            <div class="mt-33px mb-20 lg:mr-16 flex flex-col gap-10">
 
                 <div class="flex lg:flex-row flex-col gap-5 mx-8 lg:mx-0">
                     <img :src="movieThumbnail"
-                        class="lg:h-[440px] lg:w-[809px] w-[358px] h-[302px] rounded-xl border object-cover -z-50" />
+                        class="lg:h-440px lg:w-809px w-358 h-302px rounded-xl border object-cover -z-50" />
 
                     <div class="flex flex-col gap-5 lg:w-2/5">
                         <div class="flex lg:flex-row flex-col-reverse justify-between">
@@ -25,7 +25,7 @@
 
                         <div class="flex flex-wrap gap-2 mt-1 max-w-lg">
                             <div v-for="option in movie.genres" :key="option.id"
-                                class="rounded-md items-center py-[6px] px-3 bg-gray-500">
+                                class="rounded-md items-center py-6px px-3 bg-gray-500">
                                 <p class="text-white text-sm font-normal leading-snug">{{ option.name }}
                                 </p>
                             </div>

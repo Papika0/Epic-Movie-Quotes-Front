@@ -8,7 +8,7 @@
                     showPhoto ? 'px-6 py-5 flex flex-row lg:gap-16 items-center' : 'py-4 relative',
                     meta.touched && !meta.valid ? 'border-red-500' : (meta.touched && meta.valid ? 'border-green-500' : '')
                 ]">
-                <img :src="imageURL" class="lg:w-[433px] lg:h-[147px] w-1/2 h-[110px] object-cover" v-if="showPhoto" />
+                <img :src="imageURL" class="lg:w-433 lg:h-147px w-1/2 h-110px object-cover" v-if="showPhoto" />
                 <div class="ml-4 justify-start items-center gap-2 lg:gap-4"
                     :class="{ 'flex flex-col': showPhoto, 'ml-4 lg:justify-start flex flex-row justify-between mr-4 lg:mr-0': !showPhoto }">
                     <p v-if="showPhoto" class="text-orange-200 font-bold text-xs lg:text-base uppercase leading-normal">{{

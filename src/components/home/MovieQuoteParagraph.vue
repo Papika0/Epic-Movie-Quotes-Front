@@ -6,7 +6,7 @@
                 <slot></slot>
             </p>
         </div>
-        <p class=" text-zinc-300 lg:text-2xl font-bold lg:ml-[72px] ml-8 font-title">{{ movie }}</p>
+        <p class=" text-zinc-300 lg:text-2xl font-bold lg:ml-72px ml-8 font-title">{{ movie }}</p>
     </div>
 </template>
 

@@ -2,7 +2,7 @@
     <div class="relative ">
         <div class="flex flex-col gap-1">
             <Field name="genres" type="hidden" :rules="rules" :value="selected" v-slot="{ meta }">
-                <div class="min-h-[48px] px-4 overflow-x-auto py-2 bg-neutral-900 rounded border border-gray-500  items-center flex flex-wrap max-w-full gap-1"
+                <div class="min-h-48px px-4 overflow-x-auto py-2 bg-neutral-900 rounded border border-gray-500  items-center flex flex-wrap max-w-full gap-1"
                     @click="toggleDropdown"
                     :class="[meta.touched && !meta.valid ? 'border-red-500' : (meta.touched && meta.valid ? 'border-green-500' : '')]">
                     <p class="text-gray-500 font-normal leading-loose" v-if="showPlaceholder">Genres</p>

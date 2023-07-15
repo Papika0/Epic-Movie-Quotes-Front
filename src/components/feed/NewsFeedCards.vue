@@ -2,7 +2,7 @@
     <div v-for="(quote, index) in visibleQuotes" :key="'quote-' + index"
         class="bg-neutral-900 rounded-xl flex flex-col gap-6 px-6">
         <div class="inline-flex gap-4 mt-6">
-            <img class="w-[52px] h-[52px] rounded-full" :src="profileImage(quote.user.thumbnail)">
+            <img class="w-52px h-52px rounded-full" :src="profileImage(quote.user.thumbnail)">
             <p class="text-white text-xl font-normal leading-loose my-auto"> {{ quote.user.username }}</p>
         </div>
 
@@ -12,7 +12,7 @@
                 quote.movie_release_date
             }})</p>
 
-        <img :src="quoteImage(quote.thumbnail)" class="w-full lg:h-[500px] h-[200px] object-cover">
+        <img :src="quoteImage(quote.thumbnail)" class="w-full lg:h-500px h-200px object-cover">
 
         <div class="inline-flex gap-8 mt-4 mb-2">
             <div class="inline-flex gap-4">
@@ -27,9 +27,9 @@
         <CommentCard :comments="quote.comments" />
 
         <div class="inline-flex gap-6 mb-8">
-            <img :src="authUserThumbnail" class="rounded-full w-[52px] h-[52px]" />
+            <img :src="authUserThumbnail" class="rounded-full w-52px h-52px" />
             <input type="text" :placeholder="$t('quotes.write_a_comment')" v-model="commentText" name="comment"
-                class="pl-7 py-3 h-[52px] w-full bg-zinc-800 text-white outline-none rounded-lg placeholder:text-gray-300 text-xl font-normal leading-loose"
+                class="pl-7 py-3 h-52px w-full bg-zinc-800 text-white outline-none rounded-lg placeholder:text-gray-300 text-xl font-normal leading-loose"
                 @keyup.enter="createComment(quote)">
         </div>
     </div>

@@ -1,7 +1,7 @@
 <template>
     <LayoutFeed>
         <MovieAddModal v-if="useModalStore().showMovieAddModal" />
-        <div class="flex flex-col lg:ml-[420px] mx-8">
+        <div class="flex flex-col lg:ml-420px mx-8">
             <div class="text-white lg:text-2xl font-medium leading-9 flex flex-row justify-between mt-5 lg:mt-0">
                 <p class="hidden lg:block">{{ $t('movies.my_list_of_movies') }} ({{ $t('movies.total') }} {{
                     useUserStore().moviesCount }})</p>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="grid lg:grid-cols-3 grid-cols-1 gap-8 mt-[56px] lg:mb-96 mb-64 lg:mr-10 ">
+            <div class="grid lg:grid-cols-3 grid-cols-1 gap-8 mt-55px lg:mb-96 mb-64 lg:mr-10 ">
                 <MovieCard v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
             </div>
         </div>

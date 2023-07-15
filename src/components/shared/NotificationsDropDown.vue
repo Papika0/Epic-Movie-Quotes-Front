@@ -10,11 +10,11 @@
     </div>
 
     <div v-if="notificationStore.showNotifications"
-        class="absolute lg:w-[961px] w-full lg:h-[812px] h-3/4 bg-black rounded-xl z-50 lg:mt-[70px] mt-[55px] lg:mr-16 right-0"
+        class="absolute lg:w-961px w-full lg:h-812px h-3/4 bg-black rounded-xl z-50 lg:mt-70px mt-55px lg:mr-16 right-0"
         ref="notificationContainerRef">
-        <IconBlackPolygon class="absolute lg:mr-[195px] mr-7 right-0 mt-[-20px] -z-20" />
+        <IconBlackPolygon class="absolute lg:mr-195px mr-7 right-0 -mt-5 -z-20" />
 
-        <div class="pt-10 pb-14 px-8 flex flex-col lg:max-h-[812px] max-h-full lg:gap-4 gap-2 overflow-y-scroll"
+        <div class="pt-10 pb-14 px-8 flex flex-col lg:max-h-812px max-h-full lg:gap-4 gap-2 overflow-y-scroll"
             @scroll="scrolling">
             <div class="inline-flex justify-between my-auto mb-2">
                 <p class="text-white lg:text-3xl  my-auto text-xl font-medium capitalize leading-10">{{
@@ -26,7 +26,7 @@
             </div>
 
             <div v-for="notification in notifications" :key="notification.id"
-                class="w-full h-[117px] border relative border-gray-500 border-opacity-50 bg-black lg:px-6 px-3 lg:py-5 py-2 flex flex-row lg:gap-6 gap-3 cursor-pointer"
+                class="w-full h-117px border relative border-gray-500 border-opacity-50 bg-black lg:px-6 px-3 lg:py-5 py-2 flex flex-row lg:gap-6 gap-3 cursor-pointer"
                 @click="goToQuote(notification.id, notification.quote_id)">
                 <div class="flex flex-col w-20 lg:block lg:w-24">
                     <img :src="userThumbnail(notification.from.thumbnail)" alt="thumbnail"

@@ -3,7 +3,7 @@
         <template v-slot:body>
             <Form class="flex flex-col gap-6" @submit="quoteAdd">
                 <div class="flex lg:flex-row flex-col gap-5">
-                    <img :src="movieThumbnail" class="w-[290px] h-[158px] rounded-xl border object-cover -z-50" />
+                    <img :src="movieThumbnail" class="w-290 h-158px rounded-xl border object-cover -z-50" />
 
                     <div class="flex flex-col gap-5">
                         <div class="flex flex-row justify-between ">
@@ -14,7 +14,7 @@
 
                         <div class="flex flex-wrap gap-2 mt-1 max-w-xl">
                             <div v-for="option in movie.genres" :key="option.id"
-                                class="rounded-md items-center py-[6px] px-3 bg-gray-500">
+                                class="rounded-md items-center py-6px px-3 bg-gray-500">
                                 <p class="text-white text-sm font-normal leading-snug">{{ option.name }}
                                 </p>
                             </div>

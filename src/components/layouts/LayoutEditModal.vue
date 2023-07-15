@@ -1,9 +1,9 @@
 <template>
-    <div class="fixed top-0 left-0 right-0 lg:mt-[120px] flex items-center z-50 justify-center">
+    <div class="fixed top-0 left-0 right-0 lg:mt-120px flex items-center z-50 justify-center">
         <div class="fixed inset-0 backdrop-filter backdrop-blur-sm z-50 bg-opacity-75 bg-outside-modal"></div>
-        <div class="relative lg:max-h-[800px] max-h-screen overflow-y-scroll bg-neutral-900 lg:rounded-xl w-full z-50 max-w-[961px]"
+        <div class="relative lg:max-h-800 max-h-screen overflow-y-scroll bg-neutral-900 lg:rounded-xl w-full z-50 max-w-960"
             ref="modalContentRef">
-            <div class="mb-6 h-[92px] border-b border-zinc-100 border-opacity-20 flex flex-row relative">
+            <div class="mb-6 h-92px border-b border-zinc-100 border-opacity-20 flex flex-row relative">
                 <slot name="header"></slot>
                 <p class="text-white text-2xl font-medium leading-9 text-center mx-auto my-auto">{{ title }}
                 </p>

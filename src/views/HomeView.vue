@@ -10,7 +10,7 @@
   <AuthModals />
   <div :class="modalStore.getModalActiveState ? 'h-screen' : ''">
     <section class="flex flex-col items-center lg:mt-64 mt-36">
-      <p class="lg:text-6xl text-2xl text-center text-header font-bold leading-9 lg:leading-[90px] font-title">Find any
+      <p class="lg:text-6xl text-2xl text-center text-header font-bold leading-9 lg:leading-90 font-title">Find any
         quote in <br>
         millions of movie lines</p>
       <ButtonRed :text="$t('auth.get_started')" class="mt-6" customClass="px-3 py-2 lg:px-6" @click="getStarted()" />

@@ -12,7 +12,7 @@
                 <InputMovie name="content_en" :placeholder="quote.content_en" :disabled="true" />
                 <InputMovie name="content_ka" :placeholder="quote.content_ka" :disabled="true" lang="ქარ" />
 
-                <img :src="quoteThumbnail" alt="thumbnail" class="w-[897px] lg:h-[513px] h-[302px] rounded-lg mt-2" />
+                <img :src="quoteThumbnail" alt="thumbnail" class="w-900 lg:h-513px h-302px rounded-lg mt-2" />
 
                 <div class="inline-flex gap-8 mt-4 mb-2">
                     <div class="inline-flex gap-4">
@@ -28,9 +28,9 @@
                 <CommentCard :comments="quote.comments" v-if="isLoaded" />
 
                 <div class="inline-flex gap-6 mb-8">
-                    <img :src="profileImageUrl" class="rounded-full w-[52px] h-[52px]" />
+                    <img :src="profileImageUrl" class="rounded-full w-52px h-52px" />
                     <input type="text" :placeholder="$t('quotes.write_a_comment')" v-model="commentText" name="comment"
-                        class="pl-7 py-3 h-[52px] w-full bg-zinc-800 text-white outline-none rounded-lg placeholder:text-gray-300 text-xl font-normal leading-loose"
+                        class="pl-7 py-3 h-52px w-full bg-zinc-800 text-white outline-none rounded-lg placeholder:text-gray-300 text-xl font-normal leading-loose"
                         @keyup.enter="createComment($event.target.value)">
                 </div>
             </div>
