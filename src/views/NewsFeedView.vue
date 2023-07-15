@@ -6,7 +6,7 @@
                 <div class="h-[52px] px-4 inline-flex gap-4 lg:bg-zinc-800 rounded-lg mt-4 lg:mt-0 cursor-pointer whitespace-nowrap"
                     :class="{ 'w-max': showSearch, 'w-5/6': !showSearch }" @click="useModalStore().toggleQuoteAddModal">
                     <IconPencilSquare class="my-auto" />
-                    <p class="text-white text-[20px] font-normal my-auto leading-loose">{{ $t('quotes.write_new_quote') }}
+                    <p class="text-white text-xl font-normal my-auto leading-loose">{{ $t('quotes.write_new_quote') }}
                     </p>
                 </div>
                 <div class="hidden lg:block my-auto" :class="{ 'lg:w-3/4': showSearch }">
@@ -19,7 +19,7 @@
 
                     <div v-if="!showSearch" class="flex flex-row gap-4" @click="showSearch = true">
                         <IconSearch class="my-auto " />
-                        <p class="text-gray-300 text-[20px] font-normal leading-loose my-auto">
+                        <p class="text-gray-300 text-xl font-normal leading-loose my-auto">
                             {{ $t('feed.search_by') }}
                         </p>
                     </div>

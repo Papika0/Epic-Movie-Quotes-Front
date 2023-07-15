@@ -2,8 +2,8 @@
     <div class="flex flex-col items-center justify-center h-screen">
         <div class="flex flex-col items-center justify-center">
             <IconErrorGhost class="w-1/2 h-1/2" />
-            <h1 class="text-white text-[47px] font-bold leading-10 mt-7 text-center">Whoops!</h1>
-            <p class="text-white text-[24px] font-medium leading-9 mt-3 text-center">{{
+            <h1 class="text-white text-5xl font-bold leading-10 mt-7 text-center">Whoops!</h1>
+            <p class="text-white text-2xl font-medium leading-9 mt-3 text-center">{{
                 $t('error.we_cant_see_the_page_youre_looking_for') }}</p>
             <ButtonRed class="rounded-lg mt-12" :text="$t('error.return_home')" @click="returnHome" />
         </div>

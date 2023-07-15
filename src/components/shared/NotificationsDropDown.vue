@@ -17,9 +17,9 @@
         <div class="pt-10 pb-14 px-8 flex flex-col lg:max-h-[812px] max-h-full lg:gap-4 gap-2 overflow-y-scroll"
             @scroll="scrolling">
             <div class="inline-flex justify-between my-auto mb-2">
-                <p class="text-white lg:text-[32px] my-auto text-xl font-medium capitalize leading-10">{{
+                <p class="text-white lg:text-3xl  my-auto text-xl font-medium capitalize leading-10">{{
                     $t('feed.notifications') }}</p>
-                <p class="text-white lg:text-[20px] my-auto text-sm font-normal underline leading-loose cursor-pointer"
+                <p class="text-white lg:text-xl my-auto text-sm font-normal underline leading-loose cursor-pointer"
                     @click="notificationStore.markAllAsRead()">
                     {{ $t('feed.mark_all_as_read') }}
                 </p>
@@ -43,20 +43,20 @@
                         <div class="inline-flex gap-3">
                             <IconQuoteSymbol class="my-auto lg:w-6 lg:h-6 w-4 h-4" v-if="notification.type == 'comment'" />
                             <IconHeartFilled class="my-auto lg:w-6 lg:h-6 w-4 h-4" v-else />
-                            <p class="text-gray-300 lg:text-[20px] font-normal lg:leading-loose w-full h-6 lg:h-min overflow-hidden"
+                            <p class="text-gray-300 lg:text-xl font-normal lg:leading-loose w-full h-6 lg:h-min overflow-hidden"
                                 v-if="notification.type == 'comment'">{{
                                     $t('feed.commented_to_your_movie_quote') }}</p>
-                            <p class="text-gray-300 lg:text-[20px] font-normal lg:leading-loose w-full h-6 lg:h-min overflow-auto"
+                            <p class="text-gray-300 lg:text-xl font-normal lg:leading-loose w-full h-6 lg:h-min overflow-auto"
                                 v-else>{{
                                     $t('feed.reacted_to_your_quote') }}</p>
                         </div>
                     </div>
 
                     <div class="flex flex-col gap-2">
-                        <p class="text-gray-300 lg:text-[20px] font-normal leading-loose">{{
+                        <p class="text-gray-300 lg:text-xl font-normal leading-loose">{{
                             notification.created }}</p>
                         <p v-show="notification.read == false"
-                            class="text-green-700 text-[20px] font-normal hidden lg:block leading-loose text-right">
+                            class="text-green-700 text-xl font-normal hidden lg:block leading-loose text-right">
                             {{
                                 $t('feed.new') }}</p>
                     </div>

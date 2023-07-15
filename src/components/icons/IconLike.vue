@@ -1,6 +1,6 @@
 <template>
     <div class="inline-flex gap-4">
-        <p class="text-white text-[20px] font-normal leading-loose">{{ likesCountRef }}</p>
+        <p class="text-white text-xl font-normal leading-loose">{{ likesCountRef }}</p>
         <svg v-if="isActive" @click.stop="handleClick" width="32" height="32" viewBox="0 0 32 32" fill="none"
             class="cursor-pointer my-auto" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_45_281)">

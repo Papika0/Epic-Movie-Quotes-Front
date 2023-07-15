@@ -32,11 +32,11 @@
                         </div>
 
                         <div class="inline-flex lg:gap-2 ">
-                            <p class="text-gray-300 text-[18px] font-bold  leading-relaxed">{{ $t('movies.director') }}:
+                            <p class="text-gray-300 text-lg font-bold  leading-relaxed">{{ $t('movies.director') }}:
                             </p>
-                            <p class="text-white text-[18px] font-medium  leading-relaxed"> {{ movie.director }}</p>
+                            <p class="text-white text-lg font-medium  leading-relaxed"> {{ movie.director }}</p>
                         </div>
-                        <p class="text-gray-300 text-[18px] leading-relaxed"> {{ movie.description }}</p>
+                        <p class="text-gray-300 text-lg leading-relaxed"> {{ movie.description }}</p>
 
                     </div>
                 </div>

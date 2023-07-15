@@ -25,13 +25,13 @@
 
         <div class="lg:flex-row flex flex-col gap-8 border-b border-zinc-100 border-opacity-20 pb-6">
             <img :src="getFullImageUrl(quote.thumbnail)" class="lg:w-[226px] h-[140px] rounded-sm object-cover" />
-            <p class="lg:max-w-[477px] max-w-[300px] text-gray-300 text-[24px] font-normal leading-9 my-auto">{{
+            <p class="lg:max-w-[477px] max-w-[300px] text-gray-300 text-2xl font-normal leading-9 my-auto">{{
                 quote.content }}</p>
         </div>
 
         <div class="inline-flex gap-8 pl-[10px]">
             <div class="inline-flex gap-4">
-                <p class="text-white text-[20px] font-normal leading-loose">{{ quote.comments_count }}</p>
+                <p class="text-white text-xl font-normal leading-loose">{{ quote.comments_count }}</p>
                 <IconComment class="my-auto" />
             </div>
             <IconLike class="my-auto" :likesCount="quote.likes_count" :liked="quote.liked_by_user" :quoteId="quote.id" />

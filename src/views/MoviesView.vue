@@ -2,7 +2,7 @@
     <LayoutFeed>
         <MovieAddModal v-if="useModalStore().showMovieAddModal" />
         <div class="flex flex-col lg:ml-[420px] mx-8">
-            <div class="text-white lg:text-[24px] font-medium leading-9 flex flex-row justify-between mt-5 lg:mt-0">
+            <div class="text-white lg:text-2xl font-medium leading-9 flex flex-row justify-between mt-5 lg:mt-0">
                 <p class="hidden lg:block">{{ $t('movies.my_list_of_movies') }} ({{ $t('movies.total') }} {{
                     useUserStore().moviesCount }})</p>
                 <div class="lg:hidden flex flex-col">
@@ -22,7 +22,7 @@
 
                     <div v-show="!showSearch" class="lg:flex flex-row gap-4 hidden" @click="showSearch = true">
                         <IconSearch class="my-auto" />
-                        <p class="text-gray-300 text-[20px] font-normal leading-loose my-auto">
+                        <p class="text-gray-300 text-xl font-normal leading-loose my-auto">
                             {{ $t('movies.search') }}
                         </p>
                     </div>

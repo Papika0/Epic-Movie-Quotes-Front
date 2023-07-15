@@ -3,7 +3,7 @@
         <div class="flex items-center cursor-pointer w-full bg-black h-[86px] px-5" @click="toggleDropdown">
             <div v-if="showPlaceholder" class="inline-flex gap-4">
                 <IconMovie class="w-8 h-8 my-auto" />
-                <p class="text-white text-[24px] leading-loose">Choose movie</p>
+                <p class="text-white text-2xl leading-loose">Choose movie</p>
             </div>
             <div v-else class="inline-flex gap-4">
                 <img :src="movieThumbnail(selectedOptionThumbnail)" class="w-[150px] h-[70px] rounded-xl object-cover" />
@@ -18,7 +18,7 @@
                 class="cursor-pointer w-full inline-flex gap-8 hover:bg-gray-500 py-2 px-4 text-white">
                 <img :src="movieThumbnail(option.thumbnail)"
                     class="lg:w-[150px] h-[70px] w-[90px] rounded-xl object-cover" />
-                <p class="my-auto text-[24px]">{{ option.label }}</p>
+                <p class="my-auto text-2xl">{{ option.label }}</p>
             </li>
         </ul>
         <ErrorMessage name="movie_id" class="pl-2 pt-1 text-red-star text-sm" />
