@@ -1,6 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { handleEmailVerification, handlePasswordResset, handleGoogleAuth, checkAuth } from '@/utils/authUtils';
-import { movieGuard , quoteGuard } from '@/router/guards.js';
+import {
+  handleEmailVerification,
+  handlePasswordResset,
+  handleGoogleAuth,
+  checkAuth
+} from '@/utils/authUtils'
+import { movieGuard, quoteGuard } from '@/router/guards.js'
 import HomeView from '@/views/HomeView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import MoviesView from '@/views/MoviesView.vue'
@@ -9,8 +14,7 @@ import QuoteDetailsView from '@/views/QuoteDetailsView.vue'
 import NewsFeedView from '@/views/NewsFeedView.vue'
 import ForbiddenView from '@/views/ForbiddenView.vue'
 import ErrorPageView from '@/views/ErrorPageView.vue'
-import { useAuthStore } from '@/store/useAuthStore';
-
+import { useAuthStore } from '@/store/useAuthStore'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -18,7 +22,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView,
+      component: HomeView
     },
     {
       path: '/email/verify/:id(.*)',
@@ -36,10 +40,10 @@ const router = createRouter({
       beforeEnter: handleGoogleAuth
     },
     {
-      path: "/profile",
-      name: "profile",
+      path: '/profile',
+      name: 'profile',
       beforeEnter: checkAuth,
-      component: ProfileView,
+      component: ProfileView
     },
     {
       path: '/movies',
@@ -48,12 +52,12 @@ const router = createRouter({
       component: MoviesView
     },
     {
-      path: "/movies/:id",
-      name: "movie-details",
+      path: '/movies/:id',
+      name: 'movie-details',
       beforeEnter: (to, from, next) => {
         checkAuth(to, from, () => {
-          movieGuard(to, from, next);
-        });
+          movieGuard(to, from, next)
+        })
       },
       component: MovieDetailsView,
       props: true
@@ -63,8 +67,8 @@ const router = createRouter({
       name: 'quote-details',
       beforeEnter: (to, from, next) => {
         checkAuth(to, from, () => {
-          quoteGuard(to, from, next);
-        });
+          quoteGuard(to, from, next)
+        })
       },
       component: QuoteDetailsView,
       props: true
@@ -73,7 +77,7 @@ const router = createRouter({
       path: '/news-feed',
       name: 'news-feed',
       beforeEnter: checkAuth,
-      component : NewsFeedView
+      component: NewsFeedView
     },
     {
       path: '/forbidden',
@@ -86,17 +90,20 @@ const router = createRouter({
       component: ErrorPageView
     }
   ]
-});
+})
 
-router.beforeEach((_,__,next) => {
-  useAuthStore().checkAuth().then(() => {
-    if (useAuthStore().isAuthenticated) {
-      useAuthStore().setIsAuthenticated(true);
-      next();
-  } else {
-      useAuthStore().setIsAuthenticated(false);
-      next();
-  }});
-});
+router.beforeEach((_, __, next) => {
+  useAuthStore()
+    .checkAuth()
+    .then(() => {
+      if (useAuthStore().isAuthenticated) {
+        useAuthStore().setIsAuthenticated(true)
+        next()
+      } else {
+        useAuthStore().setIsAuthenticated(false)
+        next()
+      }
+    })
+})
 
 export default router
