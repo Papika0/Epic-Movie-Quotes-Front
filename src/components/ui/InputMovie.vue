@@ -6,7 +6,7 @@
                 <div class="inline-flex gap-2 w-full">
                     <label class="text-gray-500 pt-1 my-auto whitespace-nowrap" :for="name" v-if="edit">{{
                         placeholder }}:</label>
-                    <input :type="textType" :name="name" v-bind="field" :disabled="disabled"
+                    <input :type="textType" :name="name" v-bind="field" :disabled="disabled" :id="name"
                         class="text-white lg:text-xl w-full font-normal lg:leading-loose bg-transparent outline-none "
                         :class="{ 'placeholder:text-white': disabled }" :placeholder="placeholder">
                 </div>

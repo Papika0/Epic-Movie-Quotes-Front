@@ -3,7 +3,7 @@
         <label :for="name" class="text-white mb-2">{{ label }} <span class="text-red-star">*</span></label>
         <div class="relative">
             <Field :name="name" :rules="rules" v-slot="{ field, meta }">
-                <input :type="inputType" :placeholder="placeholder" v-bind="field"
+                <input :type="inputType" :placeholder="placeholder" v-bind="field" :id="name"
                     class="h-10 bg-input border border-input pl-3 placeholder:text-placeholder rounded-md w-full outline-none focus:shadow-input"
                     :class="(meta.touched && !meta.valid) || apiError ? 'border-red-500' : (meta.touched && meta.valid ? 'border-green-500' : '')">
                 <IconPasswordEye v-if="textType === 'password'"

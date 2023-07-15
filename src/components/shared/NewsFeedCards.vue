@@ -28,7 +28,7 @@
 
         <div class="inline-flex gap-6 mb-8">
             <img :src="authUserThumbnail" class="rounded-full w-[52px] h-[52px]" />
-            <input type="text" :placeholder="$t('quotes.write_a_comment')" v-model="commentText"
+            <input type="text" :placeholder="$t('quotes.write_a_comment')" v-model="commentText" name="comment"
                 class="pl-7 py-3 h-[52px] w-full bg-zinc-800 text-white outline-none rounded-lg placeholder:text-gray-300 text-[20px] font-normal leading-loose"
                 @keyup.enter="createComment(quote)">
         </div>
