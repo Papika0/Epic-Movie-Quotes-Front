@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import IconGmailLogo from '@/components/icons/IconGmailLogo.vue';
+import IconGmailLogo from '@/components/icons/input/IconGmailLogo.vue';
 
 defineProps({
     text: {

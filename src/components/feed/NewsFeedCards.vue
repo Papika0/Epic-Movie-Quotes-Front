@@ -39,7 +39,7 @@
 <script setup>
 import { ref, onBeforeMount, onMounted, computed, onBeforeUnmount } from 'vue';
 import { getQuotes } from '@/services/quotes';
-import IconComment from '@/components/icons/IconComment.vue';
+import IconComment from '@/components/icons/input/IconComment.vue';
 import IconLike from '@/components/icons/IconLike.vue';
 import CommentCard from '@/components/shared/CommentCard.vue';
 import { addComment } from '@/services/quotes.js';

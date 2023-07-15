@@ -37,7 +37,7 @@ import LayoutFeed from '@/components/layouts/LayoutFeed.vue';
 import { ref, watch } from 'vue';
 import IconPencilSquare from '@/components/icons/feed/IconPencilSquare.vue';
 import IconSearch from '@/components/icons/movie/IconSearch.vue';
-import NewsFeedCards from '@/components/shared/NewsFeedCards.vue';
+import NewsFeedCards from '@/components/feed/NewsFeedCards.vue';
 import QuoteAddNewsFeedModal from '@/components/modals/quote/QuoteAddNewsFeedModal.vue';
 import { useModalStore } from '@/store/useModalStore';
 import { useNewsFeedStore } from '@/store/useNewsFeedStore';

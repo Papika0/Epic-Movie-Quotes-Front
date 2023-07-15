@@ -30,8 +30,8 @@
 <script setup>
 import { defineProps, ref, onMounted, watch } from 'vue';
 import { Field, ErrorMessage } from 'vee-validate';
-import IconInputInvalid from '@/components/icons/IconInputInvalid.vue';
-import IconInputValid from '@/components/icons/IconInputValid.vue';
+import IconInputInvalid from '@/components/icons/input/IconInputInvalid.vue';
+import IconInputValid from '@/components/icons/input/IconInputValid.vue';
 
 
 const props = defineProps({

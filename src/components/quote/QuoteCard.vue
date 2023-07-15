@@ -42,7 +42,7 @@
   
 <script setup>
 import { defineProps, ref, onMounted } from 'vue';
-import IconComment from '@/components/icons/IconComment.vue';
+import IconComment from '@/components/icons/input/IconComment.vue';
 import IconLike from '@/components/icons/IconLike.vue';
 import IconThreeDots from '@/components/icons/IconThreeDots.vue';
 import IconEditPencil from '@/components/icons/IconEditPencil.vue';

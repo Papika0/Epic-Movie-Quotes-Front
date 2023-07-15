@@ -43,7 +43,7 @@
 import LayoutEditModal from '@/components/layouts/LayoutEditModal.vue';
 import IconEditPencil from '@/components/icons/IconEditPencil.vue';
 import IconDelete from '@/components/icons/IconDelete.vue';
-import IconComment from '@/components/icons/IconComment.vue';
+import IconComment from '@/components/icons/input/IconComment.vue';
 import IconLike from '@/components/icons/IconLike.vue';
 import CommentCard from '@/components/shared/CommentCard.vue';
 

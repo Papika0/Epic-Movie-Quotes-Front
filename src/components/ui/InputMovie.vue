@@ -27,8 +27,8 @@
 <script setup>
 import { defineProps } from 'vue';
 import { Field, ErrorMessage } from 'vee-validate';
-import IconInputInvalid from '@/components/icons/IconInputInvalid.vue';
-import IconInputValid from '@/components/icons/IconInputValid.vue';
+import IconInputInvalid from '@/components/icons/input/IconInputInvalid.vue';
+import IconInputValid from '@/components/icons/input/IconInputValid.vue';
 
 defineProps({
     placeholder: {

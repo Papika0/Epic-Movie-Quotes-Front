@@ -21,9 +21,9 @@
   
 <script setup>
 import { Field, ErrorMessage } from 'vee-validate';
-import IconPasswordEye from '@/components/icons/IconPasswordEye.vue';
-import IconInputInvalid from '@/components/icons/IconInputInvalid.vue';
-import IconInputValid from '@/components/icons/IconInputValid.vue';
+import IconPasswordEye from '@/components/icons/input/IconPasswordEye.vue';
+import IconInputInvalid from '@/components/icons/input/IconInputInvalid.vue';
+import IconInputValid from '@/components/icons/input/IconInputValid.vue';
 import { ref } from 'vue';
 
 const props = defineProps({
