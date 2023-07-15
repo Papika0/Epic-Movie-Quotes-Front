@@ -39,8 +39,8 @@ import IconPencilSquare from '@/components/icons/feed/IconPencilSquare.vue';
 import IconSearch from '@/components/icons/movie/IconSearch.vue';
 import NewsFeedCards from '@/components/shared/NewsFeedCards.vue';
 import QuoteAddNewsFeedModal from '@/components/modals/quote/QuoteAddNewsFeedModal.vue';
-import { useModalStore } from '@/stores/useModalStore';
-import { useNewsFeedStore } from '@/stores/useNewsFeedStore';
+import { useModalStore } from '@/store/useModalStore';
+import { useNewsFeedStore } from '@/store/useNewsFeedStore';
 
 const showSearch = ref(false);
 const searchQuery = ref('');

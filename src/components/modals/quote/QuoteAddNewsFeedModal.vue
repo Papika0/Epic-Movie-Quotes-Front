@@ -22,7 +22,7 @@ import ButtonRed from '@/components/ui/ButtonRed.vue';
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue';
 import { Form } from 'vee-validate';
 import { createQuote } from '@/services/quotes.js';
-import { useModalStore } from '@/stores/useModalStore';
+import { useModalStore } from '@/store/useModalStore';
 import TextareaMovie from '@/components/ui/TextareaMovie.vue';
 import MovieDropdown from '@/components/quote/MovieDropdown.vue';
 

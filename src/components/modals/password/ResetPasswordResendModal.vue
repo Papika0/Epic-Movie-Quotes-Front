@@ -17,8 +17,8 @@
 <script setup>
 import LayoutModal from '@/components/layouts/LayoutModal.vue';
 import IconExpired from '@/components/icons/IconExpired.vue';
-import { useModalStore } from '@/stores/useModalStore.js';
-import { useUserStore } from '@/stores/useUserStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
+import { useUserStore } from '@/store/useUserStore.js';
 import ButtoneRed from '@/components/ui/ButtonRed.vue';
 import { sendResetPasswordLink } from '@/services/auth/auth.js';
 

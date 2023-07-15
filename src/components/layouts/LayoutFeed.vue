@@ -37,12 +37,12 @@ import { computed, onBeforeUnmount, ref } from 'vue';
 import HeaderAuthorized from '@/components/shared/HeaderAuthorized.vue';
 import IconHouse from '@/components/icons/profile/IconHouse.vue';
 import IconMovie from '@/components/icons/profile/IconMovie.vue';
-import { useUserStore } from '@/stores/useUserStore';
-import { useModalStore } from '@/stores/useModalStore';
+import { useUserStore } from '@/store/useUserStore';
+import { useModalStore } from '@/store/useModalStore';
 import router from '@/router/index.js';
 import { useRoute } from 'vue-router';
 import { logout } from '@/services/auth/auth';
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuthStore } from '@/store/useAuthStore';
 import { onClickOutside } from '@vueuse/core';
 
 const route = useRoute();

@@ -16,7 +16,7 @@
 <script setup>
 import { defineEmits, ref } from 'vue';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
-import { useModalStore } from '@/stores/useModalStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
 import { onClickOutside } from '@vueuse/core';
 
 const emit = defineEmits(['close']);

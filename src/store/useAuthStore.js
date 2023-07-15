@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { useUserStore } from '@/stores/useUserStore.js'
+import { useUserStore } from '@/store/useUserStore.js'
 import api from '@/plugins/axios/index.js'
 
 export const useAuthStore = defineStore('useAuthStore', {

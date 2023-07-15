@@ -32,7 +32,7 @@
 
 <script setup>
 import LayoutEditModal from '@/components/layouts/LayoutEditModal.vue';
-import { useModalStore } from '@/stores/useModalStore';
+import { useModalStore } from '@/store/useModalStore';
 import { Form } from 'vee-validate';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
 import GenreDropDown from '@/components/shared/GenreDropDown.vue';

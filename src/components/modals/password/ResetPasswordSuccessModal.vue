@@ -17,7 +17,7 @@
 <script setup>
 import LayoutModal from '@/components/layouts/LayoutModal.vue';
 import IconEmailVerified from '@/components/icons/IconEmailVerified.vue';
-import { useModalStore } from '@/stores/useModalStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
 import ButtoneRed from '@/components/ui/ButtonRed.vue';
 
 const modalStore = useModalStore();

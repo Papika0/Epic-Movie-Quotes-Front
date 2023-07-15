@@ -22,7 +22,7 @@ import EmailForgotPasswordSendModal from '@/components/modals/password/EmailForg
 import ResetPasswordModal from '@/components/modals/password/ResetPasswordModal.vue';
 import ResetPasswordResendModal from '@/components/modals/password/ResetPasswordResendModal.vue';
 import ResetPasswordSuccessModal from '@/components/modals/password/ResetPasswordSuccessModal.vue';
-import { useModalStore } from '@/stores/useModalStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
 
 
 const modalStore = useModalStore();

@@ -43,8 +43,8 @@ import IconComment from '@/components/icons/IconComment.vue';
 import IconLike from '@/components/icons/IconLike.vue';
 import CommentCard from '@/components/shared/CommentCard.vue';
 import { addComment } from '@/services/quotes.js';
-import { useUserStore } from '@/stores/useUserStore';
-import { useNewsFeedStore } from '@/stores/useNewsFeedStore';
+import { useUserStore } from '@/store/useUserStore';
+import { useNewsFeedStore } from '@/store/useNewsFeedStore';
 
 const quotes = ref([]);
 const commentText = ref('');

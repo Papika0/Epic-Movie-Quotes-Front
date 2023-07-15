@@ -25,7 +25,7 @@
 
 <script setup>
 import LayoutEditModal from '@/components/layouts/LayoutEditModal.vue';
-import { useModalStore } from '@/stores/useModalStore';
+import { useModalStore } from '@/store/useModalStore';
 import { Form } from 'vee-validate';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
 import GenreDropDown from '@/components/shared/GenreDropDown.vue';
@@ -33,7 +33,7 @@ import InputMovie from '@/components/ui/InputMovie.vue';
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue';
 import TextareaMovie from '@/components/ui/TextareaMovie.vue';
 import { createMovie } from '@/services/movies.js';
-import { useMovieStore } from '@/stores/useMovieStore.js';
+import { useMovieStore } from '@/store/useMovieStore.js';
 
 const createMovieOnSubmit = async (values) => {
     await createMovie(values.name_en, values.name_ka,

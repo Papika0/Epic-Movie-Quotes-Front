@@ -45,10 +45,10 @@ import MovieAddModal from '@/components/modals/movie/MovieAddModal.vue';
 import LayoutFeed from '@/components/layouts/LayoutFeed.vue';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
 import IconSearch from '@/components/icons/movie/IconSearch.vue';
-import { useUserStore } from '@/stores/useUserStore.js';
+import { useUserStore } from '@/store/useUserStore.js';
 import MovieCard from '@/components/movie/MovieCard.vue';
-import { useMovieStore } from '@/stores/useMovieStore';
-import { useModalStore } from '@/stores/useModalStore.js';
+import { useMovieStore } from '@/store/useMovieStore';
+import { useModalStore } from '@/store/useModalStore.js';
 
 const movies = ref([]);
 const searchQuery = ref('');

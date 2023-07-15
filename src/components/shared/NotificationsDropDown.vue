@@ -73,13 +73,13 @@ import IconNotificationEclipse from '@/components/icons/header/IconNotificationE
 import IconBlackPolygon from '@/components/icons/header/IconBlackPolygon.vue';
 import IconQuoteSymbol from '@/components/icons/movie/IconQuoteSymbol.vue';
 import IconHeartFilled from '@/components/icons/header/IconHeartFilled.vue';
-import { useUserStore } from '@/stores/useUserStore';
+import { useUserStore } from '@/store/useUserStore';
 import router from '@/router/index.js';
 import instantiatePusher from "@/helpers/instantiatePusher.js";
 import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue';
 import { markAsRead } from '@/services/notifications.js';
 import { onClickOutside } from '@vueuse/core'
-import { useNotificationStore } from '@/stores/useNotificationStore';
+import { useNotificationStore } from '@/store/useNotificationStore';
 
 const notificationStore = useNotificationStore();
 const pusherActive = ref(false);

@@ -20,8 +20,8 @@
 <script setup>
 import LayoutModal from '@/components/layouts/LayoutModal.vue';
 import IconEmailSent from '@/components/icons/IconEmailSent.vue';
-import { useModalStore } from '@/stores/useModalStore.js';
-import { useUserStore } from '@/stores/useUserStore';
+import { useModalStore } from '@/store/useModalStore.js';
+import { useUserStore } from '@/store/useUserStore';
 import ButtoneRed from '@/components/ui/ButtonRed.vue';
 
 const modalStore = useModalStore();

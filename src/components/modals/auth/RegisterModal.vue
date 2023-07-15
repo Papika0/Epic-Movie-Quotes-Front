@@ -38,8 +38,8 @@
 import LayoutModal from '@/components/layouts/LayoutModal.vue';
 import { Form } from 'vee-validate';
 import { ref, computed } from 'vue';
-import { useModalStore } from '@/stores/useModalStore.js';
-import { useUserStore } from '@/stores/useUserStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
+import { useUserStore } from '@/store/useUserStore.js';
 import InputField from '@/components/ui/InputField.vue';
 import ButtoneRed from '@/components/ui/ButtonRed.vue';
 import ButtonDark from '@/components/ui/ButtonDark.vue';

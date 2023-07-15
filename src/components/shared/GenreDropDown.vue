@@ -34,7 +34,7 @@
 import { Field, ErrorMessage } from 'vee-validate';
 import IconCloseX from '@/components/icons/movie/IconCloseX.vue';
 import { onClickOutside } from '@vueuse/core';
-import { useMovieStore } from '@/stores/useMovieStore';
+import { useMovieStore } from '@/store/useMovieStore';
 import { ref, computed, defineProps, onBeforeMount } from 'vue';
 
 const props = defineProps({

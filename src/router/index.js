@@ -9,7 +9,7 @@ import QuoteDetailsView from '@/views/QuoteDetailsView.vue'
 import NewsFeedView from '@/views/NewsFeedView.vue'
 import ForbiddenView from '@/views/ForbiddenView.vue'
 import ErrorPageView from '@/views/ErrorPageView.vue'
-import { useAuthStore } from '@/stores/useAuthStore';
+import { useAuthStore } from '@/store/useAuthStore';
 
 
 const router = createRouter({

@@ -49,8 +49,8 @@ import AuthModals from '@/components/home/AuthModals.vue';
 import LanguageDropDown from '@/components/shared/LanguageDropDown.vue';
 import router from '@/router/index.js';
 
-import { useModalStore } from '@/stores/useModalStore.js';
-import { useAuthStore } from '@/stores/useAuthStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
+import { useAuthStore } from '@/store/useAuthStore.js';
 
 
 const modalStore = useModalStore();

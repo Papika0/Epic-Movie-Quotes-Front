@@ -39,8 +39,8 @@
 import LayoutModal from '@/components/layouts/LayoutModal.vue';
 import { Form, Field } from 'vee-validate';
 import { ref, computed } from 'vue';
-import { useModalStore } from '@/stores/useModalStore.js';
-import { useAuthStore } from '@/stores/useAuthStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
+import { useAuthStore } from '@/store/useAuthStore.js';
 import InputField from '@/components/ui/InputField.vue';
 import ButtoneRed from '@/components/ui/ButtonRed.vue';
 import ButtonDark from '@/components/ui/ButtonDark.vue';

@@ -76,7 +76,7 @@ import QuoteCard from '@/components/quote/QuoteCard.vue';
 
 import MovieEditModal from '@/components/modals/movie/MovieEditModal.vue';
 import { getMovieById, deleteMovie, getMovieValuesForEdit } from '@/services/movies.js';
-import { useModalStore } from '@/stores/useModalStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
 
 import router from '@/router/index.js';
 

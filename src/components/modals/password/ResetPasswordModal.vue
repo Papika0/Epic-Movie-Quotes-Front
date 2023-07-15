@@ -29,8 +29,8 @@
 <script setup>
 import LayoutModal from '@/components/layouts/LayoutModal.vue';
 import { Form } from 'vee-validate';
-import { useModalStore } from '@/stores/useModalStore.js';
-import { useUserStore } from '@/stores/useUserStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
+import { useUserStore } from '@/store/useUserStore.js';
 import IconArrowBack from '@/components/icons/IconArrowBack.vue';
 import InputField from '@/components/ui/InputField.vue';
 import ButtoneRed from '@/components/ui/ButtonRed.vue';

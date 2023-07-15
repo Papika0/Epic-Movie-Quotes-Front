@@ -26,7 +26,7 @@
 <script setup>
 import { defineEmits, ref, computed } from 'vue';
 import IconCloseX from '@/components/icons/movie/IconCloseX.vue';
-import { useUserStore } from '@/stores/useUserStore';
+import { useUserStore } from '@/store/useUserStore';
 import { onClickOutside } from '@vueuse/core';
 
 const profileImageUrl = computed(() => {

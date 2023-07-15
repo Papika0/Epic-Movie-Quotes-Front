@@ -1,6 +1,6 @@
 import { getMovieById } from '@/services/movies.js';
 import { getQuoteById } from '@/services/quotes.js';
-import { useUserStore } from '@/stores/useUserStore.js';
+import { useUserStore } from '@/store/useUserStore.js';
 
 export async function movieGuard(to, _, next) {
     try {

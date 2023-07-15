@@ -1,7 +1,7 @@
 import { verifyEmail , authGoogle } from '@/services/auth/auth.js';
-import { useModalStore } from '@/stores/useModalStore.js';
-import { useUserStore } from '@/stores/useUserStore.js';
-import { useAuthStore } from '@/stores/useAuthStore.js';
+import { useModalStore } from '@/store/useModalStore.js';
+import { useUserStore } from '@/store/useUserStore.js';
+import { useAuthStore } from '@/store/useAuthStore.js';
 
 export async function handleEmailVerification(to, from, next) {
   const veryfyLink = to.fullPath.split('?email=')[0];

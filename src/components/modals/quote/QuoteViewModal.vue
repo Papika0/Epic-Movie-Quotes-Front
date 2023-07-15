@@ -48,7 +48,7 @@ import IconLike from '@/components/icons/IconLike.vue';
 import CommentCard from '@/components/shared/CommentCard.vue';
 
 import { computed, defineProps, ref, onBeforeMount, onMounted } from 'vue';
-import { useUserStore } from '@/stores/useUserStore';
+import { useUserStore } from '@/store/useUserStore';
 import { getQuoteById, deleteQuoteById, addComment } from '@/services/quotes.js';
 
 import router from '@/router/index.js';
