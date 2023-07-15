@@ -4,7 +4,7 @@
         <div class="absolute top-0 right-0 mt-1 mr-1">
             <div class="relative flex items-center justify-center">
                 <IconNotificationEclipse class="absolute w-4 h-4 lg:w-min lg:h-min" />
-                <p class="absolute text-white text-xs">{{ notificationsCount }}</p>
+                <p class="absolute text-white text-xs lg:text-base">{{ notificationsCount }}</p>
             </div>
         </div>
     </div>

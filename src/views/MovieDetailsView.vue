@@ -11,14 +11,14 @@
                         class="lg:h-[440px] lg:w-[809px] w-[358px] h-[302px] rounded-xl border object-cover -z-50" />
 
                     <div class="flex flex-col gap-5 lg:w-2/5">
-                        <div class="flex flex-row justify-between ">
+                        <div class="flex lg:flex-row flex-col-reverse justify-between">
                             <p class="text-orange-200 text-2xl my-auto font-medium lowercase leading-9">{{ movie.name }}
                                 ({{
                                     movie.release_year }})</p>
-                            <div class="lg:flex flex-row gap-4 py-3 px-6 bg-zinc-800 rounded-lg hidden">
+                            <div class="flex flex-row gap-4 py-3 px-6 bg-zinc-800 rounded-lg w-fit">
                                 <IconEditPencil class="my-auto cursor-pointer"
                                     @click="useModalStore().toggleMovieEditModal" />
-                                <hr class=" rotate-90 border border-gray-500 w-5  my-auto">
+                                <hr class="rotate-90 border border-gray-500 w-5  my-auto">
                                 <IconDelete class="my-auto cursor-pointer" @click="movieDelete" />
                             </div>
                         </div>

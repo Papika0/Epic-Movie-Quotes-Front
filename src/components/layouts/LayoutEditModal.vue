@@ -3,12 +3,12 @@
         <div class="fixed inset-0 backdrop-filter backdrop-blur-sm z-50 bg-opacity-75 bg-outside-modal"></div>
         <div class="relative lg:max-h-[800px] max-h-screen overflow-y-scroll bg-neutral-900 lg:rounded-xl w-full z-50 max-w-[961px]"
             ref="modalContentRef">
-            <div class="mb-6 h-[92px] border-b border-zinc-100 border-opacity-20 flex flex-row">
+            <div class="mb-6 h-[92px] border-b border-zinc-100 border-opacity-20 flex flex-row relative">
                 <slot name="header"></slot>
                 <p class="text-white text-2xl font-medium leading-9 text-center mx-auto my-auto">{{ title }}
                 </p>
-                <button class="mr-8" @click="emit('close')">
-                    <IconCloseX class="w-8 h-8 relative " />
+                <button class="mr-8 absolute right-0 bottom-0 top-0" @click="emit('close')">
+                    <IconCloseX class="w-8 h-8 relative" />
                 </button>
             </div>
             <div class="px-8">
