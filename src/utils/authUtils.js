@@ -40,7 +40,7 @@ export async function handleGoogleAuth(to,_,next) {
     useAuthStore().setIsAuthenticated(true);
     next({ name: 'news-feed' });
   } catch (error) {
-    console.log(error);
+    next({ name: 'forbidden' });
   }
 }
 

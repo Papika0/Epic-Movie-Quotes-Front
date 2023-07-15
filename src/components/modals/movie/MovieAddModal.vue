@@ -33,16 +33,17 @@ import InputMovie from '@/components/ui/InputMovie.vue';
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue';
 import TextareaMovie from '@/components/ui/TextareaMovie.vue';
 import { createMovie } from '@/services/movies.js';
+import { useMovieStore } from '@/stores/useMovieStore.js';
 
 const createMovieOnSubmit = async (values) => {
     await createMovie(values.name_en, values.name_ka,
         values.genres, values.year,
         values.director_en, values.director_ka,
         values.description_en, values.description_ka,
-        values.thumbnail).then(() => {
-            window.location.reload();
+        values.thumbnail).then((res) => {
+            useMovieStore().movies.unshift(res);
+            useModalStore().toggleMovieAddModal();
         })
 };
-
 
 </script>

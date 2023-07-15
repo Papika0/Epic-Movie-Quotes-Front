@@ -22,7 +22,7 @@
         </div>
         <ul v-if="isDropdownOpen"
             class="absolute mt-3 left-0 w-full bg-neutral-900 py-2 rounded border border-gray-500 shadow-md z-50 max-h-56 overflow-y-scroll">
-            <li v-for="option in options" :key="option.id" @click.stop="selectOption(option)"
+            <li v-for="option in notSelected" :key="option.id" @click.stop="selectOption(option)"
                 class="cursor-pointer hover:bg-gray-500 py-2 px-4 text-white">
                 {{ option.label }}
             </li>
@@ -33,8 +33,8 @@
 <script setup>
 import { Field, ErrorMessage } from 'vee-validate';
 import IconCloseX from '@/components/icons/movie/IconCloseX.vue';
-import { getGenres } from '@/services/movies.js';
-
+import { onClickOutside } from '@vueuse/core';
+import { useMovieStore } from '@/stores/useMovieStore';
 import { ref, computed, defineProps, onBeforeMount } from 'vue';
 
 const props = defineProps({
@@ -51,10 +51,15 @@ const props = defineProps({
 
 const isDropdownOpen = ref(false);
 
+onClickOutside(isDropdownOpen, () => isDropdownOpen.value = false);
+
 const options = ref([]);
 
-const selected = ref([]);
+const notSelected = computed(() => {
+    return options.value.filter((option) => !selected.value.includes(option.id));
+});
 
+const selected = ref([]);
 
 props.oldValue.forEach((genre) => {
     selected.value.push(genre.id);
@@ -84,11 +89,10 @@ const deleteOption = (option) => {
 };
 
 onBeforeMount(async () => {
-    await getGenres().then((res) => {
-        res.data.forEach((genre) => {
-            options.value.push({ id: genre.id, label: genre.name });
-        });
-    });
+    if (useMovieStore().genres.length === 0) {
+        useMovieStore().getAllGenres();
+    }
+    options.value = useMovieStore().genres;
 });
 
 </script>

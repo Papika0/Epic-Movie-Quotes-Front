@@ -14,7 +14,7 @@
 
                     <div v-if="showSearch" class="flex items-center gap-4">
                         <input v-model="searchQuery" type="text" :placeholder="$t('movies.search_movie')"
-                            class="px-2 my-auto rounded-md bg-transparent outline-none focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                            class="px-2 my-auto rounded-md bg-transparent outline-none focus:outline-none " />
                         <button @click="clearSearch" class="text-gray-400 hover:text-gray-600 my-auto focus:outline-none">
                             {{ $t('movies.clear') }}
                         </button>
@@ -39,17 +39,15 @@
     </LayoutFeed>
 </template>
   
-
-  
 <script setup>
-import { ref, onMounted, computed } from 'vue';
+import { ref, onBeforeMount, computed, watch } from 'vue';
 import MovieAddModal from '@/components/modals/movie/MovieAddModal.vue';
 import LayoutFeed from '@/components/layouts/LayoutFeed.vue';
 import ButtonRed from '@/components/ui/ButtonRed.vue';
 import IconSearch from '@/components/icons/movie/IconSearch.vue';
 import { useUserStore } from '@/stores/useUserStore.js';
 import MovieCard from '@/components/movie/MovieCard.vue';
-import { getAllMovies } from '@/services/movies.js';
+import { useMovieStore } from '@/stores/useMovieStore';
 import { useModalStore } from '@/stores/useModalStore.js';
 
 const movies = ref([]);
@@ -69,13 +67,19 @@ const clearSearch = () => {
     searchQuery.value = '';
 };
 
-onMounted(async () => {
-    try {
-        const data = await getAllMovies();
-        movies.value = data;
-    } catch (error) {
-        console.error('Failed to fetch movies:', error);
+watch(() => useMovieStore().movies, (value) => {
+    if (value) {
+        movies.value = value;
     }
+});
+
+onBeforeMount(async () => {
+    if (useMovieStore().movies.length === 0) {
+        useMovieStore().getMovies().then(() => {
+            movies.value = useMovieStore().movies;
+        })
+    }
+    movies.value = useMovieStore().movies;
 });
 </script>
   
