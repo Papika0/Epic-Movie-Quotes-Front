@@ -1,8 +1,5 @@
 <template>
-  <LayoutEditModal
-    @close="useModalStore().toggleQuoteAddModal"
-    :title="$t('quotes.write_new_quote')"
-  >
+  <LayoutEditModal @close="useModalStore().toggleQuoteAddModal" :title="$t('quotes.add_quote')">
     <template v-slot:body>
       <Form class="flex flex-col gap-6" @submit="quoteAdd">
         <TextareaMovie
@@ -45,7 +42,7 @@ const quoteAdd = async (values) => {
       }
     )
   } catch (error) {
-    console.error('Failed to fetch movies:', error)
+    router.push({ name: 'forbidden' })
   }
 }
 </script>

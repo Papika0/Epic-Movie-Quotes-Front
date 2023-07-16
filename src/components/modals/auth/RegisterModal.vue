@@ -94,7 +94,7 @@ async function googleSignUp() {
         window.location.href = response.data.url
       })
       .catch((error) => {
-        console.log(error)
+        router.push({ name: 'forbidden' })
       })
   })
 }

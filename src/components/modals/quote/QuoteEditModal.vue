@@ -96,7 +96,7 @@ onBeforeMount(async () => {
     const data = await getQuoteById(props.id)
     quote.value = data
   } catch (error) {
-    console.error('Failed to fetch movies:', error)
+    router.push({ name: 'forbidden' })
   }
 })
 

@@ -108,7 +108,7 @@ const movieDelete = async () => {
     await deleteMovie(props.id)
     router.push({ name: 'movies' })
   } catch (error) {
-    console.error('Failed to fetch movies:', error)
+    router.push({ name: 'forbidden' })
   }
 }
 
@@ -119,7 +119,7 @@ onBeforeMount(async () => {
     const editData = await getMovieValuesForEdit(props.id)
     movieDataForEdit.value = editData
   } catch (error) {
-    console.error('Failed to fetch movies:', error)
+    router.push({ name: 'forbidden' })
   }
 })
 

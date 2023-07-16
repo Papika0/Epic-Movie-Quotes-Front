@@ -28,7 +28,7 @@ export default function instantiatePusher() {
               callback(null, response.data)
             })
             .catch((error) => {
-              console.log(error)
+              router.push({ name: 'forbidden' })
               callback(error)
             })
         }

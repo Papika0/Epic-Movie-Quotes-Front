@@ -104,7 +104,7 @@ onBeforeMount(async () => {
     const data = await getQuoteById(props.id)
     quote.value = data
   } catch (error) {
-    console.error('Failed to fetch quote:', error)
+    router.push({ name: 'forbidden' })
   } finally {
     isLoaded.value = true
   }
@@ -127,7 +127,6 @@ onMounted(() => {
     }
   })
   window.Echo.channel('comments').listen('CommentAdded', (data) => {
-    console.log(data.message)
     if (quote.value.id === data.message.quote_id) {
       quote.value.comments.push(data.message)
     }

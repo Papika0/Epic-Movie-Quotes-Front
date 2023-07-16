@@ -87,10 +87,9 @@ const quoteAdd = async (values) => {
       values.thumbnail,
       movie.value.id
     )
-    console.log(data)
     router.push({ name: 'movie-details', params: { id: movie.value.id } })
   } catch (error) {
-    console.error('Failed to fetch movies:', error)
+    router.push({ name: 'forbidden' })
   }
 }
 
@@ -101,7 +100,7 @@ onBeforeMount(async () => {
     const data = await getMovieById(props.id)
     movie.value = data
   } catch (error) {
-    console.error('Failed to fetch movies:', error)
+    router.push({ name: 'forbidden' })
   }
 })
 </script>
