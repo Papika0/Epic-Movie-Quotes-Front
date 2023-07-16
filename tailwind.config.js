@@ -23,6 +23,10 @@ export const theme = {
       '300': '300px',
       '800': '800px',
     },
+    maxHeight: {
+      '800': '800px',
+      '812px': '812px',
+    },
     spacing: {
       '550': '550px',
       '120': '120px',
