@@ -66,6 +66,7 @@ import ButtonDark from '@/components/ui/ButtonDark.vue'
 import api from '@/plugins/axios/index.js'
 import sanctum from '@/plugins/axios/sanctum'
 import { register } from '@/services/auth/auth.js'
+import router from '@/router/index.js'
 
 const modalStore = useModalStore()
 const userStore = useUserStore()
@@ -93,7 +94,7 @@ async function googleSignUp() {
       .then((response) => {
         window.location.href = response.data.url
       })
-      .catch((error) => {
+      .catch(() => {
         router.push({ name: 'forbidden' })
       })
   })

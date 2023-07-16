@@ -33,6 +33,7 @@ import { createQuote } from '@/services/quotes.js'
 import { useModalStore } from '@/store/useModalStore'
 import TextareaMovie from '@/components/ui/TextareaMovie.vue'
 import MovieDropdown from '@/components/quote/MovieDropdown.vue'
+import router from '@/router/index.js'
 
 const quoteAdd = async (values) => {
   try {

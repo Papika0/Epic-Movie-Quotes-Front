@@ -81,12 +81,7 @@ const closeModal = () => {
 
 const quoteAdd = async (values) => {
   try {
-    const data = await createQuote(
-      values.content_en,
-      values.content_ka,
-      values.thumbnail,
-      movie.value.id
-    )
+    await createQuote(values.content_en, values.content_ka, values.thumbnail, movie.value.id)
     router.push({ name: 'movie-details', params: { id: movie.value.id } })
   } catch (error) {
     router.push({ name: 'forbidden' })
