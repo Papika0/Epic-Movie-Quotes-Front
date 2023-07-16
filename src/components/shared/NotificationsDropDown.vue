@@ -129,11 +129,16 @@ const openModal = () => {
 }
 
 function goToQuote(id, quoteId) {
-  markAsRead(id).then((data) => {
-    notifications.value.find((notification) => {
-      return notification.id === data.notification.id
-    }).read = data.notification.read
-  })
+  if (
+    notificationStore.notifications.find((notification) => notification.id === id).read == false
+  ) {
+    notificationStore.unreadNotifications--
+    markAsRead(id).then((data) => {
+      notificationStore.notifications.find((notification) => {
+        return notification.id === data.notification.id
+      }).read = data.notification.read
+    })
+  }
   router.push({ name: 'quote-details', params: { id: quoteId, type: 'view' } })
 }
 
