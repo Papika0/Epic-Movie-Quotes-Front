@@ -88,8 +88,8 @@ async function googleSignIn() {
       .then((response) => {
         window.location.href = response.data.url
       })
-      .catch((error) => {
-        console.log(error)
+      .catch(() => {
+        router.push({ name: 'forbidden' })
       })
   })
 }

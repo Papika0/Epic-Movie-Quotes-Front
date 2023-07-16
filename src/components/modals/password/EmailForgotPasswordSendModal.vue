@@ -8,7 +8,7 @@
       <p class="text-white text-center">
         {{ $t('auth.we_have_sent_a_password_recover_instructions_to_your_email') }}
       </p>
-      <ButtoneRed :text="$t('go_to_my_email')" class="w-full mt-5" @click="RedirectToMail" />
+      <ButtoneRed :text="$t('auth.go_to_my_email')" class="w-full mt-5" @click="RedirectToMail" />
     </template>
     <template v-slot:footer>
       <p class="text-placeholder cursor-pointer mx-auto" @click="switchToLogin()">

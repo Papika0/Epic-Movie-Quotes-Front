@@ -81,16 +81,10 @@ const closeModal = () => {
 
 const quoteAdd = async (values) => {
   try {
-    const data = await createQuote(
-      values.content_en,
-      values.content_ka,
-      values.thumbnail,
-      movie.value.id
-    )
-    console.log(data)
+    await createQuote(values.content_en, values.content_ka, values.thumbnail, movie.value.id)
     router.push({ name: 'movie-details', params: { id: movie.value.id } })
   } catch (error) {
-    console.error('Failed to fetch movies:', error)
+    router.push({ name: 'forbidden' })
   }
 }
 
@@ -101,7 +95,7 @@ onBeforeMount(async () => {
     const data = await getMovieById(props.id)
     movie.value = data
   } catch (error) {
-    console.error('Failed to fetch movies:', error)
+    router.push({ name: 'forbidden' })
   }
 })
 </script>

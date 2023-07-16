@@ -1,6 +1,7 @@
 import Echo from 'laravel-echo'
 import Pusher from 'pusher-js'
 import axios from 'axios'
+import router from '@/router/index.js'
 
 export default function instantiatePusher() {
   window.Pusher = Pusher
@@ -28,7 +29,7 @@ export default function instantiatePusher() {
               callback(null, response.data)
             })
             .catch((error) => {
-              console.log(error)
+              router.push({ name: 'forbidden' })
               callback(error)
             })
         }
