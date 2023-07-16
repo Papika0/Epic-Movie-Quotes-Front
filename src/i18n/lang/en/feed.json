@@ -1,8 +1,8 @@
 {
-    "search_by": "Search by",
-    "commented_to_your_movie_quote": "Commented to your movie quote",
-    "reacted_to_your_quote" : "Reacted to your quote",
-    "new" : "New",
-    "notifications" : "Notifications",
-    "mark_all_as_read" : "Mark all as read"
+  "search_by": "Search by",
+  "commented_to_your_movie_quote": "Commented to your movie quote",
+  "reacted_to_your_quote": "Reacted to your quote",
+  "new": "New",
+  "notifications": "Notifications",
+  "mark_all_as_read": "Mark all as read"
 }

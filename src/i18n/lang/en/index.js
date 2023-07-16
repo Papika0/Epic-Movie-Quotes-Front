@@ -7,13 +7,13 @@ import feed from './feed.json'
 import error from './error.json'
 
 const en = {
-    auth,
-    texts,
-    profile,
-    movies, 
-    quotes,
-    feed,
-    error
+  auth,
+  texts,
+  profile,
+  movies,
+  quotes,
+  feed,
+  error
 }
 
-export default en;
+export default en
