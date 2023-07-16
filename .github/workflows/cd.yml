@@ -18,6 +18,6 @@ jobs:
                     cd apps
                     cd dato-papismedovi-epic-movie-quotes
                     git pull
-                    npm ci
+                    npm install
                     npm run build
                 EOF
