@@ -111,7 +111,7 @@ const toggleDropdown = (quoteId) => {
 }
 
 onMounted(() => {
-  window.Echo.channel('likes').listen('QuoteLiked', (data) => {
+  window.Echo.channel('likes').listen('QuoteLikeUpdated', (data) => {
     const quote = quotesRef.value.find((quote) => quote.id === data.message.quote_id)
     if (quote) {
       quote.likes_count = data.message.likes_count

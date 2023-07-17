@@ -121,7 +121,7 @@ const profileImageUrl = computed(() => {
 const quoteThumbnail = computed(() => import.meta.env.VITE_API_AUTH_URL + quote.value.thumbnail)
 
 onMounted(() => {
-  window.Echo.channel('likes').listen('QuoteLiked', (data) => {
+  window.Echo.channel('likes').listen('QuoteLikeUpdated', (data) => {
     if (quote.value.id === data.message.quote_id) {
       quote.value.likes_count = data.message.likes_count
     }
