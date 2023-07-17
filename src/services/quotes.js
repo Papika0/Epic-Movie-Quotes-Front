@@ -13,8 +13,8 @@ export async function getQuoteById(id) {
 export async function updateQuote(id, content_en, content_ka, thumbnail) {
   try {
     const formData = new FormData()
-    formData.append('content_en', content_en)
-    formData.append('content_ka', content_ka)
+    formData.append('content[en]', content_en)
+    formData.append('content[ka]', content_ka)
     if (thumbnail) {
       formData.append('thumbnail', thumbnail)
     }
@@ -41,8 +41,8 @@ export async function deleteQuoteById(id) {
 export async function createQuote(content_en, content_ka, thumbnail, movie_id) {
   try {
     const formData = new FormData()
-    formData.append('content_en', content_en)
-    formData.append('content_ka', content_ka)
+    formData.append('content[en]', content_en)
+    formData.append('content[ka]', content_ka)
     formData.append('thumbnail', thumbnail)
     formData.append('movie_id', movie_id)
     const quote = await api.post(`/quotes/create`, formData, {
