@@ -5,7 +5,6 @@ import {
   handleGoogleAuth,
   checkAuth
 } from '@/utils/authUtils'
-import { movieGuard, quoteGuard } from '@/router/guards.js'
 import HomeView from '@/views/HomeView.vue'
 import ProfileView from '@/views/ProfileView.vue'
 import MoviesView from '@/views/MoviesView.vue'
@@ -54,22 +53,14 @@ const router = createRouter({
     {
       path: '/movies/:id',
       name: 'movie-details',
-      beforeEnter: (to, from, next) => {
-        checkAuth(to, from, () => {
-          movieGuard(to, from, next)
-        })
-      },
+      beforeEnter: checkAuth,
       component: MovieDetailsView,
       props: true
     },
     {
       path: '/quotes/:id/:type',
       name: 'quote-details',
-      beforeEnter: (to, from, next) => {
-        checkAuth(to, from, () => {
-          quoteGuard(to, from, next)
-        })
-      },
+      beforeEnter: checkAuth,
       component: QuoteDetailsView,
       props: true
     },
@@ -93,6 +84,7 @@ const router = createRouter({
 })
 
 router.beforeEach((_, __, next) => {
+  if (useAuthStore().isAuthenticated) return next()
   useAuthStore()
     .checkAuth()
     .then(() => {
