@@ -6,14 +6,13 @@
         class="text-white lg:text-2xl font-medium leading-9 flex flex-row justify-between mt-5 lg:mt-0"
       >
         <p class="hidden lg:block">
-          {{ $t('movies.my_list_of_movies') }} ({{ $t('movies.total') }}
-          {{ useUserStore().moviesCount }})
+          {{ $t('movies.my_list_of_movies') }} ({{ $t('movies.total') }} {{ movies.length }})
         </p>
         <div class="lg:hidden flex flex-col">
           <p class="text-white text-xl font-medium leading-9">
             {{ $t('movies.my_list_of_movies') }}
           </p>
-          <p>({{ $t('movies.total') }} {{ useUserStore().moviesCount }})</p>
+          <p>({{ $t('movies.total') }} {{ movies.length }})</p>
         </div>
         <div class="flex flex-row gap-8 px lg:mr-16">
           <div v-if="showSearch" class="flex items-center gap-4">
