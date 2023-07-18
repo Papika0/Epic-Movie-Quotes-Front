@@ -17,13 +17,11 @@ import QuoteAddModal from '@/components/modals/quote/QuoteAddModal.vue'
 defineProps({
   id: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   },
   type: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   }
 })
 </script>

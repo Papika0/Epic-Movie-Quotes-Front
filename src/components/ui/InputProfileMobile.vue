@@ -45,18 +45,15 @@ import InputField from '@/components/ui/InputField.vue'
 defineProps({
   label: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   },
   name: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   },
   placeholder: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   },
   type: {
     type: String,
@@ -69,13 +66,11 @@ defineProps({
   },
   rules: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   },
   cancelEdit: {
     type: Function,
-    required: true,
-    default: () => {}
+    required: true
   },
   hasError: {
     type: Boolean,

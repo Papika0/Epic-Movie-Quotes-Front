@@ -78,8 +78,7 @@ const isLoaded = ref(false)
 const props = defineProps({
   id: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   }
 })
 

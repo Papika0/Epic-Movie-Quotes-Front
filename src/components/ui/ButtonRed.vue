@@ -20,8 +20,7 @@ import IconAddButton from '@/components/icons/movie/IconAddButton.vue'
 defineProps({
   text: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   },
   type: {
     type: String,

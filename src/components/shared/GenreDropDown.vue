@@ -61,13 +61,11 @@ import { ref, computed, defineProps, onBeforeMount } from 'vue'
 const props = defineProps({
   rules: {
     type: String,
-    default: '',
     required: true
   },
   oldValue: {
     type: Array,
-    required: false,
-    default: () => []
+    required: false
   }
 })
 

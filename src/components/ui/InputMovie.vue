@@ -65,8 +65,7 @@ defineProps({
   },
   name: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   },
   label: {
     type: Boolean,

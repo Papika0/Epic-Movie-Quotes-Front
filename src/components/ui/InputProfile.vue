@@ -28,13 +28,11 @@ defineProps({
   },
   value: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   },
   name: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   },
   textType: {
     type: String,

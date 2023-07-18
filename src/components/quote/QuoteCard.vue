@@ -74,8 +74,7 @@ import { onClickOutside } from '@vueuse/core'
 const props = defineProps({
   quotes: {
     type: Array,
-    required: true,
-    default: () => []
+    required: true
   }
 })
 

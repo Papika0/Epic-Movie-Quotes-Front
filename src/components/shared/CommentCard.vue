@@ -31,8 +31,7 @@ import { defineProps } from 'vue'
 defineProps({
   comments: {
     type: Object,
-    required: true,
-    default: () => {}
+    required: true
   }
 })
 

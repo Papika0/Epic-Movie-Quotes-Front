@@ -92,8 +92,7 @@ import router from '@/router/index.js'
 const props = defineProps({
   id: {
     type: String,
-    required: true,
-    default: ''
+    required: true
   }
 })
 
