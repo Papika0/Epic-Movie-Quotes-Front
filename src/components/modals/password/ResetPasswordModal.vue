@@ -1,5 +1,5 @@
 <template>
-  <LayoutModal @close="modalStore.toggleResetPasswordModal">
+  <ModalLayout @close="modalStore.toggleResetPasswordModal">
     <template v-slot:header>
       <h2 class="text-white lg:text-3xl text-2xl font-bold">
         {{ $t('auth.create_new_password') }}
@@ -34,18 +34,18 @@
         <span class="text-placeholder">{{ $t('auth.back_to_login') }}</span>
       </div>
     </template>
-  </LayoutModal>
+  </ModalLayout>
 </template>
 
 <script setup>
-import LayoutModal from '@/components/layouts/LayoutModal.vue'
+import ModalLayout from '@/components/layouts/ModalLayout.vue'
 import { Form } from 'vee-validate'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import IconArrowBack from '@/components/icons/IconArrowBack.vue'
 import InputField from '@/components/ui/InputField.vue'
 import ButtoneRed from '@/components/ui/ButtonRed.vue'
-import { resetPassword } from '@/services/auth/auth.js'
+import { resetPassword } from '@/services/auth.js'
 
 const modalStore = useModalStore()
 const userStore = useUserStore()

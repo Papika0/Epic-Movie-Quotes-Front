@@ -70,10 +70,12 @@ const props = defineProps({
   },
   rules: {
     type: String,
+    required: false,
     default: ''
   },
   image: {
     type: String,
+    required: false,
     default: ''
   }
 })

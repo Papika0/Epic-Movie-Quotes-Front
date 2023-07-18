@@ -53,7 +53,6 @@ import { onClickOutside } from '@vueuse/core'
 defineProps({
   rules: {
     type: String,
-    default: '',
     required: true
   }
 })

@@ -1,5 +1,5 @@
 <template>
-  <LayoutModal @close="modalStore.toggleEmailVerifiedModal" :small="true">
+  <ModalLayout @close="modalStore.toggleEmailVerifiedModal" :small="true">
     <template v-slot:header>
       <IconEmailVerified class="w-14 h-14" />
       <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.thank_you') }}</h2>
@@ -10,11 +10,11 @@
     <template v-slot:footer>
       <ButtoneRed :text="$t('auth.log_in')" class="mt-2 w-full" @click="switchToLogin" />
     </template>
-  </LayoutModal>
+  </ModalLayout>
 </template>
 
 <script setup>
-import LayoutModal from '@/components/layouts/LayoutModal.vue'
+import ModalLayout from '@/components/layouts/ModalLayout.vue'
 import IconEmailVerified from '@/components/icons/IconEmailVerified.vue'
 import { useModalStore } from '@/store/useModalStore.js'
 import ButtoneRed from '@/components/ui/ButtonRed.vue'

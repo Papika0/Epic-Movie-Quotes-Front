@@ -3,7 +3,7 @@
     <HeaderAuthorized />
     <section class="lg:mt-8">
       <div
-        class="absolute lg:ml-16 flex flex-col gap-10 lg:bg-transparent bg-neutral-900 w-4/5 pl-11 lg:pl-0 h-4/5 lg:w-fit lg:h-fit z-50 lg:flex"
+        class="absolute lg:ml-16 flex flex-col gap-10 lg:bg-transparent bg-neutral-900 w-4/5 pl-11 lg:pl-0 h-4/5 lg:w-fit lg:h-fit lg:flex"
         ref="burger"
         :class="{ hidden: !useModalStore().showBurgerMenu }"
       >
@@ -11,7 +11,13 @@
           <img
             :src="profileImageUrl"
             class="rounded-full my-auto lg:w-60 lg:h-60 h-10 w-10 border-2 border-red-button"
+            v-if="profileImageUrl"
           />
+          <div class="lg:w-60 lg:h-60 h-10 w-10 rounded-full bg-red-800 justify-center flex" v-else>
+            <p class="text-white lg:text-2xl font-normal leading-loose flex my-auto">
+              {{ useUserStore().user?.username[0].toUpperCase() }}
+            </p>
+          </div>
           <div>
             <p class="text-white lg:text-2xl text-xl">{{ useUserStore().user?.username }}</p>
             <p class="text-light-cyan text-sm lg:text-base cursor-pointer" @click="editProfile">
@@ -49,7 +55,7 @@ import { useUserStore } from '@/store/useUserStore'
 import { useModalStore } from '@/store/useModalStore'
 import router from '@/router/index.js'
 import { useRoute } from 'vue-router'
-import { logout } from '@/services/auth/auth'
+import { logout } from '@/services/auth'
 import { useAuthStore } from '@/store/useAuthStore'
 import { onClickOutside } from '@vueuse/core'
 

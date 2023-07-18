@@ -1,5 +1,5 @@
 <template>
-  <LayoutEditModal @close="useModalStore().toggleMovieEditModal" :title="$t('movies.edit_movie')">
+  <ModalEditLayout @close="useModalStore().toggleMovieEditModal" :title="$t('movies.edit_movie')">
     <template v-slot:body>
       <Form class="flex flex-col gap-6" @submit="editMovieOnSubmit">
         <InputMovie
@@ -66,11 +66,11 @@
         <ButtonRed type="submit" :text="$t('movies.edit_movie')" class="mb-12 mt-4" />
       </Form>
     </template>
-  </LayoutEditModal>
+  </ModalEditLayout>
 </template>
 
 <script setup>
-import LayoutEditModal from '@/components/layouts/LayoutEditModal.vue'
+import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
 import { useModalStore } from '@/store/useModalStore'
 import { Form } from 'vee-validate'
 import ButtonRed from '@/components/ui/ButtonRed.vue'

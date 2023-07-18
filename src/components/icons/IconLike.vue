@@ -80,7 +80,8 @@ const props = defineProps({
   },
   liked: {
     type: Boolean,
-    required: false
+    required: false,
+    default: false
   },
   quoteId: {
     type: Number,

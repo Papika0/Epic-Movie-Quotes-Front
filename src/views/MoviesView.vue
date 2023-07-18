@@ -1,19 +1,18 @@
 <template>
-  <LayoutFeed>
+  <FeedLayout>
     <MovieAddModal v-if="useModalStore().showMovieAddModal" />
     <div class="flex flex-col lg:ml-420px mx-8">
       <div
         class="text-white lg:text-2xl font-medium leading-9 flex flex-row justify-between mt-5 lg:mt-0"
       >
         <p class="hidden lg:block">
-          {{ $t('movies.my_list_of_movies') }} ({{ $t('movies.total') }}
-          {{ useUserStore().moviesCount }})
+          {{ $t('movies.my_list_of_movies') }} ({{ $t('movies.total') }} {{ movies.length }})
         </p>
         <div class="lg:hidden flex flex-col">
           <p class="text-white text-xl font-medium leading-9">
             {{ $t('movies.my_list_of_movies') }}
           </p>
-          <p>({{ $t('movies.total') }} {{ useUserStore().moviesCount }})</p>
+          <p>({{ $t('movies.total') }} {{ movies.length }})</p>
         </div>
         <div class="flex flex-row gap-8 px lg:mr-16">
           <div v-if="showSearch" class="flex items-center gap-4">
@@ -55,16 +54,15 @@
         <MovieCard v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
       </div>
     </div>
-  </LayoutFeed>
+  </FeedLayout>
 </template>
 
 <script setup>
 import { ref, onBeforeMount, computed, watch } from 'vue'
 import MovieAddModal from '@/components/modals/movie/MovieAddModal.vue'
-import LayoutFeed from '@/components/layouts/LayoutFeed.vue'
+import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import ButtonRed from '@/components/ui/ButtonRed.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'
-import { useUserStore } from '@/store/useUserStore.js'
 import MovieCard from '@/components/movie/MovieCard.vue'
 import { useMovieStore } from '@/store/useMovieStore'
 import { useModalStore } from '@/store/useModalStore.js'

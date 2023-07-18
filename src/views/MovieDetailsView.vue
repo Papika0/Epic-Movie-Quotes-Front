@@ -1,6 +1,6 @@
 <template>
-  <LayoutFeed>
-    <MovieEditModal v-if="useModalStore().showMovieEditModal" :movie="movieDataForEdit" />
+  <FeedLayout>
+    <MovieEditModal v-if="useModalStore().showMovieEditModal" :movie="movie" />
     <div class="flex flex-col lg:ml-420px">
       <p class="text-white text-2xl font-medium leading-9 hidden lg:block">
         {{ $t('movies.movie_description') }}
@@ -72,19 +72,19 @@
         <QuoteCard :quotes="movie.quotes" v-if="movie.quotes" />
       </div>
     </div>
-  </LayoutFeed>
+  </FeedLayout>
 </template>
 
 <script setup>
 import { ref, onBeforeMount, computed, defineProps } from 'vue'
 import IconEditPencil from '@/components/icons/IconEditPencil.vue'
 import IconDelete from '@/components/icons/IconDelete.vue'
-import LayoutFeed from '@/components/layouts/LayoutFeed.vue'
+import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import ButtonRed from '@/components/ui/ButtonRed.vue'
 import QuoteCard from '@/components/quote/QuoteCard.vue'
 
 import MovieEditModal from '@/components/modals/movie/MovieEditModal.vue'
-import { getMovieById, deleteMovie, getMovieValuesForEdit } from '@/services/movies.js'
+import { getMovieById, deleteMovie } from '@/services/movies.js'
 import { useModalStore } from '@/store/useModalStore.js'
 
 import router from '@/router/index.js'
@@ -97,7 +97,6 @@ const props = defineProps({
 })
 
 const movie = ref([])
-const movieDataForEdit = ref([])
 
 const addQuote = () => {
   router.push({ name: 'quote-details', params: { id: props.id, type: 'add' } })
@@ -116,8 +115,6 @@ onBeforeMount(async () => {
   try {
     const data = await getMovieById(props.id)
     movie.value = data
-    const editData = await getMovieValuesForEdit(props.id)
-    movieDataForEdit.value = editData
   } catch (error) {
     router.push({ name: 'forbidden' })
   }

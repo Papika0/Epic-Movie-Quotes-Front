@@ -23,7 +23,8 @@ import { defineProps, defineEmits } from 'vue'
 defineProps({
   label: {
     type: String,
-    required: false
+    required: false,
+    default: ''
   },
   value: {
     type: String,

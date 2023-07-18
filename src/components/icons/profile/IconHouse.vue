@@ -20,6 +20,7 @@ import { defineProps } from 'vue'
 defineProps({
   isNewsFeedRoute: {
     type: Boolean,
+    required: false,
     default: false
   }
 })

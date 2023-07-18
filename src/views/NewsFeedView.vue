@@ -1,5 +1,5 @@
 <template>
-  <LayoutFeed>
+  <FeedLayout>
     <QuoteAddNewsFeedModal v-if="useModalStore().showQuoteAddModal" />
     <div class="flex flex-col gap-12 lg:w-938 mx-auto mb-48">
       <div class="inline-flex gap-6 -mb-6 w-full">
@@ -40,11 +40,11 @@
       </div>
       <NewsFeedCards />
     </div>
-  </LayoutFeed>
+  </FeedLayout>
 </template>
 
 <script setup>
-import LayoutFeed from '@/components/layouts/LayoutFeed.vue'
+import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import { ref, watch } from 'vue'
 import IconPencilSquare from '@/components/icons/feed/IconPencilSquare.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'

@@ -6,7 +6,13 @@
           :src="userThumbnail(comment)"
           alt="thumbnail"
           class="w-52px h-52px rounded-full my-auto"
+          v-if="comment.user.thumbnail"
         />
+        <div class="w-52px h-52px rounded-full bg-red-800 justify-center flex" v-else>
+          <p class="text-white text-xl font-normal leading-loose flex my-auto">
+            {{ comment.user.username[0].toUpperCase() }}
+          </p>
+        </div>
         <p class="text-white text-xl font-medium leading-loose my-auto">
           {{ comment.user.username }}
         </p>

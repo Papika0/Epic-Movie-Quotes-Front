@@ -69,15 +69,16 @@ const props = defineProps({
   },
   lang: {
     type: String,
+    required: false,
     default: 'Eng'
   },
   rules: {
     type: String,
-    default: '',
     required: true
   },
   edit: {
     type: Boolean,
+    required: false,
     default: false
   },
   oldValue: {

@@ -1,5 +1,5 @@
 <template>
-  <LayoutModal @close="modalStore.toggleLoginModal">
+  <ModalLayout @close="modalStore.toggleLoginModal">
     <template v-slot:header>
       <h2 class="text-white lg:text-3xl text-2xl font-bold">
         {{ $t('auth.log_in_to_your_account') }}
@@ -56,11 +56,11 @@
         >
       </div>
     </template>
-  </LayoutModal>
+  </ModalLayout>
 </template>
 
 <script setup>
-import LayoutModal from '@/components/layouts/LayoutModal.vue'
+import ModalLayout from '@/components/layouts/ModalLayout.vue'
 import { Form, Field } from 'vee-validate'
 import { ref, computed } from 'vue'
 import { useModalStore } from '@/store/useModalStore.js'
@@ -68,7 +68,7 @@ import { useAuthStore } from '@/store/useAuthStore.js'
 import InputField from '@/components/ui/InputField.vue'
 import ButtoneRed from '@/components/ui/ButtonRed.vue'
 import ButtonDark from '@/components/ui/ButtonDark.vue'
-import { login } from '@/services/auth/auth.js'
+import { login } from '@/services/auth.js'
 import api from '@/plugins/axios/index.js'
 import sanctum from '@/plugins/axios/sanctum'
 import router from '@/router/index.js'

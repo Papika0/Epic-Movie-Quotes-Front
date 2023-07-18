@@ -27,6 +27,7 @@ import { defineProps } from 'vue'
 defineProps({
   isMovieRoute: {
     type: Boolean,
+    required: false,
     default: false
   }
 })

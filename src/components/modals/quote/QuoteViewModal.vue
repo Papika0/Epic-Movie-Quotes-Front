@@ -1,5 +1,5 @@
 <template>
-  <LayoutEditModal @close="closeModal" :title="$t('quotes.view_quote')">
+  <ModalEditLayout @close="closeModal" :title="$t('quotes.view_quote')">
     <template v-slot:header>
       <div class="flex flex-row lg:gap-4 gap-1 absolute mt-9">
         <IconEditPencil class="my-auto cursor-pointer lg:ml-10 ml-2" @click="editQuote" />
@@ -36,7 +36,12 @@
         <CommentCard :comments="quote.comments" v-if="isLoaded" />
 
         <div class="inline-flex gap-6 mb-8">
-          <img :src="profileImageUrl" class="rounded-full w-52px h-52px" />
+          <img :src="profileImageUrl" class="rounded-full w-52px h-52px" v-if="profileImageUrl" />
+          <div class="w-52px h-52px rounded-full bg-red-800 justify-center flex" v-else>
+            <p class="text-white lg:text-2xl font-normal leading-loose flex my-auto">
+              {{ useUserStore().user?.username[0].toUpperCase() }}
+            </p>
+          </div>
           <input
             type="text"
             :placeholder="$t('quotes.write_a_comment')"
@@ -48,11 +53,11 @@
         </div>
       </div>
     </template>
-  </LayoutEditModal>
+  </ModalEditLayout>
 </template>
 
 <script setup>
-import LayoutEditModal from '@/components/layouts/LayoutEditModal.vue'
+import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
 import IconEditPencil from '@/components/icons/IconEditPencil.vue'
 import IconDelete from '@/components/icons/IconDelete.vue'
 import IconComment from '@/components/icons/input/IconComment.vue'
@@ -121,7 +126,7 @@ const profileImageUrl = computed(() => {
 const quoteThumbnail = computed(() => import.meta.env.VITE_API_AUTH_URL + quote.value.thumbnail)
 
 onMounted(() => {
-  window.Echo.channel('likes').listen('QuoteLiked', (data) => {
+  window.Echo.channel('likes').listen('QuoteLikeUpdated', (data) => {
     if (quote.value.id === data.message.quote_id) {
       quote.value.likes_count = data.message.likes_count
     }

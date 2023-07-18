@@ -57,10 +57,12 @@ defineProps({
   },
   type: {
     type: String,
+    required: false,
     default: 'text'
   },
   apiError: {
-    required: false
+    required: false,
+    default: ''
   },
   rules: {
     type: String,
@@ -72,7 +74,8 @@ defineProps({
   },
   hasError: {
     type: Boolean,
-    required: false
+    required: false,
+    default: false
   }
 })
 </script>

@@ -1,5 +1,7 @@
 <template>
-  <div class="flex flex-col gap-4 lg:ml-60 ml-5 lg:pt-96 pt-52">
+  <div class="absolute bg-top-shadow w-screen min-h-screen"></div>
+  <div class="absolute bg-left-shadow w-screen min-h-screen"></div>
+  <div class="absolute flex flex-col gap-4 lg:ml-60 ml-5 lg:pt-96 pt-52">
     <div class="flex flex-row gap-4">
       <hr class="text-white lg:w-14 w-4 lg:border-2 border-white lg:mt-6 mt-4" />
       <p

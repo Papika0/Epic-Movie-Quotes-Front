@@ -1,12 +1,21 @@
 <template>
-  <LayoutFeed>
+  <EmailSendModal
+    v-if="useModalStore().showEmailSentModal"
+    @close="useModalStore().toggleEmailSentModal"
+  />
+  <FeedLayout>
     <IconBackArrow class="my-auto absolute ml-8 mt-3 lg:hidden" @click="goBack" />
     <p class="text-white text-2xl ml-550 mb-32 hidden lg:block">{{ $t('profile.my_profile') }}</p>
     <div class="mx-auto max-w-5xl">
       <div
         class="absolute w-44 h-50 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 lg:flex flex-col gap-2 hidden"
       >
-        <img :src="profileImageUrl" class="rounded-full w-44 h-44" />
+        <img :src="profileImageUrl" class="rounded-full w-44 h-44" v-if="profileImageUrl" />
+        <div class="w-44 h-44 rounded-full bg-red-800 justify-center flex" v-else>
+          <p class="text-white text-6xl font-normal leading-loose flex my-auto">
+            {{ useUserStore().user?.username[0].toUpperCase() }}
+          </p>
+        </div>
         <button class="text-white text-xl" @click="$refs.fileInputRef.click()">
           {{ $t('profile.upload_new_photo') }}
         </button>
@@ -69,7 +78,12 @@
             class="lg:pt-48 mt-16 pt-0 lg:mt-0 pb-36 flex flex-col gap-10 max-w-xl mx-auto mb-4 lg:mb-0"
           >
             <div class="w-44 h-50 flex flex-col gap-2 mx-auto lg:hidden mt-5">
-              <img :src="profileImageUrl" class="rounded-full w-44 h-44" />
+              <img :src="profileImageUrl" class="rounded-full w-44 h-44" v-if="profileImageUrl" />
+              <div class="w-44 h-44 rounded-full bg-red-800 justify-center flex" v-else>
+                <p class="text-white text-6xl font-normal leading-loose flex my-auto">
+                  {{ useUserStore().user?.username[0].toUpperCase() }}
+                </p>
+              </div>
               <button type="button" class="text-white text-xl" @click="$refs.fileInputRef.click()">
                 {{ $t('profile.upload_new_photo') }}
               </button>
@@ -181,7 +195,7 @@
       </div>
       <IconClosePopUp class="my-auto cursor-pointer" @click="closePopup" />
     </div>
-  </LayoutFeed>
+  </FeedLayout>
 </template>
 
 <script setup>
@@ -189,7 +203,7 @@ import { ref, computed } from 'vue'
 import ConfirmProfileEditModal from '@/components/modals/ConfirmProfileEditModal.vue'
 import InputProfileMobile from '@/components/ui/InputProfileMobile.vue'
 import { Form } from 'vee-validate'
-import LayoutFeed from '@/components/layouts/LayoutFeed.vue'
+import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import IconBackArrow from '@/components/icons/header/IconBackArrow.vue'
 import ButtonRed from '@/components/ui/ButtonRed.vue'
 import InputProfile from '@/components/ui/InputProfile.vue'
@@ -197,7 +211,8 @@ import InputField from '@/components/ui/InputField.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
 import IconClosePopUp from '@/components/icons/profile/IconClosePopUp.vue'
 import api from '@/plugins/axios/index.js'
-import { updateProfile } from '@/services/auth/auth.js'
+import EmailSendModal from '@/components/modals/verification/EmailSendModal.vue'
+import { updateProfile } from '@/services/auth.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import { useModalStore } from '@/store/useModalStore.js'
 
@@ -269,10 +284,15 @@ function handleSaveChanges(values) {
       .then((response) => {
         useUserStore().setUser(response.data.user)
         closeEdit()
-        showPopup.value = true
-        setTimeout(() => {
-          showPopup.value = false
-        }, 15000)
+        if (values.email) {
+          useModalStore().toggleEmailSentModal()
+          useUserStore().email = values.email
+        } else {
+          showPopup.value = true
+          setTimeout(() => {
+            showPopup.value = false
+          }, 15000)
+        }
         if (useModalStore().showProfileModal) {
           useModalStore().toggleProfileModal()
         }

@@ -5,7 +5,16 @@
     class="bg-neutral-900 rounded-xl flex flex-col gap-6 px-6"
   >
     <div class="inline-flex gap-4 mt-6">
-      <img class="w-52px h-52px rounded-full" :src="profileImage(quote.user.thumbnail)" />
+      <img
+        class="w-52px h-52px rounded-full"
+        :src="profileImage(quote.user.thumbnail)"
+        v-if="quote.user.thumbnail"
+      />
+      <div class="w-52px h-52px rounded-full bg-red-800" v-else>
+        <p class="text-white text-xl font-normal leading-loose my-auto">
+          {{ quote.user.username[0].toUpperCase() }}
+        </p>
+      </div>
       <p class="text-white text-xl font-normal leading-loose my-auto">{{ quote.user.username }}</p>
     </div>
 
@@ -37,7 +46,12 @@
     <CommentCard :comments="quote.comments" />
 
     <div class="inline-flex gap-6 mb-8">
-      <img :src="authUserThumbnail" class="rounded-full w-52px h-52px" />
+      <img :src="authUserThumbnail" class="rounded-full w-52px h-52px" v-if="authUserThumbnail" />
+      <div class="w-52px h-52px rounded-full bg-red-800 justify-center flex" v-else>
+        <p class="text-white text-xl font-normal leading-loose flex my-auto">
+          {{ useUserStore().user.username[0].toUpperCase() }}
+        </p>
+      </div>
       <input
         type="text"
         :placeholder="$t('quotes.write_a_comment')"
@@ -126,7 +140,7 @@ onBeforeMount(async () => {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
-  window.Echo.channel('likes').listen('QuoteLiked', (data) => {
+  window.Echo.channel('likes').listen('QuoteLikeUpdated', (data) => {
     const quote = quotes.value.find((quote) => quote.id === data.message.quote_id)
     if (quote) {
       quote.likes_count = data.message.likes_count

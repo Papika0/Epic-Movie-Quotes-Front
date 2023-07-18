@@ -4,8 +4,7 @@ export const useUserStore = defineStore('useUserStore', {
   state: () => ({
     email: '',
     token: '',
-    user: {},
-    moviesCount: 0
+    user: {}
   }),
   actions: {
     setEmail(email) {
@@ -16,9 +15,6 @@ export const useUserStore = defineStore('useUserStore', {
     },
     setUser(user) {
       this.user = user
-    },
-    setMoviesCount(count) {
-      this.moviesCount = count
     }
   },
   getters: {
