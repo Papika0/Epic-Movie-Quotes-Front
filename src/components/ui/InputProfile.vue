@@ -23,15 +23,18 @@ import { defineProps, defineEmits } from 'vue'
 defineProps({
   label: {
     type: String,
-    required: false
+    required: false,
+    default: ''
   },
   value: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   },
   name: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   },
   textType: {
     type: String,

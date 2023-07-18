@@ -52,7 +52,8 @@ const profileImageUrl = computed(() => {
 defineProps({
   title: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   }
 })
 

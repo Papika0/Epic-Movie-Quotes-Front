@@ -49,15 +49,18 @@ import { ref } from 'vue'
 const props = defineProps({
   label: {
     type: String,
-    required: false
+    required: false,
+    default: ''
   },
   placeholder: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   },
   name: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   },
   textType: {
     type: String,

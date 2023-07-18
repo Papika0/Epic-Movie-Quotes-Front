@@ -15,7 +15,8 @@ import IconGmailLogo from '@/components/icons/input/IconGmailLogo.vue'
 defineProps({
   text: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   },
   gmail: {
     type: Boolean,

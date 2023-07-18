@@ -69,7 +69,8 @@ import TextareaMovie from '@/components/ui/TextareaMovie.vue'
 const props = defineProps({
   id: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   }
 })
 

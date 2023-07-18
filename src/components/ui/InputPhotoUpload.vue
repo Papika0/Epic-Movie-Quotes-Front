@@ -66,7 +66,8 @@ import IconMovieUpload from '@/components/icons/movie/IconMovieUpload.vue'
 const props = defineProps({
   name: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   },
   rules: {
     type: String,

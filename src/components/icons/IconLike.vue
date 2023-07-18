@@ -76,15 +76,18 @@ import { likeQuote, dislikeQuote } from '@/services/quotes.js'
 const props = defineProps({
   likesCount: {
     type: Number,
-    required: true
+    required: true,
+    default: 0
   },
   liked: {
     type: Boolean,
-    required: false
+    required: false,
+    default: false
   },
   quoteId: {
     type: Number,
-    required: true
+    required: true,
+    default: 0
   }
 })
 

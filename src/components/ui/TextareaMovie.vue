@@ -61,11 +61,13 @@ import IconInputValid from '@/components/icons/input/IconInputValid.vue'
 const props = defineProps({
   placeholder: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   },
   name: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   },
   lang: {
     type: String,

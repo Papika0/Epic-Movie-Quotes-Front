@@ -59,11 +59,13 @@ import IconInputValid from '@/components/icons/input/IconInputValid.vue'
 
 defineProps({
   placeholder: {
-    type: String
+    type: String,
+    default: ''
   },
   name: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   },
   label: {
     type: Boolean,

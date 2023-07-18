@@ -84,7 +84,8 @@ import { updateMovie } from '@/services/movies'
 const props = defineProps({
   movie: {
     type: Object,
-    required: true
+    required: true,
+    default: () => {}
   }
 })
 

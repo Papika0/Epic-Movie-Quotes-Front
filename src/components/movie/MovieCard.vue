@@ -27,7 +27,8 @@ import IconQuoteSymbol from '@/components/icons/movie/IconQuoteSymbol.vue'
 const props = defineProps({
   movie: {
     type: Object,
-    required: true
+    required: true,
+    default: () => {}
   }
 })
 

@@ -16,7 +16,8 @@
 defineProps({
   movie: {
     type: String,
-    required: true
+    required: true,
+    default: ''
   }
 })
 </script>
