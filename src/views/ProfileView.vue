@@ -6,7 +6,12 @@
       <div
         class="absolute w-44 h-50 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 lg:flex flex-col gap-2 hidden"
       >
-        <img :src="profileImageUrl" class="rounded-full w-44 h-44" />
+        <img :src="profileImageUrl" class="rounded-full w-44 h-44" v-if="profileImageUrl" />
+        <div class="w-44 h-44 rounded-full bg-red-800 justify-center flex" v-else>
+          <p class="text-white text-6xl font-normal leading-loose flex my-auto">
+            {{ useUserStore().user?.username[0].toUpperCase() }}
+          </p>
+        </div>
         <button class="text-white text-xl" @click="$refs.fileInputRef.click()">
           {{ $t('profile.upload_new_photo') }}
         </button>
@@ -69,7 +74,12 @@
             class="lg:pt-48 mt-16 pt-0 lg:mt-0 pb-36 flex flex-col gap-10 max-w-xl mx-auto mb-4 lg:mb-0"
           >
             <div class="w-44 h-50 flex flex-col gap-2 mx-auto lg:hidden mt-5">
-              <img :src="profileImageUrl" class="rounded-full w-44 h-44" />
+              <img :src="profileImageUrl" class="rounded-full w-44 h-44" v-if="profileImageUrl" />
+              <div class="w-44 h-44 rounded-full bg-red-800 justify-center flex" v-else>
+                <p class="text-white text-6xl font-normal leading-loose flex my-auto">
+                  {{ useUserStore().user?.username[0].toUpperCase() }}
+                </p>
+              </div>
               <button type="button" class="text-white text-xl" @click="$refs.fileInputRef.click()">
                 {{ $t('profile.upload_new_photo') }}
               </button>

@@ -36,7 +36,12 @@
         <CommentCard :comments="quote.comments" v-if="isLoaded" />
 
         <div class="inline-flex gap-6 mb-8">
-          <img :src="profileImageUrl" class="rounded-full w-52px h-52px" />
+          <img :src="profileImageUrl" class="rounded-full w-52px h-52px" v-if="profileImageUrl" />
+          <div class="w-52px h-52px rounded-full bg-red-800 justify-center flex" v-else>
+            <p class="text-white lg:text-2xl font-normal leading-loose flex my-auto">
+              {{ useUserStore().user?.username[0].toUpperCase() }}
+            </p>
+          </div>
           <input
             type="text"
             :placeholder="$t('quotes.write_a_comment')"

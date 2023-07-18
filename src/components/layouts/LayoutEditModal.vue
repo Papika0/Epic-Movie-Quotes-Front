@@ -18,7 +18,12 @@
       </div>
       <div class="px-8">
         <div class="flex flex-row gap-4 mb-7">
-          <img :src="profileImageUrl" class="rounded-full w-60 h-60" />
+          <img :src="profileImageUrl" class="rounded-full w-60 h-60" v-if="profileImageUrl" />
+          <div class="w-60 h-60 rounded-full bg-red-800 justify-center flex" v-else>
+            <p class="text-white lg:text-2xl font-normal leading-loose flex my-auto">
+              {{ useUserStore().user?.username[0].toUpperCase() }}
+            </p>
+          </div>
           <p class="text-white text-xl my-auto leading-loose">
             {{ useUserStore().user?.username }}
           </p>

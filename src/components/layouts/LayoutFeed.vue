@@ -11,7 +11,13 @@
           <img
             :src="profileImageUrl"
             class="rounded-full my-auto lg:w-60 lg:h-60 h-10 w-10 border-2 border-red-button"
+            v-if="profileImageUrl"
           />
+          <div class="lg:w-60 lg:h-60 h-10 w-10 rounded-full bg-red-800 justify-center flex" v-else>
+            <p class="text-white lg:text-2xl font-normal leading-loose flex my-auto">
+              {{ useUserStore().user?.username[0].toUpperCase() }}
+            </p>
+          </div>
           <div>
             <p class="text-white lg:text-2xl text-xl">{{ useUserStore().user?.username }}</p>
             <p class="text-light-cyan text-sm lg:text-base cursor-pointer" @click="editProfile">
