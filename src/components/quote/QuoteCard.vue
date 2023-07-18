@@ -75,7 +75,7 @@ const props = defineProps({
   quotes: {
     type: Array,
     required: true,
-    default: []
+    default: () => []
   }
 })
 
