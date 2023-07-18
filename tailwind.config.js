@@ -101,6 +101,8 @@ export const theme = {
       'home1': "url('../assets/images/home/ImageHome1.png')",
       'home2': "url('../assets/images/home/ImageHome2.png')",
       'home3': "url('../assets/images/home/ImageHome3.png')",
+      'top-shadow': "linear-gradient(180deg, #000000 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0) 100%)",
+      'left-shadow' : "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%)",
     },
     boxShadow: {
       'input': '0px 0px 0px 4px rgba(13, 110, 253, 0.25)',
