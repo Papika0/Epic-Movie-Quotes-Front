@@ -1,5 +1,5 @@
 <template>
-  <LayoutModal @close="modalStore.toggleEmailForgotPasswordModal">
+  <ModalLayout @close="modalStore.toggleEmailForgotPasswordModal">
     <template v-slot:header>
       <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.forgot_password') }}?</h2>
       <h3 class="text-placeholder text-center">
@@ -26,11 +26,11 @@
         <span class="text-placeholder">{{ $t('auth.back_to_login') }}</span>
       </div>
     </template>
-  </LayoutModal>
+  </ModalLayout>
 </template>
 
 <script setup>
-import LayoutModal from '@/components/layouts/LayoutModal.vue'
+import ModalLayout from '@/components/layouts/ModalLayout.vue'
 import { Form } from 'vee-validate'
 import { ref, computed } from 'vue'
 import { useModalStore } from '@/store/useModalStore.js'

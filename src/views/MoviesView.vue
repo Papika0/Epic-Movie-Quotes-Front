@@ -1,5 +1,5 @@
 <template>
-  <LayoutFeed>
+  <FeedLayout>
     <MovieAddModal v-if="useModalStore().showMovieAddModal" />
     <div class="flex flex-col lg:ml-420px mx-8">
       <div
@@ -54,13 +54,13 @@
         <MovieCard v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
       </div>
     </div>
-  </LayoutFeed>
+  </FeedLayout>
 </template>
 
 <script setup>
 import { ref, onBeforeMount, computed, watch } from 'vue'
 import MovieAddModal from '@/components/modals/movie/MovieAddModal.vue'
-import LayoutFeed from '@/components/layouts/LayoutFeed.vue'
+import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import ButtonRed from '@/components/ui/ButtonRed.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'
 import MovieCard from '@/components/movie/MovieCard.vue'

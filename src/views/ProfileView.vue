@@ -3,7 +3,7 @@
     v-if="useModalStore().showEmailSentModal"
     @close="useModalStore().toggleEmailSentModal"
   />
-  <LayoutFeed>
+  <FeedLayout>
     <IconBackArrow class="my-auto absolute ml-8 mt-3 lg:hidden" @click="goBack" />
     <p class="text-white text-2xl ml-550 mb-32 hidden lg:block">{{ $t('profile.my_profile') }}</p>
     <div class="mx-auto max-w-5xl">
@@ -195,7 +195,7 @@
       </div>
       <IconClosePopUp class="my-auto cursor-pointer" @click="closePopup" />
     </div>
-  </LayoutFeed>
+  </FeedLayout>
 </template>
 
 <script setup>
@@ -203,7 +203,7 @@ import { ref, computed } from 'vue'
 import ConfirmProfileEditModal from '@/components/modals/ConfirmProfileEditModal.vue'
 import InputProfileMobile from '@/components/ui/InputProfileMobile.vue'
 import { Form } from 'vee-validate'
-import LayoutFeed from '@/components/layouts/LayoutFeed.vue'
+import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import IconBackArrow from '@/components/icons/header/IconBackArrow.vue'
 import ButtonRed from '@/components/ui/ButtonRed.vue'
 import InputProfile from '@/components/ui/InputProfile.vue'

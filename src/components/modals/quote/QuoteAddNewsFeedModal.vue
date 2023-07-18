@@ -1,5 +1,5 @@
 <template>
-  <LayoutEditModal @close="useModalStore().toggleQuoteAddModal" :title="$t('quotes.add_quote')">
+  <ModalEditLayout @close="useModalStore().toggleQuoteAddModal" :title="$t('quotes.add_quote')">
     <template v-slot:body>
       <Form class="flex flex-col gap-6" @submit="quoteAdd">
         <TextareaMovie
@@ -21,11 +21,11 @@
         <ButtonRed class="w-full rounded-lg mt-6 mb-8" :text="$t('quotes.post')" type="submit" />
       </Form>
     </template>
-  </LayoutEditModal>
+  </ModalEditLayout>
 </template>
 
 <script setup>
-import LayoutEditModal from '@/components/layouts/LayoutEditModal.vue'
+import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
 import ButtonRed from '@/components/ui/ButtonRed.vue'
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue'
 import { Form } from 'vee-validate'

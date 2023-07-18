@@ -65,7 +65,8 @@ const props = defineProps({
   },
   oldValue: {
     type: Array,
-    required: false
+    required: false,
+    default: () => []
   }
 })
 

@@ -1,5 +1,5 @@
 <template>
-  <LayoutFeed>
+  <FeedLayout>
     <MovieEditModal v-if="useModalStore().showMovieEditModal" :movie="movie" />
     <div class="flex flex-col lg:ml-420px">
       <p class="text-white text-2xl font-medium leading-9 hidden lg:block">
@@ -72,14 +72,14 @@
         <QuoteCard :quotes="movie.quotes" v-if="movie.quotes" />
       </div>
     </div>
-  </LayoutFeed>
+  </FeedLayout>
 </template>
 
 <script setup>
 import { ref, onBeforeMount, computed, defineProps } from 'vue'
 import IconEditPencil from '@/components/icons/IconEditPencil.vue'
 import IconDelete from '@/components/icons/IconDelete.vue'
-import LayoutFeed from '@/components/layouts/LayoutFeed.vue'
+import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import ButtonRed from '@/components/ui/ButtonRed.vue'
 import QuoteCard from '@/components/quote/QuoteCard.vue'
 

@@ -1,5 +1,5 @@
 <template>
-  <LayoutModal @close="modalStore.toggleRegisterModal">
+  <ModalLayout @close="modalStore.toggleRegisterModal">
     <template v-slot:header>
       <h2 class="text-white lg:text-3xl text-2xl font-bold">{{ $t('auth.create_an_account') }}</h2>
       <h3 class="text-placeholder">{{ $t('auth.start_your_journey') }}</h3>
@@ -51,11 +51,11 @@
         >
       </div>
     </template>
-  </LayoutModal>
+  </ModalLayout>
 </template>
 
 <script setup>
-import LayoutModal from '@/components/layouts/LayoutModal.vue'
+import ModalLayout from '@/components/layouts/ModalLayout.vue'
 import { Form } from 'vee-validate'
 import { ref, computed } from 'vue'
 import { useModalStore } from '@/store/useModalStore.js'

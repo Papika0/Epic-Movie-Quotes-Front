@@ -1,5 +1,5 @@
 <template>
-  <LayoutEditModal @close="closeModal" :title="$t('quotes.edit_quote')">
+  <ModalEditLayout @close="closeModal" :title="$t('quotes.edit_quote')">
     <template v-slot:header>
       <div class="flex flex-row gap-2 absolute mt-9 cursor-pointer" @click="deleteQuote">
         <IconDelete class="ml-10" />
@@ -53,11 +53,11 @@
         />
       </Form>
     </template>
-  </LayoutEditModal>
+  </ModalEditLayout>
 </template>
 
 <script setup>
-import LayoutEditModal from '@/components/layouts/LayoutEditModal.vue'
+import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
 import IconDelete from '@/components/icons/IconDelete.vue'
 import IconMovieUpload from '@/components/icons/movie/IconMovieUpload.vue'
 import ButtonRed from '@/components/ui/ButtonRed.vue'
