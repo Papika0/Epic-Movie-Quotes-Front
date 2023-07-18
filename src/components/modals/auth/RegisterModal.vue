@@ -65,7 +65,7 @@ import ButtoneRed from '@/components/ui/ButtonRed.vue'
 import ButtonDark from '@/components/ui/ButtonDark.vue'
 import api from '@/plugins/axios/index.js'
 import sanctum from '@/plugins/axios/sanctum'
-import { register } from '@/services/auth/auth.js'
+import { register } from '@/services/auth.js'
 import router from '@/router/index.js'
 
 const modalStore = useModalStore()

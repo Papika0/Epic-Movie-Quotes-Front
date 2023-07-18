@@ -45,7 +45,7 @@ import { useUserStore } from '@/store/useUserStore.js'
 import IconArrowBack from '@/components/icons/IconArrowBack.vue'
 import InputField from '@/components/ui/InputField.vue'
 import ButtoneRed from '@/components/ui/ButtonRed.vue'
-import { resetPassword } from '@/services/auth/auth.js'
+import { resetPassword } from '@/services/auth.js'
 
 const modalStore = useModalStore()
 const userStore = useUserStore()

@@ -55,7 +55,7 @@ import { useUserStore } from '@/store/useUserStore'
 import { useModalStore } from '@/store/useModalStore'
 import router from '@/router/index.js'
 import { useRoute } from 'vue-router'
-import { logout } from '@/services/auth/auth'
+import { logout } from '@/services/auth'
 import { useAuthStore } from '@/store/useAuthStore'
 import { onClickOutside } from '@vueuse/core'
 

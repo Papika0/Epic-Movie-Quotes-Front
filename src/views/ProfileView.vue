@@ -207,7 +207,7 @@ import InputField from '@/components/ui/InputField.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
 import IconClosePopUp from '@/components/icons/profile/IconClosePopUp.vue'
 import api from '@/plugins/axios/index.js'
-import { updateProfile } from '@/services/auth/auth.js'
+import { updateProfile } from '@/services/auth.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import { useModalStore } from '@/store/useModalStore.js'
 

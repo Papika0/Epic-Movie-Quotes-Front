@@ -1,4 +1,4 @@
-import { verifyEmail, authGoogle } from '@/services/auth/auth.js'
+import { verifyEmail, authGoogle } from '@/services/auth.js'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import { useAuthStore } from '@/store/useAuthStore.js'
