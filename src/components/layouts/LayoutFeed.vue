@@ -3,7 +3,7 @@
     <HeaderAuthorized />
     <section class="lg:mt-8">
       <div
-        class="absolute lg:ml-16 flex flex-col gap-10 lg:bg-transparent bg-neutral-900 w-4/5 pl-11 lg:pl-0 h-4/5 lg:w-fit lg:h-fit z-50 lg:flex"
+        class="absolute lg:ml-16 flex flex-col gap-10 lg:bg-transparent bg-neutral-900 w-4/5 pl-11 lg:pl-0 h-4/5 lg:w-fit lg:h-fit lg:flex"
         ref="burger"
         :class="{ hidden: !useModalStore().showBurgerMenu }"
       >

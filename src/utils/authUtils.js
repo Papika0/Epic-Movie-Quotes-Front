@@ -7,7 +7,11 @@ export async function handleEmailVerification(to, from, next) {
   const veryfyLink = to.fullPath.split('?email=')[0]
   const email = to.fullPath.split('?email=')[1]
   try {
-    await verifyEmail(veryfyLink)
+    await verifyEmail(veryfyLink).then((res) => {
+      if (res.data.email) {
+        useUserStore().user.email = res.data.email
+      }
+    })
     if (useAuthStore().isAuthenticated) {
       next({ name: 'news-feed' })
     } else useModalStore().toggleEmailVerifiedModal()

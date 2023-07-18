@@ -1,4 +1,8 @@
 <template>
+  <EmailSendModal
+    v-if="useModalStore().showEmailSentModal"
+    @close="useModalStore().toggleEmailSentModal"
+  />
   <LayoutFeed>
     <IconBackArrow class="my-auto absolute ml-8 mt-3 lg:hidden" @click="goBack" />
     <p class="text-white text-2xl ml-550 mb-32 hidden lg:block">{{ $t('profile.my_profile') }}</p>
@@ -207,6 +211,7 @@ import InputField from '@/components/ui/InputField.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
 import IconClosePopUp from '@/components/icons/profile/IconClosePopUp.vue'
 import api from '@/plugins/axios/index.js'
+import EmailSendModal from '@/components/modals/verification/EmailSendModal.vue'
 import { updateProfile } from '@/services/auth.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import { useModalStore } from '@/store/useModalStore.js'
@@ -279,10 +284,15 @@ function handleSaveChanges(values) {
       .then((response) => {
         useUserStore().setUser(response.data.user)
         closeEdit()
-        showPopup.value = true
-        setTimeout(() => {
-          showPopup.value = false
-        }, 15000)
+        if (values.email) {
+          useModalStore().toggleEmailSentModal()
+          useUserStore().email = values.email
+        } else {
+          showPopup.value = true
+          setTimeout(() => {
+            showPopup.value = false
+          }, 15000)
+        }
         if (useModalStore().showProfileModal) {
           useModalStore().toggleProfileModal()
         }
