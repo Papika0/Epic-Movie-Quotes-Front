@@ -72,15 +72,6 @@ export async function deleteMovie(id) {
   }
 }
 
-export async function getMovieValuesForEdit(id) {
-  try {
-    const movie = await api.get(`/movies/${id}/edit`)
-    return movie.data
-  } catch (error) {
-    return router.push({ name: 'not-found' })
-  }
-}
-
 export async function updateMovie(
   id,
   name_en,
