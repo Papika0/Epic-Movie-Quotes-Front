@@ -25,14 +25,17 @@ defineProps({
   },
   type: {
     type: String,
+    required: false,
     default: 'button'
   },
   add: {
     type: Boolean,
+    required: false,
     default: false
   },
   customClass: {
     type: String,
+    required: false,
     default: 'py-2 px-6'
   }
 })

@@ -64,14 +64,17 @@ const props = defineProps({
   },
   textType: {
     type: String,
+    required: false,
     default: 'text'
   },
   rules: {
     type: String,
+    required: false,
     default: ''
   },
   apiError: {
     type: Boolean,
+    required: false,
     default: false
   }
 })

@@ -60,6 +60,7 @@ defineProps({
   },
   type: {
     type: String,
+    required: false,
     default: 'text'
   },
   apiError: {

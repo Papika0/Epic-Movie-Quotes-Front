@@ -42,6 +42,7 @@ const modalContentRef = ref(null)
 defineProps({
   small: {
     type: Boolean,
+    required: false,
     default: false
   }
 })

@@ -60,6 +60,7 @@ import IconInputValid from '@/components/icons/input/IconInputValid.vue'
 defineProps({
   placeholder: {
     type: String,
+    required: false,
     default: ''
   },
   name: {
@@ -69,30 +70,37 @@ defineProps({
   },
   label: {
     type: Boolean,
+    required: false,
     default: true
   },
   rules: {
     type: String,
+    required: false,
     default: ''
   },
   lang: {
     type: String,
+    required: false,
     default: 'Eng'
   },
   textType: {
     type: String,
+    required: false,
     default: 'text'
   },
   edit: {
     type: Boolean,
+    required: false,
     default: false
   },
   oldValue: {
     type: String,
+    required: false,
     default: ''
   },
   disabled: {
     type: Boolean,
+    required: false,
     default: false
   }
 })
