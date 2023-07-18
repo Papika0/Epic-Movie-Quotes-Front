@@ -43,7 +43,7 @@ export async function createMovie(
     formData.append('description[en]', description_en)
     formData.append('description[ka]', description_ka)
     formData.append('thumbnail', thumbnail)
-    const response = await api.post('/movies/create', formData, {
+    const response = await api.post('/movies', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -65,7 +65,7 @@ export async function getMovieById(id) {
 
 export async function deleteMovie(id) {
   try {
-    const movie = await api.delete(`/movies/${id}/delete`)
+    const movie = await api.delete(`/movies/${id}`)
     return movie
   } catch (error) {
     return router.push({ name: 'not-found' })
@@ -99,7 +99,7 @@ export async function updateMovie(
     if (thumbnail) {
       formData.append('thumbnail', thumbnail)
     }
-    const movie = await api.post(`/movies/${id}/update`, formData, {
+    const movie = await api.post(`/movies/${id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
