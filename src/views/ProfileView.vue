@@ -1,10 +1,15 @@
 <template>
-  <ModalEmailSend v-if="useModalStore().showEmailSentModal" @close="useModalStore().toggleEmailSentModal" />
+  <ModalEmailSend
+    v-if="useModalStore().showEmailSentModal"
+    @close="useModalStore().toggleEmailSentModal"
+  />
   <FeedLayout>
-    <IconBackArrow class="my-auto absolute ml-8 mt-3 lg:hidden" @click="goBack" />
+    <IconArrowBack class="my-auto absolute ml-8 mt-3 lg:hidden" @click="goBack" />
     <p class="text-white text-2xl ml-550 mb-32 hidden lg:block">{{ $t('profile.my_profile') }}</p>
     <div class="mx-auto max-w-5xl">
-      <div class="absolute w-44 h-50 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 lg:flex flex-col gap-2 hidden">
+      <div
+        class="absolute w-44 h-50 left-1/2 right-1/2 -translate-x-1/2 -translate-y-1/2 lg:flex flex-col gap-2 hidden"
+      >
         <img :src="profileImageUrl" class="rounded-full w-44 h-44" v-if="profileImageUrl" />
         <div class="w-44 h-44 rounded-full bg-red-800 justify-center flex" v-else>
           <p class="text-white text-6xl font-normal leading-loose flex my-auto">
@@ -17,30 +22,61 @@
         <input type="file" @change="handleFileUpload" ref="fileInputRef" class="hidden" />
       </div>
       <Form @submit="handleSubmit">
-        <InputProfileMobile v-if="editUsername && windowWidth < 800" :label="$t('profile.new_username')" name="username"
-          :placeholder="$t('profile.enter_new_username')" :apiError="usernameError" :hasError="Boolean(usernameError)"
-          rules="required|min:3|max:15|lowercase" :cancelEdit="() => {
-            editUsername = false
-          }
-            " />
+        <InputProfileMobile
+          v-if="editUsername && windowWidth < 800"
+          :label="$t('profile.new_username')"
+          name="username"
+          :placeholder="$t('profile.enter_new_username')"
+          :apiError="usernameError"
+          :hasError="Boolean(usernameError)"
+          rules="required|min:3|max:15|lowercase"
+          :cancelEdit="
+            () => {
+              editUsername = false
+            }
+          "
+        />
 
-        <InputProfileMobile v-if="editEmail && windowWidth < 800" :label="$t('profile.new_email')" name="email"
-          :placeholder="$t('profile.enter_new_email')" :apiError="emailError" :hasError="Boolean(emailError)"
-          rules="required|email" :cancelEdit="() => {
-            editEmail = false
-          }
-            " />
+        <InputProfileMobile
+          v-if="editEmail && windowWidth < 800"
+          :label="$t('profile.new_email')"
+          name="email"
+          :placeholder="$t('profile.enter_new_email')"
+          :apiError="emailError"
+          :hasError="Boolean(emailError)"
+          rules="required|email"
+          :cancelEdit="
+            () => {
+              editEmail = false
+            }
+          "
+        />
 
-        <InputProfileMobile v-if="editPassword && windowWidth < 800" :label="$t('profile.new_password')" name="password"
-          type="password" :placeholder="$t('profile.enter_new_password')" rules="required|min:8|max:15|lowercase"
-          :cancelEdit="() => {
-            editPassword = false
-          }
-            " />
+        <InputProfileMobile
+          v-if="editPassword && windowWidth < 800"
+          :label="$t('profile.new_password')"
+          name="password"
+          type="password"
+          :placeholder="$t('profile.enter_new_password')"
+          rules="required|min:8|max:15|lowercase"
+          :cancelEdit="
+            () => {
+              editPassword = false
+            }
+          "
+        />
 
-        <ModalEditProfile v-if="useModalStore().showProfileModal" @close="useModalStore().toggleProfileModal()" />
-        <div class="mx-auto justify-center lg:bg-dark-blue bg-zinc-800 max-w-screen-md lg:max-w-5xl" v-if="hideDiv">
-          <div class="lg:pt-48 mt-16 pt-0 lg:mt-0 pb-36 flex flex-col gap-10 max-w-xl mx-auto mb-4 lg:mb-0">
+        <ModalEditProfile
+          v-if="useModalStore().showProfileModal"
+          @close="useModalStore().toggleProfileModal()"
+        />
+        <div
+          class="mx-auto justify-center lg:bg-dark-blue bg-zinc-800 max-w-screen-md lg:max-w-5xl"
+          v-if="hideDiv"
+        >
+          <div
+            class="lg:pt-48 mt-16 pt-0 lg:mt-0 pb-36 flex flex-col gap-10 max-w-xl mx-auto mb-4 lg:mb-0"
+          >
             <div class="w-44 h-50 flex flex-col gap-2 mx-auto lg:hidden mt-5">
               <img :src="profileImageUrl" class="rounded-full w-44 h-44" v-if="profileImageUrl" />
               <div class="w-44 h-44 rounded-full bg-red-800 justify-center flex" v-else>
@@ -53,28 +89,56 @@
               </button>
               <input type="file" @change="handleFileUpload" ref="fileInputRef" class="hidden" />
             </div>
-            <InputProfile :label="$t('profile.username')" :value="user?.username ?? ''" name="current_username"
-              @edit="editUsername = !editUsername" :editable="true" />
+            <InputProfile
+              :label="$t('profile.username')"
+              :value="user?.username ?? ''"
+              name="current_username"
+              @edit="editUsername = !editUsername"
+              :editable="true"
+            />
 
             <div v-if="editUsername && windowWidth > 800" class="lg:block hidden">
-              <InputMain :label="$t('profile.new_username')" name="username"
-                :placeholder="$t('profile.enter_new_username')" :apiError="Boolean(usernameError)"
-                rules="required|min:3|max:15|lowercase" class="w-5/6" />
+              <InputMain
+                :label="$t('profile.new_username')"
+                name="username"
+                :placeholder="$t('profile.enter_new_username')"
+                :apiError="Boolean(usernameError)"
+                rules="required|min:3|max:15|lowercase"
+                class="w-5/6"
+              />
               <p v-if="usernameError" class="text-red-star text-sm pt-5">{{ usernameError }}</p>
             </div>
 
-            <InputProfile :label="$t('auth.email')" :value="user?.email ?? ''" name="current_email"
-              @edit="editEmail = !editEmail" :editable="user?.google_id == null" />
+            <InputProfile
+              :label="$t('auth.email')"
+              :value="user?.email ?? ''"
+              name="current_email"
+              @edit="editEmail = !editEmail"
+              :editable="user?.google_id == null"
+            />
 
             <div v-if="editEmail && windowWidth > 800" class="lg:block hidden">
-              <InputMain :label="$t('profile.new_email')" name="email" :placeholder="$t('profile.enter_new_email')"
-                type="email" :apiError="Boolean(emailError)" rules="required|email" class="w-5/6" />
+              <InputMain
+                :label="$t('profile.new_email')"
+                name="email"
+                :placeholder="$t('profile.enter_new_email')"
+                type="email"
+                :apiError="Boolean(emailError)"
+                rules="required|email"
+                class="w-5/6"
+              />
               <p v-if="emailError" class="text-red-star text-sm pt-5">{{ emailError }}</p>
             </div>
 
             <div v-if="user?.google_id == null">
-              <InputProfile :label="$t('auth.password')" value="********" name="current_password" textType="password"
-                @edit="editPassword = !editPassword" :editable="true" />
+              <InputProfile
+                :label="$t('auth.password')"
+                value="********"
+                name="current_password"
+                textType="password"
+                @edit="editPassword = !editPassword"
+                :editable="true"
+              />
 
               <div v-if="editPassword && windowWidth > 800" class="lg:block hidden">
                 <div class="w-5/6 border border-password-div flex flex-col gap-4 pl-6 mb-10 mt-10">
@@ -87,18 +151,30 @@
                   </div>
                 </div>
 
-                <InputMain :label="$t('profile.new_password')" name="password"
-                  :placeholder="$t('profile.enter_new_password')" textType="password" class="w-5/6 mb-10"
-                  rules="required|min:8|max:15|lowercase" />
-                <InputMain :label="$t('auth.confirm_password')" name="confirm_password"
-                  :placeholder="$t('profile.confirm_new_password')" textType="password" class="w-5/6"
-                  rules="required|confirmed:@password" />
+                <InputMain
+                  :label="$t('profile.new_password')"
+                  name="password"
+                  :placeholder="$t('profile.enter_new_password')"
+                  textType="password"
+                  class="w-5/6 mb-10"
+                  rules="required|min:8|max:15|lowercase"
+                />
+                <InputMain
+                  :label="$t('auth.confirm_password')"
+                  name="confirm_password"
+                  :placeholder="$t('profile.confirm_new_password')"
+                  textType="password"
+                  class="w-5/6"
+                  rules="required|confirmed:@password"
+                />
               </div>
             </div>
           </div>
         </div>
-        <div class="float-right lg:flex flex-row gap-7 my-16 hidden"
-          v-if="(editEmail || editPassword || editUsername) && windowWidth > 800">
+        <div
+          class="float-right lg:flex flex-row gap-7 my-16 hidden"
+          v-if="(editEmail || editPassword || editUsername) && windowWidth > 800"
+        >
           <p class="text-light-cyan text-xl my-auto cursor-pointer" @click="closeEdit()">
             {{ $t('profile.cancel') }}
           </p>
@@ -107,15 +183,17 @@
       </Form>
     </div>
 
-    <div :class="{
-      'absolute lg:w-96 w-11/12 flex flex-row justify-between bg-pop-up p-4 right-0 lg:bottom-0 top-0 lg:top-auto mt-32 lg:mt-0 mb-5 mr-4 rounded': true,
-      hidden: !showPopup
-    }">
+    <div
+      :class="{
+        'absolute lg:w-96 w-11/12 flex flex-row justify-between bg-pop-up p-4 right-0 lg:bottom-0 top-0 lg:top-auto mt-32 lg:mt-0 mb-5 mr-4 rounded': true,
+        hidden: !showPopup
+      }"
+    >
       <div class="flex flex-row gap-2">
         <IconChangeSuccess />
         <p class="text-dark-green">{{ $t('profile.changes_updated_successfully') }}</p>
       </div>
-      <IconClosePopUp class="my-auto cursor-pointer" @click="closePopup" />
+      <IconPopUpClose class="my-auto cursor-pointer" @click="closePopup" />
     </div>
   </FeedLayout>
 </template>
@@ -126,12 +204,12 @@ import ModalEditProfile from '@/components/ModalEditProfile.vue'
 import InputProfileMobile from '@/components/ui/InputProfileMobile.vue'
 import { Form } from 'vee-validate'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
-import IconBackArrow from '@/components/icons/header/IconBackArrow.vue'
+import IconArrowBack from '@/components/icons/header/IconArrowBack.vue'
 import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import InputProfile from '@/components/ui/InputProfile.vue'
 import InputMain from '@/components/ui/InputMain.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
-import IconClosePopUp from '@/components/icons/profile/IconClosePopUp.vue'
+import IconPopUpClose from '@/components/icons/profile/IconPopUpClose.vue'
 import api from '@/plugins/axios/index.js'
 import ModalEmailSend from '@/components/home/verification/ModalEmailSend.vue'
 import { updateProfile } from '@/services/auth.js'

@@ -15,7 +15,7 @@
 </template>
 
 <script setup>
-import IconAddButton from '@/components/icons/movie/IconAddButton.vue'
+import IconAddButton from '@/components/icons/movie/IconButtonAdd.vue'
 
 defineProps({
   text: {

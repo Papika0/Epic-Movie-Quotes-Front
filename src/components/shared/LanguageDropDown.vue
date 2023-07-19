@@ -2,7 +2,7 @@
   <div class="relative inline-block my-auto px-2">
     <div class="flex items-center cursor-pointer" @click="toggleDropdown">
       <span class="text-white">{{ selectedOption }}</span>
-      <IconDropdownArrow class="ml-2" :class="{ 'rotate-180': isDropdownOpen }" />
+      <IconArrowDropdown class="ml-2" :class="{ 'rotate-180': isDropdownOpen }" />
     </div>
     <ul
       v-show="isDropdownOpen"
@@ -24,7 +24,7 @@
 import { ref, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLocale } from '@vee-validate/i18n'
-import IconDropdownArrow from '@/components/icons/header/IconDropdownArrow.vue'
+import IconArrowDropdown from '@/components/icons/header/IconArrowDropdown.vue'
 import { onClickOutside } from '@vueuse/core'
 import api from '@/plugins/axios/index.js'
 

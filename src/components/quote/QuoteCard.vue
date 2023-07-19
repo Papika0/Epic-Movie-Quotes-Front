@@ -20,7 +20,7 @@
       </div>
 
       <div class="items-center gap-4 inline-flex cursor-pointer">
-        <IconEditPencil class="w-5 h-5 relative" />
+        <IconPencilEdit class="w-5 h-5 relative" />
         <div class="text-white leading-normal" @click="editQuote(quote.id)">
           {{ $t('quotes.edit') }}
         </div>
@@ -64,7 +64,7 @@ import { defineProps, ref, onMounted } from 'vue'
 import IconComment from '@/components/icons/input/IconComment.vue'
 import IconLike from '@/components/icons/IconLike.vue'
 import IconThreeDots from '@/components/icons/IconThreeDots.vue'
-import IconEditPencil from '@/components/icons/IconEditPencil.vue'
+import IconPencilEdit from '@/components/icons/IconPencilEdit.vue'
 import IconDelete from '@/components/icons/IconDelete.vue'
 import IconEye from '@/components/icons/IconEye.vue'
 import router from '@/router/index.js'

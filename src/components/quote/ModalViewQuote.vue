@@ -2,7 +2,7 @@
   <ModalEditLayout @close="closeModal" :title="$t('quotes.view_quote')">
     <template v-slot:header>
       <div class="flex flex-row lg:gap-4 gap-1 absolute mt-9">
-        <IconEditPencil class="my-auto cursor-pointer lg:ml-10 ml-2" @click="editQuote" />
+        <IconPencilEdit class="my-auto cursor-pointer lg:ml-10 ml-2" @click="editQuote" />
         <hr class="rotate-90 border border-gray-500 w-5 my-auto" />
         <IconDelete class="my-auto cursor-pointer" @click="handleDelete" />
       </div>
@@ -58,7 +58,7 @@
 
 <script setup>
 import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
-import IconEditPencil from '@/components/icons/IconEditPencil.vue'
+import IconPencilEdit from '@/components/icons/IconPencilEdit.vue'
 import IconDelete from '@/components/icons/IconDelete.vue'
 import IconComment from '@/components/icons/input/IconComment.vue'
 import IconLike from '@/components/icons/IconLike.vue'
