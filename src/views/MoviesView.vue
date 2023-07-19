@@ -41,7 +41,7 @@
             </p>
           </div>
           <div>
-            <ButtonRed
+            <ButtonSubmitRed
               :text="$t('movies.add_movie')"
               :add="true"
               @click="useModalStore().toggleMovieAddModal"
@@ -61,7 +61,7 @@
 import { ref, onBeforeMount, computed, watch } from 'vue'
 import MovieAddModal from '@/components/modals/movie/MovieAddModal.vue'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'
 import MovieCard from '@/components/movie/MovieCard.vue'
 import { useMovieStore } from '@/store/useMovieStore'

@@ -31,14 +31,14 @@
           @click="showSearch = true"
         />
         <LanguageDropDown />
-        <ButtonDark :text="$t('auth.log_out')" @click="logOut()" class="lg:block hidden" />
+        <ButtonSubmitDark :text="$t('auth.log_out')" @click="logOut()" class="lg:block hidden" />
       </div>
     </header>
   </nav>
 </template>
 
 <script setup>
-import ButtonDark from '@/components/ui/ButtonDark.vue'
+import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'
 import IconBackArrow from '@/components/icons/header/IconBackArrow.vue'
 import LanguageDropDown from '@/components/shared/LanguageDropDown.vue'

@@ -11,7 +11,7 @@
           <p class="text-white text-sm">• {{ $t('profile.15_lowercase_letters') }}</p>
         </div>
       </div>
-      <InputField
+      <InputMain
         :label="label"
         :name="name"
         :placeholder="placeholder"
@@ -19,7 +19,7 @@
         :apiError="hasError"
         :rules="rules"
       />
-      <InputField
+      <InputMain
         :label="$t('auth.confirm_password')"
         name="confirm_password"
         class="mt-10"
@@ -32,15 +32,15 @@
     </div>
     <div class="flex flex-row justify-between mx-8">
       <p class="text-light-cyan text-xl my-auto cursor-pointer" @click="cancelEdit">Cancel</p>
-      <ButtonRed text="Edit" type="submit" />
+      <ButtonSubmitRed text="Edit" type="submit" />
     </div>
   </div>
 </template>
 
 <script setup>
 import { defineProps } from 'vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
-import InputField from '@/components/ui/InputField.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
+import InputMain from '@/components/ui/InputMain.vue'
 
 defineProps({
   label: {

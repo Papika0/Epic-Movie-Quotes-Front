@@ -46,7 +46,7 @@
           </label>
         </div>
 
-        <ButtonRed
+        <ButtonSubmitRed
           class="w-full rounded-lg mt-6 mb-5"
           :text="$t('quotes.edit_quote')"
           type="submit"
@@ -60,7 +60,7 @@
 import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
 import IconDelete from '@/components/icons/IconDelete.vue'
 import IconMovieUpload from '@/components/icons/movie/IconMovieUpload.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import { Form, Field } from 'vee-validate'
 import { defineProps, ref, watchEffect, onBeforeMount } from 'vue'
 import { updateQuote } from '@/services/quotes.js'

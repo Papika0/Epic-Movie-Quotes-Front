@@ -18,7 +18,11 @@
 
         <MovieDropdown rules="required" />
 
-        <ButtonRed class="w-full rounded-lg mt-6 mb-8" :text="$t('quotes.post')" type="submit" />
+        <ButtonSubmitRed
+          class="w-full rounded-lg mt-6 mb-8"
+          :text="$t('quotes.post')"
+          type="submit"
+        />
       </Form>
     </template>
   </ModalEditLayout>
@@ -26,7 +30,7 @@
 
 <script setup>
 import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue'
 import { Form } from 'vee-validate'
 import { createQuote } from '@/services/quotes.js'

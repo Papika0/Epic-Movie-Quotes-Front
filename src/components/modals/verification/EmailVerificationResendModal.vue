@@ -20,7 +20,7 @@ import ModalLayout from '@/components/layouts/ModalLayout.vue'
 import IconExpired from '@/components/icons/IconExpired.vue'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useUserStore } from '@/store/useUserStore.js'
-import ButtoneRed from '@/components/ui/ButtonRed.vue'
+import ButtoneRed from '@/components/ui/ButtonSubmitRed.vue'
 import { resendEmailVerification } from '@/services/auth.js'
 
 const modalStore = useModalStore()

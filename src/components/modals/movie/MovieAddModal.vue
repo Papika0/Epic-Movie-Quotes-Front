@@ -36,7 +36,7 @@
 
         <InputPhotoUpload name="thumbnail" rules="required" />
 
-        <ButtonRed type="submit" :text="$t('movies.add_movie')" class="mb-12 mt-4" />
+        <ButtonSubmitRed type="submit" :text="$t('movies.add_movie')" class="mb-12 mt-4" />
       </Form>
     </template>
   </ModalEditLayout>
@@ -46,7 +46,7 @@
 import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
 import { useModalStore } from '@/store/useModalStore'
 import { Form } from 'vee-validate'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import GenreDropDown from '@/components/shared/GenreDropDown.vue'
 import InputMovie from '@/components/ui/InputMovie.vue'
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue'

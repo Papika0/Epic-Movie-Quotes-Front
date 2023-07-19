@@ -60,7 +60,7 @@
           </div>
           <hr class="lg:rotate-90 border -z-50 lg:border-gray-500 border-zinc-600 lg:w-6 my-auto" />
           <div>
-            <ButtonRed
+            <ButtonSubmitRed
               :text="$t('movies.add_quote')"
               :add="true"
               customClass="py-2 px-4"
@@ -80,7 +80,7 @@ import { ref, onBeforeMount, computed, defineProps } from 'vue'
 import IconEditPencil from '@/components/icons/IconEditPencil.vue'
 import IconDelete from '@/components/icons/IconDelete.vue'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import QuoteCard from '@/components/quote/QuoteCard.vue'
 
 import MovieEditModal from '@/components/modals/movie/MovieEditModal.vue'

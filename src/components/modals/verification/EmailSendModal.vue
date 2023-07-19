@@ -18,7 +18,7 @@ import ModalLayout from '@/components/layouts/ModalLayout.vue'
 import IconEmailSent from '@/components/icons/IconEmailSent.vue'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useUserStore } from '@/store/useUserStore'
-import ButtoneRed from '@/components/ui/ButtonRed.vue'
+import ButtoneRed from '@/components/ui/ButtonSubmitRed.vue'
 
 const modalStore = useModalStore()
 

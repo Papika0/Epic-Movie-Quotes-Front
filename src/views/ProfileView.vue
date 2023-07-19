@@ -98,7 +98,7 @@
             />
 
             <div v-if="editUsername && windowWidth > 800" class="lg:block hidden">
-              <InputField
+              <InputMain
                 :label="$t('profile.new_username')"
                 name="username"
                 :placeholder="$t('profile.enter_new_username')"
@@ -118,7 +118,7 @@
             />
 
             <div v-if="editEmail && windowWidth > 800" class="lg:block hidden">
-              <InputField
+              <InputMain
                 :label="$t('profile.new_email')"
                 name="email"
                 :placeholder="$t('profile.enter_new_email')"
@@ -151,7 +151,7 @@
                   </div>
                 </div>
 
-                <InputField
+                <InputMain
                   :label="$t('profile.new_password')"
                   name="password"
                   :placeholder="$t('profile.enter_new_password')"
@@ -159,7 +159,7 @@
                   class="w-5/6 mb-10"
                   rules="required|min:8|max:15|lowercase"
                 />
-                <InputField
+                <InputMain
                   :label="$t('auth.confirm_password')"
                   name="confirm_password"
                   :placeholder="$t('profile.confirm_new_password')"
@@ -178,7 +178,7 @@
           <p class="text-light-cyan text-xl my-auto cursor-pointer" @click="closeEdit()">
             {{ $t('profile.cancel') }}
           </p>
-          <ButtonRed :text="$t('profile.save_changes')" type="submit" />
+          <ButtonSubmitRed :text="$t('profile.save_changes')" type="submit" />
         </div>
       </Form>
     </div>
@@ -205,9 +205,9 @@ import InputProfileMobile from '@/components/ui/InputProfileMobile.vue'
 import { Form } from 'vee-validate'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import IconBackArrow from '@/components/icons/header/IconBackArrow.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import InputProfile from '@/components/ui/InputProfile.vue'
-import InputField from '@/components/ui/InputField.vue'
+import InputMain from '@/components/ui/InputMain.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
 import IconClosePopUp from '@/components/icons/profile/IconClosePopUp.vue'
 import api from '@/plugins/axios/index.js'

@@ -3,12 +3,12 @@
     <p class="text-header text-base my-auto">MOVIE QUOTES</p>
     <div class="flex lg:flex-row flex-row-reverse gap-3 lg:gap-4">
       <LanguageDropDown class="hidden lg:block" />
-      <ButtonRed
+      <ButtonSubmitRed
         :text="$t('auth.sign_up')"
         @click="signUpModal()"
         customClass="px-3 py-2 lg:px-6"
       />
-      <ButtonDark :text="$t('auth.log_in')" @click="logInModal()" />
+      <ButtonSubmitDark :text="$t('auth.log_in')" @click="logInModal()" />
     </div>
   </header>
   <AuthModals />
@@ -20,7 +20,7 @@
         Find any quote in <br />
         millions of movie lines
       </p>
-      <ButtonRed
+      <ButtonSubmitRed
         :text="$t('auth.get_started')"
         class="mt-6"
         customClass="px-3 py-2 lg:px-6"
@@ -57,8 +57,8 @@
 
 <script setup>
 import MovieQuoteParagraph from '@/components/home/MovieQuoteParagraph.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
-import ButtonDark from '@/components/ui/ButtonDark.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
+import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
 import AuthModals from '@/components/home/AuthModals.vue'
 import LanguageDropDown from '@/components/shared/LanguageDropDown.vue'
 import router from '@/router/index.js'

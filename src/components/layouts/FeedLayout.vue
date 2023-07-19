@@ -37,7 +37,7 @@
           <p class="text-white text-2xl">{{ $t('texts.list_of_movies') }}</p>
         </div>
         <div class="lg:hidden px-2">
-          <ButtonDark :text="$t('auth.log_out')" @click="logOut()" />
+          <ButtonSubmitDark :text="$t('auth.log_out')" @click="logOut()" />
         </div>
       </div>
     </section>
@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import ButtonDark from '@/components/ui/ButtonDark.vue'
+import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
 import { computed, onBeforeUnmount, ref } from 'vue'
 import HeaderAuthorized from '@/components/shared/HeaderAuthorized.vue'
 import IconHouse from '@/components/icons/profile/IconHouse.vue'

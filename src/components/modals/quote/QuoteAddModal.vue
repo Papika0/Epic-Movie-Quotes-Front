@@ -44,7 +44,7 @@
 
         <InputPhotoUpload name="thumbnail" rules="required" />
 
-        <ButtonRed
+        <ButtonSubmitRed
           class="w-full rounded-lg mt-6 mb-8"
           :text="$t('quotes.add_quote')"
           type="submit"
@@ -56,7 +56,7 @@
 
 <script setup>
 import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue'
 import { Form } from 'vee-validate'
 import { defineProps, ref, onBeforeMount, computed } from 'vue'
