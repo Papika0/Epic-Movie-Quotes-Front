@@ -49,6 +49,7 @@ import IconDropdownArrow from '@/components/icons/header/IconDropdownArrow.vue'
 import IconMovie from '@/components/icons/profile/IconMovie.vue'
 import { ref, computed, defineProps, onBeforeMount } from 'vue'
 import { onClickOutside } from '@vueuse/core'
+import router from '@/router/index.js'
 
 defineProps({
   rules: {
@@ -89,14 +90,18 @@ const selectOption = (option) => {
 }
 
 onBeforeMount(async () => {
-  await getAllMovies().then((res) => {
-    options.value = res.map((movie) => {
-      return {
-        id: movie.id,
-        label: movie.name,
-        thumbnail: movie.thumbnail
-      }
+  try {
+    await getAllMovies().then((res) => {
+      options.value = res.map((movie) => {
+        return {
+          id: movie.id,
+          label: movie.name,
+          thumbnail: movie.thumbnail
+        }
+      })
     })
-  })
+  } catch (error) {
+    router.push({ name: 'not-found' })
+  }
 })
 </script>

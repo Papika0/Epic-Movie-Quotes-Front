@@ -84,8 +84,9 @@ import ButtonRed from '@/components/ui/ButtonRed.vue'
 import QuoteCard from '@/components/quote/QuoteCard.vue'
 
 import MovieEditModal from '@/components/modals/movie/MovieEditModal.vue'
-import { getMovieById, deleteMovie } from '@/services/movies.js'
+import { getMovie, deleteMovie } from '@/services/movies.js'
 import { useModalStore } from '@/store/useModalStore.js'
+import { useMovieStore } from '@/store/useMovieStore'
 
 import router from '@/router/index.js'
 
@@ -105,6 +106,7 @@ const addQuote = () => {
 const movieDelete = async () => {
   try {
     await deleteMovie(props.id)
+    useMovieStore().movies = useMovieStore().movies.filter((movie) => movie.id != props.id)
     router.push({ name: 'movies' })
   } catch (error) {
     router.push({ name: 'forbidden' })
@@ -113,7 +115,7 @@ const movieDelete = async () => {
 
 onBeforeMount(async () => {
   try {
-    const data = await getMovieById(props.id)
+    const data = await getMovie(props.id)
     movie.value = data
   } catch (error) {
     router.push({ name: 'forbidden' })

@@ -1,22 +1,11 @@
 import api from '@/plugins/axios/index.js'
-import router from '@/router/index.js'
 
 export async function getAllMovies() {
-  try {
-    const movies = await api.get('/movies')
-    return movies.data
-  } catch (error) {
-    return router.push({ name: 'not-found' })
-  }
+  return api.get('/movies').then((response) => response.data)
 }
 
 export async function getGenres() {
-  try {
-    const genres = await api.get('/genres')
-    return genres
-  } catch (error) {
-    return router.push({ name: 'not-found' })
-  }
+  return await api.get('/genres')
 }
 
 export async function createMovie(
@@ -30,46 +19,33 @@ export async function createMovie(
   description_ka,
   thumbnail
 ) {
-  try {
-    const formData = new FormData()
-    formData.append('name[en]', name_en)
-    formData.append('name[ka]', name_ka)
-    genre_ids.forEach((id, index) => {
-      formData.append(`genre_ids[${index}]`, id)
-    })
-    formData.append('release_year', year)
-    formData.append('director[en]', director_en)
-    formData.append('director[ka]', director_ka)
-    formData.append('description[en]', description_en)
-    formData.append('description[ka]', description_ka)
-    formData.append('thumbnail', thumbnail)
-    const response = await api.post('/movies', formData, {
+  const formData = new FormData()
+  formData.append('name[en]', name_en)
+  formData.append('name[ka]', name_ka)
+  genre_ids.forEach((id, index) => {
+    formData.append(`genre_ids[${index}]`, id)
+  })
+  formData.append('release_year', year)
+  formData.append('director[en]', director_en)
+  formData.append('director[ka]', director_ka)
+  formData.append('description[en]', description_en)
+  formData.append('description[ka]', description_ka)
+  formData.append('thumbnail', thumbnail)
+  return await api
+    .post('/movies', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     })
-    return response.data
-  } catch (error) {
-    return router.push({ name: 'not-found' })
-  }
+    .then((response) => response.data)
 }
 
-export async function getMovieById(id) {
-  try {
-    const movie = await api.get(`/movies/${id}`)
-    return movie.data
-  } catch (error) {
-    return router.push({ name: 'not-found' })
-  }
+export async function getMovie(id) {
+  return await api.get(`/movies/${id}`).then((response) => response.data)
 }
 
 export async function deleteMovie(id) {
-  try {
-    const movie = await api.delete(`/movies/${id}`)
-    return movie
-  } catch (error) {
-    return router.push({ name: 'not-found' })
-  }
+  return await api.delete(`/movies/${id}`).then((response) => response)
 }
 
 export async function updateMovie(
@@ -84,28 +60,25 @@ export async function updateMovie(
   description_ka,
   thumbnail
 ) {
-  try {
-    const formData = new FormData()
-    formData.append('name[en]', name_en)
-    formData.append('name[ka]', name_ka)
-    genre_ids.forEach((id, index) => {
-      formData.append(`genre_ids[${index}]`, id)
-    })
-    formData.append('release_year', year)
-    formData.append('director[en]', director_en)
-    formData.append('director[ka]', director_ka)
-    formData.append('description[en]', description_en)
-    formData.append('description[ka]', description_ka)
-    if (thumbnail) {
-      formData.append('thumbnail', thumbnail)
-    }
-    const movie = await api.post(`/movies/${id}`, formData, {
+  const formData = new FormData()
+  formData.append('name[en]', name_en)
+  formData.append('name[ka]', name_ka)
+  genre_ids.forEach((id, index) => {
+    formData.append(`genre_ids[${index}]`, id)
+  })
+  formData.append('release_year', year)
+  formData.append('director[en]', director_en)
+  formData.append('director[ka]', director_ka)
+  formData.append('description[en]', description_en)
+  formData.append('description[ka]', description_ka)
+  if (thumbnail) {
+    formData.append('thumbnail', thumbnail)
+  }
+  return await api
+    .post(`/movies/${id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
     })
-    return movie.data
-  } catch (error) {
-    return router.push({ name: 'not-found' })
-  }
+    .then((response) => response.data)
 }

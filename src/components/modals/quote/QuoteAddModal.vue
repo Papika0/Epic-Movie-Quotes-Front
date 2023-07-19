@@ -60,7 +60,7 @@ import ButtonRed from '@/components/ui/ButtonRed.vue'
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue'
 import { Form } from 'vee-validate'
 import { defineProps, ref, onBeforeMount, computed } from 'vue'
-import { getMovieById } from '@/services/movies.js'
+import { getMovie } from '@/services/movies.js'
 import { createQuote } from '@/services/quotes.js'
 
 import router from '@/router/index.js'
@@ -92,7 +92,7 @@ const movieThumbnail = computed(() => import.meta.env.VITE_API_AUTH_URL + movie.
 
 onBeforeMount(async () => {
   try {
-    const data = await getMovieById(props.id)
+    const data = await getMovie(props.id)
     movie.value = data
   } catch (error) {
     router.push({ name: 'forbidden' })

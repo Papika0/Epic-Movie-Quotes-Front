@@ -81,6 +81,8 @@ import TextareaMovie from '@/components/ui/TextareaMovie.vue'
 import { defineProps } from 'vue'
 import { updateMovie } from '@/services/movies'
 
+import router from '@/router/index.js'
+
 const props = defineProps({
   movie: {
     type: Object,
@@ -89,19 +91,23 @@ const props = defineProps({
 })
 
 const editMovieOnSubmit = async (values) => {
-  await updateMovie(
-    props.movie.id,
-    values.name_en,
-    values.name_ka,
-    values.genres,
-    values.year,
-    values.director_en,
-    values.director_ka,
-    values.description_en,
-    values.description_ka,
-    values.thumbnail
-  ).then(() => {
-    window.location.reload()
-  })
+  try {
+    await updateMovie(
+      props.movie.id,
+      values.name_en,
+      values.name_ka,
+      values.genres,
+      values.year,
+      values.director_en,
+      values.director_ka,
+      values.description_en,
+      values.description_ka,
+      values.thumbnail
+    ).then(() => {
+      window.location.reload()
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 </script>

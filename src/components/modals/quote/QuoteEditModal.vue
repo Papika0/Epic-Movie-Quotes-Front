@@ -1,7 +1,7 @@
 <template>
   <ModalEditLayout @close="closeModal" :title="$t('quotes.edit_quote')">
     <template v-slot:header>
-      <div class="flex flex-row gap-2 absolute mt-9 cursor-pointer" @click="deleteQuote">
+      <div class="flex flex-row gap-2 absolute mt-9 cursor-pointer" @click="handleDelete">
         <IconDelete class="ml-10" />
         <p class="text-gray-300 leading-normal pt-1px hidden lg:block">{{ $t('quotes.delete') }}</p>
       </div>
@@ -64,7 +64,7 @@ import ButtonRed from '@/components/ui/ButtonRed.vue'
 import { Form, Field } from 'vee-validate'
 import { defineProps, ref, watchEffect, onBeforeMount } from 'vue'
 import { updateQuote } from '@/services/quotes.js'
-import { getQuoteById, deleteQuoteById } from '@/services/quotes.js'
+import { getQuote, deleteQuote } from '@/services/quotes.js'
 
 import router from '@/router/index.js'
 import TextareaMovie from '@/components/ui/TextareaMovie.vue'
@@ -85,15 +85,19 @@ const handleFileChange = (event) => {
 
 const quote = ref([])
 
-const deleteQuote = async () => {
-  await deleteQuoteById(props.id).then(() => {
-    router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
-  })
+const handleDelete = async () => {
+  try {
+    await deleteQuote(props.id).then(() => {
+      router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 onBeforeMount(async () => {
   try {
-    const data = await getQuoteById(props.id)
+    const data = await getQuote(props.id)
     quote.value = data
   } catch (error) {
     router.push({ name: 'forbidden' })
@@ -105,9 +109,13 @@ const closeModal = () => {
 }
 
 const editQuote = async (values) => {
-  await updateQuote(props.id, values.content_en, values.content_ka, values.thumbnail).then(() => {
-    router.push({ name: 'quote-details', params: { id: props.id, type: 'view' } })
-  })
+  try {
+    await updateQuote(props.id, values.content_en, values.content_ka, values.thumbnail).then(() => {
+      router.push({ name: 'quote-details', params: { id: props.id, type: 'view' } })
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 watchEffect(() => {

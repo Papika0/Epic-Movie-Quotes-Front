@@ -4,7 +4,7 @@
       <div class="flex flex-row lg:gap-4 gap-1 absolute mt-9">
         <IconEditPencil class="my-auto cursor-pointer lg:ml-10 ml-2" @click="editQuote" />
         <hr class="rotate-90 border border-gray-500 w-5 my-auto" />
-        <IconDelete class="my-auto cursor-pointer" @click="deleteQuote" />
+        <IconDelete class="my-auto cursor-pointer" @click="handleDelete" />
       </div>
     </template>
     <template v-slot:body>
@@ -66,7 +66,7 @@ import CommentCard from '@/components/shared/CommentCard.vue'
 
 import { computed, defineProps, ref, onBeforeMount, onMounted } from 'vue'
 import { useUserStore } from '@/store/useUserStore'
-import { getQuoteById, deleteQuoteById, addComment } from '@/services/quotes.js'
+import { getQuote, deleteQuote, addComment } from '@/services/quotes.js'
 
 import router from '@/router/index.js'
 import InputMovie from '@/components/ui/InputMovie.vue'
@@ -86,10 +86,14 @@ const closeModal = () => {
   router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
 }
 
-const deleteQuote = async () => {
-  await deleteQuoteById(props.id).then(() => {
-    router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
-  })
+const handleDelete = async () => {
+  try {
+    await deleteQuote(props.id).then(() => {
+      router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 const editQuote = () => {
@@ -97,16 +101,20 @@ const editQuote = () => {
 }
 
 const createComment = async () => {
-  const comment = commentText.value
-  await addComment(props.id, comment).then((res) => {
-    commentText.value = ''
-    quote.value.comments_count = res.comments_count
-  })
+  try {
+    const comment = commentText.value
+    await addComment(props.id, comment).then((res) => {
+      commentText.value = ''
+      quote.value.comments_count = res.comments_count
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 onBeforeMount(async () => {
   try {
-    const data = await getQuoteById(props.id)
+    const data = await getQuote(props.id)
     quote.value = data
   } catch (error) {
     router.push({ name: 'forbidden' })

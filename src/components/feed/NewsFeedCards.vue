@@ -73,6 +73,7 @@ import CommentCard from '@/components/shared/CommentCard.vue'
 import { addComment } from '@/services/quotes.js'
 import { useUserStore } from '@/store/useUserStore'
 import { useNewsFeedStore } from '@/store/useNewsFeedStore'
+import router from '@/router/index.js'
 
 const quotes = ref([])
 const commentText = ref('')
@@ -115,11 +116,15 @@ const visibleQuotes = computed(() => {
 })
 
 const createComment = async (quote) => {
-  const comment = commentText.value
-  await addComment(quote.id, comment).then((res) => {
-    commentText.value = ''
-    quote.comments_count = res.comments_count
-  })
+  try {
+    const comment = commentText.value
+    await addComment(quote.id, comment).then((res) => {
+      commentText.value = ''
+      quote.comments_count = res.comments_count
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 const authUserThumbnail = computed(() => {
@@ -177,13 +182,17 @@ const handleScroll = async () => {
 }
 
 const fetchQuotes = async () => {
-  const response = await getQuotes(currentPage.value)
-  remainingPages.value = response.remaining_pages
-  if (response.data.length === 0) {
-    window.removeEventListener('scroll', handleScroll)
-  } else {
-    quotes.value = [...quotes.value, ...response.data]
-    currentPage.value++
+  try {
+    const response = await getQuotes(currentPage.value)
+    remainingPages.value = response.remaining_pages
+    if (response.data.length === 0) {
+      window.removeEventListener('scroll', handleScroll)
+    } else {
+      quotes.value = [...quotes.value, ...response.data]
+      currentPage.value++
+    }
+  } catch (error) {
+    router.push({ name: 'forbidden' })
   }
 }
 </script>

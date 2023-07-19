@@ -22,9 +22,13 @@ export const useMovieStore = defineStore('useMovieStore', {
       }
     },
     async getMovies() {
-      await getAllMovies().then((data) => {
-        this.movies = data
-      })
+      try {
+        await getAllMovies().then((data) => {
+          this.movies = data
+        })
+      } catch (error) {
+        return router.push({ name: 'not-found' })
+      }
     }
   }
 })
