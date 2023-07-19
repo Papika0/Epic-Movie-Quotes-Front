@@ -22,7 +22,7 @@
             <input
               v-model="searchQuery"
               type="text"
-              placeholder="Enter @ to search movies, Enter # to search quotes"
+              :placeholder="$t('feed.search', { atSymbol: '@', hashSymbol: '#' })"
               class="px-2 w-full text-white h-52px my-auto bg-transparent outline-none"
             />
           </div>

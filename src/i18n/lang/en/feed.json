@@ -4,5 +4,6 @@
   "reacted_to_your_quote": "Reacted to your quote",
   "new": "New",
   "notifications": "Notifications",
-  "mark_all_as_read": "Mark all as read"
+  "mark_all_as_read": "Mark all as read",
+  "search": "Enter {atSymbol} to search movies, Enter {hashSymbol} to search quotes"
 }

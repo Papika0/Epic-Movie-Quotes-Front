@@ -29,17 +29,17 @@
   </div>
   <section class="mt-52">
     <div class="bg-home1 min-h-screen bg-center bg-cover">
-      <MovieQuoteParagraph movie="Interstellar, 2014">
+      <MovieQuoteParagraph :movie="$t('texts.interstellar') + ', 2014'">
         {{ $t('texts.first_movie_quote') }}
       </MovieQuoteParagraph>
     </div>
     <div class="bg-home2 min-h-screen bg-center bg-fixed bg-cover">
-      <MovieQuoteParagraph movie="The Royal Tenenbaums, 2001">
+      <MovieQuoteParagraph :movie="$t('texts.the_royal_tenenbaums') + ', 2001'">
         {{ $t('texts.second_movie_quote') }}
       </MovieQuoteParagraph>
     </div>
     <div class="bg-home3 min-h-screen bg-right lg:bg-center bg-fixed bg-cover">
-      <MovieQuoteParagraph movie="The Royal Tenenbaums, 2001">
+      <MovieQuoteParagraph :movie="$t('texts.lord_of_the_rings') + ', 2002'">
         {{ $t('texts.third_movie_quote') }}
       </MovieQuoteParagraph>
     </div>

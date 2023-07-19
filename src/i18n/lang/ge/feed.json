@@ -4,5 +4,6 @@
   "reacted_to_your_quote": "დაალაიქა თქვენი ციტატა",
   "new": "ახალი",
   "notifications": "შეტყობინებები",
-  "mark_all_as_read": "ყველას წაიკითხვა"
+  "mark_all_as_read": "ყველას წაიკითხვა",
+  "search": "შეიყვანეთ {atSymbol} ფილმების მოსაძებნად, {hashSymbol} ციტატების მოსაძებნად"
 }
