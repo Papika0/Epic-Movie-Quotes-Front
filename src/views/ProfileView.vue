@@ -200,7 +200,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import ConfirmProfileEditModal from '@/components/modals/ConfirmProfileEditModal.vue'
+import ConfirmProfileEditModal from '@/components/ConfirmProfileEditModal.vue'
 import InputProfileMobile from '@/components/ui/InputProfileMobile.vue'
 import { Form } from 'vee-validate'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
@@ -211,7 +211,7 @@ import InputMain from '@/components/ui/InputMain.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
 import IconClosePopUp from '@/components/icons/profile/IconClosePopUp.vue'
 import api from '@/plugins/axios/index.js'
-import EmailSendModal from '@/components/modals/verification/EmailSendModal.vue'
+import EmailSendModal from '@/components/home/verification/EmailSendModal.vue'
 import { updateProfile } from '@/services/auth.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import { useModalStore } from '@/store/useModalStore.js'

@@ -12,16 +12,16 @@
 </template>
 
 <script setup>
-import RegisterModal from '@/components/modals/auth/RegisterModal.vue'
-import LoginModal from '@/components/modals/auth/LoginModal.vue'
-import EmailSendModal from '@/components/modals/verification/EmailSendModal.vue'
-import EmailVerifiedModal from '@/components/modals/verification/EmailVerifiedModal.vue'
-import EmailVerificationResendModal from '@/components/modals/verification/EmailVerificationResendModal.vue'
-import EmailForgotPasswordModal from '@/components/modals/password/EmailForgotPasswordModal.vue'
-import EmailForgotPasswordSendModal from '@/components/modals/password/EmailForgotPasswordSendModal.vue'
-import ResetPasswordModal from '@/components/modals/password/ResetPasswordModal.vue'
-import ResetPasswordResendModal from '@/components/modals/password/ResetPasswordResendModal.vue'
-import ResetPasswordSuccessModal from '@/components/modals/password/ResetPasswordSuccessModal.vue'
+import RegisterModal from '@/components/home/auth/RegisterModal.vue'
+import LoginModal from '@/components/home/auth/LoginModal.vue'
+import EmailSendModal from '@/components/home/verification/EmailSendModal.vue'
+import EmailVerifiedModal from '@/components/home/verification/EmailVerifiedModal.vue'
+import EmailVerificationResendModal from '@/components/home/verification/EmailVerificationResendModal.vue'
+import EmailForgotPasswordModal from '@/components/home/password/EmailForgotPasswordModal.vue'
+import EmailForgotPasswordSendModal from '@/components/home/password/EmailForgotPasswordSendModal.vue'
+import ResetPasswordModal from '@/components/home/password/ResetPasswordModal.vue'
+import ResetPasswordResendModal from '@/components/home/password/ResetPasswordResendModal.vue'
+import ResetPasswordSuccessModal from '@/components/home/password/ResetPasswordSuccessModal.vue'
 import { useModalStore } from '@/store/useModalStore.js'
 
 const modalStore = useModalStore()

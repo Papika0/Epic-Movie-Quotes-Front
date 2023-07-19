@@ -59,7 +59,7 @@
 
 <script setup>
 import { ref, onBeforeMount, computed, watch } from 'vue'
-import MovieAddModal from '@/components/modals/movie/MovieAddModal.vue'
+import MovieAddModal from '@/components/movie/MovieAddModal.vue'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'

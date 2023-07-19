@@ -83,7 +83,7 @@ import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import QuoteCard from '@/components/quote/QuoteCard.vue'
 
-import MovieEditModal from '@/components/modals/movie/MovieEditModal.vue'
+import MovieEditModal from '@/components/movie/MovieEditModal.vue'
 import { getMovie, deleteMovie } from '@/services/movies.js'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useMovieStore } from '@/store/useMovieStore'
