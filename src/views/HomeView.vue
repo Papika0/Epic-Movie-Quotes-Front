@@ -5,10 +5,15 @@
       <LanguageDropDown class="hidden lg:block" />
       <ButtonSubmitRed
         :text="$t('auth.sign_up')"
-        @click="signUpModal()"
+        @click="modalStore.toggleRegisterModal()"
         customClass="px-3 py-2 lg:px-6"
+        :disabled="useAuthStore().isAuthenticated"
       />
-      <ButtonSubmitDark :text="$t('auth.log_in')" @click="logInModal()" />
+      <ButtonSubmitDark
+        :text="$t('auth.log_in')"
+        @click="modalStore.toggleLoginModal()"
+        :disabled="useAuthStore().isAuthenticated"
+      />
     </div>
   </header>
   <LandingAuthModals />
@@ -65,18 +70,6 @@ async function getStarted() {
     modalStore.toggleRegisterModal()
   } else {
     router.push({ name: 'news-feed' })
-  }
-}
-
-async function signUpModal() {
-  if (!useAuthStore().isAuthenticated) {
-    modalStore.toggleRegisterModal()
-  }
-}
-
-async function logInModal() {
-  if (!useAuthStore().isAuthenticated) {
-    modalStore.toggleLoginModal()
   }
 }
 </script>

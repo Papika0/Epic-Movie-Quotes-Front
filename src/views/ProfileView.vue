@@ -185,7 +185,7 @@
 
     <div
       :class="{
-        'absolute lg:w-96 w-11/12 flex flex-row justify-between bg-pop-up p-4 right-0 lg:bottom-0 top-0 lg:top-auto mt-32 lg:mt-0 mb-5 mr-4 rounded': true,
+        'absolute lg:w-96 w-11/12 flex flex-row justify-between bg-pop-up p-4 right-0 top-0 mt-32 mb-5 mr-4 rounded': true,
         hidden: !showPopup
       }"
     >
