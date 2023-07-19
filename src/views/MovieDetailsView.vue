@@ -1,6 +1,6 @@
 <template>
   <FeedLayout>
-    <MovieEditModal v-if="useModalStore().showMovieEditModal" :movie="movie" />
+    <ModalEditMovie v-if="useModalStore().showMovieEditModal" :movie="movie" />
     <div class="flex flex-col lg:ml-420px">
       <p class="text-white text-2xl font-medium leading-9 hidden lg:block">
         {{ $t('movies.movie_description') }}
@@ -19,7 +19,7 @@
                 {{ movie.name }} ({{ movie.release_year }})
               </p>
               <div class="flex flex-row gap-4 py-3 px-6 bg-zinc-800 rounded-lg w-fit">
-                <IconEditPencil
+                <IconPencilEdit
                   class="my-auto cursor-pointer"
                   @click="useModalStore().toggleMovieEditModal"
                 />
@@ -60,7 +60,7 @@
           </div>
           <hr class="lg:rotate-90 border -z-50 lg:border-gray-500 border-zinc-600 lg:w-6 my-auto" />
           <div>
-            <ButtonRed
+            <ButtonSubmitRed
               :text="$t('movies.add_quote')"
               :add="true"
               customClass="py-2 px-4"
@@ -77,15 +77,16 @@
 
 <script setup>
 import { ref, onBeforeMount, computed, defineProps } from 'vue'
-import IconEditPencil from '@/components/icons/IconEditPencil.vue'
+import IconPencilEdit from '@/components/icons/IconPencilEdit.vue'
 import IconDelete from '@/components/icons/IconDelete.vue'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import QuoteCard from '@/components/quote/QuoteCard.vue'
 
-import MovieEditModal from '@/components/modals/movie/MovieEditModal.vue'
-import { getMovieById, deleteMovie } from '@/services/movies.js'
+import ModalEditMovie from '@/components/movie/ModalEditMovie.vue'
+import { getMovie, deleteMovie } from '@/services/movies.js'
 import { useModalStore } from '@/store/useModalStore.js'
+import { useMovieStore } from '@/store/useMovieStore'
 
 import router from '@/router/index.js'
 
@@ -105,6 +106,7 @@ const addQuote = () => {
 const movieDelete = async () => {
   try {
     await deleteMovie(props.id)
+    useMovieStore().movies = useMovieStore().movies.filter((movie) => movie.id != props.id)
     router.push({ name: 'movies' })
   } catch (error) {
     router.push({ name: 'forbidden' })
@@ -113,7 +115,7 @@ const movieDelete = async () => {
 
 onBeforeMount(async () => {
   try {
-    const data = await getMovieById(props.id)
+    const data = await getMovie(props.id)
     movie.value = data
   } catch (error) {
     router.push({ name: 'forbidden' })

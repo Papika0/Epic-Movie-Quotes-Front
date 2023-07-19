@@ -16,7 +16,7 @@
         <p class="text-gray-300 my-auto cursor-pointer" @click="useModalStore().toggleProfileModal">
           Cancel
         </p>
-        <ButtonRed text="Edit" type="submit" />
+        <ButtonSubmitRed text="Edit" type="submit" />
       </div>
     </div>
   </div>
@@ -24,7 +24,7 @@
 
 <script setup>
 import { defineEmits, ref } from 'vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import { useModalStore } from '@/store/useModalStore.js'
 import { onClickOutside } from '@vueuse/core'
 

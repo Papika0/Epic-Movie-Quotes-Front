@@ -16,7 +16,7 @@
         <span class="text-white my-auto">{{ selectedOption }}</span>
       </div>
       <Field name="movie_id" type="hidden" :rules="rules" v-model="selected" />
-      <IconDropdownArrow
+      <IconArrowDropdown
         class="absolute right-0 w-5 h-6 mr-5"
         :class="{ 'rotate-180': isDropdownOpen }"
       />
@@ -45,10 +45,11 @@
 <script setup>
 import { Field, ErrorMessage } from 'vee-validate'
 import { getAllMovies } from '@/services/movies.js'
-import IconDropdownArrow from '@/components/icons/header/IconDropdownArrow.vue'
+import IconArrowDropdown from '@/components/icons/header/IconArrowDropdown.vue'
 import IconMovie from '@/components/icons/profile/IconMovie.vue'
 import { ref, computed, defineProps, onBeforeMount } from 'vue'
 import { onClickOutside } from '@vueuse/core'
+import router from '@/router/index.js'
 
 defineProps({
   rules: {
@@ -89,14 +90,18 @@ const selectOption = (option) => {
 }
 
 onBeforeMount(async () => {
-  await getAllMovies().then((res) => {
-    options.value = res.map((movie) => {
-      return {
-        id: movie.id,
-        label: movie.name,
-        thumbnail: movie.thumbnail
-      }
+  try {
+    await getAllMovies().then((res) => {
+      options.value = res.map((movie) => {
+        return {
+          id: movie.id,
+          label: movie.name,
+          thumbnail: movie.thumbnail
+        }
+      })
     })
-  })
+  } catch (error) {
+    router.push({ name: 'not-found' })
+  }
 })
 </script>

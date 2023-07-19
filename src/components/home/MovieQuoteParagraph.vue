@@ -5,7 +5,7 @@
     <div class="flex flex-row gap-4">
       <hr class="text-white lg:w-14 w-4 lg:border-2 border-white lg:mt-6 mt-4" />
       <p
-        class="font-bold text-white lg:text-5xl text-xl leading-normal font-title max-w-xs lg:max-w-5xl"
+        class="font-bold text-white lg:text-5xl text-xl leading-normal font-title max-w-xs lg:max-w-3xl"
       >
         <slot></slot>
       </p>

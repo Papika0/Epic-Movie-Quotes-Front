@@ -6,8 +6,8 @@
     </template>
 
     <template v-slot:body>
-      <Form class="flex flex-col gap-4 w-full" @submit="registerUser">
-        <InputField
+      <Form class="flex flex-col gap-4 w-full" @submit="handleSubmit">
+        <InputMain
           name="username"
           :label="$t('auth.name')"
           :placeholder="$t('auth.at_least_3_and_max_15_lower_characters')"
@@ -15,7 +15,7 @@
           :apiError="Boolean(usernameError)"
         />
         <p v-if="usernameError" class="text-red-star text-sm">{{ usernameError }}</p>
-        <InputField
+        <InputMain
           name="email"
           :label="$t('auth.email')"
           :placeholder="$t('auth.enter_your_email')"
@@ -23,14 +23,14 @@
           :apiError="Boolean(emailError)"
         />
         <p v-if="emailError" class="text-red-star text-sm">{{ emailError }}</p>
-        <InputField
+        <InputMain
           name="password"
           :label="$t('auth.password')"
           :placeholder="$t('auth.at_least_8_and_max_15_lower_characters')"
           textType="password"
           rules="required|min:8|max:15|lowercase"
         />
-        <InputField
+        <InputMain
           name="password_confirm"
           :label="$t('auth.confirm_password')"
           :placeholder="$t('auth.confirm_password')"
@@ -38,7 +38,11 @@
           rules="required|confirmed:@password"
         />
         <ButtoneRed :text="$t('auth.get_started')" type="submit" class="mt-2" />
-        <ButtonDark :text="$t('auth.sign_up_with_google')" :gmail="true" @click="googleSignUp()" />
+        <ButtonSubmitDark
+          :text="$t('auth.sign_up_with_google')"
+          :gmail="true"
+          @click="googleSignUp()"
+        />
       </Form>
     </template>
     <template v-slot:footer>
@@ -60,12 +64,10 @@ import { Form } from 'vee-validate'
 import { ref, computed } from 'vue'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useUserStore } from '@/store/useUserStore.js'
-import InputField from '@/components/ui/InputField.vue'
-import ButtoneRed from '@/components/ui/ButtonRed.vue'
-import ButtonDark from '@/components/ui/ButtonDark.vue'
-import api from '@/plugins/axios/index.js'
-import sanctum from '@/plugins/axios/sanctum'
-import { register } from '@/services/auth.js'
+import InputMain from '@/components/ui/InputMain.vue'
+import ButtoneRed from '@/components/ui/ButtonSubmitRed.vue'
+import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
+import { register, googleSign } from '@/services/auth.js'
 import router from '@/router/index.js'
 
 const modalStore = useModalStore()
@@ -88,19 +90,16 @@ const usernameError = computed(() => {
 })
 
 async function googleSignUp() {
-  await sanctum.get('/sanctum/csrf-cookie').then(() => {
-    api
-      .get('/auth/google')
-      .then((response) => {
-        window.location.href = response.data.url
-      })
-      .catch(() => {
-        router.push({ name: 'forbidden' })
-      })
-  })
+  try {
+    await googleSign().then((response) => {
+      window.location.href = response.data.url
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
-async function registerUser(values) {
+async function handleSubmit(values) {
   apiErrors.value = null
   await register(values.username, values.email, values.password)
     .then((data) => {

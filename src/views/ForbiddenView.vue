@@ -8,14 +8,18 @@
       <p class="text-white text-2xl font-medium leading-9 mt-3 text-center">
         {{ $t('error.sorry_but_you_dont_have_permission_to_access_this_page') }}
       </p>
-      <ButtonRed class="rounded-lg mt-12" :text="$t('error.return_home')" @click="returnHome" />
+      <ButtonSubmitRed
+        class="rounded-lg mt-12"
+        :text="$t('error.return_home')"
+        @click="returnHome"
+      />
     </div>
   </div>
 </template>
 
 <script setup>
 import IconForbiddenGandolf from '@/components/icons/error/IconForbiddenGandolf.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import router from '@/router/index.js'
 
 const returnHome = () => {

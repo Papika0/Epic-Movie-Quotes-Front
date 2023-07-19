@@ -2,7 +2,7 @@
   <div class="relative inline-block my-auto px-2">
     <div class="flex items-center cursor-pointer" @click="toggleDropdown">
       <span class="text-white">{{ selectedOption }}</span>
-      <IconDropdownArrow class="ml-2" :class="{ 'rotate-180': isDropdownOpen }" />
+      <IconArrowDropdown class="ml-2" :class="{ 'rotate-180': isDropdownOpen }" />
     </div>
     <ul
       v-show="isDropdownOpen"
@@ -24,9 +24,9 @@
 import { ref, onMounted, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { setLocale } from '@vee-validate/i18n'
-import IconDropdownArrow from '@/components/icons/header/IconDropdownArrow.vue'
+import IconArrowDropdown from '@/components/icons/header/IconArrowDropdown.vue'
 import { onClickOutside } from '@vueuse/core'
-import api from '@/plugins/axios/index.js'
+import { changeLocale } from '@/services/user'
 
 const { locale, t } = useI18n()
 const isDropdownOpen = ref(false)
@@ -60,8 +60,8 @@ const selectOption = (option) => {
   selectedOption.value = option.label
   localStorage.setItem('selectedLocale', option.value)
   isDropdownOpen.value = false
-  const localeEndpoint = option.value === 'ge' ? '/set-locale/ka' : `/set-locale/${option.value}`
-  api.get(localeEndpoint).then(() => {
+  const localeEndpoint = option.value === 'ge' ? 'ka' : option.value
+  changeLocale(localeEndpoint).then(() => {
     window.location.reload()
   })
 }
@@ -73,10 +73,10 @@ onMounted(() => {
     locale.value = selectedLocale.value
     selectedOption.value = selectedLocale.label
     if (selectedLocale.value === 'ge') {
-      api.get('/set-locale/ka')
+      changeLocale('ka')
       setLocale('ka')
     } else {
-      api.get('/set-locale/' + selectedLocale.value)
+      changeLocale(selectedLocale.value)
       setLocale('en')
     }
     isDropdownOpen.value = false

@@ -10,15 +10,15 @@
     </template>
 
     <template v-slot:body>
-      <Form class="flex flex-col gap-4 w-full" @submit="passwordReset">
-        <InputField
+      <Form class="flex flex-col gap-4 w-full" @submit="handleSubmit">
+        <InputMain
           name="password"
           :label="$t('auth.password')"
           :placeholder="$t('auth.at_least_8_and_max_15_lower_characters')"
           textType="password"
           rules="required|min:8|max:15|lowercase"
         />
-        <InputField
+        <InputMain
           name="password_confirm"
           :label="$t('auth.confirm_password')"
           :placeholder="$t('auth.confirm_password')"
@@ -43,8 +43,8 @@ import { Form } from 'vee-validate'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import IconArrowBack from '@/components/icons/IconArrowBack.vue'
-import InputField from '@/components/ui/InputField.vue'
-import ButtoneRed from '@/components/ui/ButtonRed.vue'
+import InputMain from '@/components/ui/InputMain.vue'
+import ButtoneRed from '@/components/ui/ButtonSubmitRed.vue'
 import { resetPassword } from '@/services/auth.js'
 
 const modalStore = useModalStore()
@@ -55,7 +55,7 @@ function switchToLogin() {
   modalStore.toggleLoginModal()
 }
 
-async function passwordReset(values) {
+async function handleSubmit(values) {
   await resetPassword(userStore.token, userStore.email, values.password)
     .then(() => {
       modalStore.toggleResetPasswordModal()

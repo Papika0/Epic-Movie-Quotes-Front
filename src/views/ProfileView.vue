@@ -1,10 +1,10 @@
 <template>
-  <EmailSendModal
+  <ModalEmailSend
     v-if="useModalStore().showEmailSentModal"
     @close="useModalStore().toggleEmailSentModal"
   />
   <FeedLayout>
-    <IconBackArrow class="my-auto absolute ml-8 mt-3 lg:hidden" @click="goBack" />
+    <IconArrowBack class="my-auto absolute ml-8 mt-3 lg:hidden" @click="goBack" />
     <p class="text-white text-2xl ml-550 mb-32 hidden lg:block">{{ $t('profile.my_profile') }}</p>
     <div class="mx-auto max-w-5xl">
       <div
@@ -21,7 +21,7 @@
         </button>
         <input type="file" @change="handleFileUpload" ref="fileInputRef" class="hidden" />
       </div>
-      <Form @submit="handleSaveChanges">
+      <Form @submit="handleSubmit">
         <InputProfileMobile
           v-if="editUsername && windowWidth < 800"
           :label="$t('profile.new_username')"
@@ -66,7 +66,7 @@
           "
         />
 
-        <ConfirmProfileEditModal
+        <ModalEditProfile
           v-if="useModalStore().showProfileModal"
           @close="useModalStore().toggleProfileModal()"
         />
@@ -98,7 +98,7 @@
             />
 
             <div v-if="editUsername && windowWidth > 800" class="lg:block hidden">
-              <InputField
+              <InputMain
                 :label="$t('profile.new_username')"
                 name="username"
                 :placeholder="$t('profile.enter_new_username')"
@@ -118,7 +118,7 @@
             />
 
             <div v-if="editEmail && windowWidth > 800" class="lg:block hidden">
-              <InputField
+              <InputMain
                 :label="$t('profile.new_email')"
                 name="email"
                 :placeholder="$t('profile.enter_new_email')"
@@ -151,7 +151,7 @@
                   </div>
                 </div>
 
-                <InputField
+                <InputMain
                   :label="$t('profile.new_password')"
                   name="password"
                   :placeholder="$t('profile.enter_new_password')"
@@ -159,7 +159,7 @@
                   class="w-5/6 mb-10"
                   rules="required|min:8|max:15|lowercase"
                 />
-                <InputField
+                <InputMain
                   :label="$t('auth.confirm_password')"
                   name="confirm_password"
                   :placeholder="$t('profile.confirm_new_password')"
@@ -178,7 +178,7 @@
           <p class="text-light-cyan text-xl my-auto cursor-pointer" @click="closeEdit()">
             {{ $t('profile.cancel') }}
           </p>
-          <ButtonRed :text="$t('profile.save_changes')" type="submit" />
+          <ButtonSubmitRed :text="$t('profile.save_changes')" type="submit" />
         </div>
       </Form>
     </div>
@@ -193,28 +193,29 @@
         <IconChangeSuccess />
         <p class="text-dark-green">{{ $t('profile.changes_updated_successfully') }}</p>
       </div>
-      <IconClosePopUp class="my-auto cursor-pointer" @click="closePopup" />
+      <IconPopUpClose class="my-auto cursor-pointer" @click="closePopup" />
     </div>
   </FeedLayout>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue'
-import ConfirmProfileEditModal from '@/components/modals/ConfirmProfileEditModal.vue'
+import ModalEditProfile from '@/components/ModalEditProfile.vue'
 import InputProfileMobile from '@/components/ui/InputProfileMobile.vue'
 import { Form } from 'vee-validate'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
-import IconBackArrow from '@/components/icons/header/IconBackArrow.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import IconArrowBack from '@/components/icons/header/IconArrowBack.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import InputProfile from '@/components/ui/InputProfile.vue'
-import InputField from '@/components/ui/InputField.vue'
+import InputMain from '@/components/ui/InputMain.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
-import IconClosePopUp from '@/components/icons/profile/IconClosePopUp.vue'
-import api from '@/plugins/axios/index.js'
-import EmailSendModal from '@/components/modals/verification/EmailSendModal.vue'
-import { updateProfile } from '@/services/auth.js'
+import IconPopUpClose from '@/components/icons/profile/IconPopUpClose.vue'
+import ModalEmailSend from '@/components/home/verification/ModalEmailSend.vue'
+import { updateProfile } from '@/services/user.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import { useModalStore } from '@/store/useModalStore.js'
+import { changeProfilePicture } from '@/services/user'
+import router from '@/router/index.js'
 
 const fileInputRef = ref(null)
 
@@ -275,7 +276,7 @@ const user = computed(() => {
   return useUserStore().user
 })
 
-function handleSaveChanges(values) {
+function handleSubmit(values) {
   if (windowWidth.value < 800 && useModalStore().showProfileModal === false) {
     useModalStore().toggleProfileModal()
     return
@@ -303,28 +304,23 @@ function handleSaveChanges(values) {
   }
 }
 
-function handleFileUpload() {
+async function handleFileUpload() {
   const fileInput = fileInputRef.value
   if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
     return
   }
   const file = fileInput.files[0]
-  const formData = new FormData()
-  formData.append('thumbnail', file)
-
-  api
-    .post('/profile/upload-thumbnail', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    .then((res) => {
+  try {
+    await changeProfilePicture(file).then((res) => {
       useUserStore().setUser(res.data.user)
       showPopup.value = true
       setTimeout(() => {
         showPopup.value = false
       }, 15000)
     })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 function closeEdit() {

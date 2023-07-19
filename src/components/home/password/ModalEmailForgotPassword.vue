@@ -8,8 +8,8 @@
     </template>
 
     <template v-slot:body>
-      <Form class="flex flex-col gap-4 w-full" @submit="sendPasswordLink">
-        <InputField
+      <Form class="flex flex-col gap-4 w-full" @submit="handleSubmit">
+        <InputMain
           name="email"
           :label="$t('auth.email')"
           :placeholder="$t('auth.enter_your_email')"
@@ -36,8 +36,8 @@ import { ref, computed } from 'vue'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import IconArrowBack from '@/components/icons/IconArrowBack.vue'
-import InputField from '@/components/ui/InputField.vue'
-import ButtoneRed from '@/components/ui/ButtonRed.vue'
+import InputMain from '@/components/ui/InputMain.vue'
+import ButtoneRed from '@/components/ui/ButtonSubmitRed.vue'
 import { sendResetPasswordLink } from '@/services/auth.js'
 
 const modalStore = useModalStore()
@@ -57,7 +57,7 @@ function switchToLogin() {
   modalStore.toggleLoginModal()
 }
 
-async function sendPasswordLink(values) {
+async function handleSubmit(values) {
   apiErrors.value = null
   await sendResetPasswordLink(values.email)
     .then((data) => {

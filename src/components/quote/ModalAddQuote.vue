@@ -1,7 +1,7 @@
 <template>
   <ModalEditLayout @close="closeModal" :title="$t('quotes.add_quote')">
     <template v-slot:body>
-      <Form class="flex flex-col gap-6" @submit="quoteAdd">
+      <Form class="flex flex-col gap-6" @submit="handleSubmit">
         <div class="flex lg:flex-row flex-col gap-5">
           <img :src="movieThumbnail" class="w-290 h-158px rounded-xl border object-cover -z-50" />
 
@@ -44,7 +44,7 @@
 
         <InputPhotoUpload name="thumbnail" rules="required" />
 
-        <ButtonRed
+        <ButtonSubmitRed
           class="w-full rounded-lg mt-6 mb-8"
           :text="$t('quotes.add_quote')"
           type="submit"
@@ -56,11 +56,11 @@
 
 <script setup>
 import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue'
 import { Form } from 'vee-validate'
 import { defineProps, ref, onBeforeMount, computed } from 'vue'
-import { getMovieById } from '@/services/movies.js'
+import { getMovie } from '@/services/movies.js'
 import { createQuote } from '@/services/quotes.js'
 
 import router from '@/router/index.js'
@@ -79,7 +79,7 @@ const closeModal = () => {
   router.push({ name: 'movie-details', params: { id: movie.value.id } })
 }
 
-const quoteAdd = async (values) => {
+const handleSubmit = async (values) => {
   try {
     await createQuote(values.content_en, values.content_ka, values.thumbnail, movie.value.id)
     router.push({ name: 'movie-details', params: { id: movie.value.id } })
@@ -92,7 +92,7 @@ const movieThumbnail = computed(() => import.meta.env.VITE_API_AUTH_URL + movie.
 
 onBeforeMount(async () => {
   try {
-    const data = await getMovieById(props.id)
+    const data = await getMovie(props.id)
     movie.value = data
   } catch (error) {
     router.push({ name: 'forbidden' })

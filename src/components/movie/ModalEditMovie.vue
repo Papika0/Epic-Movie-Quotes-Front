@@ -1,7 +1,7 @@
 <template>
   <ModalEditLayout @close="useModalStore().toggleMovieEditModal" :title="$t('movies.edit_movie')">
     <template v-slot:body>
-      <Form class="flex flex-col gap-6" @submit="editMovieOnSubmit">
+      <Form class="flex flex-col gap-6" @submit="handleSubmit">
         <InputMovie
           name="name_en"
           placeholder="Movie name"
@@ -63,7 +63,7 @@
 
         <InputPhotoUpload name="thumbnail" :image="movie.thumbnail" />
 
-        <ButtonRed type="submit" :text="$t('movies.edit_movie')" class="mb-12 mt-4" />
+        <ButtonSubmitRed type="submit" :text="$t('movies.edit_movie')" class="mb-12 mt-4" />
       </Form>
     </template>
   </ModalEditLayout>
@@ -73,13 +73,15 @@
 import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
 import { useModalStore } from '@/store/useModalStore'
 import { Form } from 'vee-validate'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import GenreDropDown from '@/components/shared/GenreDropDown.vue'
 import InputMovie from '@/components/ui/InputMovie.vue'
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue'
 import TextareaMovie from '@/components/ui/TextareaMovie.vue'
 import { defineProps } from 'vue'
 import { updateMovie } from '@/services/movies'
+
+import router from '@/router/index.js'
 
 const props = defineProps({
   movie: {
@@ -88,20 +90,24 @@ const props = defineProps({
   }
 })
 
-const editMovieOnSubmit = async (values) => {
-  await updateMovie(
-    props.movie.id,
-    values.name_en,
-    values.name_ka,
-    values.genres,
-    values.year,
-    values.director_en,
-    values.director_ka,
-    values.description_en,
-    values.description_ka,
-    values.thumbnail
-  ).then(() => {
-    window.location.reload()
-  })
+const handleSubmit = async (values) => {
+  try {
+    await updateMovie(
+      props.movie.id,
+      values.name_en,
+      values.name_ka,
+      values.genres,
+      values.year,
+      values.director_en,
+      values.director_ka,
+      values.description_en,
+      values.description_ka,
+      values.thumbnail
+    ).then(() => {
+      window.location.reload()
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 </script>

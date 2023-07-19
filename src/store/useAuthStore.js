@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { useUserStore } from '@/store/useUserStore.js'
-import api from '@/plugins/axios/index.js'
+import { getUser } from '@/services/user.js'
 
 export const useAuthStore = defineStore('useAuthStore', {
   state: () => ({
@@ -12,7 +12,7 @@ export const useAuthStore = defineStore('useAuthStore', {
     },
     async checkAuth() {
       try {
-        const user = await api.get('/user')
+        const user = await getUser()
         useUserStore().setUser(user.data.user)
         this.isAuthenticated = true
       } catch (error) {

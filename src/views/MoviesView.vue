@@ -1,6 +1,6 @@
 <template>
   <FeedLayout>
-    <MovieAddModal v-if="useModalStore().showMovieAddModal" />
+    <ModalAddMovie v-if="useModalStore().showMovieAddModal" />
     <div class="flex flex-col lg:ml-420px mx-8">
       <div
         class="text-white lg:text-2xl font-medium leading-9 flex flex-row justify-between mt-5 lg:mt-0"
@@ -41,7 +41,7 @@
             </p>
           </div>
           <div>
-            <ButtonRed
+            <ButtonSubmitRed
               :text="$t('movies.add_movie')"
               :add="true"
               @click="useModalStore().toggleMovieAddModal"
@@ -59,9 +59,9 @@
 
 <script setup>
 import { ref, onBeforeMount, computed, watch } from 'vue'
-import MovieAddModal from '@/components/modals/movie/MovieAddModal.vue'
+import ModalAddMovie from '@/components/movie/ModalAddMovie.vue'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'
 import MovieCard from '@/components/movie/MovieCard.vue'
 import { useMovieStore } from '@/store/useMovieStore'

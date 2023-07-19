@@ -3,24 +3,23 @@
     <p class="text-header text-base my-auto">MOVIE QUOTES</p>
     <div class="flex lg:flex-row flex-row-reverse gap-3 lg:gap-4">
       <LanguageDropDown class="hidden lg:block" />
-      <ButtonRed
+      <ButtonSubmitRed
         :text="$t('auth.sign_up')"
         @click="signUpModal()"
         customClass="px-3 py-2 lg:px-6"
       />
-      <ButtonDark :text="$t('auth.log_in')" @click="logInModal()" />
+      <ButtonSubmitDark :text="$t('auth.log_in')" @click="logInModal()" />
     </div>
   </header>
   <AuthModals />
   <div :class="modalStore.getModalActiveState ? 'h-screen' : ''">
     <section class="flex flex-col items-center lg:mt-64 mt-36">
       <p
-        class="lg:text-6xl text-2xl text-center text-header font-bold leading-9 lg:leading-90 font-title"
+        class="lg:text-6xl text-2xl text-center text-header font-bold leading-9 lg:leading-90 font-title max-w-2xl"
       >
-        Find any quote in <br />
-        millions of movie lines
+        {{ $t('texts.welcome') }}
       </p>
-      <ButtonRed
+      <ButtonSubmitRed
         :text="$t('auth.get_started')"
         class="mt-6"
         customClass="px-3 py-2 lg:px-6"
@@ -31,34 +30,27 @@
   <section class="mt-52">
     <div class="bg-home1 min-h-screen bg-center bg-cover">
       <MovieQuoteParagraph movie="Interstellar, 2014">
-        “You have to leave somethig <br />
-        behind to go forward”
+        {{ $t('texts.first_movie_quote') }}
       </MovieQuoteParagraph>
     </div>
     <div class="bg-home2 min-h-screen bg-center bg-fixed bg-cover">
       <MovieQuoteParagraph movie="The Royal Tenenbaums, 2001">
-        I think we’re just gonna have <br />
-        to be secretly in love with earch other <br />
-        and leave it that
+        {{ $t('texts.second_movie_quote') }}
       </MovieQuoteParagraph>
     </div>
     <div class="bg-home3 min-h-screen bg-right lg:bg-center bg-fixed bg-cover">
       <MovieQuoteParagraph movie="The Royal Tenenbaums, 2001">
-        I think we’re just gonna have <br />
-        to be secretly in love with earch other <br />
-        and leave it that
+        {{ $t('texts.third_movie_quote') }}
       </MovieQuoteParagraph>
     </div>
   </section>
-  <p class="text-header text-xs float-left lg:ml-16 ml-8 py-4">
-    © 2022 movie quotes. All rights reserved.
-  </p>
+  <p class="text-header text-xs float-left lg:ml-16 ml-8 py-4">© {{ $t('texts.copyright') }}</p>
 </template>
 
 <script setup>
 import MovieQuoteParagraph from '@/components/home/MovieQuoteParagraph.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
-import ButtonDark from '@/components/ui/ButtonDark.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
+import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
 import AuthModals from '@/components/home/AuthModals.vue'
 import LanguageDropDown from '@/components/shared/LanguageDropDown.vue'
 import router from '@/router/index.js'

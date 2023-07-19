@@ -1,7 +1,7 @@
 <template>
   <ModalEditLayout @close="useModalStore().toggleQuoteAddModal" :title="$t('quotes.add_quote')">
     <template v-slot:body>
-      <Form class="flex flex-col gap-6" @submit="quoteAdd">
+      <Form class="flex flex-col gap-6" @submit="handleSubmit">
         <TextareaMovie
           name="content_en"
           placeholder="Start create new quote"
@@ -18,7 +18,11 @@
 
         <MovieDropdown rules="required" />
 
-        <ButtonRed class="w-full rounded-lg mt-6 mb-8" :text="$t('quotes.post')" type="submit" />
+        <ButtonSubmitRed
+          class="w-full rounded-lg mt-6 mb-8"
+          :text="$t('quotes.post')"
+          type="submit"
+        />
       </Form>
     </template>
   </ModalEditLayout>
@@ -26,7 +30,7 @@
 
 <script setup>
 import ModalEditLayout from '@/components/layouts/ModalEditLayout.vue'
-import ButtonRed from '@/components/ui/ButtonRed.vue'
+import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import InputPhotoUpload from '@/components/ui/InputPhotoUpload.vue'
 import { Form } from 'vee-validate'
 import { createQuote } from '@/services/quotes.js'
@@ -35,7 +39,7 @@ import TextareaMovie from '@/components/ui/TextareaMovie.vue'
 import MovieDropdown from '@/components/quote/MovieDropdown.vue'
 import router from '@/router/index.js'
 
-const quoteAdd = async (values) => {
+const handleSubmit = async (values) => {
   try {
     await createQuote(values.content_en, values.content_ka, values.thumbnail, values.movie_id).then(
       () => {

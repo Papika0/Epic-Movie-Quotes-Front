@@ -1,7 +1,7 @@
 <template>
   <div class="absolute w-full h-4/5 bg-neutral-900 z-50 flex flex-col gap-6" v-if="showSearch">
     <div class="h-16 border-b border-zinc-100 border-opacity-30 flex flex-row gap-5">
-      <IconBackArrow class="my-auto ml-6" @click="showSearch = false" />
+      <IconArrowBack class="my-auto ml-6" @click="showSearch = false" />
       <input
         v-model="searchQuery"
         type="text"
@@ -31,16 +31,16 @@
           @click="showSearch = true"
         />
         <LanguageDropDown />
-        <ButtonDark :text="$t('auth.log_out')" @click="logOut()" class="lg:block hidden" />
+        <ButtonSubmitDark :text="$t('auth.log_out')" @click="logOut()" class="lg:block hidden" />
       </div>
     </header>
   </nav>
 </template>
 
 <script setup>
-import ButtonDark from '@/components/ui/ButtonDark.vue'
+import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'
-import IconBackArrow from '@/components/icons/header/IconBackArrow.vue'
+import IconArrowBack from '@/components/icons/header/IconArrowBack.vue'
 import LanguageDropDown from '@/components/shared/LanguageDropDown.vue'
 import NotificationsDropDown from '@/components/shared/NotificationsDropDown.vue'
 import IconBurgerMenu from '@/components/icons/header/IconBurgerMenu.vue'

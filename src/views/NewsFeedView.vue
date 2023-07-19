@@ -1,6 +1,6 @@
 <template>
   <FeedLayout>
-    <QuoteAddNewsFeedModal v-if="useModalStore().showQuoteAddModal" />
+    <ModalAddQuote v-if="useModalStore().showQuoteAddModal" />
     <div class="flex flex-col gap-12 lg:w-938 mx-auto mb-48">
       <div class="inline-flex gap-6 -mb-6 w-full">
         <div
@@ -48,8 +48,8 @@ import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import { ref, watch } from 'vue'
 import IconPencilSquare from '@/components/icons/feed/IconPencilSquare.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'
-import NewsFeedCards from '@/components/feed/NewsFeedCards.vue'
-import QuoteAddNewsFeedModal from '@/components/modals/quote/QuoteAddNewsFeedModal.vue'
+import NewsFeedCards from '@/components/newsfeed/NewsFeedCards.vue'
+import ModalAddQuote from '@/components/newsfeed/ModalAddQuote.vue'
 import { useModalStore } from '@/store/useModalStore'
 import { useNewsFeedStore } from '@/store/useNewsFeedStore'
 

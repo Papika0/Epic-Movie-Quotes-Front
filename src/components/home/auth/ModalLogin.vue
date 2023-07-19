@@ -10,8 +10,8 @@
     </template>
 
     <template v-slot:body>
-      <Form class="flex flex-col gap-4 w-full" @submit="logIn">
-        <InputField
+      <Form class="flex flex-col gap-4 w-full" @submit="handleSubmit">
+        <InputMain
           name="email"
           :label="$t('auth.email')"
           :placeholder="$t('auth.enter_your_email')"
@@ -19,7 +19,7 @@
           rules="required|min:3"
         />
         <p v-if="emailError" class="text-red-star text-sm">{{ emailError }}</p>
-        <InputField
+        <InputMain
           name="password"
           :label="$t('auth.password')"
           :placeholder="$t('auth.password')"
@@ -43,7 +43,11 @@
           >
         </div>
         <ButtoneRed :text="$t('auth.sign_in')" type="submit" />
-        <ButtonDark :text="$t('auth.sign_in_with_google')" :gmail="true" @click="googleSignIn()" />
+        <ButtonSubmitDark
+          :text="$t('auth.sign_in_with_google')"
+          :gmail="true"
+          @click="googleSignIn()"
+        />
       </Form>
     </template>
     <template v-slot:footer>
@@ -65,12 +69,10 @@ import { Form, Field } from 'vee-validate'
 import { ref, computed } from 'vue'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useAuthStore } from '@/store/useAuthStore.js'
-import InputField from '@/components/ui/InputField.vue'
-import ButtoneRed from '@/components/ui/ButtonRed.vue'
-import ButtonDark from '@/components/ui/ButtonDark.vue'
-import { login } from '@/services/auth.js'
-import api from '@/plugins/axios/index.js'
-import sanctum from '@/plugins/axios/sanctum'
+import InputMain from '@/components/ui/InputMain.vue'
+import ButtoneRed from '@/components/ui/ButtonSubmitRed.vue'
+import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
+import { login, googleSign } from '@/services/auth.js'
 import router from '@/router/index.js'
 
 const modalStore = useModalStore()
@@ -82,16 +84,13 @@ const emailError = computed(() => {
 })
 
 async function googleSignIn() {
-  await sanctum.get('/sanctum/csrf-cookie').then(() => {
-    api
-      .get('/auth/google')
-      .then((response) => {
-        window.location.href = response.data.url
-      })
-      .catch(() => {
-        router.push({ name: 'forbidden' })
-      })
-  })
+  try {
+    await googleSign().then((response) => {
+      window.location.href = response.data.url
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 function switchLoginForgotPasswordModal() {
@@ -99,9 +98,9 @@ function switchLoginForgotPasswordModal() {
   modalStore.toggleEmailForgotPasswordModal()
 }
 
-async function logIn(values) {
+async function handleSubmit(values) {
   apiErrors.value = null
-  await sanctum.get('/sanctum/csrf-cookie').then(() => {
+  try {
     login(values.email, values.password, values.remember_me)
       .then(() => {
         modalStore.toggleLoginModal()
@@ -119,6 +118,8 @@ async function logIn(values) {
           apiErrors.value = error.response.data.message
         }
       })
-  })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 </script>

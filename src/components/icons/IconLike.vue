@@ -72,6 +72,7 @@
 <script setup>
 import { ref, defineProps, onMounted, watch } from 'vue'
 import { likeQuote, dislikeQuote } from '@/services/quotes.js'
+import router from '@/router/index.js'
 
 const props = defineProps({
   likesCount: {
@@ -105,9 +106,17 @@ const handleMouseLeave = () => {
 const handleClick = async () => {
   isActive.value = !isActive.value
   if (isActive.value) {
-    await likeQuote(props.quoteId)
+    try {
+      await likeQuote(props.quoteId)
+    } catch (error) {
+      router.push({ name: 'forbidden' })
+    }
   } else {
-    await dislikeQuote(props.quoteId)
+    try {
+      await dislikeQuote(props.quoteId)
+    } catch (error) {
+      router.push({ name: 'forbidden' })
+    }
   }
 }
 
