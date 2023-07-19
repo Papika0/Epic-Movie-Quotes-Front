@@ -17,10 +17,4 @@ export const useUserStore = defineStore('useUserStore', {
       this.user = user
     }
   },
-  getters: {
-    getEmailDomain(state) {
-      const emailParts = state.email.split('@')
-      return emailParts.length === 2 ? emailParts[1] : ''
-    }
-  }
 })
