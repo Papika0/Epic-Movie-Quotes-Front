@@ -67,9 +67,7 @@ import { useUserStore } from '@/store/useUserStore.js'
 import InputMain from '@/components/ui/InputMain.vue'
 import ButtoneRed from '@/components/ui/ButtonSubmitRed.vue'
 import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
-import api from '@/plugins/axios/index.js'
-import sanctum from '@/plugins/axios/sanctum'
-import { register } from '@/services/auth.js'
+import { register, googleSign } from '@/services/auth.js'
 import router from '@/router/index.js'
 
 const modalStore = useModalStore()
@@ -92,16 +90,13 @@ const usernameError = computed(() => {
 })
 
 async function googleSignUp() {
-  await sanctum.get('/sanctum/csrf-cookie').then(() => {
-    api
-      .get('/auth/google')
-      .then((response) => {
-        window.location.href = response.data.url
-      })
-      .catch(() => {
-        router.push({ name: 'forbidden' })
-      })
-  })
+  try {
+    await googleSign().then((response) => {
+      window.location.href = response.data.url
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 async function handleSubmit(values) {

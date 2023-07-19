@@ -72,9 +72,7 @@ import { useAuthStore } from '@/store/useAuthStore.js'
 import InputMain from '@/components/ui/InputMain.vue'
 import ButtoneRed from '@/components/ui/ButtonSubmitRed.vue'
 import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
-import { login } from '@/services/auth.js'
-import api from '@/plugins/axios/index.js'
-import sanctum from '@/plugins/axios/sanctum'
+import { login, googleSign } from '@/services/auth.js'
 import router from '@/router/index.js'
 
 const modalStore = useModalStore()
@@ -86,16 +84,13 @@ const emailError = computed(() => {
 })
 
 async function googleSignIn() {
-  await sanctum.get('/sanctum/csrf-cookie').then(() => {
-    api
-      .get('/auth/google')
-      .then((response) => {
-        window.location.href = response.data.url
-      })
-      .catch(() => {
-        router.push({ name: 'forbidden' })
-      })
-  })
+  try {
+    await googleSign().then((response) => {
+      window.location.href = response.data.url
+    })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 function switchLoginForgotPasswordModal() {
@@ -105,7 +100,7 @@ function switchLoginForgotPasswordModal() {
 
 async function handleSubmit(values) {
   apiErrors.value = null
-  await sanctum.get('/sanctum/csrf-cookie').then(() => {
+  try {
     login(values.email, values.password, values.remember_me)
       .then(() => {
         modalStore.toggleLoginModal()
@@ -123,6 +118,8 @@ async function handleSubmit(values) {
           apiErrors.value = error.response.data.message
         }
       })
-  })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 </script>

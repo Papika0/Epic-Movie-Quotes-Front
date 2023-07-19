@@ -210,11 +210,12 @@ import InputProfile from '@/components/ui/InputProfile.vue'
 import InputMain from '@/components/ui/InputMain.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
 import IconPopUpClose from '@/components/icons/profile/IconPopUpClose.vue'
-import api from '@/plugins/axios/index.js'
 import ModalEmailSend from '@/components/home/verification/ModalEmailSend.vue'
-import { updateProfile } from '@/services/auth.js'
+import { updateProfile } from '@/services/user.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import { useModalStore } from '@/store/useModalStore.js'
+import { changeProfilePicture } from '@/services/user'
+import router from '@/router/index.js'
 
 const fileInputRef = ref(null)
 
@@ -303,28 +304,23 @@ function handleSubmit(values) {
   }
 }
 
-function handleFileUpload() {
+async function handleFileUpload() {
   const fileInput = fileInputRef.value
   if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
     return
   }
   const file = fileInput.files[0]
-  const formData = new FormData()
-  formData.append('thumbnail', file)
-
-  api
-    .post('/profile/upload-thumbnail', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    .then((res) => {
+  try {
+    await changeProfilePicture(file).then((res) => {
       useUserStore().setUser(res.data.user)
       showPopup.value = true
       setTimeout(() => {
         showPopup.value = false
       }, 15000)
     })
+  } catch (error) {
+    router.push({ name: 'forbidden' })
+  }
 }
 
 function closeEdit() {

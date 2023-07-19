@@ -1,4 +1,5 @@
 import api from '@/plugins/axios/index.js'
+import sanctum from '@/plugins/axios/sanctum'
 
 export async function register(username, email, password) {
   return await api.post('/register', {
@@ -33,6 +34,7 @@ export async function resendEmailVerification(email) {
 }
 
 export async function login(email, password, rememberMe) {
+  await sanctum.get('/sanctum/csrf-cookie')
   return await api.post('/login', {
     email: email,
     password: password,
@@ -48,14 +50,7 @@ export async function logout() {
   return await api.post('/logout')
 }
 
-export async function getUser() {
-  return await api.get('/user')
-}
-
-export async function updateProfile(username, email, password) {
-  return await api.post('/profile/update-profile', {
-    username: username,
-    email: email,
-    password: password
-  })
+export async function googleSign() {
+  await sanctum.get('/sanctum/csrf-cookie')
+  return await api.get('/auth/google')
 }
