@@ -10,7 +10,7 @@
     </template>
 
     <template v-slot:body>
-      <Form class="flex flex-col gap-4 w-full" @submit="logIn">
+      <Form class="flex flex-col gap-4 w-full" @submit="handleSubmit">
         <InputField
           name="email"
           :label="$t('auth.email')"
@@ -99,7 +99,7 @@ function switchLoginForgotPasswordModal() {
   modalStore.toggleEmailForgotPasswordModal()
 }
 
-async function logIn(values) {
+async function handleSubmit(values) {
   apiErrors.value = null
   await sanctum.get('/sanctum/csrf-cookie').then(() => {
     login(values.email, values.password, values.remember_me)

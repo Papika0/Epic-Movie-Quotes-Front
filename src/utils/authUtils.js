@@ -40,7 +40,6 @@ export async function handlePasswordResset(to, from, next) {
 export async function handleGoogleAuth(to, _, next) {
   try {
     await authGoogle(to.fullPath)
-    useAuthStore().setIsAuthenticated(true)
     next({ name: 'news-feed' })
   } catch (error) {
     next({ name: 'forbidden' })

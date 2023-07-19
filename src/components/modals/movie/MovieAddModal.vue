@@ -1,7 +1,7 @@
 <template>
   <ModalEditLayout @close="useModalStore().toggleMovieAddModal" :title="$t('movies.add_movie')">
     <template v-slot:body>
-      <Form class="flex flex-col gap-6" @submit="createMovieOnSubmit">
+      <Form class="flex flex-col gap-6" @submit="handleSubmit">
         <InputMovie name="name_en" placeholder="Movie name" rules="required|english" />
         <InputMovie
           name="name_ka"
@@ -55,7 +55,7 @@ import { createMovie } from '@/services/movies.js'
 import { useMovieStore } from '@/store/useMovieStore.js'
 import router from '@/router/index.js'
 
-const createMovieOnSubmit = async (values) => {
+const handleSubmit = async (values) => {
   try {
     await createMovie(
       values.name_en,

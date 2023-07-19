@@ -10,7 +10,7 @@
     </template>
 
     <template v-slot:body>
-      <Form class="flex flex-col gap-4 w-full" @submit="passwordReset">
+      <Form class="flex flex-col gap-4 w-full" @submit="handleSubmit">
         <InputField
           name="password"
           :label="$t('auth.password')"
@@ -55,7 +55,7 @@ function switchToLogin() {
   modalStore.toggleLoginModal()
 }
 
-async function passwordReset(values) {
+async function handleSubmit(values) {
   await resetPassword(userStore.token, userStore.email, values.password)
     .then(() => {
       modalStore.toggleResetPasswordModal()

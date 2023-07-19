@@ -7,7 +7,7 @@
       </div>
     </template>
     <template v-slot:body>
-      <Form class="flex flex-col gap-4" @submit="editQuote">
+      <Form class="flex flex-col gap-4" @submit="handleSubmit">
         <TextareaMovie
           name="content_en"
           :oldValue="quote.content_en"
@@ -108,7 +108,7 @@ const closeModal = () => {
   router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
 }
 
-const editQuote = async (values) => {
+const handleSubmit = async (values) => {
   try {
     await updateQuote(props.id, values.content_en, values.content_ka, values.thumbnail).then(() => {
       router.push({ name: 'quote-details', params: { id: props.id, type: 'view' } })

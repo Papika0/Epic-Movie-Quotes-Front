@@ -6,7 +6,7 @@
     </template>
 
     <template v-slot:body>
-      <Form class="flex flex-col gap-4 w-full" @submit="registerUser">
+      <Form class="flex flex-col gap-4 w-full" @submit="handleSubmit">
         <InputField
           name="username"
           :label="$t('auth.name')"
@@ -100,7 +100,7 @@ async function googleSignUp() {
   })
 }
 
-async function registerUser(values) {
+async function handleSubmit(values) {
   apiErrors.value = null
   await register(values.username, values.email, values.password)
     .then((data) => {

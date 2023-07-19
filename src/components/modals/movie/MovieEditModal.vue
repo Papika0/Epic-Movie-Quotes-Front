@@ -1,7 +1,7 @@
 <template>
   <ModalEditLayout @close="useModalStore().toggleMovieEditModal" :title="$t('movies.edit_movie')">
     <template v-slot:body>
-      <Form class="flex flex-col gap-6" @submit="editMovieOnSubmit">
+      <Form class="flex flex-col gap-6" @submit="handleSubmit">
         <InputMovie
           name="name_en"
           placeholder="Movie name"
@@ -90,7 +90,7 @@ const props = defineProps({
   }
 })
 
-const editMovieOnSubmit = async (values) => {
+const handleSubmit = async (values) => {
   try {
     await updateMovie(
       props.movie.id,

@@ -1,7 +1,7 @@
 <template>
   <ModalEditLayout @close="closeModal" :title="$t('quotes.add_quote')">
     <template v-slot:body>
-      <Form class="flex flex-col gap-6" @submit="quoteAdd">
+      <Form class="flex flex-col gap-6" @submit="handleSubmit">
         <div class="flex lg:flex-row flex-col gap-5">
           <img :src="movieThumbnail" class="w-290 h-158px rounded-xl border object-cover -z-50" />
 
@@ -79,7 +79,7 @@ const closeModal = () => {
   router.push({ name: 'movie-details', params: { id: movie.value.id } })
 }
 
-const quoteAdd = async (values) => {
+const handleSubmit = async (values) => {
   try {
     await createQuote(values.content_en, values.content_ka, values.thumbnail, movie.value.id)
     router.push({ name: 'movie-details', params: { id: movie.value.id } })

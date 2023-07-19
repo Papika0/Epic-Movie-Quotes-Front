@@ -21,7 +21,7 @@
         </button>
         <input type="file" @change="handleFileUpload" ref="fileInputRef" class="hidden" />
       </div>
-      <Form @submit="handleSaveChanges">
+      <Form @submit="handleSubmit">
         <InputProfileMobile
           v-if="editUsername && windowWidth < 800"
           :label="$t('profile.new_username')"
@@ -275,7 +275,7 @@ const user = computed(() => {
   return useUserStore().user
 })
 
-function handleSaveChanges(values) {
+function handleSubmit(values) {
   if (windowWidth.value < 800 && useModalStore().showProfileModal === false) {
     useModalStore().toggleProfileModal()
     return

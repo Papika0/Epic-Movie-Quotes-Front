@@ -8,7 +8,7 @@
     </template>
 
     <template v-slot:body>
-      <Form class="flex flex-col gap-4 w-full" @submit="sendPasswordLink">
+      <Form class="flex flex-col gap-4 w-full" @submit="handleSubmit">
         <InputField
           name="email"
           :label="$t('auth.email')"
@@ -57,7 +57,7 @@ function switchToLogin() {
   modalStore.toggleLoginModal()
 }
 
-async function sendPasswordLink(values) {
+async function handleSubmit(values) {
   apiErrors.value = null
   await sendResetPasswordLink(values.email)
     .then((data) => {
