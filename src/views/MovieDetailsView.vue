@@ -1,6 +1,6 @@
 <template>
   <FeedLayout>
-    <MovieEditModal v-if="useModalStore().showMovieEditModal" :movie="movie" />
+    <ModalEditMovie v-if="useModalStore().showMovieEditModal" :movie="movie" />
     <div class="flex flex-col lg:ml-420px">
       <p class="text-white text-2xl font-medium leading-9 hidden lg:block">
         {{ $t('movies.movie_description') }}
@@ -8,10 +8,7 @@
 
       <div class="mt-33px mb-20 lg:mr-16 flex flex-col gap-10">
         <div class="flex lg:flex-row flex-col gap-5 mx-8 lg:mx-0">
-          <img
-            :src="movieThumbnail"
-            class="lg:h-440px lg:w-809px w-358 h-302px rounded-xl border object-cover -z-50"
-          />
+          <img :src="movieThumbnail" class="lg:h-440px lg:w-809px w-358 h-302px rounded-xl border object-cover -z-50" />
 
           <div class="flex flex-col gap-5 lg:w-2/5">
             <div class="flex lg:flex-row flex-col-reverse justify-between">
@@ -19,21 +16,15 @@
                 {{ movie.name }} ({{ movie.release_year }})
               </p>
               <div class="flex flex-row gap-4 py-3 px-6 bg-zinc-800 rounded-lg w-fit">
-                <IconEditPencil
-                  class="my-auto cursor-pointer"
-                  @click="useModalStore().toggleMovieEditModal"
-                />
+                <IconEditPencil class="my-auto cursor-pointer" @click="useModalStore().toggleMovieEditModal" />
                 <hr class="rotate-90 border border-gray-500 w-5 my-auto" />
                 <IconDelete class="my-auto cursor-pointer" @click="movieDelete" />
               </div>
             </div>
 
             <div class="flex flex-wrap gap-2 mt-1 max-w-lg">
-              <div
-                v-for="option in movie.genres"
-                :key="option.id"
-                class="rounded-md items-center py-6px px-3 bg-gray-500"
-              >
+              <div v-for="option in movie.genres" :key="option.id"
+                class="rounded-md items-center py-6px px-3 bg-gray-500">
                 <p class="text-white text-sm font-normal leading-snug">{{ option.name }}</p>
               </div>
             </div>
@@ -60,12 +51,7 @@
           </div>
           <hr class="lg:rotate-90 border -z-50 lg:border-gray-500 border-zinc-600 lg:w-6 my-auto" />
           <div>
-            <ButtonSubmitRed
-              :text="$t('movies.add_quote')"
-              :add="true"
-              customClass="py-2 px-4"
-              @click="addQuote"
-            />
+            <ButtonSubmitRed :text="$t('movies.add_quote')" :add="true" customClass="py-2 px-4" @click="addQuote" />
           </div>
         </div>
 
@@ -83,7 +69,7 @@ import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import QuoteCard from '@/components/quote/QuoteCard.vue'
 
-import MovieEditModal from '@/components/movie/MovieEditModal.vue'
+import ModalEditMovie from '@/components/movie/ModalEditMovie.vue'
 import { getMovie, deleteMovie } from '@/services/movies.js'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useMovieStore } from '@/store/useMovieStore'

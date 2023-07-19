@@ -1,27 +1,27 @@
 <template>
-  <RegisterModal v-if="modalStore.showRegisterModal" />
-  <LoginModal v-if="modalStore.showLoginModal" />
-  <EmailSendModal v-if="modalStore.showEmailSentModal" />
-  <EmailVerifiedModal v-if="modalStore.showEmailVerifiedModal" />
-  <EmailForgotPasswordModal v-if="modalStore.showEmailForgotPasswordModal" />
-  <EmailForgotPasswordSendModal v-if="modalStore.showEmailForgotPasswordSendModal" />
-  <ResetPasswordModal v-if="modalStore.showResetPasswordModal" />
-  <EmailVerificationResendModal v-if="modalStore.showEmailVerificationResendModal" />
-  <ResetPasswordResendModal v-if="modalStore.showResetPasswordResendModal" />
-  <ResetPasswordSuccessModal v-if="modalStore.showResetPasswordSuccessModal" />
+  <ModalRegister v-if="modalStore.showRegisterModal" />
+  <ModalLogin v-if="modalStore.showLoginModal" />
+  <ModalEmailSend v-if="modalStore.showEmailSentModal" />
+  <ModalEmailVerified v-if="modalStore.showEmailVerifiedModal" />
+  <ModalEmailForgotPassword v-if="modalStore.showEmailForgotPasswordModal" />
+  <ModalEmailForgotPasswordSend v-if="modalStore.showEmailForgotPasswordSendModal" />
+  <ModalResetPassword v-if="modalStore.showResetPasswordModal" />
+  <ModalEmailVerificationResend v-if="modalStore.showEmailVerificationResendModal" />
+  <ModalResetPasswordResend v-if="modalStore.showResetPasswordResendModal" />
+  <ModalResetPasswordSuccess v-if="modalStore.showResetPasswordSuccessModal" />
 </template>
 
 <script setup>
-import RegisterModal from '@/components/home/auth/RegisterModal.vue'
-import LoginModal from '@/components/home/auth/LoginModal.vue'
-import EmailSendModal from '@/components/home/verification/EmailSendModal.vue'
-import EmailVerifiedModal from '@/components/home/verification/EmailVerifiedModal.vue'
-import EmailVerificationResendModal from '@/components/home/verification/EmailVerificationResendModal.vue'
-import EmailForgotPasswordModal from '@/components/home/password/EmailForgotPasswordModal.vue'
-import EmailForgotPasswordSendModal from '@/components/home/password/EmailForgotPasswordSendModal.vue'
-import ResetPasswordModal from '@/components/home/password/ResetPasswordModal.vue'
-import ResetPasswordResendModal from '@/components/home/password/ResetPasswordResendModal.vue'
-import ResetPasswordSuccessModal from '@/components/home/password/ResetPasswordSuccessModal.vue'
+import ModalRegister from '@/components/home/auth/ModalRegister.vue'
+import ModalLogin from '@/components/home/auth/ModalLogin.vue'
+import ModalEmailSend from '@/components/home/verification/ModalEmailSend.vue'
+import ModalEmailVerified from '@/components/home/verification/ModalEmailVerified.vue'
+import ModalEmailVerificationResend from '@/components/home/verification/ModalEmailVerificationResend.vue'
+import ModalEmailForgotPassword from '@/components/home/password/ModalEmailForgotPassword.vue'
+import ModalEmailForgotPasswordSend from '@/components/home/password/ModalEmailForgotPasswordSend.vue'
+import ModalResetPassword from '@/components/home/password/ModalResetPassword.vue'
+import ModalResetPasswordResend from '@/components/home/password/ModalResetPasswordResend.vue'
+import ModalResetPasswordSuccess from '@/components/home/password/ModalResetPasswordSuccess.vue'
 import { useModalStore } from '@/store/useModalStore.js'
 
 const modalStore = useModalStore()
