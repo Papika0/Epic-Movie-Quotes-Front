@@ -16,7 +16,7 @@
 
         <InputPhotoUpload name="thumbnail" rules="required" />
 
-        <MovieDropdown rules="required" />
+        <QuoteMovieDropdown rules="required" />
 
         <ButtonSubmitRed
           class="w-full rounded-lg mt-6 mb-8"
@@ -36,7 +36,7 @@ import { Form } from 'vee-validate'
 import { createQuote } from '@/services/quotes.js'
 import { useModalStore } from '@/store/useModalStore'
 import TextareaMovie from '@/components/ui/TextareaMovie.vue'
-import MovieDropdown from '@/components/quote/MovieDropdown.vue'
+import QuoteMovieDropdown from '@/components/quote/QuoteMovieDropdown.vue'
 import router from '@/router/index.js'
 
 const handleSubmit = async (values) => {

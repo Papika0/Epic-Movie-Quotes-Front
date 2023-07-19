@@ -1,6 +1,6 @@
 <template>
   <FeedLayout>
-    <ModalAddMovie v-if="useModalStore().showMovieAddModal" />
+    <MovieAddModal v-if="useModalStore().showMovieAddModal" />
     <div class="flex flex-col lg:ml-420px mx-8">
       <div
         class="text-white lg:text-2xl font-medium leading-9 flex flex-row justify-between mt-5 lg:mt-0"
@@ -59,7 +59,7 @@
 
 <script setup>
 import { ref, onBeforeMount, computed, watch } from 'vue'
-import ModalAddMovie from '@/components/movie/ModalAddMovie.vue'
+import MovieAddModal from '@/components/movie/MovieAddModal.vue'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'

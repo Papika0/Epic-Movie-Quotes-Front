@@ -66,7 +66,7 @@
           "
         />
 
-        <ModalEditProfile
+        <ProfileEditModal
           v-if="useModalStore().showProfileModal"
           @close="useModalStore().toggleProfileModal()"
         />
@@ -200,7 +200,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import ModalEditProfile from '@/components/ModalEditProfile.vue'
+import ProfileEditModal from '@/components/ProfileEditModal.vue'
 import InputProfileMobile from '@/components/ui/InputProfileMobile.vue'
 import { Form } from 'vee-validate'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
@@ -210,7 +210,7 @@ import InputProfile from '@/components/ui/InputProfile.vue'
 import InputMain from '@/components/ui/InputMain.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
 import IconPopUpClose from '@/components/icons/profile/IconPopUpClose.vue'
-import ModalEmailSend from '@/components/home/verification/ModalEmailSend.vue'
+import ModalEmailSend from '@/components/landing/auth/AuthEmailSend.vue'
 import { updateProfile } from '@/services/user.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import { useModalStore } from '@/store/useModalStore.js'
