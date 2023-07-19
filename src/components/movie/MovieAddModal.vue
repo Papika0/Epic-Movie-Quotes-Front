@@ -68,7 +68,7 @@ const handleSubmit = async (values) => {
       values.description_ka,
       values.thumbnail
     ).then((res) => {
-      useMovieStore().movies.unshift(res)
+      useMovieStore().movies.unshift(res.data)
       useModalStore().toggleMovieAddModal()
     })
   } catch (error) {

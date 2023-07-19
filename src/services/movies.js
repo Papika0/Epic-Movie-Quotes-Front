@@ -1,7 +1,7 @@
 import api from '@/plugins/axios/index.js'
 
 export async function getAllMovies() {
-  return api.get('/movies').then((response) => response.data)
+  return api.get('/movies')
 }
 
 export async function getGenres() {
@@ -31,21 +31,19 @@ export async function createMovie(
   formData.append('description[en]', description_en)
   formData.append('description[ka]', description_ka)
   formData.append('thumbnail', thumbnail)
-  return await api
-    .post('/movies', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    .then((response) => response.data)
+  return await api.post('/movies', formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
 }
 
 export async function getMovie(id) {
-  return await api.get(`/movies/${id}`).then((response) => response.data)
+  return await api.get(`/movies/${id}`)
 }
 
 export async function deleteMovie(id) {
-  return await api.delete(`/movies/${id}`).then((response) => response)
+  return await api.delete(`/movies/${id}`)
 }
 
 export async function updateMovie(
@@ -74,11 +72,9 @@ export async function updateMovie(
   if (thumbnail) {
     formData.append('thumbnail', thumbnail)
   }
-  return await api
-    .post(`/movies/${id}`, formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data'
-      }
-    })
-    .then((response) => response.data)
+  return await api.post(`/movies/${id}`, formData, {
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
 }

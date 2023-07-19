@@ -92,8 +92,8 @@ const movieThumbnail = computed(() => import.meta.env.VITE_API_AUTH_URL + movie.
 
 onBeforeMount(async () => {
   try {
-    const data = await getMovie(props.id)
-    movie.value = data
+    const res = await getMovie(props.id)
+    movie.value = res.data
   } catch (error) {
     router.push({ name: 'forbidden' })
   }

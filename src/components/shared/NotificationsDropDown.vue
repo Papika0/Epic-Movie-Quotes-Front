@@ -133,11 +133,15 @@ function goToQuote(id, quoteId) {
     notificationStore.notifications.find((notification) => notification.id === id).read == false
   ) {
     notificationStore.unreadNotifications--
-    markAsRead(id).then((data) => {
-      notificationStore.notifications.find((notification) => {
-        return notification.id === data.notification.id
-      }).read = data.notification.read
-    })
+    try {
+      markAsRead(id).then((res) => {
+        notificationStore.notifications.find((notification) => {
+          return notification.id === res.data.notification.id
+        }).read = res.data.notification.read
+      })
+    } catch (error) {
+      router.push({ name: 'not-found' })
+    }
   }
   router.push({ name: 'quote-details', params: { id: quoteId, type: 'view' } })
 }
