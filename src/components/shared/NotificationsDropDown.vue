@@ -1,4 +1,5 @@
 <template>
+  <QuoteModalView :id="selectedQuote.toString()" v-if="useModalStore().showQuoteNewsFeed" />
   <div class="relative my-auto cursor-pointer" @click="openModal">
     <IconNotificationBell class="my-auto w-6 h-6 lg:w-min lg:h-min" />
     <div class="absolute top-0 right-0 mt-1 mr-1">
@@ -109,6 +110,8 @@ import IconBlackPolygon from '@/components/icons/header/IconBlackPolygon.vue'
 import IconQuoteSymbol from '@/components/icons/movie/IconQuoteSymbol.vue'
 import IconHeartFilled from '@/components/icons/header/IconHeartFilled.vue'
 import { useUserStore } from '@/store/useUserStore'
+import { useModalStore } from '@/store/useModalStore'
+import QuoteModalView from '@/components/quote/QuoteModalView.vue'
 import router from '@/router/index.js'
 import instantiatePusher from '@/helpers/instantiatePusher.js'
 import { ref, onMounted, onBeforeUnmount, computed, watch } from 'vue'
@@ -123,6 +126,8 @@ const notificationContainerRef = ref(null)
 const page = ref(2)
 
 const notifications = ref([])
+
+const selectedQuote = ref(null)
 
 const notificationsCount = computed(() => {
   return notificationStore.unreadNotifications
@@ -149,7 +154,9 @@ function goToQuote(id, quoteId) {
       router.push({ name: 'not-found' })
     }
   }
-  router.push({ name: 'quote-details', params: { id: quoteId, type: 'view' } })
+  notificationStore.toggleNotifications()
+  selectedQuote.value = quoteId
+  useModalStore().showQuoteNewsFeed = true
 }
 
 const userThumbnail = (thumbnail) => import.meta.env.VITE_API_AUTH_URL + thumbnail

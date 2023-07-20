@@ -66,6 +66,7 @@ import CommentCard from '@/components/shared/CommentCard.vue'
 
 import { computed, defineProps, ref, onBeforeMount, onMounted } from 'vue'
 import { useUserStore } from '@/store/useUserStore'
+import { useModalStore } from '@/store/useModalStore'
 import { getQuote, deleteQuote, addComment } from '@/services/quotes.js'
 
 import router from '@/router/index.js'
@@ -83,7 +84,11 @@ const props = defineProps({
 })
 
 const closeModal = () => {
-  router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
+  if (useModalStore().showQuoteNewsFeed) {
+    useModalStore().showQuoteNewsFeed = false
+  } else {
+    router.push({ name: 'movie-details', params: { id: quote.value.movie_id } })
+  }
 }
 
 const handleDelete = async () => {
