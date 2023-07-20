@@ -13,7 +13,7 @@
               : ''
           ]"
         >
-          <p class="text-gray-500 font-normal leading-loose" v-if="showPlaceholder">Genres</p>
+          <p class="text-white italic font-normal leading-loose" v-if="showPlaceholder">Genres</p>
           <div
             v-for="option in selected"
             :key="option.id"

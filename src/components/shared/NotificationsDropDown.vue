@@ -44,7 +44,13 @@
             alt="thumbnail"
             class="lg:w-20 lg:h-20 w-60 h-60 rounded-full lg:my-auto"
             :class="{ 'border-2 border-green-700': notification.read == false }"
+            v-if="notification.from.thumbnail"
           />
+          <div class="lg:w-20 lg:h-20 w-60 h-60 rounded-full bg-red-800 justify-center flex" v-else>
+            <p class="text-white text-3xl font-normal leading-loose my-auto flex">
+              {{ notification.from.username[0].toUpperCase() }}
+            </p>
+          </div>
           <p
             v-show="notification.read == false"
             class="text-green-700 font-normal my-auto mx-auto lg:hidden"
