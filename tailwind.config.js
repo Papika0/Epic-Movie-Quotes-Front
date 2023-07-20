@@ -98,9 +98,9 @@ export const theme = {
       'helvetica': ['Helvetica Neue', 'sans-serif'],
     },
     backgroundImage: {
-      'home1': "url('../assets/images/LandingMovieFirst.png')",
-      'home2': "url('../assets/images/LandingMovieSecond.png')",
-      'home3': "url('../assets/images/LandingMovieThird.png')",
+      'interstellar': "url('../assets/images/interstellar.png')",
+      'tenenbaums': "url('../assets/images/the-royal-tenenbaums.png')",
+      'lord-of-rings': "url('../assets/images/the-lord-of-rings.png')",
       'top-shadow': "linear-gradient(180deg, #000000 0%, rgba(0,0,0,0) 60%, rgba(0,0,0,0) 100%)",
       'left-shadow' : "linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%)",
     },
