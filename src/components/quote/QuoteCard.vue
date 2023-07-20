@@ -39,7 +39,7 @@
         :src="getFullImageUrl(quote.thumbnail)"
         class="lg:w-226px h-140px rounded-sm object-cover"
       />
-      <p class="lg:max-w-477 max-w-300 text-gray-300 text-2xl font-normal leading-9 my-auto">
+      <p class="lg:max-w-477 max-w-300 text-gray-300 text-2xl italic font-normal leading-9 my-auto">
         “{{ quote.content }}”
       </p>
     </div>
