@@ -16,5 +16,5 @@ export const useUserStore = defineStore('useUserStore', {
     setUser(user) {
       this.user = user
     }
-  },
+  }
 })

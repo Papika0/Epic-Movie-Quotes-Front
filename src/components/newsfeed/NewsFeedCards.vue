@@ -45,12 +45,14 @@
 
     <CommentCard :comments="quote.comments" />
 
-    <div class="inline-flex gap-6 mb-8">
+    <div class="flex flex-row gap-6 mb-8">
       <img :src="authUserThumbnail" class="rounded-full w-52px h-52px" v-if="authUserThumbnail" />
-      <div class="w-52px h-52px rounded-full bg-red-800 justify-center flex" v-else>
-        <p class="text-white text-xl font-normal leading-loose flex my-auto">
-          {{ useUserStore().user.username[0].toUpperCase() }}
-        </p>
+      <div v-else>
+        <div class="w-52px h-52px rounded-full bg-red-800 justify-center flex">
+          <p class="text-white text-xl font-normal leading-loose flex my-auto">
+            {{ useUserStore().user.username[0].toUpperCase() }}
+          </p>
+        </div>
       </div>
       <input
         type="text"

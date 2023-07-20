@@ -5,5 +5,9 @@
   "new": "ახალი",
   "notifications": "შეტყობინებები",
   "mark_all_as_read": "ყველას წაიკითხვა",
-  "search": "შეიყვანეთ {atSymbol} ფილმების მოსაძებნად, {hashSymbol} ციტატების მოსაძებნად"
+  "search": "შეიყვანეთ {atSymbol} ფილმების მოსაძებნად, {hashSymbol} ციტატების მოსაძებნად",
+  "enter": "შეიყვანეთ",
+  "to_search_movies": "ფილმების მოძებნად",
+  "to_search_quotes": "ციტატების მოძებნად",
+  "search_placeholder": "ძებნა"
 }

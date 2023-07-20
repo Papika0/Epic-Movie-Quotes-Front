@@ -1,8 +1,8 @@
 <template>
   <FeedLayout>
-    <QuoteViewModal :id="id" v-if="type === 'view'" />
-    <QuoteEditModal :id="id" v-if="type === 'edit'" />
-    <QuoteAddModal :id="id" v-if="type === 'add'" />
+    <QuoteModalView :id="id" v-if="type === 'view'" />
+    <QuoteModalEdit :id="id" v-if="type === 'edit'" />
+    <QuoteModalAdd :id="id" v-if="type === 'add'" />
   </FeedLayout>
 </template>
 
@@ -10,9 +10,9 @@
 import { defineProps } from 'vue'
 
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
-import QuoteViewModal from '@/components/quote/QuoteViewModal.vue'
-import QuoteEditModal from '@/components/quote/QuoteEditModal.vue'
-import QuoteAddModal from '@/components/quote/QuoteAddModal.vue'
+import QuoteModalView from '@/components/quote/QuoteModalView.vue'
+import QuoteModalEdit from '@/components/quote/QuoteModalEdit.vue'
+import QuoteModalAdd from '@/components/quote/QuoteModalAdd.vue'
 
 defineProps({
   id: {
