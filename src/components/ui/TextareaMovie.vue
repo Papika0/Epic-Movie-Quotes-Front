@@ -21,7 +21,7 @@
             :id="name"
             v-model="value"
             v-bind="field"
-            class="text-white lg:text-xl w-full font-normal z-20 lg:leading-loose bg-transparent outline-none lg:pr-20"
+            class="text-white lg:text-xl w-full font-normal z-20 lg:leading-loose bg-transparent outline-none lg:pr-20 placeholder:text-white placeholder:italic"
             :placeholder="placeholder"
           ></textarea>
         </div>

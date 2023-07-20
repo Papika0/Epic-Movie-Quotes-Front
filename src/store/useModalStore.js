@@ -16,7 +16,8 @@ export const useModalStore = defineStore('useModalStore', {
     showMovieEditModal: false,
     showQuoteAddModal: false,
     showBurgerMenu: false,
-    showProfileModal: false
+    showProfileModal: false,
+    showQuoteNewsFeed: false
   }),
   actions: {
     toggleRegisterModal() {
@@ -67,6 +68,9 @@ export const useModalStore = defineStore('useModalStore', {
     },
     toggleProfileModal() {
       this.showProfileModal = !this.showProfileModal
+    },
+    toggleQuoteNewsFeed() {
+      this.showQuoteNewsFeed = !this.showQuoteNewsFeed
     }
   },
   getters: {

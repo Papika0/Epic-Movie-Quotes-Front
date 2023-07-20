@@ -21,7 +21,7 @@
             v-bind="field"
             :disabled="disabled"
             :id="name"
-            class="text-white lg:text-xl w-full font-normal lg:leading-loose bg-transparent outline-none"
+            class="text-white lg:text-xl w-full font-normal lg:leading-loose bg-transparent outline-none placeholder:text-white placeholder:italic"
             :class="{ 'placeholder:text-white': disabled }"
             :placeholder="placeholder"
           />
