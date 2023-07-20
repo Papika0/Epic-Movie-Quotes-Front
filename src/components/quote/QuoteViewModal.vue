@@ -105,7 +105,7 @@ const createComment = async () => {
     const comment = commentText.value
     await addComment(props.id, comment).then((res) => {
       commentText.value = ''
-      quote.value.comments_count = res.comments_count
+      quote.value.comments_count = res.data.comments_count
     })
   } catch (error) {
     router.push({ name: 'forbidden' })
@@ -114,8 +114,8 @@ const createComment = async () => {
 
 onBeforeMount(async () => {
   try {
-    const data = await getQuote(props.id)
-    quote.value = data
+    const res = await getQuote(props.id)
+    quote.value = res.data
   } catch (error) {
     router.push({ name: 'forbidden' })
   } finally {

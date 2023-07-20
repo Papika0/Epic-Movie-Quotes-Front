@@ -1,6 +1,6 @@
 <template>
   <FeedLayout>
-    <ModalEditMovie v-if="useModalStore().showMovieEditModal" :movie="movie" />
+    <MovieEditModal v-if="useModalStore().showMovieEditModal" :movie="movie" />
     <div class="flex flex-col lg:ml-420px">
       <p class="text-white text-2xl font-medium leading-9 hidden lg:block">
         {{ $t('movies.movie_description') }}
@@ -83,7 +83,7 @@ import FeedLayout from '@/components/layouts/FeedLayout.vue'
 import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import QuoteCard from '@/components/quote/QuoteCard.vue'
 
-import ModalEditMovie from '@/components/movie/ModalEditMovie.vue'
+import MovieEditModal from '@/components/movie/MovieEditModal.vue'
 import { getMovie, deleteMovie } from '@/services/movies.js'
 import { useModalStore } from '@/store/useModalStore.js'
 import { useMovieStore } from '@/store/useMovieStore'
@@ -115,8 +115,8 @@ const movieDelete = async () => {
 
 onBeforeMount(async () => {
   try {
-    const data = await getMovie(props.id)
-    movie.value = data
+    const res = await getMovie(props.id)
+    movie.value = res.data
   } catch (error) {
     router.push({ name: 'forbidden' })
   }

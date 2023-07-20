@@ -66,7 +66,7 @@
           "
         />
 
-        <ModalEditProfile
+        <ProfileEditModal
           v-if="useModalStore().showProfileModal"
           @close="useModalStore().toggleProfileModal()"
         />
@@ -185,7 +185,7 @@
 
     <div
       :class="{
-        'absolute lg:w-96 w-11/12 flex flex-row justify-between bg-pop-up p-4 right-0 lg:bottom-0 top-0 lg:top-auto mt-32 lg:mt-0 mb-5 mr-4 rounded': true,
+        'absolute lg:w-96 w-11/12 flex flex-row justify-between bg-pop-up p-4 right-0 top-0 mt-32 mb-5 mr-4 rounded': true,
         hidden: !showPopup
       }"
     >
@@ -200,7 +200,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import ModalEditProfile from '@/components/ModalEditProfile.vue'
+import ProfileEditModal from '@/components/ProfileEditModal.vue'
 import InputProfileMobile from '@/components/ui/InputProfileMobile.vue'
 import { Form } from 'vee-validate'
 import FeedLayout from '@/components/layouts/FeedLayout.vue'
@@ -210,7 +210,7 @@ import InputProfile from '@/components/ui/InputProfile.vue'
 import InputMain from '@/components/ui/InputMain.vue'
 import IconChangeSuccess from '@/components/icons/profile/IconChangeSuccess.vue'
 import IconPopUpClose from '@/components/icons/profile/IconPopUpClose.vue'
-import ModalEmailSend from '@/components/home/verification/ModalEmailSend.vue'
+import ModalEmailSend from '@/components/landing/auth/AuthEmailSend.vue'
 import { updateProfile } from '@/services/user.js'
 import { useUserStore } from '@/store/useUserStore.js'
 import { useModalStore } from '@/store/useModalStore.js'

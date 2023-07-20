@@ -97,8 +97,8 @@ const handleDelete = async () => {
 
 onBeforeMount(async () => {
   try {
-    const data = await getQuote(props.id)
-    quote.value = data
+    const res = await getQuote(props.id)
+    quote.value = res.data
   } catch (error) {
     router.push({ name: 'forbidden' })
   }

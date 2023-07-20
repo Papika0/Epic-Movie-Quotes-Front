@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-h-433 overflow-y-auto">
     <div v-for="comment in comments" :key="comment.id" class="flex flex-col">
       <div class="inline-flex gap-6">
         <img

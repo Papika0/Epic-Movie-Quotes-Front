@@ -5,13 +5,18 @@
       <LanguageDropDown class="hidden lg:block" />
       <ButtonSubmitRed
         :text="$t('auth.sign_up')"
-        @click="signUpModal()"
+        @click="modalStore.toggleRegisterModal()"
         customClass="px-3 py-2 lg:px-6"
+        :disabled="useAuthStore().isAuthenticated"
       />
-      <ButtonSubmitDark :text="$t('auth.log_in')" @click="logInModal()" />
+      <ButtonSubmitDark
+        :text="$t('auth.log_in')"
+        @click="modalStore.toggleLoginModal()"
+        :disabled="useAuthStore().isAuthenticated"
+      />
     </div>
   </header>
-  <AuthModals />
+  <LandingAuthModals />
   <div :class="modalStore.getModalActiveState ? 'h-screen' : ''">
     <section class="flex flex-col items-center lg:mt-64 mt-36">
       <p
@@ -29,29 +34,29 @@
   </div>
   <section class="mt-52">
     <div class="bg-home1 min-h-screen bg-center bg-cover">
-      <MovieQuoteParagraph movie="Interstellar, 2014">
+      <LandingMovieParagraph :movie="$t('texts.interstellar') + ', 2014'">
         {{ $t('texts.first_movie_quote') }}
-      </MovieQuoteParagraph>
+      </LandingMovieParagraph>
     </div>
     <div class="bg-home2 min-h-screen bg-center bg-fixed bg-cover">
-      <MovieQuoteParagraph movie="The Royal Tenenbaums, 2001">
+      <LandingMovieParagraph :movie="$t('texts.the_royal_tenenbaums') + ', 2001'">
         {{ $t('texts.second_movie_quote') }}
-      </MovieQuoteParagraph>
+      </LandingMovieParagraph>
     </div>
     <div class="bg-home3 min-h-screen bg-right lg:bg-center bg-fixed bg-cover">
-      <MovieQuoteParagraph movie="The Royal Tenenbaums, 2001">
+      <LandingMovieParagraph :movie="$t('texts.lord_of_the_rings') + ', 2002'">
         {{ $t('texts.third_movie_quote') }}
-      </MovieQuoteParagraph>
+      </LandingMovieParagraph>
     </div>
   </section>
   <p class="text-header text-xs float-left lg:ml-16 ml-8 py-4">© {{ $t('texts.copyright') }}</p>
 </template>
 
 <script setup>
-import MovieQuoteParagraph from '@/components/home/MovieQuoteParagraph.vue'
+import LandingMovieParagraph from '@/components/landing/LandingMovieParagraph.vue'
 import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import ButtonSubmitDark from '@/components/ui/ButtonSubmitDark.vue'
-import AuthModals from '@/components/home/AuthModals.vue'
+import LandingAuthModals from '@/components/landing/LandingAuthModals.vue'
 import LanguageDropDown from '@/components/shared/LanguageDropDown.vue'
 import router from '@/router/index.js'
 
@@ -65,18 +70,6 @@ async function getStarted() {
     modalStore.toggleRegisterModal()
   } else {
     router.push({ name: 'news-feed' })
-  }
-}
-
-async function signUpModal() {
-  if (!useAuthStore().isAuthenticated) {
-    modalStore.toggleRegisterModal()
-  }
-}
-
-async function logInModal() {
-  if (!useAuthStore().isAuthenticated) {
-    modalStore.toggleLoginModal()
   }
 }
 </script>

@@ -17,13 +17,11 @@
 import ModalLayout from '@/components/layouts/ModalLayout.vue'
 import IconEmailSent from '@/components/icons/IconEmailSent.vue'
 import { useModalStore } from '@/store/useModalStore.js'
-import { useUserStore } from '@/store/useUserStore'
 import ButtoneRed from '@/components/ui/ButtonSubmitRed.vue'
 
 const modalStore = useModalStore()
 
 function RedirectToMail() {
-  const { getEmailDomain } = useUserStore()
-  window.open(`https://${getEmailDomain}`, '_blank')
+  window.open(`https://gmail.com`, '_blank')
 }
 </script>

@@ -23,8 +23,8 @@ export const useMovieStore = defineStore('useMovieStore', {
     },
     async getMovies() {
       try {
-        await getAllMovies().then((data) => {
-          this.movies = data
+        await getAllMovies().then((res) => {
+          this.movies = res.data
         })
       } catch (error) {
         return router.push({ name: 'not-found' })

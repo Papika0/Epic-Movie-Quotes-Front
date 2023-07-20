@@ -120,7 +120,7 @@ const createComment = async (quote) => {
     const comment = commentText.value
     await addComment(quote.id, comment).then((res) => {
       commentText.value = ''
-      quote.comments_count = res.comments_count
+      quote.comments_count = res.data.comments_count
     })
   } catch (error) {
     router.push({ name: 'forbidden' })
@@ -184,11 +184,11 @@ const handleScroll = async () => {
 const fetchQuotes = async () => {
   try {
     const response = await getQuotes(currentPage.value)
-    remainingPages.value = response.remaining_pages
+    remainingPages.value = response.data.remaining_pages
     if (response.data.length === 0) {
       window.removeEventListener('scroll', handleScroll)
     } else {
-      quotes.value = [...quotes.value, ...response.data]
+      quotes.value = [...quotes.value, ...response.data.data]
       currentPage.value++
     }
   } catch (error) {

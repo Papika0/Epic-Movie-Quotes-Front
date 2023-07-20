@@ -14,8 +14,8 @@ export const useNotificationStore = defineStore('useNotificationStore', {
       try {
         if (this.remainingPages === 0) return
         const notifications = await getNotifications(page)
-        this.notifications = [...this.notifications, ...notifications.data]
-        this.unreadNotifications = notifications.unread_notifications
+        this.notifications = [...this.notifications, ...notifications.data.data]
+        this.unreadNotifications = notifications.data.unread_notifications
         this.remainingPages = notifications.pages_left
       } catch (error) {
         return router.push({ name: 'not-found' })

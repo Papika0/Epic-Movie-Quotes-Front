@@ -1,5 +1,6 @@
 <template>
   <button
+    :disabled="disabled"
     :class="[
       customClass,
       'bg-red-button text-white rounded hover:bg-button-hover active:bg-button-active border border-red-button',
@@ -36,6 +37,11 @@ defineProps({
     type: String,
     required: false,
     default: 'py-2 px-6'
+  },
+  disabled: {
+    type: Boolean,
+    required: false,
+    default: false
   }
 })
 </script>

@@ -1,5 +1,14 @@
 import { defineRule } from 'vee-validate'
+import { configure } from 'vee-validate'
 import { required, email, min, max, confirmed, numeric } from '@vee-validate/rules'
+
+configure({
+  validateOnChange: true,
+  validateOnInput: true,
+  validateOnBlur: true,
+  validateOnModelUpdate: true,
+  validateOnFirstUpdate: false
+})
 
 defineRule('required', required)
 defineRule('email', email)

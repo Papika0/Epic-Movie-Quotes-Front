@@ -92,7 +92,7 @@ const selectOption = (option) => {
 onBeforeMount(async () => {
   try {
     await getAllMovies().then((res) => {
-      options.value = res.map((movie) => {
+      options.value = res.data.map((movie) => {
         return {
           id: movie.id,
           label: movie.name,

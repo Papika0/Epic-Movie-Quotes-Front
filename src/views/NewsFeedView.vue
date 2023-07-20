@@ -1,6 +1,6 @@
 <template>
   <FeedLayout>
-    <ModalAddQuote v-if="useModalStore().showQuoteAddModal" />
+    <NewsFeedAddQuote v-if="useModalStore().showQuoteAddModal" />
     <div class="flex flex-col gap-12 lg:w-938 mx-auto mb-48">
       <div class="inline-flex gap-6 -mb-6 w-full">
         <div
@@ -22,7 +22,7 @@
             <input
               v-model="searchQuery"
               type="text"
-              placeholder="Enter @ to search movies, Enter # to search quotes"
+              :placeholder="$t('feed.search', { atSymbol: '@', hashSymbol: '#' })"
               class="px-2 w-full text-white h-52px my-auto bg-transparent outline-none"
             />
           </div>
@@ -49,7 +49,7 @@ import { ref, watch } from 'vue'
 import IconPencilSquare from '@/components/icons/feed/IconPencilSquare.vue'
 import IconSearch from '@/components/icons/movie/IconSearch.vue'
 import NewsFeedCards from '@/components/newsfeed/NewsFeedCards.vue'
-import ModalAddQuote from '@/components/newsfeed/ModalAddQuote.vue'
+import NewsFeedAddQuote from '@/components/newsfeed/NewsFeedAddQuote.vue'
 import { useModalStore } from '@/store/useModalStore'
 import { useNewsFeedStore } from '@/store/useNewsFeedStore'
 
