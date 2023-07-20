@@ -11,7 +11,7 @@
         class="w-5/6 h-10 text-white lg:text-black lg:bg-input bg-transparent lg:border border-input lg:pl-3 placeholder:text-placeholder rounded-md outline-none focus:shadow-input"
       />
       <p class="text-white text-xl my-auto cursor-pointer" v-if="editable" @click="handleEditClick">
-        Edit
+        {{ $t('profile.edit') }}
       </p>
     </div>
   </div>

@@ -21,8 +21,21 @@
 import IconForbiddenGandolf from '@/components/icons/error/IconForbiddenGandolf.vue'
 import ButtonSubmitRed from '@/components/ui/ButtonSubmitRed.vue'
 import router from '@/router/index.js'
+import { onBeforeMount } from 'vue'
+import { useI18n } from 'vue-i18n'
+
+const { locale } = useI18n()
 
 const returnHome = () => {
   router.push({ name: 'home' })
 }
+
+onBeforeMount(() => {
+  const storedLocale = localStorage.getItem('selectedLocale')
+  if (storedLocale === 'ge') {
+    locale.value = 'ge'
+  } else {
+    locale.value = 'en'
+  }
+})
 </script>

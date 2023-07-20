@@ -97,14 +97,13 @@
               :editable="true"
             />
 
-            <div v-if="editUsername && windowWidth > 800" class="lg:block hidden">
+            <div v-if="editUsername && windowWidth > 800" class="lg:block hidden w-490">
               <InputMain
                 :label="$t('profile.new_username')"
                 name="username"
                 :placeholder="$t('profile.enter_new_username')"
                 :apiError="Boolean(usernameError)"
                 rules="required|min:3|max:15|lowercase"
-                class="w-5/6"
               />
               <p v-if="usernameError" class="text-red-star text-sm pt-5">{{ usernameError }}</p>
             </div>
@@ -117,7 +116,7 @@
               :editable="user?.google_id == null"
             />
 
-            <div v-if="editEmail && windowWidth > 800" class="lg:block hidden">
+            <div v-if="editEmail && windowWidth > 800" class="lg:block hidden w-490">
               <InputMain
                 :label="$t('profile.new_email')"
                 name="email"
@@ -125,7 +124,6 @@
                 type="email"
                 :apiError="Boolean(emailError)"
                 rules="required|email"
-                class="w-5/6"
               />
               <p v-if="emailError" class="text-red-star text-sm pt-5">{{ emailError }}</p>
             </div>
@@ -140,8 +138,8 @@
                 :editable="true"
               />
 
-              <div v-if="editPassword && windowWidth > 800" class="lg:block hidden">
-                <div class="w-5/6 border border-password-div flex flex-col gap-4 pl-6 mb-10 mt-10">
+              <div v-if="editPassword && windowWidth > 800" class="lg:block hidden w-490">
+                <div class="border border-password-div flex flex-col gap-4 pl-6 mb-10 mt-10">
                   <p class="text-white mt-6">{{ $t('profile.password_should_contain') }}:</p>
                   <div class="flex flex-col gap-1 mb-6">
                     <p class="text-sm text-light-gray">
@@ -156,7 +154,7 @@
                   name="password"
                   :placeholder="$t('profile.enter_new_password')"
                   textType="password"
-                  class="w-5/6 mb-10"
+                  class="mb-10"
                   rules="required|min:8|max:15|lowercase"
                 />
                 <InputMain
@@ -164,7 +162,6 @@
                   name="confirm_password"
                   :placeholder="$t('profile.confirm_new_password')"
                   textType="password"
-                  class="w-5/6"
                   rules="required|confirmed:@password"
                 />
               </div>
