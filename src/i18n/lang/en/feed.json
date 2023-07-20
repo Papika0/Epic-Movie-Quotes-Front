@@ -5,5 +5,9 @@
   "new": "New",
   "notifications": "Notifications",
   "mark_all_as_read": "Mark all as read",
-  "search": "Enter {atSymbol} to search movies, Enter {hashSymbol} to search quotes"
+  "search": "Enter {atSymbol} to search movies, Enter {hashSymbol} to search quotes",
+  "enter": "Enter",
+  "to_search_movies": "to search movies",
+  "to_search_quotes": "to search quotes",
+  "search_placeholder": "Search"
 }

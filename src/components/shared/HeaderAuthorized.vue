@@ -5,16 +5,16 @@
       <input
         v-model="searchQuery"
         type="text"
-        placeholder="Search"
+        :placeholder="$t('feed.search_placeholder')"
         class="px-2 w-full text-white my-auto bg-transparent outline-none placeholder:text-white"
         @keydown.enter="showSearch = false"
       />
     </div>
     <p class="text-gray-300 text-opacity-60 ml-20">
-      Enter <span class="text-white">@</span> to search movies
+      {{ $t('feed.enter') }} <span class="text-white">@</span> {{ $t('feed.to_search_movies') }}
     </p>
     <p class="text-gray-300 text-opacity-60 ml-20">
-      Enter <span class="text-white">#</span> to search quotes
+      {{ $t('feed.enter') }} <span class="text-white">#</span> {{ $t('feed.to_search_quotes') }}
     </p>
   </div>
   <nav class="bg-header h-86">
