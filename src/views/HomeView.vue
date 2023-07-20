@@ -33,17 +33,17 @@
     </section>
   </div>
   <section class="mt-52">
-    <div class="bg-home1 min-h-screen bg-center bg-cover">
+    <div class="bg-interstellar min-h-screen bg-center bg-cover">
       <LandingMovieParagraph :movie="$t('texts.interstellar') + ', 2014'">
         {{ $t('texts.first_movie_quote') }}
       </LandingMovieParagraph>
     </div>
-    <div class="bg-home2 min-h-screen bg-center bg-fixed bg-cover">
+    <div class="bg-tenenbaums min-h-screen bg-center bg-fixed bg-cover">
       <LandingMovieParagraph :movie="$t('texts.the_royal_tenenbaums') + ', 2001'">
         {{ $t('texts.second_movie_quote') }}
       </LandingMovieParagraph>
     </div>
-    <div class="bg-home3 min-h-screen bg-right lg:bg-center bg-fixed bg-cover">
+    <div class="bg-lord-of-rings min-h-screen bg-right lg:bg-center bg-fixed bg-cover">
       <LandingMovieParagraph :movie="$t('texts.lord_of_the_rings') + ', 2002'">
         {{ $t('texts.third_movie_quote') }}
       </LandingMovieParagraph>
